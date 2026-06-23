@@ -1,0 +1,10 @@
+// Dedicated Supabase project for Nutriscope AI iOS (NOT the nutriscope web app).
+// Copy to Backend.xcconfig and link in the Xcode project, OR set in Scheme → Run → Environment Variables.
+// Do not commit real keys.
+
+SUPABASE_URL = https://YOUR_IOS_PROJECT_REF.supabase.co
+SUPABASE_ANON_KEY = your_ios_supabase_anon_key
+
+// Device-side OpenAI (Coach tab, Today tip, optional direct meal scans in Debug).
+// You can also paste this in Profile → Account → Developer → OpenAI API key.
+OPENAI_API_KEY = sk-your-openai-key

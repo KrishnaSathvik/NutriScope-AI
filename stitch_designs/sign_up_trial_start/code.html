@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Nutriscope AI - Sign Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#a93702",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1c1b1b",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#a93702",
+                        "primary-container": "#f26b38",
+                        "on-primary-fixed": "#380c00",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "on-secondary-fixed": "#0e144d",
+                        "tertiary-fixed-dim": "#7ddb7b",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#822800",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "surface": "#fcf9f8",
+                        "surface-container": "#f0eded",
+                        "surface-container-low": "#f6f3f2",
+                        "tertiary-fixed": "#98f994",
+                        "primary-fixed": "#ffdbcf",
+                        "inverse-on-surface": "#f3f0ef",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-dim": "#dcd9d9",
+                        "surface-variant": "#e5e2e1",
+                        "outline-variant": "#e0c0b5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#003509",
+                        "on-secondary-container": "#444a83",
+                        "on-surface-variant": "#58423a",
+                        "on-secondary-fixed-variant": "#3c427b",
+                        "on-primary-container": "#561700",
+                        "on-error-container": "#93000a",
+                        "on-background": "#1c1b1b",
+                        "error-container": "#ffdad6",
+                        "background": "#fcf9f8",
+                        "tertiary": "#006e1d",
+                        "surface-bright": "#fcf9f8",
+                        "on-tertiary-fixed": "#002204",
+                        "inverse-surface": "#313030",
+                        "secondary": "#545a94",
+                        "outline": "#8c7168",
+                        "secondary-fixed": "#dfe0ff",
+                        "surface-container-high": "#eae7e7",
+                        "tertiary-container": "#4aa74e",
+                        "secondary-container": "#b7bcfe",
+                        "inverse-primary": "#ffb59c",
+                        "on-tertiary": "#ffffff"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "lg": "48px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "caption": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        .floating-blob {
+            animation: float 20s infinite ease-in-out alternate;
+        }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -50px) scale(1.1); }
+            100% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .input-animated:focus + label,
+        .input-animated:not(:placeholder-shown) + label {
+            transform: translateY(-120%) scale(0.85);
+            color: theme('colors.primary');
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen font-body-md overflow-x-hidden relative flex flex-col justify-center py-12 sm:px-6 lg:px-8 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Atmospheric Background -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+<!-- Abstract gradient shapes representing 'Kinetic Harvest' -->
+<div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-primary-fixed rounded-full mix-blend-multiply filter blur-3xl opacity-50 floating-blob" style="animation-delay: 0s;"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[30rem] h-[30rem] bg-secondary-fixed rounded-full mix-blend-multiply filter blur-3xl opacity-40 floating-blob" style="animation-delay: -5s;"></div>
+<div class="absolute top-[40%] left-[20%] w-64 h-64 bg-tertiary-fixed rounded-full mix-blend-multiply filter blur-3xl opacity-30 floating-blob" style="animation-delay: -10s;"></div>
+</div>
+<!-- Main Content Container -->
+<main class="relative z-10 w-full max-w-md mx-auto px-margin-mobile md:px-0">
+<!-- Header / Brand -->
+<div class="text-center mb-8">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-surface shadow-[0_8px_30px_rgb(0,0,0,0.04)] mb-6 border border-surface-container-highest">
+<span class="material-symbols-outlined text-[32px] text-primary" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-xs tracking-tight">Start Your 7-Day Free Trial</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm mx-auto">Create an account to sync your progress and unlock unlimited protein scans.</p>
+</div>
+<!-- Registration Card -->
+<div class="glass-panel rounded-2xl p-6 sm:p-8 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] relative overflow-hidden">
+<!-- Subtle AI Insight Indicator Line -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-tertiary to-secondary"></div>
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Input Fields -->
+<div class="space-y-4">
+<!-- Name Input -->
+<div class="relative">
+<input class="input-animated peer w-full bg-surface-container-lowest border border-surface-container-highest rounded-lg px-4 pt-6 pb-2 text-on-surface font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all placeholder-transparent" id="name" name="name" placeholder="Name" required="" type="text"/>
+<label class="absolute left-4 top-4 text-on-surface-variant font-body-md text-body-md transition-all pointer-events-none origin-left" for="name">Full Name</label>
+<span class="material-symbols-outlined absolute right-4 top-4 text-on-surface-variant pointer-events-none" data-icon="person">person</span>
+</div>
+<!-- Email Input -->
+<div class="relative">
+<input class="input-animated peer w-full bg-surface-container-lowest border border-surface-container-highest rounded-lg px-4 pt-6 pb-2 text-on-surface font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all placeholder-transparent" id="email" name="email" placeholder="Email" required="" type="email"/>
+<label class="absolute left-4 top-4 text-on-surface-variant font-body-md text-body-md transition-all pointer-events-none origin-left" for="email">Email Address</label>
+<span class="material-symbols-outlined absolute right-4 top-4 text-on-surface-variant pointer-events-none" data-icon="mail">mail</span>
+</div>
+<!-- Password Input -->
+<div class="relative">
+<input class="input-animated peer w-full bg-surface-container-lowest border border-surface-container-highest rounded-lg px-4 pt-6 pb-2 text-on-surface font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all placeholder-transparent" id="password" name="password" placeholder="Password" required="" type="password"/>
+<label class="absolute left-4 top-4 text-on-surface-variant font-body-md text-body-md transition-all pointer-events-none origin-left" for="password">Password</label>
+<button aria-label="Toggle password visibility" class="absolute right-4 top-4 text-on-surface-variant hover:text-primary transition-colors focus:outline-none" type="button">
+<span class="material-symbols-outlined" data-icon="visibility_off">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-lg shadow-sm font-label-bold text-label-bold text-on-primary bg-primary hover:bg-primary-container hover:text-on-primary-container focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-200 group overflow-hidden relative" type="submit">
+<span class="relative z-10 flex items-center gap-2">
+                        Start 7-Day Free Trial
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</span>
+<!-- High energy hover effect -->
+<div class="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-out z-0"></div>
+</button>
+</form>
+<!-- Divider -->
+<div class="mt-8 relative">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-surface-container-highest"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-4 bg-surface-container-lowest text-on-surface-variant font-caption text-caption uppercase tracking-wider rounded-full">Or continue with</span>
+</div>
+</div>
+<!-- Social Logins -->
+<div class="mt-6">
+<!-- Using the provided image asset for social login visual representation -->
+<div class="w-full h-16 rounded-lg overflow-hidden border border-surface-container-highest bg-surface-container-lowest flex items-center justify-center hover:shadow-[0_4px_20px_rgba(169,55,2,0.1)] transition-shadow cursor-pointer relative group">
+<img alt="Social login options including Google, Apple, and Email" class="h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdXmXH0o7vfpmUy2JJyoCQeos32WXDlPHDI-8Va0IPZmQcScCc8XK7wQoS1Mc4nCa9Yke3BfEDGIwzB3eIXlrbmQLsoCv6BqpaLH9nraqUHl0RJi9wTfz6n5oG8OcAyoKGM_JQ5RUN0WrBgwPDejJYHAvamKQ9TDScPXtcNpcEcHD1SrUK_yuHObayD0mMiB30ElriYrVe65_JpG-V0Dghkj-FuXSanO175ZRlkFGM7cu1yfXJEzfNrGJkuS8GqP6ATCskpOY3kmxC"/>
+<!-- Overlay to make it feel clickable -->
+<div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+</div>
+<p class="text-center font-caption text-caption text-on-surface-variant mt-2 opacity-70">Single-tap sign in via Google, Apple, or Magic Link</p>
+</div>
+</div>
+<!-- Footer Links -->
+<div class="mt-8 text-center space-y-4">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Already have an account? 
+                <a class="font-label-bold text-label-bold text-primary hover:text-primary-container transition-colors underline decoration-primary/30 underline-offset-4 hover:decoration-primary" href="#">Sign In</a>
+</p>
+<p class="font-caption text-caption text-on-surface-variant/70">
+                By signing up, you agree to our 
+                <a class="hover:text-primary transition-colors" href="#">Terms of Service</a> 
+                &amp; 
+                <a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</p>
+</div>
+</main>
+<script>
+        // Simple script for input animation state management and password toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('.input-animated');
+            inputs.forEach(input => {
+                // Ensure correct state on load (e.g. browser autofill)
+                if(input.value) {
+                    input.classList.add('has-value');
+                }
+                
+                input.addEventListener('blur', () => {
+                    if(input.value) {
+                        input.classList.add('has-value');
+                    } else {
+                        input.classList.remove('has-value');
+                    }
+                });
+            });
+
+            // Password visibility toggle
+            const togglePasswordBtn = document.querySelector('button[aria-label="Toggle password visibility"]');
+            const passwordInput = document.getElementById('password');
+            const icon = togglePasswordBtn.querySelector('.material-symbols-outlined');
+
+            togglePasswordBtn.addEventListener('click', () => {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                icon.textContent = type === 'password' ? 'visibility_off' : 'visibility';
+            });
+        });
+    </script>
+</body></html>

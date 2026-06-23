@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed": "#002204",
+                      "primary": "#a93702",
+                      "secondary-fixed-dim": "#bdc2ff",
+                      "on-background": "#1c1b1b",
+                      "tertiary-container": "#4aa74e",
+                      "background": "#fcf9f8",
+                      "secondary": "#545a94",
+                      "surface-tint": "#a93702",
+                      "outline-variant": "#e0c0b5",
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "on-primary-fixed": "#380c00",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#f0eded",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-highest": "#e5e2e1",
+                      "on-secondary-fixed-variant": "#3c427b",
+                      "on-error-container": "#93000a",
+                      "inverse-primary": "#ffb59c",
+                      "surface-variant": "#e5e2e1",
+                      "surface-dim": "#dcd9d9",
+                      "surface-container-low": "#f6f3f2",
+                      "surface": "#fcf9f8",
+                      "secondary-fixed": "#dfe0ff",
+                      "tertiary": "#006e1d",
+                      "surface-bright": "#fcf9f8",
+                      "surface-container-high": "#eae7e7",
+                      "outline": "#8c7168",
+                      "primary-fixed-dim": "#ffb59c",
+                      "inverse-surface": "#313030",
+                      "primary-fixed": "#ffdbcf",
+                      "on-primary-fixed-variant": "#822800",
+                      "on-primary-container": "#561700",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-container": "#003509",
+                      "on-secondary-container": "#444a83",
+                      "on-surface": "#1c1b1b",
+                      "secondary-container": "#b7bcfe",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-tertiary-fixed-variant": "#005313",
+                      "primary-container": "#f26b38",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#7ddb7b",
+                      "on-surface-variant": "#58423a",
+                      "on-secondary-fixed": "#0e144d",
+                      "tertiary-fixed": "#98f994"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "sm": "12px",
+                      "base": "8px",
+                      "lg": "48px",
+                      "xl": "80px",
+                      "margin-desktop": "40px",
+                      "gutter": "24px",
+                      "md": "24px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "caption": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-bold": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-color: #fcf9f8;
+            color: #1c1b1b;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Kinetic Orange Primary Button */
+        .btn-primary {
+            background-color: #a93702;
+            color: #ffffff;
+            border-radius: 9999px; /* highly rounded */
+            padding: 16px 32px;
+            font-family: 'Hanken Grotesk';
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 28px;
+            transition: all 0.2s ease;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-primary:hover {
+            filter: saturate(1.2) brightness(1.1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(169, 55, 2, 0.2);
+        }
+
+        /* Secondary Outline Button */
+        .btn-secondary {
+            background-color: transparent;
+            color: #1c1b1b;
+            border: 2px solid #545a94; /* Midnight Blue */
+            border-radius: 9999px;
+            padding: 14px 30px; /* adjusted for border */
+            font-family: 'Hanken Grotesk';
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 28px;
+            transition: all 0.2s ease;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .btn-secondary:hover {
+            background-color: #f0eded;
+        }
+
+        /* Ambient Hover Shadow */
+        .ambient-hover:hover {
+            box-shadow: 0 20px 40px -10px rgba(169, 55, 2, 0.15);
+        }
+        
+        /* Smooth fade-in for page load */
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body class="bg-background min-h-screen flex flex-col antialiased relative overflow-hidden">
+<!-- Decorative Kinetic Accent Rings -->
+<div class="absolute -top-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full border-[40px] border-primary-container opacity-10 pointer-events-none"></div>
+<div class="absolute top-[60%] -left-[20%] w-[50vw] h-[50vw] rounded-full border-[20px] border-tertiary-container opacity-10 pointer-events-none"></div>
+<main class="flex-grow flex flex-col md:flex-row relative z-10">
+<!-- Image Canvas (Hero) - Left on Desktop, Top on Mobile -->
+<div class="w-full md:w-1/2 lg:w-3/5 h-[50vh] md:h-screen relative overflow-hidden order-1 md:order-2 bg-surface-container-low shadow-[inset_0_-40px_40px_rgba(252,249,248,1)] md:shadow-[inset_40px_0_40px_rgba(252,249,248,1)]">
+<img alt="High-impact professional food photography showing a vibrant, healthy, and colorful meal plated beautifully on a clean surface, embodying the Kinetic Harvest aesthetic." class="absolute inset-0 w-full h-full object-cover object-center fade-in-up" src="https://lh3.googleusercontent.com/aida/AP1WRLsHTTS8qBx9h9R0sYUFjDAVS_5zuYbxSWSAbFyEXhJnpNRTm6eoo6z4iKyunYk7sCEzloNFeAvcAykKg93JSk0RGqp9OOTe-cDE5WdkOtZEPhkoIDCzaUcLmW81BpbmuNoWOsMxWVUqu3ccfKrmlUnTmKjyScX6EkJ-h0IJG4CLuu5iS9zNtRXTuWLpFCE3_LIE8Mfq77Em7zwWd4Mrp2YhGCX4gopcr2lGWY6FT6ap1FjRN-u2"/>
+<!-- Gradient Overlay for seamless blend into content -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent md:bg-gradient-to-l md:from-background md:via-transparent md:to-transparent"></div>
+</div>
+<!-- Content Canvas - Right on Desktop, Bottom on Mobile -->
+<div class="w-full md:w-1/2 lg:w-2/5 flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-lg order-2 md:order-1 relative z-20 -mt-10 md:mt-0">
+<div class="max-w-md mx-auto w-full">
+<!-- Brand Anchor -->
+<div class="mb-12 fade-in-up">
+<h2 class="font-display-lg-mobile md:font-display-lg text-primary tracking-tight">
+<span class="material-symbols-outlined text-primary text-[36px] md:text-[48px] align-middle mr-2 fill-icon">lunch_dining</span>
+                        Nutriscope
+                    </h2>
+</div>
+<!-- Messaging -->
+<div class="space-y-6 mb-12">
+<h1 class="font-display-lg-mobile md:font-display-lg text-on-background fade-in-up delay-100 leading-tight">
+                        Track meals without obsessing.
+                    </h1>
+<p class="font-body-lg text-on-surface-variant fade-in-up delay-200">
+                        Scan your food. See calories, protein, and what to eat next.
+                    </p>
+</div>
+<!-- Actions -->
+<div class="flex flex-col space-y-4 mb-8 fade-in-up delay-300">
+<a class="btn-primary w-full shadow-md group" href="#">
+                        Start Tracking
+                        <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<a class="btn-secondary w-full group" href="#">
+                        Quick start
+                        <span class="text-on-surface-variant text-sm ml-2 font-normal">(Guest mode)</span>
+</a>
+</div>
+<!-- Reassurance -->
+<div class="fade-in-up delay-400 mt-auto pt-8 border-t border-outline-variant/30 flex items-center">
+<span class="material-symbols-outlined text-tertiary mr-3 fill-icon">volunteer_activism</span>
+<p class="font-caption text-on-surface-variant italic">
+                        "No shame. No perfect logging. Just better choices."
+                    </p>
+</div>
+</div>
+</div>
+</main>
+</body></html>

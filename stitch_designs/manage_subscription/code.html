@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cancel Subscription - Nutriscope AI</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed": "#ffdbcf",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "outline": "#8c7168",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#735c00",
+                        "secondary-fixed": "#ffe087",
+                        "outline-variant": "#e0c0b5",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-dim": "#dbdad5",
+                        "inverse-primary": "#ffb59c",
+                        "ink-black": "#1C1C1E",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "primary-fixed-dim": "#ffb59c",
+                        "tertiary": "#5d5e63",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-surface": "#1b1c19",
+                        "tertiary-container": "#949499",
+                        "protein-teal": "#2D6A4F",
+                        "surface-container-low": "#f5f3ee",
+                        "surface": "#fbf9f4",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-highest": "#e4e2dd",
+                        "primary-container": "#f26b38",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-tertiary-container": "#2c2d31",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fdd34d",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-container-high": "#eae8e3",
+                        "on-background": "#1b1c19",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-tint": "#a93702",
+                        "on-secondary-container": "#725b00",
+                        "on-primary-container": "#561700",
+                        "primary": "#a93702",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container": "#f0eee9",
+                        "on-surface-variant": "#58423a",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2dd",
+                        "paper-white": "#FFFFFF",
+                        "background": "#fbf9f4",
+                        "coach-orange": "#F26B38",
+                        "surface-bright": "#fbf9f4",
+                        "inverse-surface": "#30312e",
+                        "warm-sun": "#FFD54F"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem",
+                        "margin-main": "1.25rem"
+                    },
+                    fontFamily: {
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "body-sm": ["15px", { lineHeight: "20px", fontWeight: "400" }],
+                        "headline-xl": ["34px", { lineHeight: "41px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "30px", fontWeight: "700" }],
+                        "headline-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "title-md": ["20px", { lineHeight: "25px", fontWeight: "600" }],
+                        "body-lg": ["17px", { lineHeight: "22px", fontWeight: "400" }],
+                        "numeric-display": ["48px", { lineHeight: "48px", letterSpacing: "-0.04em", fontWeight: "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Soft ambient shadow for cards */
+        .ambient-shadow {
+            box-shadow: 0 8px 24px -4px rgba(242, 107, 56, 0.08), 0 4px 8px -4px rgba(242, 107, 56, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-sm antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar (From JSON) -->
+<header class="w-full top-0 sticky bg-surface z-40 flat no shadows">
+<div class="flex items-center justify-between px-margin-main h-16 w-full">
+<button aria-label="Menu" class="text-primary hover:opacity-80 scale-95 transition-transform duration-200 flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary">Nutriscope AI</h1>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<!-- Main Canvas (Task-Focused: Navigation Suppressed) -->
+<main class="flex-1 px-margin-main pb-12 flex flex-col gap-stack-lg max-w-md mx-auto w-full">
+<!-- Header / Status Section -->
+<section class="mt-4 flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-error-container text-on-error-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-3xl icon-fill" data-icon="event_busy">event_busy</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">Cancel Pro Plan?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                Your subscription is set to end in <strong class="text-on-surface">3 days</strong>. You'll lose access to custom macro coaching and advanced analytics.
+            </p>
+</section>
+<!-- Feedback Section (Chips) -->
+<section class="bg-surface-container-low rounded-xl p-gutter-card flex flex-col gap-stack-md ambient-shadow">
+<h3 class="font-title-md text-title-md text-on-surface">Why are you leaving?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your feedback helps us improve the coach.</p>
+<div class="flex flex-wrap gap-2 mt-2" id="feedback-chips">
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface font-body-sm text-body-sm transition-colors hover:bg-surface-variant border border-transparent focus:outline-none" onclick="toggleChip(this)">Too expensive</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface font-body-sm text-body-sm transition-colors hover:bg-surface-variant border border-transparent focus:outline-none" onclick="toggleChip(this)">Not using it enough</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface font-body-sm text-body-sm transition-colors hover:bg-surface-variant border border-transparent focus:outline-none" onclick="toggleChip(this)">Found an alternative</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface font-body-sm text-body-sm transition-colors hover:bg-surface-variant border border-transparent focus:outline-none" onclick="toggleChip(this)">Hard to use</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-highest text-on-surface font-body-sm text-body-sm transition-colors hover:bg-surface-variant border border-transparent focus:outline-none" onclick="toggleChip(this)">Other</button>
+</div>
+</section>
+<!-- Retention Offer Section -->
+<section class="relative overflow-hidden rounded-xl bg-secondary-container text-on-secondary-container p-gutter-card flex flex-col items-center text-center mt-2 ambient-shadow">
+<!-- Decorative background element -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-warm-sun opacity-30 rounded-full blur-2xl pointer-events-none"></div>
+<span class="material-symbols-outlined text-4xl mb-3 icon-fill text-primary" data-icon="featured_seasonal_and_gifts">featured_seasonal_and_gifts</span>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-1">Wait, let's keep going!</h3>
+<p class="font-body-lg text-body-lg mb-4 opacity-90">
+                Building habits takes time. How about <strong class="font-bold">50% off</strong> your next month to keep your momentum?
+            </p>
+<button class="w-full bg-primary text-on-primary font-title-md text-title-md rounded-xl h-14 flex items-center justify-center gap-2 active:scale-95 transition-transform duration-200 shadow-md">
+<span>Keep Pro &amp; Claim 50% Off</span>
+<span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</section>
+<!-- Final Destructive Action -->
+<div class="flex flex-col items-center gap-stack-sm mt-4">
+<button class="w-full text-primary font-title-md text-title-md h-12 flex items-center justify-center rounded-xl bg-transparent border-2 border-transparent hover:bg-surface-container-high transition-colors">
+                No thanks, cancel anyway
+            </button>
+<p class="font-label-caps text-label-caps text-outline mt-2 text-center max-w-xs">
+                CANCELLATION TAKES EFFECT AT THE END OF YOUR CURRENT BILLING CYCLE.
+            </p>
+</div>
+</main>
+<script>
+        // Simple interaction for feedback chips
+        function toggleChip(element) {
+            const isSelected = element.classList.contains('bg-primary-container');
+            
+            // Reset all chips
+            const chips = document.getElementById('feedback-chips').children;
+            for(let chip of chips) {
+                chip.classList.remove('bg-primary-container', 'text-on-primary-container', 'border-primary', 'font-semibold');
+                chip.classList.add('bg-surface-container-highest', 'text-on-surface', 'border-transparent');
+            }
+
+            // Toggle selected chip
+            if (!isSelected) {
+                element.classList.remove('bg-surface-container-highest', 'text-on-surface', 'border-transparent');
+                element.classList.add('bg-primary-container', 'text-on-primary-container', 'border-primary', 'font-semibold');
+            }
+        }
+    </script>
+</body></html>

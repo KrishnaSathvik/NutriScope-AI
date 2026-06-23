@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Account Choice - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a93702",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3c427b",
+                        "surface-variant": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#561700",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-secondary-container": "#444a83",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f8",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-surface": "#313030",
+                        "inverse-primary": "#ffb59c",
+                        "outline": "#8c7168",
+                        "tertiary": "#006e1d",
+                        "surface-tint": "#a93702",
+                        "surface-container": "#f0eded",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-surface-variant": "#58423a",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface": "#fcf9f8",
+                        "on-primary-fixed": "#380c00",
+                        "tertiary-fixed-dim": "#7ddb7b",
+                        "on-background": "#1c1b1b",
+                        "tertiary-fixed": "#98f994",
+                        "tertiary-container": "#4aa74e",
+                        "secondary": "#545a94",
+                        "outline-variant": "#e0c0b5",
+                        "on-surface": "#1c1b1b",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#f26b38",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-tertiary-container": "#003509",
+                        "secondary-container": "#b7bcfe",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-fixed": "#0e144d",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "margin-mobile": "16px",
+                        "md": "24px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(var(--tw-colors-surface-variant) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute inset-0 bg-pattern opacity-30 pointer-events-none"></div>
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary-fixed-dim opacity-20 blur-[100px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-secondary-fixed-dim opacity-20 blur-[120px] pointer-events-none"></div>
+<main class="w-full max-w-md px-margin-mobile md:px-0 z-10">
+<!-- Header -->
+<div class="text-center mb-xl">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-primary-container text-on-primary-container mb-md shadow-sm">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-background mb-base">Start your journey.</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Choose how you want to experience Nutriscope AI.</p>
+</div>
+<!-- Options Container -->
+<div class="flex flex-col gap-sm">
+<!-- Option 2: Pro Trial (Highlighted) -->
+<button class="w-full relative group overflow-hidden bg-surface border-2 border-primary rounded-xl p-md text-left transition-all hover:shadow-[0_8px_30px_rgb(169,55,2,0.12)] hover:-translate-y-1">
+<!-- Highlight Badge -->
+<div class="absolute top-0 right-0 bg-primary text-on-primary font-caption text-caption px-sm py-1 rounded-bl-lg font-bold tracking-wider uppercase">
+                    Recommended
+                </div>
+<div class="flex items-start gap-md">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-xs group-hover:text-primary-container transition-colors">Try Pro free for 7 days</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Unlimited scans, personalized coaching, and deep nutritional insights.</p>
+</div>
+</div>
+</button>
+<!-- Option 1: Create Account -->
+<button class="w-full group bg-surface border border-outline-variant rounded-xl p-md text-left transition-all hover:border-secondary hover:shadow-sm">
+<div class="flex items-start gap-md">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Create account</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Secure your data and sync across devices.</p>
+</div>
+</div>
+</button>
+<!-- Option 3: Continue Free -->
+<button class="w-full group bg-surface border border-outline-variant rounded-xl p-md text-left transition-all hover:border-tertiary hover:shadow-sm">
+<div class="flex items-start gap-md">
+<div class="flex-shrink-0 w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-xs">Continue with free plan</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Basic access with up to 5 scans per week.</p>
+</div>
+</div>
+</button>
+</div>
+<div class="mt-lg text-center">
+<p class="font-caption text-caption text-on-surface-variant">
+                By continuing, you agree to our <a class="text-primary hover:underline" href="#">Terms of Service</a> and <a class="text-primary hover:underline" href="#">Privacy Policy</a>.
+            </p>
+</div>
+</main>
+</body></html>

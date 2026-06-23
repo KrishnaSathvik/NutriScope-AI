@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Nutriscope AI - Today</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a93702",
+                        "surface": "#fbf9f4",
+                        "tertiary": "#5d5e63",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb59c",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-variant": "#e4e2dd",
+                        "paper-white": "#FFFFFF",
+                        "ink-black": "#1C1C1E",
+                        "surface-tint": "#a93702",
+                        "outline": "#8c7168",
+                        "tertiary-fixed": "#e3e2e7",
+                        "protein-teal": "#2D6A4F",
+                        "surface-container-highest": "#e4e2dd",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "surface-container": "#f0eee9",
+                        "on-secondary-container": "#725b00",
+                        "primary-fixed": "#ffdbcf",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#e0c0b5",
+                        "primary-container": "#f26b38",
+                        "surface-dim": "#dbdad5",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-tertiary-container": "#2c2d31",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffe087",
+                        "on-surface": "#1b1c19",
+                        "on-secondary": "#ffffff",
+                        "background": "#fbf9f4",
+                        "coach-orange": "#F26B38",
+                        "surface-bright": "#fbf9f4",
+                        "tertiary-container": "#949499",
+                        "on-primary-container": "#561700",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#30312e",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "warm-sun": "#FFD54F",
+                        "secondary-container": "#fdd34d",
+                        "on-background": "#1b1c19",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-on-surface": "#f2f1ec",
+                        "secondary": "#735c00",
+                        "surface-container-low": "#f5f3ee",
+                        "on-surface-variant": "#58423a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem",
+                        "margin-main": "1.25rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom utilities for subtle depth without harsh borders */
+        .shadow-ambient-orange {
+            box-shadow: 0 12px 32px -8px rgba(242, 107, 56, 0.15);
+        }
+        .shadow-ambient-neutral {
+            box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.04);
+        }
+        .progress-bar-stripe {
+            background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+            background-size: 1rem 1rem;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-lg">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface flex justify-between items-center px-margin-main pt-stack-lg pb-stack-md w-full">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A close-up portrait photograph of a confident individual, warm lighting, soft background focus. Modern, professional yet approachable aesthetic, high-quality light-mode color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsemliggSCa8rVByBgU1KmL-JJROkGvPMooS4jGdApB-LVM82VeTaF-DTbP2w6d9Eaf_5iYHKIu_pnmt4okkuSYPcCoYj9GZ7gLQVjVNjzKEhBjU393eAesc7jt2QpzB-tB7sQ4Vn0x9r1c2hKT1VlIcfSB9ogFZWJqDcbH-1PpyjXHXRM7KZKMKpMfELe-TToALgX0tAXEzdfcMq_ABzupBJLohjzN0v7-GyIBNgQ7qaX89a4nRRyJm1bF8aGVn_UXMO0DVBiYBy3"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Nutriscope AI</h1>
+<button class="w-10 h-10 flex items-center justify-center text-primary hover:opacity-80 transition-opacity active:scale-95 duration-100 rounded-full">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 0;">monitoring</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pb-32">
+<!-- Hero: Daily Protein Progress -->
+<section class="px-margin-main py-stack-md flex flex-col gap-stack-sm animate-[fadeIn_0.5s_ease-out]">
+<div class="flex justify-between items-end mb-1">
+<h2 class="font-title-md text-title-md text-on-surface-variant">Daily Protein</h2>
+<div class="flex items-baseline gap-1">
+<span class="font-numeric-display text-numeric-display text-coach-orange">120</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant font-medium relative top-[-4px]">/ 180g</span>
+</div>
+</div>
+<!-- Custom Progress Bar per Style Guide -->
+<div class="h-5 w-full rounded-full bg-warm-sun/20 overflow-hidden relative shadow-inner">
+<!-- Fill -->
+<div class="absolute top-0 left-0 h-full bg-gradient-to-r from-coach-orange to-[#ff8c61] rounded-full transition-all duration-1000 ease-out flex items-center justify-end pr-2" style="width: 66%;">
+<!-- Subtle stripe overlay for motion -->
+<div class="absolute inset-0 progress-bar-stripe opacity-30"></div>
+</div>
+</div>
+</section>
+<!-- Coach Card -->
+<section class="px-margin-main mt-stack-md mb-stack-lg">
+<div class="bg-paper-white rounded-xl p-gutter-card flex items-start gap-stack-md shadow-ambient-orange relative overflow-hidden">
+<!-- Decorative background blob -->
+<div class="absolute -right-8 -top-8 w-24 h-24 bg-primary-container/5 rounded-full blur-xl pointer-events-none"></div>
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-coach-orange relative z-10">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">emoji_objects</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase tracking-wider">Coach Insight</h3>
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">Great start! You need <span class="font-bold text-coach-orange">60g</span> more protein today. Try a Greek yogurt snack.</p>
+</div>
+</div>
+</section>
+<!-- Quick Action (Bento-style addition for high-end feel) -->
+<section class="px-margin-main mb-stack-lg">
+<button class="w-full bg-surface-container hover:bg-surface-variant/80 transition-colors rounded-xl p-4 flex items-center justify-center gap-2 border border-outline-variant/30 active:scale-[0.98] duration-150">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 0;">add_circle</span>
+<span class="font-title-md text-title-md text-primary">Quick Log Meal</span>
+</button>
+</section>
+<!-- Recent Meals List -->
+<section class="px-margin-main flex flex-col gap-stack-md">
+<div class="flex justify-between items-center mb-1">
+<h2 class="font-title-md text-title-md text-on-surface">Recent Meals</h2>
+<button class="font-label-caps text-label-caps text-coach-orange uppercase tracking-widest hover:opacity-80 transition-opacity">See All</button>
+</div>
+<!-- Meal Card 1: High Confidence -->
+<article class="bg-paper-white rounded-xl p-gutter-card flex items-center gap-stack-md shadow-ambient-neutral relative overflow-hidden transition-transform duration-200 active:scale-[0.98] cursor-pointer group">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-variant flex-shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" data-alt="A beautifully plated grilled chicken salad in a white ceramic bowl, natural sunlight streaming across the table. Crisp greens, golden grilled chicken strips, high-end modern food photography, bright and airy light-mode aesthetic with warm undertones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6I5-1_z5pJFeieGXA39vIB2Ps2xD6U45D-B7Kl9Ww7IPtTPZThK1ooQivkVNG_dlAXrplECcMgk_lxWIoQiXKs_qSBVdA8eR8sCBoQBwqnfQ3f3C5ouIgF4gi-5Q4Gu7npyTinwUxZiPXfMZ9GaxwwZhRie9G4ZAbzNc5_VnL_wdsX4e1GlB3A0l4lSoFAPOHZBeQ6YYzhnoDwgN4yV7hI7jKIFxGdjdsJ1Q9XRzR8_FdnSDDPprtrDcYqYMwu2L0UG5TJAHw7SNv"/>
+</div>
+<div class="flex-grow pr-12">
+<h4 class="font-title-md text-[18px] leading-tight text-on-surface mb-1">Grilled Chicken Salad</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">12:30 PM • 420 kcal</p>
+<!-- Macro Chip -->
+<div class="mt-2 inline-flex items-center px-2.5 py-1 rounded-full bg-protein-teal/10 text-protein-teal font-label-caps text-[10px] tracking-wide">
+                        High Confidence
+                    </div>
+</div>
+<div class="absolute top-gutter-card right-gutter-card text-right flex flex-col items-end">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-coach-orange">45g</span>
+</div>
+</article>
+<!-- Meal Card 2: Medium Confidence -->
+<article class="bg-paper-white rounded-xl p-gutter-card flex items-center gap-stack-md shadow-ambient-neutral relative overflow-hidden transition-transform duration-200 active:scale-[0.98] cursor-pointer group">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-variant flex-shrink-0 border border-outline-variant/20 flex items-center justify-center text-tertiary-container">
+<!-- Fallback icon if image fails or isn't available -->
+<span class="material-symbols-outlined text-[32px]">restaurant</span>
+</div>
+<div class="flex-grow pr-12">
+<h4 class="font-title-md text-[18px] leading-tight text-on-surface mb-1">Protein Shake</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">9:15 AM • 210 kcal</p>
+<!-- Macro Chip -->
+<div class="mt-2 inline-flex items-center px-2.5 py-1 rounded-full bg-secondary-container/30 text-secondary font-label-caps text-[10px] tracking-wide">
+                        Medium Confidence
+                    </div>
+</div>
+<div class="absolute top-gutter-card right-gutter-card text-right flex flex-col items-end">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-coach-orange">30g</span>
+</div>
+</article>
+<!-- Meal Card 3: Low Confidence -->
+<article class="bg-paper-white rounded-xl p-gutter-card flex items-center gap-stack-md shadow-ambient-neutral relative overflow-hidden transition-transform duration-200 active:scale-[0.98] cursor-pointer group">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-variant flex-shrink-0 border border-outline-variant/20">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-105 duration-500" data-alt="A small handful of mixed nuts including almonds and walnuts scattered casually on a clean white surface. Minimalist composition, bright studio lighting casting soft shadows, creating a pristine light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVGwqBA6wgqyNgzEtSqzyLbAwEBZgU5m-BYZfHoDGwSHgnCpKrlE449QDrwNl6FXj0wlv3bjDNgijLYY_rPGFn9n0o6G_tpuxrzg34LWwzdpBPoaMiN9EOupbpbSSwkOgc3cFp4eeL9HJPYKONzVkkAcZe5Ai_WToX57-KX0N6Oi77XkGo9XE6i9fKxmIJUIN0xF1k32SadI1bqF3UQ7dUQnTtCUtbnIJvXjuzCRnXQm6Z5xJ_YRaFS9403Yfvu3jQWoAy5Ia0Didr"/>
+</div>
+<div class="flex-grow pr-12">
+<h4 class="font-title-md text-[18px] leading-tight text-on-surface mb-1">Mixed Nuts</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Yesterday • 180 kcal</p>
+<!-- Macro Chip -->
+<div class="mt-2 inline-flex items-center px-2.5 py-1 rounded-full bg-primary-container/10 text-primary font-label-caps text-[10px] tracking-wide">
+                        Low Confidence
+                    </div>
+</div>
+<div class="absolute top-gutter-card right-gutter-card text-right flex flex-col items-end">
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-coach-orange">8g</span>
+</div>
+</article>
+</section>
+</main>
+<!-- BottomNavBar -->
+<!-- Applying exact structural mapping from JSON, but prioritizing Canvas rules (no borders, use tonal shift/shadow) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 md:hidden bg-surface-container/90 backdrop-blur-xl shadow-[0_-8px_30px_rgba(0,0,0,0.06)] rounded-t-[20px]">
+<!-- Top indicator line to suggest swipeability/docking -->
+<div class="w-12 h-1 bg-outline-variant/40 rounded-full mx-auto mt-2"></div>
+<div class="flex justify-around items-center px-2 pt-2 pb-8">
+<!-- Today (Active Tab) -->
+<a class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-variant/50 transition-colors w-16 h-14 rounded-xl scale-105 duration-200" href="#">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-label-caps text-[10px] mt-1 tracking-wide">Today</span>
+</a>
+<!-- Scan -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-colors w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 0;">document_scanner</span>
+<span class="font-label-caps text-[10px] mt-1 tracking-wide">Scan</span>
+</a>
+<!-- History -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-colors w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 0;">history</span>
+<span class="font-label-caps text-[10px] mt-1 tracking-wide">History</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-colors w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined text-[26px]" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-caps text-[10px] mt-1 tracking-wide">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Simple fade-in animation keyframes -->
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</body></html>

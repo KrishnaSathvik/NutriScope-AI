@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Notification System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        .toast-animate {
+            animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        .toast-1 { animation-delay: 0.1s; opacity: 0; }
+        .toast-2 { animation-delay: 0.3s; opacity: 0; }
+        .toast-3 { animation-delay: 0.5s; opacity: 0; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#735c00",
+                        "surface-bright": "#fbf9f4",
+                        "secondary-fixed": "#ffe087",
+                        "secondary-container": "#fdd34d",
+                        "on-background": "#1b1c19",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#380c00",
+                        "on-surface": "#1b1c19",
+                        "on-primary-container": "#561700",
+                        "protein-teal": "#2D6A4F",
+                        "on-primary-fixed-variant": "#822800",
+                        "primary-fixed-dim": "#ffb59c",
+                        "warm-sun": "#FFD54F",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-dim": "#dbdad5",
+                        "paper-white": "#FFFFFF",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2dd",
+                        "surface-tint": "#a93702",
+                        "on-secondary-container": "#725b00",
+                        "coach-orange": "#F26B38",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "surface-container-lowest": "#ffffff",
+                        "ink-black": "#1C1C1E",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-container": "#949499",
+                        "outline": "#8c7168",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "outline-variant": "#e0c0b5",
+                        "inverse-surface": "#30312e",
+                        "surface-container": "#f0eee9",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-tertiary-container": "#2c2d31",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f4",
+                        "surface": "#fbf9f4",
+                        "on-surface-variant": "#58423a",
+                        "primary-container": "#f26b38",
+                        "on-secondary": "#ffffff",
+                        "primary": "#a93702",
+                        "inverse-primary": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-container-low": "#f5f3ee",
+                        "surface-container-high": "#eae8e3",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "tertiary": "#5d5e63",
+                        "surface-container-highest": "#e4e2dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-card": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "stack-md": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen relative overflow-hidden flex flex-col font-body-lg">
+<header class="w-full top-0 sticky bg-surface dark:bg-on-background flex justify-between items-center px-margin-main py-4 z-40">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden flex-shrink-0 border border-surface-variant">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A warm, professional headshot of a female user with a bright smile, wearing casual modern athletic wear, shot in soft natural daylight against a neutral background. High quality, realistic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGcCufvOCbso-zLKhZNswLco0KBGx1wSYJbkJZexBv-AE-cKbE542EiRUpisUiGfWaJJl9yIFeAdfNcqu1g13TejZPdcXfadpoJKsB6MFbp2izdNSveCz9abG6RsipBOl2D9sFqOiF0egHiAHHoPzee7MYusKIjO3dwxQtF1Y2g7AdLcvKpSM2HmBShHbqn3P6isItfW72nSBd4kv_QWBOuegGSVk0-qjddbqG1a8Jj6BxyOiIu4gDa74T1aB8FjAVPLXJynUJgHF9"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim tracking-tight">Nutriscope AI</h1>
+<button class="w-10 h-10 flex items-center justify-center text-primary dark:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors rounded-full active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-2xl" data-weight="fill">notifications</span>
+</button>
+</header>
+<main class="flex-grow px-margin-main pt-stack-lg pb-32 relative z-10">
+<div class="absolute inset-0 z-0 opacity-10 pointer-events-none" data-alt="A sophisticated, minimalist abstract pattern featuring soft, overlapping organic curves and subtle geometric grids. The color palette relies on pristine whites and warm, very light beige tones, creating a calming, high-end modern aesthetic suitable for a health and wellness app background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-q0sbLWQs-xGex1bUi20cu8KxOfwY_cAw6c2WDnuuoC3Ljd5Zd2VVVd_2z4meQvUvFZUXOcZUuRcwNDRKoShGdl0ykjKVTrumajfjO6Z2ku5DcBTGFBKQ9sY-ZY9oKoAtsm41ZW4lCwp3vb3cieleKucnL_dCRtcSRP_fPc8wGN2ePoHmufz4Ix2CjnqOwNmfDoLeZZCNzHpfgDF-x0TmTHEmoROEk204wGBLJC-EuGv3arxpkPfbUjQc99TwGiM8-j0LYIpE4IYU')"></div>
+<div class="relative z-20 flex flex-col gap-stack-md w-full max-w-md mx-auto mt-4">
+<div class="toast-animate toast-1 flex items-center justify-between p-4 bg-paper-white rounded-xl shadow-lg shadow-coach-orange/5 border border-surface-variant/50 w-full transform transition-all hover:scale-[1.02]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center flex-shrink-0 border border-surface-container-low">
+<span class="material-symbols-outlined text-protein-teal text-3xl" data-weight="fill">check_circle</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Meal Logged Successfully!</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Your macros have been updated.</span>
+</div>
+</div>
+<button class="text-tertiary hover:text-on-surface transition-colors p-2">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="toast-animate toast-2 flex items-center justify-between p-4 bg-paper-white rounded-xl shadow-lg shadow-coach-orange/5 border border-surface-variant/50 w-full transform transition-all hover:scale-[1.02]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-bright flex items-center justify-center flex-shrink-0 border border-surface-container-low">
+<span class="material-symbols-outlined text-coach-orange text-3xl" data-weight="fill">bolt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-surface">Protein Target Reached</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Great job fueling your body today.</span>
+</div>
+</div>
+<button class="text-tertiary hover:text-on-surface transition-colors p-2">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="toast-animate toast-3 flex items-center justify-between p-4 bg-error-container rounded-xl shadow-lg shadow-error/10 border border-error/20 w-full transform transition-all hover:scale-[1.02]">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-bright/50 flex items-center justify-center flex-shrink-0 mix-blend-multiply">
+<span class="material-symbols-outlined text-on-error-container text-3xl" data-weight="fill">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-on-error-container">Missing Macro Data</span>
+<span class="font-body-sm text-body-sm text-on-error-container/80">Please scan the label again to confirm details.</span>
+</div>
+</div>
+<button class="text-on-error-container hover:opacity-70 transition-opacity p-2">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-2 py-3 bg-paper-white dark:bg-surface-container-lowest z-50 rounded-t-xl shadow-[0_-4px_20px_0_rgba(242,107,56,0.15)] pb-safe md:hidden">
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-2 hover:bg-surface-container-low transition-colors active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1" data-weight="fill">calendar_today</span>
+<span class="font-label-caps text-label-caps">Today</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-colors active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1">restaurant</span>
+<span class="font-label-caps text-label-caps">Meals</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-colors active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1">qr_code_scanner</span>
+<span class="font-label-caps text-label-caps">Scan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-colors active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1">support_agent</span>
+<span class="font-label-caps text-label-caps">Coach</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-colors active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</button>
+</nav>
+</body></html>

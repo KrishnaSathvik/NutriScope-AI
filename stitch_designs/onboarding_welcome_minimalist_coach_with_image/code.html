@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#e0c0b5",
+                      "tertiary-fixed": "#e3e2e7",
+                      "surface-container": "#f0eee9",
+                      "on-primary": "#ffffff",
+                      "tertiary": "#5d5e63",
+                      "primary-fixed-dim": "#ffb59c",
+                      "on-background": "#1b1c19",
+                      "inverse-surface": "#30312e",
+                      "secondary": "#735c00",
+                      "primary-fixed": "#ffdbcf",
+                      "on-tertiary-container": "#2c2d31",
+                      "on-tertiary": "#ffffff",
+                      "secondary-fixed": "#ffe087",
+                      "secondary-container": "#fdd34d",
+                      "surface-container-high": "#eae8e3",
+                      "coach-orange": "#F26B38",
+                      "paper-white": "#FFFFFF",
+                      "error": "#ba1a1a",
+                      "background": "#fbf9f4",
+                      "on-primary-fixed": "#380c00",
+                      "error-container": "#ffdad6",
+                      "ink-black": "#1C1C1E",
+                      "on-primary-fixed-variant": "#822800",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "outline": "#8c7168",
+                      "inverse-primary": "#ffb59c",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "surface": "#fbf9f4",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#e4e2dd",
+                      "on-primary-container": "#561700",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#ebc23e",
+                      "surface-container-highest": "#e4e2dd",
+                      "on-secondary-container": "#725b00",
+                      "surface-tint": "#a93702",
+                      "surface-container-low": "#f5f3ee",
+                      "on-surface-variant": "#58423a",
+                      "on-surface": "#1b1c19",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#949499",
+                      "protein-teal": "#2D6A4F",
+                      "on-error": "#ffffff",
+                      "surface-dim": "#dbdad5",
+                      "primary": "#a93702",
+                      "surface-bright": "#fbf9f4",
+                      "on-tertiary-fixed": "#1a1b1f",
+                      "primary-container": "#f26b38",
+                      "warm-sun": "#FFD54F",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-secondary-fixed": "#241a00",
+                      "inverse-on-surface": "#f2f1ec"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter-card": "1rem",
+                      "stack-sm": "0.5rem",
+                      "stack-lg": "1.5rem",
+                      "stack-md": "1rem",
+                      "margin-main": "1.25rem"
+              },
+              "fontFamily": {
+                      "body-lg": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "label-caps": ["Inter"],
+                      "headline-xl": ["Hanken Grotesk"],
+                      "body-sm": ["Hanken Grotesk"],
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "title-md": ["Hanken Grotesk"],
+                      "numeric-display": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "body-lg": ["17px", {"lineHeight": "22px", "fontWeight": "400"}],
+                      "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-xl": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-sm": ["15px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                      "title-md": ["20px", {"lineHeight": "25px", "fontWeight": "600"}],
+                      "numeric-display": ["48px", {"lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface h-[884px] w-full flex flex-col m-0 p-0 antialiased selection:bg-primary-container selection:text-paper-white relative">
+<main class="flex-1 w-full flex flex-col pt-24 px-margin-main items-center text-center max-w-lg mx-auto">
+<!-- Brand Element / Micro-logo -->
+<div class="flex items-center gap-2 mb-16 bg-surface-container px-4 py-2 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-coach-orange" data-weight="fill" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="font-label-caps text-label-caps text-on-surface tracking-wider uppercase">Nutriscope AI</span>
+</div>
+<!-- Illustration/Icon Area -->
+<div class="w-32 h-32 rounded-full overflow-hidden mb-10 shadow-inner">
+<img alt="High-protein meal" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2rCB3MlLjzzvmBPnntIOBPfE-xjKr6jhLDu6h9SKLz_wHER5p8fJ_KPQEbKEDn9a2RDfBB8KKHBoZpyGIxNDxhiJa6GRwKCbMSQXX4HuzYtD14WKC5RbxRxZhcE1YR3_xVsyIRH5-R9HqL57xHLYUNSA-tPxlYK_BMJ7hgj9VhMZ9SF85EFHeNOghiAMlq9cpzs-yNYY818JH1rFvFJAnV8ipNjGi16G7oCnkzUDQiaPNTG-hz7DrbgRr7hKoqhNM5WwPdVWTPeS4"/>
+</div>
+<!-- Typography -->
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-stack-md">
+                Eat Better, Faster.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[90%]">
+                Nutriscope AI tracks your protein intake in seconds so you can focus on your training.
+            </p>
+</main>
+<!-- Fixed CTA Button -->
+<div class="absolute bottom-0 left-0 w-full px-margin-main pb-8 pt-4 bg-gradient-to-t from-surface via-surface to-transparent">
+<div class="max-w-lg mx-auto w-full">
+<button class="w-full h-14 bg-coach-orange text-paper-white rounded-xl flex items-center justify-center gap-2 font-title-md text-title-md shadow-[0_8px_24px_-4px_rgba(242,107,56,0.3)] transition-all active:scale-[0.98] hover:bg-surface-tint">
+<span>Get Started</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

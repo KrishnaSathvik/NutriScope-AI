@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Step 1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a93702",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3c427b",
+                        "surface-variant": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#561700",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-secondary-container": "#444a83",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f8",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-surface": "#313030",
+                        "inverse-primary": "#ffb59c",
+                        "outline": "#8c7168",
+                        "tertiary": "#006e1d",
+                        "surface-tint": "#a93702",
+                        "surface-container": "#f0eded",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-surface-variant": "#58423a",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface": "#fcf9f8",
+                        "on-primary-fixed": "#380c00",
+                        "tertiary-fixed-dim": "#7ddb7b",
+                        "on-background": "#1c1b1b",
+                        "tertiary-fixed": "#98f994",
+                        "tertiary-container": "#4aa74e",
+                        "secondary": "#545a94",
+                        "outline-variant": "#e0c0b5",
+                        "on-surface": "#1c1b1b",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#f26b38",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-tertiary-container": "#003509",
+                        "secondary-container": "#b7bcfe",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-fixed": "#0e144d",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "margin-mobile": "16px",
+                        "md": "24px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .goal-card input:checked + div {
+            border-color: theme('colors.primary');
+            background-color: theme('colors.primary-fixed');
+        }
+        .goal-card input:checked + div .material-symbols-outlined {
+            color: theme('colors.primary');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased md:items-center md:justify-center">
+<!-- Main Container -->
+<main class="w-full max-w-md mx-auto flex flex-col min-h-screen md:min-h-[800px] md:h-auto bg-surface md:border md:border-outline-variant md:rounded-xl md:shadow-lg overflow-hidden md:relative">
+<!-- Header (Progress & Title) -->
+<header class="px-margin-mobile pt-lg pb-md md:px-md">
+<div class="flex items-center justify-between mb-lg">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="flex items-center gap-xs">
+<div class="h-2 w-16 bg-primary rounded-full"></div>
+<div class="h-2 w-16 bg-surface-variant rounded-full"></div>
+<div class="h-2 w-16 bg-surface-variant rounded-full"></div>
+</div>
+<div class="font-label-bold text-label-bold text-on-surface-variant">1/3</div>
+</div>
+<div class="space-y-base">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface">What's your goal?</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">We'll tailor your daily targets based on your choice.</p>
+</div>
+</header>
+<!-- Form / Selection Area -->
+<form class="flex-grow px-margin-mobile md:px-md flex flex-col pb-lg relative">
+<div class="space-y-sm flex-grow">
+<!-- Card 1 -->
+<label class="goal-card block cursor-pointer group">
+<input class="sr-only" name="goal" type="radio" value="lose-fat"/>
+<div class="flex items-center p-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-200 group-hover:shadow-[0_4px_20px_0_rgba(169,55,2,0.1)] group-hover:border-primary">
+<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant mr-md transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">local_fire_department</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-secondary">Lose fat</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-xs">Optimize for a sustainable caloric deficit.</div>
+</div>
+</div>
+</label>
+<!-- Card 2 -->
+<label class="goal-card block cursor-pointer group">
+<input class="sr-only" name="goal" type="radio" value="build-muscle"/>
+<div class="flex items-center p-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-200 group-hover:shadow-[0_4px_20px_0_rgba(169,55,2,0.1)] group-hover:border-primary">
+<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant mr-md transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">fitness_center</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-secondary">Build muscle</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-xs">Maximize protein intake for growth.</div>
+</div>
+</div>
+</label>
+<!-- Card 3 -->
+<label class="goal-card block cursor-pointer group">
+<input class="sr-only" name="goal" type="radio" value="maintain-weight"/>
+<div class="flex items-center p-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-200 group-hover:shadow-[0_4px_20px_0_rgba(169,55,2,0.1)] group-hover:border-primary">
+<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant mr-md transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">balance</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-secondary">Maintain weight</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-xs">Keep things steady with balanced macros.</div>
+</div>
+</div>
+</label>
+<!-- Card 4 -->
+<label class="goal-card block cursor-pointer group">
+<input class="sr-only" name="goal" type="radio" value="eat-protein"/>
+<div class="flex items-center p-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-200 group-hover:shadow-[0_4px_20px_0_rgba(169,55,2,0.1)] group-hover:border-primary">
+<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant mr-md transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">egg_alt</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-secondary">Eat more protein</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-xs">Focus heavily on high-protein sources.</div>
+</div>
+</div>
+</label>
+<!-- Card 5 -->
+<label class="goal-card block cursor-pointer group">
+<input class="sr-only" name="goal" type="radio" value="understand-meals"/>
+<div class="flex items-center p-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-200 group-hover:shadow-[0_4px_20px_0_rgba(169,55,2,0.1)] group-hover:border-primary">
+<div class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-surface-container text-on-surface-variant mr-md transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">visibility</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-secondary">Just understand my meals</div>
+<div class="font-body-md text-body-md text-on-surface-variant mt-xs">No strict goals, just nutritional awareness.</div>
+</div>
+</div>
+</label>
+</div>
+<!-- Bottom Action Area -->
+<div class="mt-lg pt-md sticky bottom-0 bg-surface md:static">
+<button class="w-full bg-primary text-on-primary py-4 px-6 rounded-lg font-label-bold text-label-bold hover:bg-[#c94103] hover:scale-[1.02] transition-all duration-200 shadow-lg flex items-center justify-center gap-2" type="submit">
+                    Continue
+                    <span class="material-symbols-outlined text-on-primary">arrow_forward</span>
+</button>
+</div>
+</form>
+</main>
+<!-- Suppressed TopAppBar and BottomNavBar as this is a linear transactional onboarding flow -->
+</body></html>

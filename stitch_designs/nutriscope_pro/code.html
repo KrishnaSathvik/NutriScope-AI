@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Nutriscope AI - Pro Paywall</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a93702",
+                        "surface": "#fbf9f4",
+                        "tertiary": "#5d5e63",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb59c",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-variant": "#e4e2dd",
+                        "paper-white": "#FFFFFF",
+                        "ink-black": "#1C1C1E",
+                        "surface-tint": "#a93702",
+                        "outline": "#8c7168",
+                        "tertiary-fixed": "#e3e2e7",
+                        "protein-teal": "#2D6A4F",
+                        "surface-container-highest": "#e4e2dd",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "surface-container": "#f0eee9",
+                        "on-secondary-container": "#725b00",
+                        "primary-fixed": "#ffdbcf",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#e0c0b5",
+                        "primary-container": "#f26b38",
+                        "surface-dim": "#dbdad5",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-tertiary-container": "#2c2d31",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffe087",
+                        "on-surface": "#1b1c19",
+                        "on-secondary": "#ffffff",
+                        "background": "#fbf9f4",
+                        "coach-orange": "#F26B38",
+                        "surface-bright": "#fbf9f4",
+                        "tertiary-container": "#949499",
+                        "on-primary-container": "#561700",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#30312e",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "warm-sun": "#FFD54F",
+                        "secondary-container": "#fdd34d",
+                        "on-background": "#1b1c19",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-on-surface": "#f2f1ec",
+                        "secondary": "#735c00",
+                        "surface-container-low": "#f5f3ee",
+                        "on-surface-variant": "#58423a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem",
+                        "margin-main": "1.25rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .symbol-filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        .premium-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .premium-shimmer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-20deg);
+            animation: shimmer 3s infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col items-center justify-center relative overflow-x-hidden">
+<!-- Decorative Background Element -->
+<div class="absolute top-0 left-0 w-full h-96 bg-gradient-to-b from-primary-container/20 to-transparent -z-10 pointer-events-none"></div>
+<!-- Close Button -->
+<div class="fixed top-safe pt-stack-md left-margin-main z-50">
+<button class="w-10 h-10 bg-surface-container/80 backdrop-blur-md rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-colors shadow-sm">
+<span class="material-symbols-outlined text-title-md">close</span>
+</button>
+</div>
+<!-- Main Content Container -->
+<main class="w-full max-w-md mx-auto px-margin-main py-safe pb-stack-lg flex flex-col min-h-screen justify-between z-10">
+<!-- Header Section -->
+<div class="text-center pt-16 md:pt-20 pb-stack-lg">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary-container text-on-primary-container mb-stack-md shadow-[0_8px_30px_rgb(242,107,56,0.2)]">
+<span class="material-symbols-outlined text-numeric-display symbol-filled" data-icon="stars">stars</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-stack-sm">Unlock Unlimited Protein AI</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant px-stack-md">Take your nutrition tracking to the next level with advanced coaching and limitless scans.</p>
+</div>
+<!-- Features Bento Grid -->
+<div class="grid grid-cols-1 gap-stack-sm mb-stack-lg">
+<div class="bg-paper-white p-gutter-card rounded-xl shadow-sm flex items-start gap-stack-md border border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-protein-teal/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-protein-teal" data-icon="document_scanner">document_scanner</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Unlimited AI Scans</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Never hit a limit. Scan every meal, every day.</p>
+</div>
+</div>
+<div class="bg-paper-white p-gutter-card rounded-xl shadow-sm flex items-start gap-stack-md border border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-warm-sun/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="psychology">psychology</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Advanced Coach Advice</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Personalized, human-like feedback to hit your goals.</p>
+</div>
+</div>
+<div class="bg-paper-white p-gutter-card rounded-xl shadow-sm flex items-start gap-stack-md border border-outline-variant/30">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="support_agent">support_agent</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Priority Support</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Jump the queue. Get answers when you need them.</p>
+</div>
+</div>
+</div>
+<!-- Pricing Cards -->
+<div class="flex flex-col gap-stack-sm mb-stack-lg">
+<!-- Launch Special (Selected) -->
+<label class="relative flex items-center justify-between p-gutter-card rounded-xl border-2 border-coach-orange bg-surface-container cursor-pointer transition-transform active:scale-[0.98]">
+<input checked="" class="sr-only" name="pricing" type="radio"/>
+<div class="absolute -top-3 right-4 bg-coach-orange text-paper-white font-label-caps text-label-caps px-3 py-1 rounded-full shadow-sm">
+                    LAUNCH SPECIAL
+                </div>
+<div class="flex items-center gap-stack-md">
+<div class="w-6 h-6 rounded-full border-2 border-coach-orange flex items-center justify-center bg-coach-orange">
+<div class="w-2.5 h-2.5 rounded-full bg-paper-white"></div>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface">Lifetime</div>
+<div class="font-body-sm text-body-sm text-coach-orange font-medium">Pay once, yours forever.</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-on-surface">$49.00</div>
+</div>
+</label>
+<!-- Yearly -->
+<label class="flex items-center justify-between p-gutter-card rounded-xl border border-outline-variant bg-paper-white cursor-pointer transition-transform active:scale-[0.98]">
+<input class="sr-only" name="pricing" type="radio"/>
+<div class="flex items-center gap-stack-md">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center"></div>
+<div>
+<div class="font-title-md text-title-md text-on-surface">Yearly</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">$4.16 / month</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-on-surface">$49.99</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">/ year</div>
+</div>
+</label>
+<!-- Monthly -->
+<label class="flex items-center justify-between p-gutter-card rounded-xl border border-outline-variant bg-paper-white cursor-pointer transition-transform active:scale-[0.98]">
+<input class="sr-only" name="pricing" type="radio"/>
+<div class="flex items-center gap-stack-md">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center"></div>
+<div>
+<div class="font-title-md text-title-md text-on-surface">Monthly</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-on-surface">$7.99</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">/ mo</div>
+</div>
+</label>
+</div>
+<!-- Action Area -->
+<div class="mt-auto">
+<button class="w-full py-4 rounded-xl bg-coach-orange text-paper-white font-title-md text-title-md shadow-[0_8px_20px_rgb(242,107,56,0.3)] premium-shimmer hover:opacity-90 active:scale-[0.98] transition-all">
+                Continue with Lifetime
+            </button>
+<div class="mt-stack-lg text-center flex flex-col gap-stack-sm">
+<button class="font-body-sm text-body-sm text-coach-orange font-medium hover:opacity-80 transition-opacity">
+                    Restore Purchases
+                </button>
+<div class="font-body-sm text-body-sm text-on-surface-variant/60 text-xs px-4">
+                    Recurring billing. Cancel anytime. By continuing, you agree to our <a class="underline" href="#">Terms of Service</a> and <a class="underline" href="#">Privacy Policy</a>.
+                </div>
+</div>
+</div>
+</main>
+<script>
+        // Simple script to handle radio button visual state updates
+        document.querySelectorAll('input[name="pricing"]').forEach((radio) => {
+            radio.addEventListener('change', (e) => {
+                // Reset all
+                document.querySelectorAll('label').forEach(label => {
+                    label.classList.remove('border-2', 'border-coach-orange', 'bg-surface-container');
+                    label.classList.add('border', 'border-outline-variant', 'bg-paper-white');
+                    const indicator = label.querySelector('.w-6.h-6');
+                    if(indicator) {
+                        indicator.classList.remove('border-coach-orange', 'bg-coach-orange');
+                        indicator.classList.add('border-outline-variant');
+                        indicator.innerHTML = '';
+                    }
+                });
+
+                // Set active
+                const activeLabel = e.target.closest('label');
+                activeLabel.classList.remove('border', 'border-outline-variant', 'bg-paper-white');
+                activeLabel.classList.add('border-2', 'border-coach-orange', 'bg-surface-container');
+                
+                const activeIndicator = activeLabel.querySelector('.w-6.h-6');
+                if(activeIndicator) {
+                    activeIndicator.classList.remove('border-outline-variant');
+                    activeIndicator.classList.add('border-coach-orange', 'bg-coach-orange');
+                    activeIndicator.innerHTML = '<div class="w-2.5 h-2.5 rounded-full bg-paper-white"></div>';
+                }
+
+                // Update Main Button Text based on selection
+                const mainBtn = document.querySelector('button.premium-shimmer');
+                const title = activeLabel.querySelector('.font-title-md').innerText;
+                mainBtn.innerText = `Continue with ${title}`;
+            });
+        });
+    </script>
+</body></html>

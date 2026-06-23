@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Manual Log - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a93702",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#735c00",
+                        "outline-variant": "#e0c0b5",
+                        "warm-sun": "#FFD54F",
+                        "tertiary-container": "#949499",
+                        "on-secondary-fixed-variant": "#574500",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-background": "#1b1c19",
+                        "primary-container": "#f26b38",
+                        "background": "#fbf9f4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-primary-container": "#561700",
+                        "coach-orange": "#F26B38",
+                        "surface-dim": "#dbdad5",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "tertiary": "#5d5e63",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#a93702",
+                        "paper-white": "#FFFFFF",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e4e2dd",
+                        "secondary-container": "#fdd34d",
+                        "on-secondary-fixed": "#241a00",
+                        "on-surface": "#1b1c19",
+                        "inverse-surface": "#30312e",
+                        "surface": "#fbf9f4",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb59c",
+                        "outline": "#8c7168",
+                        "protein-teal": "#2D6A4F",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-container-high": "#eae8e3",
+                        "on-surface-variant": "#58423a",
+                        "surface-bright": "#fbf9f4",
+                        "ink-black": "#1C1C1E",
+                        "secondary-fixed": "#ffe087",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "surface-container-low": "#f5f3ee",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-secondary-container": "#725b00",
+                        "surface-container": "#f0eee9",
+                        "tertiary-fixed": "#e3e2e7",
+                        "on-tertiary-container": "#2c2d31",
+                        "on-primary-fixed": "#380c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-card": "1rem",
+                        "margin-main": "1.25rem",
+                        "stack-md": "1rem",
+                        "stack-lg": "1.5rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle glowing shadow for cards to match Coach aesthetic */
+        .shadow-glow {
+            box-shadow: 0 8px 30px rgba(242, 107, 56, 0.08);
+        }
+        
+        /* Smooth scale animation for interactions */
+        .scale-interactive {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .scale-interactive:active {
+            transform: scale(0.98);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32 overflow-x-hidden font-body-lg">
+<!-- TopAppBar Semantic Shell -->
+<header class="w-full top-0 sticky bg-background flex justify-between items-center px-margin-main h-16 w-full z-40 flat no shadows border-b-0 border-transparent">
+<div class="flex items-center gap-4 text-primary hover:opacity-80 transition-transform duration-200 active:scale-95 cursor-pointer">
+<span aria-label="Go back" class="material-symbols-outlined text-[28px]" data-icon="arrow_back">arrow_back</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-coach-orange flex-1 text-center">Manual Log</h1>
+<div class="flex items-center gap-4 text-primary hover:opacity-80 transition-transform duration-200 active:scale-95 cursor-pointer">
+<!-- Trailing space balance -->
+<span class="w-7"></span>
+</div>
+</header>
+<!-- Main Canvas Content -->
+<main class="px-margin-main pt-stack-sm pb-stack-lg max-w-2xl mx-auto space-y-stack-lg">
+<!-- Welcome / Instruction Text -->
+<div class="space-y-stack-sm mt-stack-md">
+<h2 class="font-title-md text-title-md text-on-surface">What did you have?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Describe your meal as naturally as you'd tell a friend. Our AI will handle the math.</p>
+</div>
+<!-- Main Input Area (Glassmorphism / Soft styling) -->
+<div class="relative bg-paper-white rounded-xl shadow-glow p-gutter-card transition-all duration-300 focus-within:shadow-[0_8px_30px_rgba(242,107,56,0.15)] focus-within:-translate-y-1">
+<textarea aria-label="Meal description input" class="w-full h-40 bg-surface-container-low text-on-surface font-body-lg text-body-lg rounded-lg border-0 focus:ring-2 focus:ring-coach-orange focus:bg-surface-container-lowest p-4 resize-none transition-colors placeholder-on-surface-variant/60" id="mealInput" placeholder="e.g., 2 rotis, a bowl of chicken curry, and some rice..."></textarea>
+<div class="flex justify-between items-center mt-stack-sm px-2">
+<span aria-label="Voice input" class="material-symbols-outlined text-coach-orange" data-icon="mic">mic</span>
+<span class="font-label-caps text-label-caps text-tertiary">0/500</span>
+</div>
+</div>
+<!-- Quick Add Section (Bento-style layout for common items) -->
+<section class="space-y-stack-md pt-stack-sm">
+<h3 class="font-title-md text-title-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-coach-orange fill" data-icon="bolt" data-weight="fill">bolt</span>
+                Quick Add
+            </h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-stack-sm">
+<!-- Quick Add Items -->
+<button class="scale-interactive bg-paper-white rounded-lg p-3 flex flex-col items-center justify-center gap-2 shadow-sm border border-surface-container hover:border-coach-orange/30 hover:bg-surface-container-lowest transition-colors">
+<span class="text-2xl">🥚</span>
+<span class="font-body-sm text-body-sm text-on-surface">Boiled Egg</span>
+</button>
+<button class="scale-interactive bg-paper-white rounded-lg p-3 flex flex-col items-center justify-center gap-2 shadow-sm border border-surface-container hover:border-coach-orange/30 hover:bg-surface-container-lowest transition-colors">
+<span class="text-2xl">🥤</span>
+<span class="font-body-sm text-body-sm text-on-surface">Whey Scoop</span>
+</button>
+<button class="scale-interactive bg-paper-white rounded-lg p-3 flex flex-col items-center justify-center gap-2 shadow-sm border border-surface-container hover:border-coach-orange/30 hover:bg-surface-container-lowest transition-colors">
+<span class="text-2xl">🍗</span>
+<span class="font-body-sm text-body-sm text-on-surface">Chicken Breast</span>
+</button>
+<button class="scale-interactive bg-paper-white rounded-lg p-3 flex flex-col items-center justify-center gap-2 shadow-sm border border-surface-container hover:border-coach-orange/30 hover:bg-surface-container-lowest transition-colors">
+<span class="text-2xl">🍚</span>
+<span class="font-body-sm text-body-sm text-on-surface">White Rice</span>
+</button>
+</div>
+</section>
+<!-- Contextual Chips (Macros/Meal Time) -->
+<section class="space-y-stack-sm pt-stack-sm">
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Meal Type (Optional)</p>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm border border-transparent hover:bg-surface-dim transition-colors scale-interactive">Breakfast</button>
+<button class="px-4 py-1.5 rounded-full bg-primary-container/10 text-primary-container font-body-sm text-body-sm border border-primary-container/20 transition-colors scale-interactive font-medium">Lunch</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm border border-transparent hover:bg-surface-dim transition-colors scale-interactive">Dinner</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm border border-transparent hover:bg-surface-dim transition-colors scale-interactive">Snack</button>
+</div>
+</section>
+</main>
+<!-- Floating Action Button Area (Analyze & Log) - Positioned above Bottom Nav if it existed, but we suppress Bottom Nav for transactional screens -->
+<div class="fixed bottom-0 left-0 w-full p-margin-main bg-gradient-to-t from-background via-background to-transparent pb-8 z-50">
+<div class="max-w-2xl mx-auto">
+<button class="w-full bg-coach-orange text-paper-white h-14 rounded-xl font-title-md text-title-md shadow-[0_8px_20px_rgba(242,107,56,0.3)] hover:shadow-[0_12px_25px_rgba(242,107,56,0.4)] transition-all scale-interactive flex items-center justify-center gap-2 active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+                Analyze &amp; Log
+            </button>
+</div>
+</div>
+</body></html>

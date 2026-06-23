@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Nutriscope AI needs photo access to analyze your meals.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Nutriscope AI uses the camera to scan meals for protein and calorie estimates.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Nutriscope AI uses the microphone so you can describe meals by voice.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Nutriscope AI converts your spoken meal description into text for logging.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Nutriscope AI reads workouts and sleep from Apple Health to personalize coaching and insights.</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>Nutriscope AI may save nutrition summaries to Apple Health when you choose to sync.</string>
+	<key>CFBundleDisplayName</key>
+	<string>Nutriscope AI</string>
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>HankenGrotesk-Regular.ttf</string>
+		<string>HankenGrotesk-SemiBold.ttf</string>
+		<string>HankenGrotesk-Bold.ttf</string>
+		<string>HankenGrotesk-ExtraBold.ttf</string>
+		<string>Inter-SemiBold.ttf</string>
+	</array>
+</dict>
+</plist>

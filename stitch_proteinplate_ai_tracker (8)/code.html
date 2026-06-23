@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Grocery List - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "protein-teal": "#2D6A4F",
+                        "outline-variant": "#e0c0b5",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#561700",
+                        "surface-bright": "#fbf9f4",
+                        "on-primary-fixed": "#380c00",
+                        "secondary": "#735c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "outline": "#8c7168",
+                        "on-background": "#1b1c19",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "surface-container-low": "#f5f3ee",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eee9",
+                        "tertiary-container": "#949499",
+                        "primary": "#a93702",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-tint": "#a93702",
+                        "inverse-surface": "#30312e",
+                        "on-secondary-container": "#725b00",
+                        "on-secondary": "#ffffff",
+                        "ink-black": "#1C1C1E",
+                        "coach-orange": "#F26B38",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container-high": "#eae8e3",
+                        "tertiary": "#5d5e63",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-dim": "#dbdad5",
+                        "tertiary-fixed": "#e3e2e7",
+                        "on-tertiary-container": "#2c2d31",
+                        "primary-fixed": "#ffdbcf",
+                        "paper-white": "#FFFFFF",
+                        "background": "#fbf9f4",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "on-surface": "#1b1c19",
+                        "secondary-container": "#fdd34d",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#f26b38",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "inverse-primary": "#ffb59c",
+                        "warm-sun": "#FFD54F",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffe087",
+                        "surface": "#fbf9f4",
+                        "surface-variant": "#e4e2dd",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "margin-main": "1.25rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen font-body-lg">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-on-background flex justify-between items-center px-margin-main py-4 z-40">
+<div class="flex items-center gap-4">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A small, professional user profile avatar photo of a healthy person, well-lit, friendly, against a plain modern background. The image should feel like a high-quality app profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMkgdu2ynL7_yZZw8kWqnzkmQ5PyuKcyC-6FKTsWMvEaAVPDocg5h1cFHQjF7HzarrmcFPEn_4IvuTBzV2gOv1KA5RQPo1DEnjoSvQ1aGA35mcYu6cydDXKiSRmSVw2dFTo7mYeaJd_WlF4lCcVgnXGsa-E2hX-viGTQp9BKwPfQ5UY4RuUKVD2wxR9D5C2E5x0lteoYxGIzSslYxACxWZmPE-L7zWi6FN5lXtfHm7h29xgnQIo6FkfV-nQ3SJJ5gDuAnx9sS2KCxI"/>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim">Nutriscope AI</h1>
+</div>
+<button class="text-primary dark:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors rounded-full p-2 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-weight="fill">notifications</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="px-margin-main pb-32 pt-stack-lg flex flex-col items-center justify-center min-h-[618px]">
+<!-- Empty State Container -->
+<div class="flex flex-col items-center text-center max-w-md w-full gap-stack-lg bg-paper-white p-8 rounded-xl shadow-[0_4px_20px_0_rgba(242,107,56,0.05)] border border-surface-container-low">
+<!-- Illustration Area -->
+<div class="w-48 h-48 rounded-full bg-surface-container-low flex items-center justify-center mb-4 relative">
+<span class="material-symbols-outlined text-[80px] text-coach-orange opacity-80" data-weight="fill">shopping_basket</span>
+<!-- Subtle decorative background elements -->
+<div class="absolute inset-0 rounded-full border-4 border-dashed border-outline-variant opacity-30 animate-[spin_20s_linear_infinite]"></div>
+</div>
+<!-- Content -->
+<div class="flex flex-col gap-stack-sm">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Your grocery list is empty</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Your protein-first grocery list is empty. Add recommended meals from your 'Tomorrow's Plan' to get started.
+                </p>
+</div>
+<!-- CTA -->
+<button class="mt-stack-md w-full bg-coach-orange text-paper-white py-4 rounded-xl font-title-md text-title-md shadow-[0_4px_15px_0_rgba(242,107,56,0.3)] active:scale-[1.02] transition-transform duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">calendar_month</span>
+                View Tomorrow's Plan
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-2 py-3 bg-paper-white dark:bg-surface-container-lowest z-50 rounded-t-xl shadow-[0_-4px_20px_0_rgba(242,107,56,0.15)] md:hidden">
+<!-- Today (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-colors rounded-xl active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-caps text-label-caps mt-1">Today</span>
+</button>
+<!-- Meals (Active - semantically closest to Grocery List) -->
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-2 hover:bg-surface-container-low transition-colors active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined" data-weight="fill">restaurant</span>
+<span class="font-label-caps text-label-caps mt-1">Meals</span>
+</button>
+<!-- Scan (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-colors rounded-xl active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-caps text-label-caps mt-1">Scan</span>
+</button>
+<!-- Coach (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-colors rounded-xl active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-caps text-label-caps mt-1">Coach</span>
+</button>
+<!-- Profile (Inactive) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-2 hover:bg-surface-container-low transition-colors rounded-xl active:scale-105 transition-transform duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</button>
+</nav>
+</body></html>

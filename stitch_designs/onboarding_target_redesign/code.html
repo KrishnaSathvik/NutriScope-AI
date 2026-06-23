@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Target Locked - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffe087",
+                        "outline": "#8c7168",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface": "#fbf9f4",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "outline-variant": "#e0c0b5",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-primary-container": "#561700",
+                        "surface-bright": "#fbf9f4",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#f26b38",
+                        "tertiary-container": "#949499",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary": "#a93702",
+                        "on-primary-fixed": "#380c00",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-surface-variant": "#58423a",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "ink-black": "#1C1C1E",
+                        "on-surface": "#1b1c19",
+                        "on-background": "#1b1c19",
+                        "error": "#ba1a1a",
+                        "protein-teal": "#2D6A4F",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-variant": "#e4e2dd",
+                        "paper-white": "#FFFFFF",
+                        "tertiary": "#5d5e63",
+                        "warm-sun": "#FFD54F",
+                        "on-secondary-container": "#725b00",
+                        "surface-container": "#f0eee9",
+                        "background": "#fbf9f4",
+                        "secondary-container": "#fdd34d",
+                        "surface-container-high": "#eae8e3",
+                        "secondary": "#735c00",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "surface-dim": "#dbdad5",
+                        "coach-orange": "#F26B38",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-tint": "#a93702",
+                        "surface-container-low": "#f5f3ee",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-surface": "#30312e",
+                        "on-tertiary-container": "#2c2d31",
+                        "primary-fixed": "#ffdbcf",
+                        "inverse-primary": "#ffb59c",
+                        "tertiary-fixed": "#e3e2e7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "margin-main": "1.25rem",
+                        "stack-md": "1rem",
+                        "gutter-card": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glow-shadow {
+            box-shadow: 0 10px 40px -10px rgba(242, 107, 56, 0.3);
+        }
+        .progress-gradient {
+            background: linear-gradient(90deg, #FFD54F 0%, #F26B38 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface h-full flex flex-col antialiased">
+<!-- Top Navigation Shell (Suppressed Nav for Transactional Flow, keeping only the App Bar style) -->
+<header class="w-full top-0 sticky bg-surface flex justify-between items-center px-margin-main py-4 z-10">
+<div class="flex items-center gap-2">
+<!-- Ghost Back Button -->
+<button aria-label="Go back" class="text-warm-sun hover:opacity-80 transition-opacity active:scale-95 flex items-center justify-center p-2 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+</div>
+<div class="font-headline-xl text-headline-xl font-extrabold text-coach-orange flex-1 text-center pr-10">
+            Nutriscope AI
+        </div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin-main flex flex-col max-w-md mx-auto w-full pb-[100px] relative">
+<!-- Progress Indicator (Step 3 of 3) -->
+<div class="w-full mt-4 mb-stack-lg">
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-caps text-label-caps text-on-surface-variant">Step 3 of 3</span>
+<span class="font-label-caps text-label-caps text-primary">Finalizing</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full progress-gradient w-full rounded-full relative">
+<!-- Subtle shimmer effect -->
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent w-full animate-[shimmer_2s_infinite]" style="transform: skewX(-20deg);"></div>
+</div>
+</div>
+</div>
+<!-- Header -->
+<div class="text-center mb-stack-lg">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Target Locked</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your personalized nutritional baseline.</p>
+</div>
+<!-- Primary Target Visual (Protein) -->
+<div class="flex-1 flex flex-col items-center justify-center relative mb-stack-lg">
+<!-- Soft Organic Shape / Badge Background -->
+<div class="w-64 h-64 bg-surface-container-low rounded-full absolute flex items-center justify-center glow-shadow border-4 border-surface-bright">
+<div class="w-56 h-56 bg-surface-container rounded-full absolute flex items-center justify-center border-4 border-surface-bright opacity-50"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center text-center p-8">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-2">Daily Protein Goal</span>
+<div class="font-numeric-display text-numeric-display text-coach-orange flex items-baseline">
+                    150<span class="font-headline-xl text-headline-xl text-primary-fixed-dim ml-1">g</span>
+</div>
+<div class="mt-4 px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full font-body-sm text-body-sm inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> Optimized for Growth
+                </div>
+</div>
+</div>
+<!-- Secondary Target Visual (Energy Range) -->
+<div class="bg-paper-white rounded-3xl p-gutter-card mb-stack-lg shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-surface-container-highest flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-outline">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Energy Range</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Daily caloric intake</p>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-on-surface">1,800 - 2,000</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">kcal</div>
+</div>
+</div>
+<!-- Coach's Note -->
+<div class="bg-surface-variant rounded-2xl p-4 flex gap-4 items-start relative overflow-hidden">
+<!-- Decorative quote icon watermark -->
+<span class="material-symbols-outlined absolute -top-2 -left-2 text-[80px] text-surface-container-highest opacity-50 rotate-12" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<div class="relative z-10 flex-shrink-0 w-8 h-8 rounded-full bg-coach-orange flex items-center justify-center text-paper-white shadow-md">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+</div>
+<div class="relative z-10">
+<h4 class="font-title-md text-title-md text-on-surface mb-1">Coach's Note</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    This preserves muscle mass and keeps you feeling full. The energy range provides flexibility while maintaining a slight deficit for steady progress.
+                </p>
+</div>
+</div>
+</main>
+<!-- Bottom Action Area (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/80 backdrop-blur-md border-t border-surface-container-highest p-margin-main pb-safe flex justify-center z-50">
+<div class="w-full max-w-md">
+<button class="w-full h-14 bg-coach-orange text-paper-white rounded-xl font-title-md text-title-md shadow-[0_8px_16px_-4px_rgba(242,107,56,0.3)] hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                Go to Dashboard
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

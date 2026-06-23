@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Nutriscope AI - Subscription Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffdbcf",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "outline": "#8c7168",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#735c00",
+                        "secondary-fixed": "#ffe087",
+                        "outline-variant": "#e0c0b5",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-dim": "#dbdad5",
+                        "inverse-primary": "#ffb59c",
+                        "ink-black": "#1C1C1E",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "primary-fixed-dim": "#ffb59c",
+                        "tertiary": "#5d5e63",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-surface": "#1b1c19",
+                        "tertiary-container": "#949499",
+                        "protein-teal": "#2D6A4F",
+                        "surface-container-low": "#f5f3ee",
+                        "surface": "#fbf9f4",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-highest": "#e4e2dd",
+                        "primary-container": "#f26b38",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-tertiary-container": "#2c2d31",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fdd34d",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-container-high": "#eae8e3",
+                        "on-background": "#1b1c19",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-tint": "#a93702",
+                        "on-secondary-container": "#725b00",
+                        "on-primary-container": "#561700",
+                        "primary": "#a93702",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container": "#f0eee9",
+                        "on-surface-variant": "#58423a",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2dd",
+                        "paper-white": "#FFFFFF",
+                        "background": "#fbf9f4",
+                        "coach-orange": "#F26B38",
+                        "surface-bright": "#fbf9f4",
+                        "inverse-surface": "#30312e",
+                        "warm-sun": "#FFD54F"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem",
+                        "margin-main": "1.25rem"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        @keyframes scaleIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        .animate-scale-in {
+            animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="h-full bg-surface text-on-surface overflow-hidden flex flex-col items-center justify-center relative">
+<canvas id="confetti-canvas"></canvas>
+<!-- Top Navigation Placeholder (Hidden for transactional flow as requested, but structurally present if needed later) -->
+<!-- Main Content Canvas -->
+<main class="w-full max-w-md mx-auto h-full flex flex-col justify-center px-margin-main pb-24 relative z-10 animate-scale-in">
+<!-- Celebration Header -->
+<div class="text-center mb-stack-lg flex flex-col items-center">
+<div class="w-24 h-24 bg-primary-container rounded-full flex items-center justify-center mb-stack-md shadow-[0_4px_20px_0_rgba(242,107,56,0.2)]">
+<span class="material-symbols-outlined filled text-on-primary-container" style="font-size: 48px;">stars</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-stack-sm">You're Pro!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Your Nutriscope AI journey just got an upgrade.</p>
+</div>
+<!-- Benefits Bento Card -->
+<div class="bg-paper-white rounded-[24px] p-gutter-card shadow-[0_8px_30px_0_rgba(242,107,56,0.08)] mb-stack-lg relative overflow-hidden">
+<!-- Subtle background accent -->
+<div class="absolute -right-12 -top-12 w-40 h-40 bg-warm-sun opacity-10 rounded-full blur-2xl pointer-events-none"></div>
+<h2 class="font-title-md text-title-md mb-stack-md text-on-surface">Pro Benefits Unlocked</h2>
+<ul class="space-y-stack-md relative z-10">
+<li class="flex items-start gap-3">
+<div class="bg-surface-container-low p-2 rounded-lg text-coach-orange flex-shrink-0">
+<span class="material-symbols-outlined">smart_toy</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-semibold">Unlimited Coach Access</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Chat with your AI nutritionist 24/7.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="bg-surface-container-low p-2 rounded-lg text-coach-orange flex-shrink-0">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-semibold">Advanced Scanning</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Instant macro breakdowns from any meal photo.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<div class="bg-surface-container-low p-2 rounded-lg text-coach-orange flex-shrink-0">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-semibold">Deep Analytics</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Track micronutrients and long-term trends.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Call to Action -->
+<div class="mt-auto pt-stack-lg">
+<button class="w-full bg-coach-orange text-paper-white font-title-md text-title-md py-4 rounded-xl shadow-[0_4px_15px_0_rgba(242,107,56,0.3)] hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2">
+                Let's Get Started
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</main>
+<script>
+        // Confetti Animation Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const confettiCount = 150;
+            const confettiColors = ['#F26B38', '#FFD54F', '#ffdbcf', '#2D6A4F']; // Brand colors
+            
+            let confetti = [];
+
+            class Confetto {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height - canvas.height;
+                    this.size = (Math.random() * 8) + 4;
+                    this.color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+                    this.speed = (Math.random() * 3) + 2;
+                    this.angle = Math.random() * Math.PI * 2;
+                    this.spin = (Math.random() * 0.2) - 0.1;
+                }
+
+                update() {
+                    this.y += this.speed;
+                    this.x += Math.sin(this.angle) * 2;
+                    this.angle += this.spin;
+
+                    if (this.y > canvas.height) {
+                        this.y = -10;
+                        this.x = Math.random() * canvas.width;
+                    }
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.angle);
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                    ctx.restore();
+                }
+            }
+
+            for (let i = 0; i < confettiCount; i++) {
+                confetti.push(new Confetto());
+            }
+
+            let animationFrameId;
+            let opacity = 1;
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                let active = false;
+                
+                confetti.forEach(c => {
+                    c.update();
+                    c.draw();
+                    if(c.y < canvas.height) active = true;
+                });
+
+                // Fade out slightly over time to not be completely infinite, though it currently loops
+                
+                animationFrameId = requestAnimationFrame(animate);
+            }
+
+            animate();
+
+            // Handle resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+            
+            // Clean up animation after a set time if desired, or let it run
+            setTimeout(() => {
+                 // Stop creating new ones, let existing fall
+                 confetti.forEach(c => {
+                     c.y = canvas.height + 100; // push offscreen
+                 });
+                 setTimeout(() => cancelAnimationFrame(animationFrameId), 3000);
+            }, 5000);
+        });
+    </script>
+</body></html>

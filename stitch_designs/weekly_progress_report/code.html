@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NutriScope AI - Weekly Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#ebc23e",
+                      "on-primary-fixed": "#380c00",
+                      "on-secondary-fixed-variant": "#574500",
+                      "surface-container": "#f0eee9",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "on-tertiary": "#ffffff",
+                      "on-surface-variant": "#58423a",
+                      "surface-container-highest": "#e4e2dd",
+                      "primary-fixed": "#ffdbcf",
+                      "on-surface": "#1b1c19",
+                      "background": "#fbf9f4",
+                      "on-secondary-fixed": "#241a00",
+                      "surface-container-lowest": "#ffffff",
+                      "outline-variant": "#e0c0b5",
+                      "protein-teal": "#2D6A4F",
+                      "error-container": "#ffdad6",
+                      "coach-orange": "#F26B38",
+                      "surface": "#fbf9f4",
+                      "on-secondary-container": "#725b00",
+                      "secondary-fixed": "#ffe087",
+                      "on-background": "#1b1c19",
+                      "surface-container-high": "#eae8e3",
+                      "tertiary-fixed": "#e3e2e7",
+                      "surface-tint": "#a93702",
+                      "on-primary": "#ffffff",
+                      "surface-container-low": "#f5f3ee",
+                      "primary-container": "#f26b38",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#30312e",
+                      "on-error": "#ffffff",
+                      "primary": "#a93702",
+                      "on-tertiary-fixed": "#1a1b1f",
+                      "secondary": "#735c00",
+                      "surface-dim": "#dbdad5",
+                      "surface-variant": "#e4e2dd",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "inverse-primary": "#ffb59c",
+                      "secondary-container": "#fdd34d",
+                      "warm-sun": "#FFD54F",
+                      "tertiary": "#5d5e63",
+                      "on-primary-fixed-variant": "#822800",
+                      "surface-bright": "#fbf9f4",
+                      "inverse-on-surface": "#f2f1ec",
+                      "ink-black": "#1C1C1E",
+                      "outline": "#8c7168",
+                      "paper-white": "#FFFFFF",
+                      "on-primary-container": "#561700",
+                      "primary-fixed-dim": "#ffb59c",
+                      "on-tertiary-container": "#2c2d31",
+                      "tertiary-container": "#949499",
+                      "error": "#ba1a1a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "1rem",
+                      "margin-main": "1.25rem",
+                      "stack-sm": "0.5rem",
+                      "stack-lg": "1.5rem",
+                      "gutter-card": "1rem"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-xl": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "title-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "numeric-display": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-xl": [
+                              "34px",
+                              {
+                                      "lineHeight": "41px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "15px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "17px",
+                              {
+                                      "lineHeight": "22px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "25px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "numeric-display": [
+                              "48px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom Ambient Shadow for Cards */
+        .shadow-ambient-orange {
+            box-shadow: 0 8px 24px -4px rgba(242, 107, 56, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background w-full top-0 flex items-center justify-between px-margin-main h-16 fixed z-40 transition-transform scale-100 hover:opacity-80">
+<div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A small, circular profile picture of an active, healthy individual in soft, natural morning light. The background is a blurred modern kitchen, conveying a clean, light-mode lifestyle aesthetic aligned with a health app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFAcmueibw20BhQNru1_x3p_qNVQ_Jspv7R81oFchMEouthCZiZw5mPHsLo0JNhRHnFWLFF1d7RQ40T1DDioGlhGsoA9ftOTxHj0mPegunBC7wS5GrFtdCsx17M3tslcnN06kVIJ0nulhRyw2Wza59_lU4rCAkwtd4mPKWLVET9UWIkyWLmU4hXDGYQHJmNzu0nhNF0cYKgCErCrpYjl-PaKs1Zj6rkgiS95aicoKWbVnO6HRGwELNka_E3BJCm4aA3tX8nE-ndEiR"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim text-center flex-grow">NutriScope AI</h1>
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="notifications">notifications</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-margin-main flex flex-col gap-stack-lg max-w-md mx-auto md:max-w-3xl">
+<!-- Header -->
+<section class="flex flex-col gap-1">
+<h2 class="font-headline-xl text-headline-xl text-on-surface">Weekly Report</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Oct 24 - Oct 30</p>
+</section>
+<!-- Summary Bento Grid -->
+<section class="grid grid-cols-2 gap-gutter-card">
+<!-- Days Logged -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-ambient-orange flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined fill text-coach-orange opacity-80" style="font-size: 20px;">event_available</span>
+<span class="font-label-caps text-label-caps uppercase">Days Logged</span>
+</div>
+<div class="font-numeric-display text-numeric-display text-on-surface">
+                    7<span class="text-title-md font-title-md text-on-surface-variant">/7</span>
+</div>
+</div>
+<!-- Goal Hits -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-ambient-orange flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined fill text-protein-teal opacity-80" style="font-size: 20px;">target</span>
+<span class="font-label-caps text-label-caps uppercase">Goal Hits</span>
+</div>
+<div class="font-numeric-display text-numeric-display text-on-surface">
+                    5<span class="text-title-md font-title-md text-on-surface-variant">/7</span>
+</div>
+</div>
+<!-- Avg Protein -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-ambient-orange flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined fill text-protein-teal opacity-80" style="font-size: 20px;">fitness_center</span>
+<span class="font-label-caps text-label-caps uppercase">Avg Protein</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-numeric-display text-numeric-display text-protein-teal">142</span>
+<span class="font-title-md text-title-md text-on-surface-variant">g</span>
+</div>
+</div>
+<!-- Avg Calories -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-ambient-orange flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined fill text-coach-orange opacity-80" style="font-size: 20px;">local_fire_department</span>
+<span class="font-label-caps text-label-caps uppercase">Avg Cals</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="font-numeric-display text-numeric-display text-coach-orange" style="font-size: 36px; line-height: 40px;">2150</span>
+</div>
+</div>
+</section>
+<!-- Chart Section: Protein Intake vs Goal -->
+<section class="bg-surface-container-lowest rounded-xl p-4 shadow-ambient-orange flex flex-col gap-4">
+<div class="flex justify-between items-center">
+<h3 class="font-title-md text-title-md text-on-surface">Protein vs Goal</h3>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase flex items-center gap-1">
+<span class="w-3 h-1 bg-warm-sun block"></span> Goal: 150g
+                </span>
+</div>
+<div class="relative h-48 w-full pt-4">
+<!-- Goal Line -->
+<div class="absolute top-[20%] left-0 w-full border-t-2 border-dashed border-warm-sun z-10 opacity-70"></div>
+<!-- Chart Bars -->
+<div class="flex items-end justify-between h-full w-full px-2 z-20 relative gap-2">
+<!-- Day 1 -->
+<div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t-lg relative flex items-end h-[70%] group">
+<div class="w-full bg-protein-teal rounded-t-lg transition-all duration-300 opacity-80 group-hover:opacity-100" style="height: 100%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Mon</span>
+</div>
+<!-- Day 2 -->
+<div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t-lg relative flex items-end h-[85%] group">
+<div class="w-full bg-protein-teal rounded-t-lg transition-all duration-300 opacity-80 group-hover:opacity-100" style="height: 100%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Tue</span>
+</div>
+<!-- Day 3 -->
+<div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t-lg relative flex items-end h-[60%] group">
+<div class="w-full bg-protein-teal rounded-t-lg transition-all duration-300 opacity-80 group-hover:opacity-100" style="height: 100%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Wed</span>
+</div>
+<!-- Day 4 (Goal Hit) -->
+<div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t-lg relative flex items-end h-[100%] group">
+<div class="w-full bg-coach-orange rounded-t-lg transition-all duration-300 opacity-90 group-hover:opacity-100 shadow-[0_0_10px_rgba(242,107,56,0.3)]" style="height: 100%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Thu</span>
+</div>
+<!-- Day 5 -->
+<div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t-lg relative flex items-end h-[90%] group">
+<div class="w-full bg-protein-teal rounded-t-lg transition-all duration-300 opacity-80 group-hover:opacity-100" style="height: 100%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Fri</span>
+</div>
+<!-- Day 6 -->
+<div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t-lg relative flex items-end h-[75%] group">
+<div class="w-full bg-protein-teal rounded-t-lg transition-all duration-300 opacity-80 group-hover:opacity-100" style="height: 100%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Sat</span>
+</div>
+<!-- Day 7 -->
+<div class="w-full flex flex-col items-center gap-2 h-full justify-end">
+<div class="w-full bg-surface-container-high rounded-t-lg relative flex items-end h-[80%] group">
+<div class="w-full bg-protein-teal rounded-t-lg transition-all duration-300 opacity-80 group-hover:opacity-100" style="height: 100%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Sun</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Coach Highlights -->
+<section class="bg-surface-container rounded-xl p-4 border border-outline-variant/30 flex flex-col gap-4">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-coach-orange/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-coach-orange fill" style="font-size: 20px;">smart_toy</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">Coach Highlights</h3>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-protein-teal mt-0.5 fill">check_circle</span>
+<p class="font-body-sm text-body-sm text-on-surface">Great consistency! You logged your meals 7 days in a row. This builds a strong foundation.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-protein-teal mt-0.5 fill">check_circle</span>
+<p class="font-body-sm text-body-sm text-on-surface">Protein intake was excellent on Thursday, hitting your peak target for recovery.</p>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-coach-orange mt-0.5 fill">lightbulb</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Mid-week dip noticed. Try prepping a high-protein snack for Wednesday afternoons to keep energy up.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-2 pb-safe bg-surface-container-lowest z-50 rounded-t-xl shadow-[0_-4px_20px_0_rgba(242,107,56,0.08)] md:hidden">
+<!-- Today (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-caps text-label-caps mt-1">Today</span>
+</a>
+<!-- Meals (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-label-caps text-label-caps mt-1">Meals</span>
+</a>
+<!-- Scan (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-caps text-label-caps mt-1">Scan</span>
+</a>
+<!-- Coach (Active - Semantically matches 'Weekly Report' and Coach Highlights) -->
+<a class="flex flex-col items-center justify-center text-coach-orange dark:text-coach-orange font-bold hover:bg-surface-container-low transition-colors w-16 h-14 rounded-lg scale-110 duration-200" href="#">
+<span class="material-symbols-outlined fill" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-caps text-label-caps mt-1">Coach</span>
+</a>
+<!-- Profile (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

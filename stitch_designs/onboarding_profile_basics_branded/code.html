@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Profile Basics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#002204",
+                        "primary": "#a93702",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-background": "#1c1b1b",
+                        "tertiary-container": "#4aa74e",
+                        "background": "#fcf9f8",
+                        "secondary": "#545a94",
+                        "surface-tint": "#a93702",
+                        "outline-variant": "#e0c0b5",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#380c00",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#3c427b",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#ffb59c",
+                        "surface-variant": "#e5e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-low": "#f6f3f2",
+                        "surface": "#fcf9f8",
+                        "secondary-fixed": "#dfe0ff",
+                        "tertiary": "#006e1d",
+                        "surface-bright": "#fcf9f8",
+                        "surface-container-high": "#eae7e7",
+                        "outline": "#8c7168",
+                        "primary-fixed-dim": "#ffb59c",
+                        "inverse-surface": "#313030",
+                        "primary-fixed": "#ffdbcf",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-primary-container": "#561700",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#003509",
+                        "on-secondary-container": "#444a83",
+                        "on-surface": "#1c1b1b",
+                        "secondary-container": "#b7bcfe",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "primary-container": "#f26b38",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#7ddb7b",
+                        "on-surface-variant": "#58423a",
+                        "on-secondary-fixed": "#0e144d",
+                        "tertiary-fixed": "#98f994"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide number input arrows */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { 
+            -webkit-appearance: none; 
+            margin: 0; 
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col pb-safe">
+<!-- Top Navigation (Mobile / Top-level destination suppression bypass logic: This is an onboarding step, suppress standard nav, provide simplified back/header) -->
+<header class="w-full top-0 sticky bg-background flex items-center justify-between px-margin-mobile py-base w-full z-50">
+<button aria-label="Back" class="text-primary hover:opacity-80 transition-opacity p-2 -ml-2 rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="font-display-lg-mobile text-display-lg-mobile font-extrabold text-primary">Nutriscope AI</div>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-mobile md:px-margin-desktop w-full max-w-3xl mx-auto py-md flex flex-col gap-lg">
+<!-- Header Section -->
+<section class="flex flex-col gap-sm">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary">About you.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Friendly info — not a medical form.</p>
+</section>
+<!-- Form Section (Bento-style layout for inputs) -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Basic Info Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-md flex flex-col gap-md shadow-sm">
+<!-- Name Input -->
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-secondary" for="name">Name (Optional)</label>
+<input class="w-full bg-transparent border border-surface-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline" id="name" placeholder="What should we call you?" type="text"/>
+</div>
+<!-- Age & Gender Row -->
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-secondary" for="age">Age</label>
+<input class="w-full bg-transparent border border-surface-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline text-center" id="age" placeholder="Years" type="number"/>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-secondary" for="gender">Sex</label>
+<div class="relative">
+<select class="w-full bg-transparent border border-surface-variant rounded-lg p-sm font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all appearance-none pr-10" id="gender">
+<option disabled="" selected="" value="">Select</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Metrics Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-md flex flex-col gap-md shadow-sm">
+<!-- Height & Weight Row -->
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-secondary" for="height">Height</label>
+<div class="relative">
+<input class="w-full bg-transparent border border-surface-variant rounded-lg p-sm pr-12 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline text-right" id="height" placeholder="0" type="number"/>
+<span class="absolute right-sm top-1/2 -translate-y-1/2 font-caption text-caption text-outline pointer-events-none">cm</span>
+</div>
+</div>
+<div class="flex flex-col gap-base">
+<label class="font-label-bold text-label-bold text-secondary" for="weight">Weight</label>
+<div class="relative">
+<input class="w-full bg-transparent border border-surface-variant rounded-lg p-sm pr-12 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-outline text-right" id="weight" placeholder="0" type="number"/>
+<span class="absolute right-sm top-1/2 -translate-y-1/2 font-caption text-caption text-outline pointer-events-none">kg</span>
+</div>
+</div>
+</div>
+<!-- Activity Level Selector -->
+<div class="flex flex-col gap-base pt-sm border-t border-surface-variant mt-sm">
+<label class="font-label-bold text-label-bold text-secondary">Activity Level</label>
+<div class="grid grid-cols-3 gap-sm bg-surface-container-low p-1 rounded-lg">
+<label class="cursor-pointer">
+<input class="peer sr-only" name="activity" type="radio" value="light"/>
+<div class="text-center py-2 rounded-md font-caption text-caption text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container transition-colors">
+                                Light
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="activity" type="radio" value="active"/>
+<div class="text-center py-2 rounded-md font-caption text-caption text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container transition-colors">
+                                Active
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="activity" type="radio" value="intense"/>
+<div class="text-center py-2 rounded-md font-caption text-caption text-on-surface-variant peer-checked:bg-primary-container peer-checked:text-on-primary-container transition-colors">
+                                Intense
+                            </div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Calculation Preview Card (Nutriscope AI Insight Box style) -->
+<section class="mt-auto pt-lg">
+<div class="relative p-[2px] rounded-xl bg-gradient-to-r from-tertiary-fixed to-tertiary-fixed-dim">
+<div class="bg-surface-container-lowest rounded-xl p-md flex items-center justify-between shadow-sm">
+<div class="flex flex-col gap-xs">
+<div class="flex items-center gap-xs text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-bold text-label-bold">Live Target Preview</span>
+</div>
+<p class="font-caption text-caption text-on-surface-variant">Estimated daily energy expenditure</p>
+</div>
+<div class="text-right">
+<div class="font-headline-md text-headline-md text-primary" id="tdee-display">2,150</div>
+<div class="font-caption text-caption text-secondary">kcal / day</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="pt-sm pb-lg">
+<button class="w-full bg-primary text-on-primary rounded-xl py-md font-label-bold text-label-bold flex items-center justify-center gap-sm hover:opacity-90 hover:saturate-150 transition-all active:scale-[0.98]">
+<span>Continue</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</section>
+</main>
+<script>
+        // Simple logic to simulate live recalculation based on inputs
+        const inputs = ['age', 'gender', 'height', 'weight'];
+        const activityRadios = document.querySelectorAll('input[name="activity"]');
+        const tdeeDisplay = document.getElementById('tdee-display');
+
+        function recalculate() {
+            // Very rudimentary mock calculation for visual feedback
+            const weight = parseFloat(document.getElementById('weight').value) || 70;
+            const height = parseFloat(document.getElementById('height').value) || 170;
+            const age = parseFloat(document.getElementById('age').value) || 30;
+            
+            let base = (10 * weight) + (6.25 * height) - (5 * age) + 5; // Simplified Mifflin-St Jeor
+            
+            let multiplier = 1.375; // Active
+            const selectedActivity = document.querySelector('input[name="activity"]:checked').value;
+            if (selectedActivity === 'light') multiplier = 1.2;
+            if (selectedActivity === 'intense') multiplier = 1.55;
+
+            const tdee = Math.round(base * multiplier);
+            
+            // Add a slight delay and animation class for 'calculation' effect
+            tdeeDisplay.classList.add('opacity-50', 'scale-95');
+            setTimeout(() => {
+                tdeeDisplay.innerText = tdee.toLocaleString();
+                tdeeDisplay.classList.remove('opacity-50', 'scale-95');
+            }, 150);
+        }
+
+        inputs.forEach(id => {
+            document.getElementById(id).addEventListener('input', recalculate);
+        });
+
+        activityRadios.forEach(radio => {
+            radio.addEventListener('change', recalculate);
+        });
+    </script>
+</body></html>

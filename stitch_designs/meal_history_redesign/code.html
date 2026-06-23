@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NutriScope AI - Meals History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container": "#f0eee9",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "surface-container-highest": "#e4e2dd",
+                        "primary-fixed": "#ffdbcf",
+                        "on-surface": "#1b1c19",
+                        "background": "#fbf9f4",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#e0c0b5",
+                        "protein-teal": "#2D6A4F",
+                        "error-container": "#ffdad6",
+                        "coach-orange": "#F26B38",
+                        "surface": "#fbf9f4",
+                        "on-secondary-container": "#725b00",
+                        "secondary-fixed": "#ffe087",
+                        "on-background": "#1b1c19",
+                        "surface-container-high": "#eae8e3",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-tint": "#a93702",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f5f3ee",
+                        "primary-container": "#f26b38",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#30312e",
+                        "on-error": "#ffffff",
+                        "primary": "#a93702",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "secondary": "#735c00",
+                        "surface-dim": "#dbdad5",
+                        "surface-variant": "#e4e2dd",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "inverse-primary": "#ffb59c",
+                        "secondary-container": "#fdd34d",
+                        "warm-sun": "#FFD54F",
+                        "tertiary": "#5d5e63",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-bright": "#fbf9f4",
+                        "inverse-on-surface": "#f2f1ec",
+                        "ink-black": "#1C1C1E",
+                        "outline": "#8c7168",
+                        "paper-white": "#FFFFFF",
+                        "on-primary-container": "#561700",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-tertiary-container": "#2c2d31",
+                        "tertiary-container": "#949499",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "margin-main": "1.25rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom scrollbar for horizontal lists */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg text-body-lg antialiased pb-24">
+<!-- TopAppBar -->
+<header class="bg-background dark:bg-background w-full top-0 flex items-center justify-between px-margin-main h-16 w-full sticky z-40">
+<div class="flex items-center gap-stack-sm">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high shrink-0">
+<img class="w-full h-full object-cover" data-alt="A stylized, modern 3D avatar of an active person with a warm, encouraging smile. The avatar is rendered with soft lighting, matching the Coach-Style modernism aesthetic, set against a subtle, light warm sun background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg92KWA_XkUUK3l1ixddsdq3FpoEtENso1UqtJM0K-kiT-zksSPbQaQlWsKh8oI61bDGn2iOY8xTpDvD7YiFdEejyunkf8wG4v62_2v3tAB1lSAFlboi8QqTqiOdBQoJ86LI20lfJT7pXDMPgWuGZMPkhBtp4PlOQnknlc5xQ4eWapiF9tCUhMmBtO1lAYFKRBwscpGSEqRcQsP89yoo90_FJOo6mFOHMEq6Bar-K7PEZ-TGoFC2RHBLNALOGpuMh_jbH93Ye3ce1z"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim">NutriScope AI</h1>
+</div>
+<button aria-label="Notifications" class="w-10 h-10 rounded-full flex items-center justify-center hover:opacity-80 active:scale-95 transition-transform text-primary dark:text-inverse-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</header>
+<main class="pt-stack-sm px-margin-main flex flex-col gap-stack-lg max-w-md mx-auto md:max-w-3xl">
+<!-- Period Filter -->
+<section class="flex gap-stack-sm overflow-x-auto hide-scrollbar pb-1">
+<button class="bg-coach-orange text-paper-white font-label-caps text-label-caps px-4 py-2 rounded-xl whitespace-nowrap shadow-[0_4px_10px_0_rgba(242,107,56,0.15)] transition-transform active:scale-95">
+                Today
+            </button>
+<button class="bg-surface-container text-on-surface-variant font-label-caps text-label-caps px-4 py-2 rounded-xl whitespace-nowrap hover:bg-surface-container-highest transition-colors active:scale-95">
+                Week
+            </button>
+<button class="bg-surface-container text-on-surface-variant font-label-caps text-label-caps px-4 py-2 rounded-xl whitespace-nowrap hover:bg-surface-container-highest transition-colors active:scale-95">
+                Month
+            </button>
+</section>
+<!-- Saved / Quick Log Section -->
+<section class="flex flex-col gap-stack-sm">
+<h2 class="font-title-md text-title-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-warm-sun" style="font-variation-settings: 'FILL' 1;">star</span>
+                Frequent Meals
+            </h2>
+<div class="flex gap-gutter-card overflow-x-auto hide-scrollbar pb-4 snap-x">
+<!-- Quick Card 1 -->
+<div class="snap-start shrink-0 w-32 bg-paper-white rounded-2xl p-3 flex flex-col gap-2 shadow-[0_4px_15px_0_rgba(242,107,56,0.05)] border border-surface-container-highest relative group active:scale-[1.02] transition-transform">
+<div class="w-full h-20 rounded-xl overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A bright, high-fidelity top-down view of a vibrant avocado toast on artisanal whole grain bread, topped with a perfectly poached egg and microgreens. The lighting is soft morning sunlight, emphasizing a clean, healthy 'Kinetic Harvest' aesthetic on a light neutral background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDElZJAwYF9M8NOjzRDRsZLJsDXhtIUbW8RknmcoHQfZB58rfYJeWX5squrzsukEA7gmW-Fddrjf8PKUL9AZZ-e-6yOy0CtaLvgjcLknrSLEPdBc_BHLhSzPVZLTbRUbIxNLOqCG6zvb2kqt-rDlSMnHoMA89eSwXajexQ8DyRtx1Dwfm2iMj2NUNlXBXpe4aNskQg-Q2ivKkVle5CgX0YalfOCxmVDYKJq8t0Z0nhyLllOmMQeiRkmhAOSbOMuFMbsZxkm2iz2Qoz8"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface line-clamp-1">Avocado Egg Toast</span>
+<span class="font-label-caps text-label-caps text-coach-orange mt-1">14g P</span>
+</div>
+<button class="absolute -bottom-3 -right-3 w-8 h-8 bg-coach-orange text-paper-white rounded-full flex items-center justify-center shadow-md hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<!-- Quick Card 2 -->
+<div class="snap-start shrink-0 w-32 bg-paper-white rounded-2xl p-3 flex flex-col gap-2 shadow-[0_4px_15px_0_rgba(242,107,56,0.05)] border border-surface-container-highest relative group active:scale-[1.02] transition-transform">
+<div class="w-full h-20 rounded-xl overflow-hidden bg-surface-container-high">
+<img class="w-full h-full object-cover" data-alt="A clean, appetizing close-up of a protein shake in a clear, condensation-covered modern tumbler. The shake is a soft pastel pink color, suggesting strawberry or mixed berry flavor. The setting is bright and athletic, embodying the Coach-Style modernism with soft, inviting lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCam6N5QgsM6j4fAv20jx9Lgpy345I4Y6VQNpEuEOuMXjDd5ysGb6wYL4H6_cMQRXchQVHm02uV4RZXYZG-iuEUdoJQb2IxWfa6jS8hI2icsutQnJotSJ1KOU4XUUFbulT2gJtuxj19xJpRnZmEXVoCtd9OjyLcvGJMaOwym9IZoBfKOVoDRumCzvk0Dh9mfOaZ5UGrYqN87BJq6fJSj1CH5L5X_YjGSqBGqVsgdwlzY78qClaflEqi7x8Bja_ETqF61fZb_1m1RMqS"/>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm font-semibold text-on-surface line-clamp-1">Berry Protein Shake</span>
+<span class="font-label-caps text-label-caps text-coach-orange mt-1">28g P</span>
+</div>
+<button class="absolute -bottom-3 -right-3 w-8 h-8 bg-coach-orange text-paper-white rounded-full flex items-center justify-center shadow-md hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<!-- Quick Card 3 -->
+<div class="snap-start shrink-0 w-32 bg-surface-container rounded-2xl p-3 flex flex-col items-center justify-center gap-2 border border-dashed border-outline-variant hover:bg-surface-container-high transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">search</span>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant text-center">Find More</span>
+</div>
+</div>
+</section>
+<!-- History List -->
+<section class="flex flex-col gap-stack-md">
+<!-- Day Group -->
+<div class="flex flex-col gap-stack-sm">
+<h3 class="font-title-md text-title-md text-on-surface sticky top-16 bg-background/90 backdrop-blur-sm py-2 z-10">Today, Oct 24</h3>
+<!-- Meal Item 1 -->
+<div class="bg-paper-white rounded-2xl p-gutter-card flex items-center gap-4 shadow-[0_8px_24px_0_rgba(242,107,56,0.06)] active:scale-[1.02] transition-transform cursor-pointer relative overflow-hidden">
+<!-- Accent bar for high protein -->
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-protein-teal rounded-l-2xl"></div>
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-container-highest shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A high-resolution, beautifully styled bowl of grilled chicken breast strips over quinoa and roasted sweet potatoes. The colors are warm and earthy, fitting the 'Kinetic Harvest' theme. The lighting is crisp and modern, highlighting the textures of the healthy ingredients." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7xJKxRlUqd4K15Av_dcitYcPYkdOr3Hb7gVMmhT_ULEo4WlbPl598Pooz_HfCaMlD7UaliJzTvLBxta1Uer89KjqYnp-NWUIH_MHBwHLGgEjfD2OtCD_7fFH8luMuCrWJoSgi52LMdX0Y_CbAlmaFrkU7u7JUP4Y92BqGqede6fyiE6MD1NIYreTMmPfhIHY-jX7pRAepzldKXlf_RsynT_coNzTalmuhSG_PCSfK8raA9FCk7o5ySDny39yj2Ke8esanl2OcaGgF"/>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Harvest Chicken Bowl</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">1:30 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">540 kcal</p>
+<!-- Macro Chips -->
+<div class="flex flex-wrap gap-2 mt-2">
+<!-- High Protein emphasis chip -->
+<div class="px-2 py-0.5 rounded-full bg-protein-teal/10 border border-protein-teal/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-protein-teal">fitness_center</span>
+<span class="font-label-caps text-label-caps text-protein-teal font-bold">42g Protein</span>
+</div>
+<div class="px-2 py-0.5 rounded-full bg-surface-container-high flex items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">45g C</span>
+</div>
+<div class="px-2 py-0.5 rounded-full bg-surface-container-high flex items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">18g F</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Meal Item 2 -->
+<div class="bg-paper-white rounded-2xl p-gutter-card flex items-center gap-4 shadow-[0_8px_24px_0_rgba(242,107,56,0.04)] active:scale-[1.02] transition-transform cursor-pointer">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-container-highest shrink-0 shadow-sm">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist shot of a bowl of steel-cut oatmeal topped with fresh blueberries, sliced almonds, and a drizzle of honey. The setting is bright and airy, reflecting a morning routine in a high-end, supportive environment. Soft natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApOC1xPQuk2Qf_6NTzlwTK_2fjMDarl_pRwVsJoV1UHqpP_OH-wpnKQIkRbEn4Ybiy3OrBYNJw630JoiMktt77FQdsucU4JuvNcN7CdK-MLQxX-mBs-y_zg0oIyM7NEBI-SdrJmGQ8KYe4H0PDY1uuQduYFZt0Mhl9Z-yJ2YQOM5rG_YquafWAhMs5eJrPmRFhKh4UjvnNVQfn8zKbQK9bU8i-COmuiHl7Yp-bxGSVLHxSjuaYWOrfD1sy2_yLGmSyQLaAfIgExtQ7"/>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-body-lg text-body-lg font-bold text-on-surface">Power Oatmeal</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">8:15 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">320 kcal</p>
+<!-- Macro Chips -->
+<div class="flex flex-wrap gap-2 mt-2">
+<div class="px-2 py-0.5 rounded-full bg-coach-orange/10 border border-coach-orange/20 flex items-center">
+<span class="font-label-caps text-label-caps text-coach-orange font-bold">12g Protein</span>
+</div>
+<div class="px-2 py-0.5 rounded-full bg-surface-container-high flex items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">50g C</span>
+</div>
+<div class="px-2 py-0.5 rounded-full bg-surface-container-high flex items-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant">8g F</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Day Group Previous -->
+<div class="flex flex-col gap-stack-sm opacity-80 mt-4">
+<h3 class="font-title-md text-title-md text-on-surface-variant">Yesterday, Oct 23</h3>
+<!-- Meal Item 3 -->
+<div class="bg-paper-white rounded-2xl p-gutter-card flex items-center gap-4 shadow-[0_4px_12px_0_rgba(0,0,0,0.02)] border border-surface-container-highest">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-surface-container-highest shrink-0 grayscale-[20%]">
+<img class="w-full h-full object-cover" data-alt="A beautifully plated piece of grilled salmon resting on a bed of steamed asparagus and wild rice. The aesthetic is sophisticated yet accessible, with warm ambient lighting emphasizing the fresh, healthy nature of the meal. Darker, subdued tones indicating a past entry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdu0uxFPlK7w0I-4J1TVXnoUJ0i1f6-Xy407LzU_b7AZCIuuBbBPbHjPJbvyVTXPAne0clYDoRUlfmNvQOzgLEc-PTWxtEnt4BvMTRMZrAOTQ2zedQsyFtdjD-wUfLfYb1k4x_Qhr8sOdRS7xVasCdetqtoo4kufQ5LbBiKIstV5ePtUYfqL2qekcFx_ZUt3mHAniNyTlCEW0fLPbotbO_5l995LmKdqg5H3_7ofhtQ80FHYAshm-whbmvU9Vy9gw7CE5VG8kV3Lz3"/>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<h4 class="font-body-lg text-body-lg font-semibold text-on-surface">Grilled Salmon &amp; Asparagus</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">7:00 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">480 kcal</p>
+<div class="flex flex-wrap gap-2 mt-2">
+<div class="px-2 py-0.5 rounded-full bg-protein-teal/10 flex items-center">
+<span class="font-label-caps text-label-caps text-protein-teal font-bold">38g P</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest shadow-[0_-4px_20px_0_rgba(242,107,56,0.08)] fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-2 pb-safe bg-surface-container-lowest fixed bottom-0 w-full z-50 rounded-t-xl shadow-lg pb-6">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-xl group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">calendar_today</span>
+<span class="font-label-caps text-label-caps">Today</span>
+</a>
+<!-- Active Tab: Meals -->
+<a class="flex flex-col items-center justify-center text-coach-orange dark:text-coach-orange font-bold hover:bg-surface-container-low transition-colors Active: scale-110 transition-all duration-200 w-16 h-14 rounded-xl" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="font-label-caps text-label-caps">Meals</span>
+</a>
+<!-- Scan FAB equivalent embedded in Nav -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors -mt-6 relative z-10" href="#">
+<div class="w-14 h-14 bg-coach-orange rounded-full flex items-center justify-center text-paper-white shadow-[0_8px_16px_0_rgba(242,107,56,0.3)] hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[28px]">qr_code_scanner</span>
+</div>
+<span class="font-label-caps text-label-caps mt-1 text-on-surface-variant">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-xl group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">smart_toy</span>
+<span class="font-label-caps text-label-caps">Coach</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-xl group" href="#">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+</body></html>

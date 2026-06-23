@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Goals</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#002204",
+                        "primary": "#a93702",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-background": "#1c1b1b",
+                        "tertiary-container": "#4aa74e",
+                        "background": "#fcf9f8",
+                        "secondary": "#545a94",
+                        "surface-tint": "#a93702",
+                        "outline-variant": "#e0c0b5",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#380c00",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#3c427b",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#ffb59c",
+                        "surface-variant": "#e5e2e1",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-low": "#f6f3f2",
+                        "surface": "#fcf9f8",
+                        "secondary-fixed": "#dfe0ff",
+                        "tertiary": "#006e1d",
+                        "surface-bright": "#fcf9f8",
+                        "surface-container-high": "#eae7e7",
+                        "outline": "#8c7168",
+                        "primary-fixed-dim": "#ffb59c",
+                        "inverse-surface": "#313030",
+                        "primary-fixed": "#ffdbcf",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-primary-container": "#561700",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#003509",
+                        "on-secondary-container": "#444a83",
+                        "on-surface": "#1c1b1b",
+                        "secondary-container": "#b7bcfe",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "primary-container": "#f26b38",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#7ddb7b",
+                        "on-surface-variant": "#58423a",
+                        "on-secondary-fixed": "#0e144d",
+                        "tertiary-fixed": "#98f994"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom styles for the radio behavior */
+        .goal-card {
+            transition: all 0.2s ease-in-out;
+        }
+        .goal-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(169, 55, 2, 0.1);
+        }
+        
+        .goal-card.selected {
+            border-color: #a93702;
+            background-color: #ffdbcf;
+            border-width: 2px;
+            padding: 23px; /* Adjust padding to compensate for thicker border and prevent layout jump */
+        }
+        
+        .goal-card.selected .check-ring {
+            border-color: #a93702;
+            background-color: #a93702;
+        }
+        
+        .goal-card.selected .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .check-ring {
+            transition: all 0.2s ease-in-out;
+        }
+        
+        .check-icon {
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md flex flex-col items-center">
+<div class="w-full max-w-[600px] flex flex-col flex-grow px-margin-mobile pt-lg pb-[120px] md:px-0">
+<!-- Header -->
+<header class="mb-lg text-center">
+<h1 class="font-display-lg-mobile md:font-display-lg text-on-surface">What is your goal?</h1>
+<p class="font-body-lg text-on-surface-variant mt-sm">Select the path that best matches your fitness journey.</p>
+</header>
+<!-- Options Container -->
+<main aria-label="Fitness Goals" class="flex flex-col gap-sm flex-grow" role="radiogroup">
+<!-- Option 1 -->
+<button aria-checked="false" class="goal-card group bg-surface border border-outline-variant rounded-xl p-md flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" onclick="selectCard(this)" role="radio">
+<div class="flex-grow pr-sm">
+<h2 class="font-headline-md text-on-surface mb-xs group-[.selected]:text-on-primary-fixed-variant">Lose fat</h2>
+<p class="font-body-md text-on-surface-variant">Focus on caloric deficit & high protein</p>
+</div>
+<div class="check-ring w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined check-icon text-on-primary text-[16px] opacity-0 scale-50" data-icon="check">check</span>
+</div>
+</button>
+<!-- Option 2 -->
+<button aria-checked="false" class="goal-card group bg-surface border border-outline-variant rounded-xl p-md flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" onclick="selectCard(this)" role="radio">
+<div class="flex-grow pr-sm">
+<h2 class="font-headline-md text-on-surface mb-xs group-[.selected]:text-on-primary-fixed-variant">Build muscle</h2>
+<p class="font-body-md text-on-surface-variant">Surplus calories & maximum protein</p>
+</div>
+<div class="check-ring w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined check-icon text-on-primary text-[16px] opacity-0 scale-50" data-icon="check">check</span>
+</div>
+</button>
+<!-- Option 3 -->
+<button aria-checked="false" class="goal-card group bg-surface border border-outline-variant rounded-xl p-md flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" onclick="selectCard(this)" role="radio">
+<div class="flex-grow pr-sm">
+<h2 class="font-headline-md text-on-surface mb-xs group-[.selected]:text-on-primary-fixed-variant">Maintain</h2>
+<p class="font-body-md text-on-surface-variant">Keep current weight, optimize macros</p>
+</div>
+<div class="check-ring w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined check-icon text-on-primary text-[16px] opacity-0 scale-50" data-icon="check">check</span>
+</div>
+</button>
+<!-- Option 4 -->
+<button aria-checked="false" class="goal-card group bg-surface border border-outline-variant rounded-xl p-md flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" onclick="selectCard(this)" role="radio">
+<div class="flex-grow pr-sm">
+<h2 class="font-headline-md text-on-surface mb-xs group-[.selected]:text-on-primary-fixed-variant">Eat more protein</h2>
+<p class="font-body-md text-on-surface-variant">Just track protein, ignore the rest</p>
+</div>
+<div class="check-ring w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined check-icon text-on-primary text-[16px] opacity-0 scale-50" data-icon="check">check</span>
+</div>
+</button>
+<!-- Option 5 -->
+<button aria-checked="false" class="goal-card group bg-surface border border-outline-variant rounded-xl p-md flex items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" onclick="selectCard(this)" role="radio">
+<div class="flex-grow pr-sm">
+<h2 class="font-headline-md text-on-surface mb-xs group-[.selected]:text-on-primary-fixed-variant">Just understand my meals</h2>
+<p class="font-body-md text-on-surface-variant">No strict targets, just visibility</p>
+</div>
+<div class="check-ring w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined check-icon text-on-primary text-[16px] opacity-0 scale-50" data-icon="check">check</span>
+</div>
+</button>
+</main>
+</div>
+<!-- Fixed Bottom CTA -->
+<div class="fixed bottom-0 left-0 w-full bg-background/95 backdrop-blur-md border-t border-surface-variant p-margin-mobile flex justify-center z-50">
+<button class="w-full max-w-[600px] bg-surface-variant text-on-surface-variant py-4 rounded-full font-label-bold transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed data-[active=true]:bg-primary data-[active=true]:text-on-primary data-[active=true]:opacity-100 data-[active=true]:hover:bg-on-primary-fixed-variant data-[active=true]:shadow-lg data-[active=true]:shadow-primary/20" disabled="" id="continueBtn">
+            Continue
+            <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<script>
+        function selectCard(clickedCard) {
+            // Remove selected class and reset aria from all cards
+            const allCards = document.querySelectorAll('.goal-card');
+            allCards.forEach(card => {
+                card.classList.remove('selected');
+                card.setAttribute('aria-checked', 'false');
+            });
+
+            // Add selected class and update aria to clicked card
+            clickedCard.classList.add('selected');
+            clickedCard.setAttribute('aria-checked', 'true');
+
+            // Enable and style the continue button
+            const continueBtn = document.getElementById('continueBtn');
+            continueBtn.disabled = false;
+            continueBtn.setAttribute('data-active', 'true');
+        }
+    </script>
+</body></html>

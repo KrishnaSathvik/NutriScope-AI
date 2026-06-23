@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About You - Nutriscope AI</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Hanken Grotesk -->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with custom config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#58423a",
+                        "surface-tint": "#a93702",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-surface": "#1c1b1b",
+                        "inverse-on-surface": "#f3f0ef",
+                        "surface-bright": "#fcf9f8",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "surface-container": "#f0eded",
+                        "outline-variant": "#e0c0b5",
+                        "tertiary-container": "#4aa74e",
+                        "on-background": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "on-primary-container": "#561700",
+                        "secondary": "#545a94",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "on-primary-fixed-variant": "#822800",
+                        "primary-container": "#f26b38",
+                        "tertiary-fixed": "#98f994",
+                        "surface": "#fcf9f8",
+                        "surface-container-high": "#eae7e7",
+                        "secondary-container": "#b7bcfe",
+                        "primary-fixed": "#ffdbcf",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#7ddb7b",
+                        "outline": "#8c7168",
+                        "on-secondary-fixed": "#0e144d",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3c427b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#003509",
+                        "inverse-primary": "#ffb59c",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-container-low": "#f6f3f2",
+                        "on-primary-fixed": "#380c00",
+                        "primary": "#a93702",
+                        "on-tertiary-fixed": "#002204",
+                        "background": "#fcf9f8",
+                        "on-secondary-container": "#444a83",
+                        "surface-variant": "#e5e2e1",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#006e1d",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "margin-mobile": "16px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "margin-desktop": "40px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Hide scrollbar for clean look while keeping functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Smooth transition for the live preview value */
+        #protein-value {
+            transition: color 0.3s ease;
+        }
+        .flash-update {
+            color: var(--color-surface-tint) !important;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md antialiased selection:bg-primary-fixed selection:text-on-primary-container">
+<!-- Top Navigation Area (Contextual Back Button - Not the global nav shell) -->
+<header class="flex items-center justify-between px-margin-mobile pt-sm pb-base">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex gap-1 items-center">
+<div class="h-1.5 w-8 bg-surface-variant rounded-full"></div>
+<div class="h-1.5 w-8 bg-primary rounded-full"></div>
+<div class="h-1.5 w-8 bg-surface-variant rounded-full"></div>
+</div>
+<div class="w-10 h-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin-mobile pb-32 max-w-lg mx-auto">
+<!-- Header Text -->
+<div class="py-md">
+<h1 class="font-display-lg-mobile text-display-lg-mobile mb-xs text-on-background">Let's get personal.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">We need a few details to calibrate your nutritional engine accurately.</p>
+</div>
+<!-- Form Section: Bento Grid Approach -->
+<form class="flex flex-col gap-sm" id="onboarding-form">
+<!-- Basic Info Card -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<label class="font-label-bold text-label-bold text-on-surface-variant block mb-1" for="full_name">Full Name</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-body-lg text-on-background placeholder-surface-dim" id="full_name" placeholder="e.g. Taylor Smith" type="text"/>
+</div>
+<!-- Biometrics Grid -->
+<div class="grid grid-cols-2 gap-sm">
+<!-- Age -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-4 shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all flex flex-col justify-between">
+<label class="font-label-bold text-label-bold text-on-surface-variant block mb-1" for="age">Age</label>
+<div class="flex items-end gap-2">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-display-lg-mobile text-display-lg-mobile text-on-background placeholder-surface-dim input-trigger" id="age" placeholder="28" type="number"/>
+<span class="font-body-md text-body-md text-on-surface-variant pb-1">yrs</span>
+</div>
+</div>
+<!-- Height & Weight Column -->
+<div class="flex flex-col gap-sm">
+<!-- Height -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-3 shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all flex items-center justify-between">
+<div class="flex-1">
+<label class="font-caption text-caption text-on-surface-variant block" for="height">Height</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-headline-md text-headline-md text-on-background placeholder-surface-dim input-trigger" id="height" placeholder="175" type="number"/>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant ml-2">cm</span>
+</div>
+<!-- Weight -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-xl p-3 shadow-sm focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all flex items-center justify-between">
+<div class="flex-1">
+<label class="font-caption text-caption text-on-surface-variant block" for="weight">Weight</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-headline-md text-headline-md text-on-background placeholder-surface-dim input-trigger" id="weight" placeholder="70" type="number"/>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant ml-2">kg</span>
+</div>
+</div>
+</div>
+<!-- Activity Level Section -->
+<div class="mt-md">
+<h2 class="font-label-bold text-label-bold text-on-background mb-sm">Activity Level</h2>
+<div class="flex flex-col gap-3" id="activity-cards">
+<!-- Card 1 -->
+<label class="relative flex items-center p-4 cursor-pointer rounded-xl border border-surface-variant bg-surface-container-lowest transition-all hover:bg-surface-container-low activity-option" data-modifier="1.0">
+<input class="peer sr-only" name="activity" type="radio" value="sitting"/>
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant mr-4 peer-checked:bg-primary peer-checked:text-on-primary transition-colors">
+<span class="material-symbols-outlined">chair</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg font-bold text-on-background mb-0.5">Mainly Sitting</h3>
+<p class="font-caption text-caption text-on-surface-variant">Desk job, little to no exercise.</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-surface-variant peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[14px] text-on-primary opacity-0 peer-checked:opacity-100 font-bold" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<!-- Active State Outline Overlay -->
+<div class="absolute inset-0 rounded-xl border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed/10 pointer-events-none transition-colors"></div>
+</label>
+<!-- Card 2 -->
+<label class="relative flex items-center p-4 cursor-pointer rounded-xl border border-surface-variant bg-surface-container-lowest transition-all hover:bg-surface-container-low activity-option" data-modifier="1.3">
+<input checked="" class="peer sr-only" name="activity" type="radio" value="active"/>
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant mr-4 peer-checked:bg-primary peer-checked:text-on-primary transition-colors">
+<span class="material-symbols-outlined">directions_run</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg font-bold text-on-background mb-0.5">Active</h3>
+<p class="font-caption text-caption text-on-surface-variant">Moderate exercise 3-5 days a week.</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-surface-variant peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[14px] text-on-primary opacity-0 peer-checked:opacity-100 font-bold" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<!-- Active State Outline Overlay -->
+<div class="absolute inset-0 rounded-xl border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed/10 pointer-events-none transition-colors"></div>
+</label>
+<!-- Card 3 -->
+<label class="relative flex items-center p-4 cursor-pointer rounded-xl border border-surface-variant bg-surface-container-lowest transition-all hover:bg-surface-container-low activity-option" data-modifier="1.6">
+<input class="peer sr-only" name="activity" type="radio" value="very_active"/>
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant mr-4 peer-checked:bg-primary peer-checked:text-on-primary transition-colors">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex-1">
+<h3 class="font-body-lg text-body-lg font-bold text-on-background mb-0.5">Very Active</h3>
+<p class="font-caption text-caption text-on-surface-variant">Heavy exercise or physical job.</p>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-surface-variant peer-checked:border-primary peer-checked:bg-primary flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[14px] text-on-primary opacity-0 peer-checked:opacity-100 font-bold" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<!-- Active State Outline Overlay -->
+<div class="absolute inset-0 rounded-xl border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed/10 pointer-events-none transition-colors"></div>
+</label>
+</div>
+</div>
+</form>
+</main>
+<!-- Floating Action Area (Live Target Preview & Continue) -->
+<div class="fixed bottom-0 left-0 w-full bg-background/95 backdrop-blur-md border-t border-surface-variant p-margin-mobile pb-safe-bottom z-50 flex justify-center">
+<div class="w-full max-w-lg flex flex-col gap-3">
+<!-- Nutriscope AI Insight Box (Live Preview) -->
+<div class="relative overflow-hidden bg-surface-container-lowest rounded-xl p-4 shadow-[0_4px_24px_-4px_rgba(169,55,2,0.1)] border border-tertiary-fixed-dim/30 flex items-center justify-between group">
+<!-- Subtle AI Gradient Background Accent -->
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-fixed blur-3xl opacity-40 group-hover:opacity-60 transition-opacity"></div>
+<div class="flex items-center gap-3 relative z-10">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container animate-pulse">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">target</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface-variant">Predicted Goal</p>
+<p class="font-caption text-caption text-tertiary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+                            Updating live
+                        </p>
+</div>
+</div>
+<div class="text-right relative z-10">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight" id="protein-value">135</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant ml-0.5">g</span>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary font-label-bold text-label-bold py-4 rounded-xl hover:bg-surface-tint active:scale-[0.98] transition-all shadow-md flex items-center justify-center gap-2">
+                Continue
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const weightInput = document.getElementById('weight');
+            const targetDisplay = document.getElementById('protein-value');
+            const activityRadios = document.querySelectorAll('input[name="activity"]');
+            
+            let baseMultiplier = 1.8; // default starting point (g per kg)
+            let currentWeight = 75;   // default visual starting point
+            let activityMod = 1.3;    // default "active"
+            let timeoutId;
+
+            function updateGoal() {
+                // Get weight, fallback to 75 if empty for demo purposes
+                const weightVal = parseFloat(weightInput.value);
+                if (!isNaN(weightVal) && weightVal > 0) {
+                    currentWeight = weightVal;
+                }
+
+                // Get activity modifier
+                const selectedRadio = document.querySelector('input[name="activity"]:checked');
+                if (selectedRadio) {
+                    const label = selectedRadio.closest('label');
+                    activityMod = parseFloat(label.dataset.modifier);
+                }
+
+                // Calculate dummy goal
+                const newGoal = Math.round(currentWeight * baseMultiplier * (activityMod * 0.8));
+                
+                // Animate change
+                if(targetDisplay.innerText !== newGoal.toString()) {
+                    targetDisplay.classList.add('flash-update');
+                    targetDisplay.innerText = newGoal;
+                    
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => {
+                        targetDisplay.classList.remove('flash-update');
+                    }, 300);
+                }
+            }
+
+            // Listeners
+            document.querySelectorAll('.input-trigger').forEach(input => {
+                input.addEventListener('input', updateGoal);
+            });
+
+            activityRadios.forEach(radio => {
+                radio.addEventListener('change', updateGoal);
+            });
+        });
+    </script>
+</body></html>

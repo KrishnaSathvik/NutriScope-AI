@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style=""><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Meal Logged Successfully</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "protein-teal": "#2D6A4F",
+                        "surface-container-high": "#eae8e3",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-container": "#f0eee9",
+                        "tertiary": "#5d5e63",
+                        "surface-dim": "#dbdad5",
+                        "inverse-surface": "#30312e",
+                        "paper-white": "#FFFFFF",
+                        "tertiary-container": "#949499",
+                        "on-background": "#1b1c19",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "outline": "#8c7168",
+                        "primary-fixed": "#ffdbcf",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59c",
+                        "primary-container": "#f26b38",
+                        "on-surface": "#1b1c19",
+                        "secondary": "#735c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffe087",
+                        "surface-variant": "#e4e2dd",
+                        "surface-tint": "#a93702",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-primary": "#ffb59c",
+                        "surface": "#fbf9f4",
+                        "warm-sun": "#FFD54F",
+                        "surface-bright": "#fbf9f4",
+                        "on-surface-variant": "#58423a",
+                        "on-secondary-container": "#725b00",
+                        "ink-black": "#1C1C1E",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#2c2d31",
+                        "surface-container-highest": "#e4e2dd",
+                        "background": "#fbf9f4",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fdd34d",
+                        "on-secondary": "#ffffff",
+                        "primary": "#a93702",
+                        "outline-variant": "#e0c0b5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "coach-orange": "#F26B38",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f2f1ec",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f5f3ee",
+                        "on-primary-container": "#561700",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-primary-fixed": "#380c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "gutter-card": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["17px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "25px", "fontWeight": "600"}],
+                        "numeric-display": ["48px", {"lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "headline-xl": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                        "body-sm": ["15px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .success-bounce {
+            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-lg relative">
+<!-- TopAppBar Semantic Shell Navigation -->
+<!-- Suppressed on this screen as it is a transactional/success splash screen as per the "Linear/Transactional" rule -->
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-main py-8 relative overflow-hidden">
+<!-- Success Animation & Icon -->
+<div class="relative z-10 flex flex-col items-center success-bounce mb-stack-lg mt-12">
+<div class="w-24 h-24 bg-protein-teal bg-opacity-20 rounded-full flex items-center justify-center mb-stack-sm relative">
+<div class="absolute inset-0 rounded-full animate-ping bg-protein-teal bg-opacity-10" style="animation-duration: 2s;"></div>
+<span class="material-symbols-outlined text-protein-teal text-[48px]" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-center mt-stack-md text-on-surface">Log Saved!</h1>
+<p class="font-body-lg text-body-lg text-center mt-stack-sm max-w-xs text-on-surface text-on-surface-variant">
+                Your post-workout meal has been successfully added to your daily tracker. Keep up the momentum!
+            </p>
+</div>
+<!-- Summary Card -->
+<div class="w-full max-w-sm bg-paper-white dark:bg-surface-container-low rounded-xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-surface-variant relative z-10 mb-stack-lg transition-transform duration-300 hover:scale-[1.02]">
+<div class="flex items-center justify-between border-b border-surface-variant pb-3 mb-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized, modern, top-down view of a grilled chicken salad bowl in a minimalist white ceramic dish. Soft, bright natural lighting emphasizes the fresh greens and grill marks on the chicken. High-key light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxF_bkgd90OTzTcz_RKY3hh_Wl72-skQ4hsNdUkGjTtliKchuTOwJF1sqG_OoiBPHyLuLG6f4MVD8OjoAqttDAjEzvoRl2bloXRoVfDhbMyZcwCwLx5Imdicu_wGtxy6ZzbnP9P9vzUkxWHWCEsZ12KGE6KQYYi0F_pkYmRC3GsJzgZgAnZPBAqWnY9eVCRRvnFiYU1aLgOwKKXxVXTHFVFAQXUHAjMMxkPaFBBZsd0JmFkwVTrfzyaj1Rg-R4gj8arrUu7wDX5mqi"/>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Grilled Chicken Bowl</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lunch</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-1">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase tracking-wider">Protein</span>
+<div class="flex items-baseline gap-1">
+<span class="font-numeric-display text-numeric-display text-protein-teal leading-none">35</span>
+<span class="font-body-lg text-body-lg text-protein-teal font-semibold">g</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase tracking-wider">Calories</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg leading-none text-on-surface">420</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-on-surface">kcal</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full max-w-sm flex flex-col gap-stack-md relative z-10 mt-auto sm:mt-0">
+<button class="w-full h-14 bg-coach-orange hover:bg-surface-tint text-paper-white font-title-md text-title-md rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(242,107,56,0.2)] active:scale-95">
+<span class="">View in Today's Tracker</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full h-14 bg-transparent border-2 border-coach-orange text-coach-orange font-title-md text-title-md rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 hover:bg-coach-orange hover:bg-opacity-5 active:scale-95">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="">Log Another Item</span>
+</button>
+<button class="w-full py-2 mt-2 text-on-surface-variant font-body-lg text-body-lg hover:text-ink-black transition-colors duration-200">
+                Dismiss
+            </button>
+</div>
+</main>
+<!-- BottomNavBar Semantic Shell Navigation -->
+<!-- Suppressed on this screen as it is a transactional/success splash screen as per the "Linear/Transactional" rule -->
+<script>
+        // Advanced canvas confetti effect for success screen
+        document.addEventListener('DOMContentLoaded', () => {
+            const canvas = document.createElement('canvas');
+            canvas.id = 'confetti-canvas';
+            canvas.className = 'fixed inset-0 pointer-events-none z-50';
+            document.body.appendChild(canvas);
+            
+            const ctx = canvas.getContext('2d');
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            // Kinetic Harvest palette + some accent colors
+            const colors = ['#f26b38', '#fbf9f4', '#dbdad5', '#2D6A4F', '#FFD54F', '#a93702'];
+            const particles = [];
+
+            class Particle {
+                constructor() {
+                    // Burst from top center
+                    this.x = width / 2;
+                    this.y = height * 0.2;
+                    
+                    // Random spread
+                    const angle = Math.random() * Math.PI * 2;
+                    const velocity = Math.random() * 15 + 5;
+                    this.vx = Math.cos(angle) * velocity;
+                    this.vy = Math.sin(angle) * velocity - 10; // Extra upward boost
+                    
+                    this.size = Math.random() * 8 + 6;
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    this.rotation = Math.random() * 360;
+                    this.rs = (Math.random() - 0.5) * 10; // Rotation speed
+                    this.shape = Math.random() > 0.5 ? 'circle' : 'rect';
+                    
+                    // Wobble effect
+                    this.wobble = Math.random() * Math.PI * 2;
+                    this.wobbleSpeed = Math.random() * 0.1 + 0.05;
+                }
+
+                update() {
+                    this.x += this.vx + Math.sin(this.wobble) * 2; // Add side-to-side drift
+                    this.y += this.vy;
+                    this.vy += 0.3; // Gravity
+                    
+                    // Add some air resistance
+                    this.vx *= 0.99;
+                    
+                    this.rotation += this.rs;
+                    this.wobble += this.wobbleSpeed;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.rotation * Math.PI / 180);
+                    ctx.fillStyle = this.color;
+                    
+                    // Add subtle shadow for depth
+                    ctx.shadowColor = 'rgba(0,0,0,0.1)';
+                    ctx.shadowBlur = 2;
+                    ctx.shadowOffsetY = 1;
+                    
+                    if (this.shape === 'circle') {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        // Sometimes draw slightly stretched rects
+                        const stretch = Math.sin(this.wobble) * 0.5 + 1;
+                        ctx.fillRect(-this.size / 2, -this.size * stretch / 2, this.size, this.size * stretch);
+                    }
+                    ctx.restore();
+                }
+            }
+
+            // Create particles
+            for (let i = 0; i < 150; i++) {
+                particles.push(new Particle());
+            }
+
+            // Animation loop
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                let active = false;
+                
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                    if (p.y < height + p.size) {
+                        active = true;
+                    }
+                });
+                
+                if (active) {
+                    requestAnimationFrame(animate);
+                } else {
+                    // Cleanup canvas when particles are gone
+                    canvas.remove();
+                }
+            }
+
+            animate();
+
+            // Handle resize
+            window.addEventListener('resize', () => {
+                if (document.body.contains(canvas)) {
+                    width = window.innerWidth;
+                    height = window.innerHeight;
+                    canvas.width = width;
+                    canvas.height = height;
+                }
+            });
+        });
+    </script>
+</body></html>

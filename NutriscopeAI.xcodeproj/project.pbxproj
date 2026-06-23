@@ -1,0 +1,875 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00EF9584231D4DD7A609BD11 /* GroceryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED43CD5F4D44633A0501D97 /* GroceryListView.swift */; };
+		01D6A4F6CC854728AF8BC181 /* CameraImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA2F39BDC374234931B8453 /* CameraImagePicker.swift */; };
+		04419645578748939AE8A1E8 /* TomorrowProteinPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81787EED5834CF6905DB1A8 /* TomorrowProteinPlanView.swift */; };
+		082C89167FEA4FDB99778C57 /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179EF63A927941D4B58EC5A0 /* MealType.swift */; };
+		0A5AF87B8A214151A7830C87 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1FD51845153472787922CA1 /* SignInView.swift */; };
+		0A6AA6A1D4AB428384BF73A6 /* FoodSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F247F8D4D28458AB6600E97 /* FoodSearchView.swift */; };
+		0B1F9B391FA1449DB12B88BC /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06AE3053E8264BAF8FD10C51 /* SubscriptionManager.swift */; };
+		0B978BAEE4CE41CAA5B29446 /* CoachView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BC113DBB4C401C9FB9A92A /* CoachView.swift */; };
+		0BA16FA2E6F049059EEC7A84 /* WeeklyReportCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308B728A337948AD9251EEC5 /* WeeklyReportCalculator.swift */; };
+		0E79D6C1A0F94534838DBFC7 /* ProfileGoalsSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB0F1D8DAC47A6A657DACE /* ProfileGoalsSettingsView.swift */; };
+		1076C60818B64A4F958AF0E6 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA3D870D23804EDD9612D55A /* HealthKit.framework */; };
+		120C5743607643CA92C940D1 /* BackendConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C69D42EB446456BBA2EB25E /* BackendConfig.swift */; };
+		14398CE870DB483189EF37D9 /* AuthSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8AB417F34F4298B01EA0C2 /* AuthSessionManager.swift */; };
+		1468AB883B9D44F1B61E70EE /* MealAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 915C032420714ACAA682E46C /* MealAnalysis.swift */; };
+		17E304C382A2446F830A2E58 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB353C61C9814BA2B3EC7B16 /* OpenAIClient.swift */; };
+		17FA38C24DFB452E8ED8BF09 /* ScanQuotaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB269163E3047EC9129FF97 /* ScanQuotaManager.swift */; };
+		1897348612D14F34A9BB760A /* ProfileAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D66F00B9B47CDB7B0550D /* ProfileAccountView.swift */; };
+		1AAF7ED9FE174F83B037BC99 /* SubscriptionSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51C9DB8849A4F5194FCFA62 /* SubscriptionSuccessView.swift */; };
+		1C46829270604DF7AA55DA47 /* MacroRangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BA83717E3C4A7695E3C60F /* MacroRangeView.swift */; };
+		1E020D4B89D2498ABBC9440F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19D2FE9201564DFC99001D2D /* RootView.swift */; };
+		248504C1891A46FDAFAD2630 /* MockMealAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F88E52D29934468B1FF6A9C /* MockMealAnalysisService.swift */; };
+		257D6C676F1540C7B9225550 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D98B84165D4324A6C4481D /* HealthKitService.swift */; };
+		2674D4D3921242898D1A9F99 /* MealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2110250BE94374BC378C34 /* MealsView.swift */; };
+		2913F6D78DFC44EE98B2119D /* AIContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12205AA797394B199B89221D /* AIContextBuilder.swift */; };
+		2C6148426CD143FF932CD28B /* SubscriptionLegalLinksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63042DAF827D4C45AC5E22BD /* SubscriptionLegalLinksView.swift */; };
+		31D4509262D247CEA78DF977 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25761416C8FF431D9DFFC097 /* ShareSheet.swift */; };
+		36412E48E59043639AAC0A7E /* CameraPermissionPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2C73C3A7DD4A0BAA33E01F /* CameraPermissionPromptView.swift */; };
+		3656618F5CD842ECBC0BFF5F /* OnboardingIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869CD11A6EA4458197CA4390 /* OnboardingIntroView.swift */; };
+		38CBC34190E541318E2121AF /* RecipeCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E173CC3CCD44048E378181 /* RecipeCalculatorView.swift */; };
+		3AE7CAA9A69F4BA597C848B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 468E143917B8495F85D0DFA5 /* Assets.xcassets */; };
+		3BE0D5F538ED420FA12C012D /* SupabaseAuthClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E62D666EEC4DA4AFFC506A /* SupabaseAuthClient.swift */; };
+		3C9AE647650343C2BF2878A3 /* ScanMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A125DB815940F889445D7A /* ScanMealView.swift */; };
+		4656155814FA45B5B9B5EF76 /* ScanFailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149037109CF4B1C8FDF2670 /* ScanFailedView.swift */; };
+		47F6EA702A1F41ABAAD8E01E /* ScanFlowFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DDD1A09F32470DB65607ED /* ScanFlowFlags.swift */; };
+		4D757533B89C4233B8EF457A /* RealtimeNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C5B2CF4EFC49F4945E1C2A /* RealtimeNotificationService.swift */; };
+		4E376FAC1E1446999990FDE1 /* PostScanSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0AD2455E6C4DFB89E044B0 /* PostScanSuccessView.swift */; };
+		518596D9ABFF48B59B99E1FE /* HankenGrotesk-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A18571F5F7144AC88A8256EE /* HankenGrotesk-ExtraBold.ttf */; };
+		52C34046D66948B28A06BAA8 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1957A7322E61469592320244 /* SignUpView.swift */; };
+		52F52007FF5E4583ACA36A08 /* AppTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1363831281FD441597A11C59 /* AppTab.swift */; };
+		537A933C54AE466A9E2B521B /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4CE6B8C72467401298E642D3 /* Inter-SemiBold.ttf */; };
+		5782015F1630439DA7BB697C /* WhisperTranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEF2E0DAA8274E43A5805BB2 /* WhisperTranscriptionService.swift */; };
+		5B3AA65BB474459697F6B62F /* HankenGrotesk-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73851671800C49B296CE29D9 /* HankenGrotesk-Regular.ttf */; };
+		6853A6A6AC8E4FDBB369C538 /* OpenAIMealAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28064CB2A01E4E589872F653 /* OpenAIMealAnalysisService.swift */; };
+		68DE730E0F3E46D193F42B24 /* ReminderSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1347F11132A43D18B1F55AA /* ReminderSettings.swift */; };
+		68E24583B9F2418C963F235D /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C4C3226BE44EC0A6FBDCD2 /* PaywallView.swift */; };
+		6BFE1F34E2784FD0895E1B84 /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC5D29985894AB7890E74AD /* TodayView.swift */; };
+		7624BF95AC31411C8F787A14 /* ImageCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0A6A61C874EE7B5FA788B /* ImageCompression.swift */; };
+		7712CAA0B081471EA2FCF780 /* BackendAuthBootstrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F8469EEB9C4D10B2CCF618 /* BackendAuthBootstrap.swift */; };
+		774A41B9DE684ED58800FB46 /* TomorrowPlanCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502CA814C5054D1AAAB9DC39 /* TomorrowPlanCalculator.swift */; };
+		78D8B7FBD5CE4A96B903852F /* WidgetDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB401ED2BF9E472CBA48D3A8 /* WidgetDataStore.swift */; };
+		79AA209ED7DD4C81BFD53484 /* VoiceListeningOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B49AB1375BA4CE8BC5B0129 /* VoiceListeningOverlay.swift */; };
+		7C6024E031504CDEA1CEB9C5 /* HankenGrotesk-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82BE1245138944EF93EE3CA1 /* HankenGrotesk-SemiBold.ttf */; };
+		80FCBC48624E4AF49297D931 /* MealAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1FD2E8363D4335A6C4B297 /* MealAnalysisService.swift */; };
+		842D8717E89546D386D4E1FC /* MealAdviceCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335CEDC918DB42AD903D2638 /* MealAdviceCard.swift */; };
+		861D57721CE44A9E8B17D500 /* SpeechTranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2D9071E62F49A4B39B4E9B /* SpeechTranscriptionService.swift */; };
+		870A9920AAC64829B3D54528 /* FirstScanTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6214EC328FED4535A62D6755 /* FirstScanTutorialView.swift */; };
+		871D704A7C0746239DA6070A /* OpenAICoachService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C767B3D86342DBB3EB3040 /* OpenAICoachService.swift */; };
+		8731AAF9D1694552888AC650 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD589F98655B4B1E89F56165 /* UserSettings.swift */; };
+		890A618F06F74CFB9ECC657A /* ManageSubscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C36667BEAAC4636B2991B68 /* ManageSubscriptionView.swift */; };
+		8EC6D04AD945468F902C99A8 /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7787E091C94836842B028E /* ResetPasswordView.swift */; };
+		9044AC988EB64305821764A9 /* USDAFoodSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C502EC84E1540DE90E0B053 /* USDAFoodSearchService.swift */; };
+		90EA70B6A8B04AB69F73FA01 /* AccountDeletionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D10FDA2B0B50468C9146FCB7 /* AccountDeletionService.swift */; };
+		9C7BA1BFCCE7443F8975394D /* AppLegalLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD25619C5A214A1B8241A861 /* AppLegalLinks.swift */; };
+		9E1B150EB9A84CCDA2EC0FB4 /* KineticComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADA19AA7A948098D2FB46A /* KineticComponents.swift */; };
+		A45954CA706D4B45B515D778 /* GroceryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFE73A0587B4B37AACC1B9A /* GroceryItem.swift */; };
+		A70BEC52C09240378E628148 /* WeightTrackingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A041D7024946019CD49F78 /* WeightTrackingSection.swift */; };
+		A80FCF78329C493E8E45B205 /* GuestModeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CCE85D772B44590BE860B77 /* GuestModeManager.swift */; };
+		A8D761C906644DA6A7A7969A /* ConfidenceBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0C10D528D644E082648671 /* ConfidenceBadge.swift */; };
+		AC27E1761D5C4739AB51AD24 /* MealResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0257B82EBDA74284B7E0E1A9 /* MealResultView.swift */; };
+		AD235CDCA45244CC9F0AC086 /* AppTypography.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7684C88B9049DE8689184B /* AppTypography.swift */; };
+		AD8B7FB1715B4248A809AB06 /* ProteinProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C379307989C436088A1023C /* ProteinProgressBar.swift */; };
+		B3FE4AAF85224B3FA69A89B2 /* FollowUpQuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187DDC0A20D146929BB5FBB1 /* FollowUpQuestionsView.swift */; };
+		B41F84B70C804F768529D1D7 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0C26B4E0A041ECB6CAEE4F /* AppTheme.swift */; };
+		B52BA5FD39814CFABF2C7A57 /* ScanQuotaPaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44025035982D4FB4895D1FBF /* ScanQuotaPaywallView.swift */; };
+		B6B1FD9A5E89493FB757401B /* HankenGrotesk-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 187EB80002634EB7B09F2118 /* HankenGrotesk-Bold.ttf */; };
+		BB6894A8218F4547AF9F29A3 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B38D505B4B42C89E44D076 /* AppState.swift */; };
+		BD1DF6C733A745BFAF3FB7AA /* KineticPermissionPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902A220386624947A9AC0136 /* KineticPermissionPromptView.swift */; };
+		C3741A9B85B84D30AFE897B5 /* InsightsTrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D7266EE229416FAE6BCBE9 /* InsightsTrendsView.swift */; };
+		C4E80F637B8B414BB2EC19C9 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED67F3667F854CD599421CEA /* SignInWithAppleButton.swift */; };
+		C81B0B9FE90D4FA9A796FB3E /* CoachMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C15C3CC7E4D0CAC49578F /* CoachMessageView.swift */; };
+		CA02396FEDC04B959F5AD10E /* PersonalizedTargetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D32310D9BB443B6BFD23EB6 /* PersonalizedTargetCalculator.swift */; };
+		CCCB38EB02FF477495C890EC /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C42A05A63042CEBB9280C2 /* SplashView.swift */; };
+		D03813FF9D804550B9B83F66 /* SavedMeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2BCD7121BD480AB9614F3E /* SavedMeal.swift */; };
+		D2EE44E9CC0D42D1BE3ACDAA /* DietPreference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8B27E232474112B5B5901E /* DietPreference.swift */; };
+		D560048E59184863B3B4F915 /* WeeklyReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8F7FB6E11294DFF8F2535E7 /* WeeklyReportView.swift */; };
+		DEAF5C137FE14EE0A4B2320A /* ReminderSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3889D0368F7E4DE6A9AA137C /* ReminderSettingsView.swift */; };
+		DFD8E8A81E7747BEB6806925 /* DataPrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3848BD2B1A654329AF28A128 /* DataPrivacyView.swift */; };
+		E65D3E2043F84FA4BCB90CAC /* ProFeatureGate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5C1031DCF740B39AF6E38D /* ProFeatureGate.swift */; };
+		E76311E694E14551848CE2F7 /* MealRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EAE82E3C1614501B531D846 /* MealRecord.swift */; };
+		EEB558F59CBB4EFBA811FCB3 /* NutriscopeAIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4EDE1C6FE54D51B72295DB /* NutriscopeAIApp.swift */; };
+		EFFA22E8D0FF4E35B9023A8F /* SubscriptionPricing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABB057DDA3B4DCEAAC1EDA7 /* SubscriptionPricing.swift */; };
+		F0A4913371DC41CA8F885BF9 /* WeightLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CEF2934F8946E09A93ECFD /* WeightLog.swift */; };
+		F0E7C6387330433BB2554653 /* SaveProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BB4D9AB79E4664A877011C /* SaveProgressView.swift */; };
+		F45819E22FCF4018986D54D9 /* AuthFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9261E1B8C241CAAC2B5D71 /* AuthFlowView.swift */; };
+		F5D1E59E97D24CF0975347F2 /* SubscriptionPlansSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1636D2A1CBF04B22A38890B5 /* SubscriptionPlansSection.swift */; };
+		F7764803C6534B41BBDE8921 /* ProxyMealAnalysisService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0875AC3036F74409A4822CFB /* ProxyMealAnalysisService.swift */; };
+		F80ABA3E42CF4A18A6EC415F /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8354C3AB6C9B4017B15FEC9B /* NotificationManager.swift */; };
+		F95769FFC78E4DF7A4CF677C /* CoachChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E54DE8587B401A96E0911C /* CoachChatMessage.swift */; };
+		F97DF1AE340348CBB3D8CE54 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32D47EEF42C7429FBF6E0A6C /* AuthenticationServices.framework */; };
+		FBE56993708A4C9496684259 /* AddFirstMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D411C03BCA4E889FED0805 /* AddFirstMealView.swift */; };
+		FD020A70F8704F0AAE5DFF19 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F04F241593436095FAC44F /* ProfileView.swift */; };
+		FEED10081AD2491394E04868 /* InsightsTrendsCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F55B630C1E40F7B0402AFC /* InsightsTrendsCalculator.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		00BB4D9AB79E4664A877011C /* SaveProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveProgressView.swift; sourceTree = "<group>"; };
+		00E173CC3CCD44048E378181 /* RecipeCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCalculatorView.swift; sourceTree = "<group>"; };
+		0257B82EBDA74284B7E0E1A9 /* MealResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealResultView.swift; sourceTree = "<group>"; };
+		06A041D7024946019CD49F78 /* WeightTrackingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightTrackingSection.swift; sourceTree = "<group>"; };
+		06AE3053E8264BAF8FD10C51 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
+		06BA83717E3C4A7695E3C60F /* MacroRangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroRangeView.swift; sourceTree = "<group>"; };
+		0875AC3036F74409A4822CFB /* ProxyMealAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyMealAnalysisService.swift; sourceTree = "<group>"; };
+		12205AA797394B199B89221D /* AIContextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIContextBuilder.swift; sourceTree = "<group>"; };
+		1363831281FD441597A11C59 /* AppTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTab.swift; sourceTree = "<group>"; };
+		15F55B630C1E40F7B0402AFC /* InsightsTrendsCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsTrendsCalculator.swift; sourceTree = "<group>"; };
+		1636D2A1CBF04B22A38890B5 /* SubscriptionPlansSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlansSection.swift; sourceTree = "<group>"; };
+		16E62D666EEC4DA4AFFC506A /* SupabaseAuthClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupabaseAuthClient.swift; sourceTree = "<group>"; };
+		179EF63A927941D4B58EC5A0 /* MealType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealType.swift; sourceTree = "<group>"; };
+		187DDC0A20D146929BB5FBB1 /* FollowUpQuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowUpQuestionsView.swift; sourceTree = "<group>"; };
+		187EB80002634EB7B09F2118 /* HankenGrotesk-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HankenGrotesk-Bold.ttf"; sourceTree = "<group>"; };
+		1957A7322E61469592320244 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		19BC113DBB4C401C9FB9A92A /* CoachView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachView.swift; sourceTree = "<group>"; };
+		19D2FE9201564DFC99001D2D /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		1A0C10D528D644E082648671 /* ConfidenceBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfidenceBadge.swift; sourceTree = "<group>"; };
+		1A2110250BE94374BC378C34 /* MealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsView.swift; sourceTree = "<group>"; };
+		1C379307989C436088A1023C /* ProteinProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProteinProgressBar.swift; sourceTree = "<group>"; };
+		1C502EC84E1540DE90E0B053 /* USDAFoodSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDAFoodSearchService.swift; sourceTree = "<group>"; };
+		1D32310D9BB443B6BFD23EB6 /* PersonalizedTargetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalizedTargetCalculator.swift; sourceTree = "<group>"; };
+		1ED43CD5F4D44633A0501D97 /* GroceryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryListView.swift; sourceTree = "<group>"; };
+		25761416C8FF431D9DFFC097 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		28064CB2A01E4E589872F653 /* OpenAIMealAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIMealAnalysisService.swift; sourceTree = "<group>"; };
+		29EB0F1D8DAC47A6A657DACE /* ProfileGoalsSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileGoalsSettingsView.swift; sourceTree = "<group>"; };
+		2C69D42EB446456BBA2EB25E /* BackendConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendConfig.swift; sourceTree = "<group>"; };
+		2EAE82E3C1614501B531D846 /* MealRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRecord.swift; sourceTree = "<group>"; };
+		308B728A337948AD9251EEC5 /* WeeklyReportCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportCalculator.swift; sourceTree = "<group>"; };
+		31DDD1A09F32470DB65607ED /* ScanFlowFlags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanFlowFlags.swift; sourceTree = "<group>"; };
+		32D47EEF42C7429FBF6E0A6C /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		335CEDC918DB42AD903D2638 /* MealAdviceCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealAdviceCard.swift; sourceTree = "<group>"; };
+		349C15C3CC7E4D0CAC49578F /* CoachMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachMessageView.swift; sourceTree = "<group>"; };
+		3587C0C32FEAD606006F1748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3848BD2B1A654329AF28A128 /* DataPrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPrivacyView.swift; sourceTree = "<group>"; };
+		3889D0368F7E4DE6A9AA137C /* ReminderSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettingsView.swift; sourceTree = "<group>"; };
+		3B7B3623068C4AAF99F428F0 /* NutriscopeAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NutriscopeAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CC5D29985894AB7890E74AD /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		42D7266EE229416FAE6BCBE9 /* InsightsTrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsTrendsView.swift; sourceTree = "<group>"; };
+		44025035982D4FB4895D1FBF /* ScanQuotaPaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQuotaPaywallView.swift; sourceTree = "<group>"; };
+		468E143917B8495F85D0DFA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4ABB057DDA3B4DCEAAC1EDA7 /* SubscriptionPricing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPricing.swift; sourceTree = "<group>"; };
+		4C8B27E232474112B5B5901E /* DietPreference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietPreference.swift; sourceTree = "<group>"; };
+		4CCE85D772B44590BE860B77 /* GuestModeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestModeManager.swift; sourceTree = "<group>"; };
+		4CE6B8C72467401298E642D3 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		502CA814C5054D1AAAB9DC39 /* TomorrowPlanCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomorrowPlanCalculator.swift; sourceTree = "<group>"; };
+		58E54DE8587B401A96E0911C /* CoachChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachChatMessage.swift; sourceTree = "<group>"; };
+		5C36667BEAAC4636B2991B68 /* ManageSubscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageSubscriptionView.swift; sourceTree = "<group>"; };
+		5D5C1031DCF740B39AF6E38D /* ProFeatureGate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProFeatureGate.swift; sourceTree = "<group>"; };
+		6214EC328FED4535A62D6755 /* FirstScanTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScanTutorialView.swift; sourceTree = "<group>"; };
+		63042DAF827D4C45AC5E22BD /* SubscriptionLegalLinksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionLegalLinksView.swift; sourceTree = "<group>"; };
+		63C4C3226BE44EC0A6FBDCD2 /* PaywallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaywallView.swift; sourceTree = "<group>"; };
+		6B4EDE1C6FE54D51B72295DB /* NutriscopeAIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutriscopeAIApp.swift; sourceTree = "<group>"; };
+		6F247F8D4D28458AB6600E97 /* FoodSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchView.swift; sourceTree = "<group>"; };
+		6F88E52D29934468B1FF6A9C /* MockMealAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMealAnalysisService.swift; sourceTree = "<group>"; };
+		73851671800C49B296CE29D9 /* HankenGrotesk-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HankenGrotesk-Regular.ttf"; sourceTree = "<group>"; };
+		752D98F45BD143858D0A203D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CFE73A0587B4B37AACC1B9A /* GroceryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryItem.swift; sourceTree = "<group>"; };
+		7E0C26B4E0A041ECB6CAEE4F /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		82BE1245138944EF93EE3CA1 /* HankenGrotesk-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HankenGrotesk-SemiBold.ttf"; sourceTree = "<group>"; };
+		8354C3AB6C9B4017B15FEC9B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		869CD11A6EA4458197CA4390 /* OnboardingIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingIntroView.swift; sourceTree = "<group>"; };
+		87C767B3D86342DBB3EB3040 /* OpenAICoachService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAICoachService.swift; sourceTree = "<group>"; };
+		8A0AD2455E6C4DFB89E044B0 /* PostScanSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScanSuccessView.swift; sourceTree = "<group>"; };
+		8B49AB1375BA4CE8BC5B0129 /* VoiceListeningOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceListeningOverlay.swift; sourceTree = "<group>"; };
+		8C8AB417F34F4298B01EA0C2 /* AuthSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSessionManager.swift; sourceTree = "<group>"; };
+		8D2D9071E62F49A4B39B4E9B /* SpeechTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechTranscriptionService.swift; sourceTree = "<group>"; };
+		8FB269163E3047EC9129FF97 /* ScanQuotaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQuotaManager.swift; sourceTree = "<group>"; };
+		902A220386624947A9AC0136 /* KineticPermissionPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KineticPermissionPromptView.swift; sourceTree = "<group>"; };
+		9149037109CF4B1C8FDF2670 /* ScanFailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanFailedView.swift; sourceTree = "<group>"; };
+		915C032420714ACAA682E46C /* MealAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealAnalysis.swift; sourceTree = "<group>"; };
+		92C42A05A63042CEBB9280C2 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		95ADA19AA7A948098D2FB46A /* KineticComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KineticComponents.swift; sourceTree = "<group>"; };
+		99A125DB815940F889445D7A /* ScanMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanMealView.swift; sourceTree = "<group>"; };
+		A18571F5F7144AC88A8256EE /* HankenGrotesk-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HankenGrotesk-ExtraBold.ttf"; sourceTree = "<group>"; };
+		AB353C61C9814BA2B3EC7B16 /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
+		AB401ED2BF9E472CBA48D3A8 /* WidgetDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataStore.swift; sourceTree = "<group>"; };
+		ACF0A6A61C874EE7B5FA788B /* ImageCompression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompression.swift; sourceTree = "<group>"; };
+		AD25619C5A214A1B8241A861 /* AppLegalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLegalLinks.swift; sourceTree = "<group>"; };
+		AF9261E1B8C241CAAC2B5D71 /* AuthFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFlowView.swift; sourceTree = "<group>"; };
+		B1FD51845153472787922CA1 /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		B4B38D505B4B42C89E44D076 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		B9F04F241593436095FAC44F /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B9F8469EEB9C4D10B2CCF618 /* BackendAuthBootstrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAuthBootstrap.swift; sourceTree = "<group>"; };
+		BD589F98655B4B1E89F56165 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		BEA2F39BDC374234931B8453 /* CameraImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImagePicker.swift; sourceTree = "<group>"; };
+		C1347F11132A43D18B1F55AA /* ReminderSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderSettings.swift; sourceTree = "<group>"; };
+		C1D411C03BCA4E889FED0805 /* AddFirstMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFirstMealView.swift; sourceTree = "<group>"; };
+		C51C9DB8849A4F5194FCFA62 /* SubscriptionSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionSuccessView.swift; sourceTree = "<group>"; };
+		CA3D870D23804EDD9612D55A /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		CB2C73C3A7DD4A0BAA33E01F /* CameraPermissionPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPermissionPromptView.swift; sourceTree = "<group>"; };
+		D10FDA2B0B50468C9146FCB7 /* AccountDeletionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeletionService.swift; sourceTree = "<group>"; };
+		D6D98B84165D4324A6C4481D /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		E1CEF2934F8946E09A93ECFD /* WeightLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightLog.swift; sourceTree = "<group>"; };
+		E8F7FB6E11294DFF8F2535E7 /* WeeklyReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyReportView.swift; sourceTree = "<group>"; };
+		E9C5B2CF4EFC49F4945E1C2A /* RealtimeNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeNotificationService.swift; sourceTree = "<group>"; };
+		EC2BCD7121BD480AB9614F3E /* SavedMeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMeal.swift; sourceTree = "<group>"; };
+		ED67F3667F854CD599421CEA /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
+		ED7787E091C94836842B028E /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		EEF2E0DAA8274E43A5805BB2 /* WhisperTranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperTranscriptionService.swift; sourceTree = "<group>"; };
+		F81787EED5834CF6905DB1A8 /* TomorrowProteinPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TomorrowProteinPlanView.swift; sourceTree = "<group>"; };
+		FA9D66F00B9B47CDB7B0550D /* ProfileAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAccountView.swift; sourceTree = "<group>"; };
+		FB7684C88B9049DE8689184B /* AppTypography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTypography.swift; sourceTree = "<group>"; };
+		FF1FD2E8363D4335A6C4B297 /* MealAnalysisService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealAnalysisService.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D59621E627864ECBA0CA9F2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1076C60818B64A4F958AF0E6 /* HealthKit.framework in Frameworks */,
+				F97DF1AE340348CBB3D8CE54 /* AuthenticationServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10AF6329C5974F7D81F5CBB3 /* Meals */ = {
+			isa = PBXGroup;
+			children = (
+				1A2110250BE94374BC378C34 /* MealsView.swift */,
+			);
+			path = Meals;
+			sourceTree = "<group>";
+		};
+		13FBE2C9D80D4A10A34B042C /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				3848BD2B1A654329AF28A128 /* DataPrivacyView.swift */,
+				FA9D66F00B9B47CDB7B0550D /* ProfileAccountView.swift */,
+				29EB0F1D8DAC47A6A657DACE /* ProfileGoalsSettingsView.swift */,
+				B9F04F241593436095FAC44F /* ProfileView.swift */,
+				3889D0368F7E4DE6A9AA137C /* ReminderSettingsView.swift */,
+				06A041D7024946019CD49F78 /* WeightTrackingSection.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		18EF8D104ED54843AF03EE21 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				12205AA797394B199B89221D /* AIContextBuilder.swift */,
+				D10FDA2B0B50468C9146FCB7 /* AccountDeletionService.swift */,
+				AD25619C5A214A1B8241A861 /* AppLegalLinks.swift */,
+				8C8AB417F34F4298B01EA0C2 /* AuthSessionManager.swift */,
+				B9F8469EEB9C4D10B2CCF618 /* BackendAuthBootstrap.swift */,
+				2C69D42EB446456BBA2EB25E /* BackendConfig.swift */,
+				4CCE85D772B44590BE860B77 /* GuestModeManager.swift */,
+				D6D98B84165D4324A6C4481D /* HealthKitService.swift */,
+				15F55B630C1E40F7B0402AFC /* InsightsTrendsCalculator.swift */,
+				FF1FD2E8363D4335A6C4B297 /* MealAnalysisService.swift */,
+				6F88E52D29934468B1FF6A9C /* MockMealAnalysisService.swift */,
+				8354C3AB6C9B4017B15FEC9B /* NotificationManager.swift */,
+				AB353C61C9814BA2B3EC7B16 /* OpenAIClient.swift */,
+				87C767B3D86342DBB3EB3040 /* OpenAICoachService.swift */,
+				28064CB2A01E4E589872F653 /* OpenAIMealAnalysisService.swift */,
+				1D32310D9BB443B6BFD23EB6 /* PersonalizedTargetCalculator.swift */,
+				0875AC3036F74409A4822CFB /* ProxyMealAnalysisService.swift */,
+				E9C5B2CF4EFC49F4945E1C2A /* RealtimeNotificationService.swift */,
+				31DDD1A09F32470DB65607ED /* ScanFlowFlags.swift */,
+				8FB269163E3047EC9129FF97 /* ScanQuotaManager.swift */,
+				8D2D9071E62F49A4B39B4E9B /* SpeechTranscriptionService.swift */,
+				06AE3053E8264BAF8FD10C51 /* SubscriptionManager.swift */,
+				4ABB057DDA3B4DCEAAC1EDA7 /* SubscriptionPricing.swift */,
+				16E62D666EEC4DA4AFFC506A /* SupabaseAuthClient.swift */,
+				502CA814C5054D1AAAB9DC39 /* TomorrowPlanCalculator.swift */,
+				1C502EC84E1540DE90E0B053 /* USDAFoodSearchService.swift */,
+				308B728A337948AD9251EEC5 /* WeeklyReportCalculator.swift */,
+				EEF2E0DAA8274E43A5805BB2 /* WhisperTranscriptionService.swift */,
+				AB401ED2BF9E472CBA48D3A8 /* WidgetDataStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		194ADEA508C8485FBF037B45 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				3CC5D29985894AB7890E74AD /* TodayView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		2B191D94F71F48AC963F4CBB /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C1D411C03BCA4E889FED0805 /* AddFirstMealView.swift */,
+				AF9261E1B8C241CAAC2B5D71 /* AuthFlowView.swift */,
+				869CD11A6EA4458197CA4390 /* OnboardingIntroView.swift */,
+				ED7787E091C94836842B028E /* ResetPasswordView.swift */,
+				00BB4D9AB79E4664A877011C /* SaveProgressView.swift */,
+				B1FD51845153472787922CA1 /* SignInView.swift */,
+				1957A7322E61469592320244 /* SignUpView.swift */,
+				92C42A05A63042CEBB9280C2 /* SplashView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		3277CC2F90174F809D4B3A37 /* NutriscopeAI */ = {
+			isa = PBXGroup;
+			children = (
+				3587C0C32FEAD606006F1748 /* Info.plist */,
+				8C76C3B2E57D412F8772C420 /* App */,
+				4DD1083D1D8A484C9E09D12C /* Components */,
+				AFDFCCB7D2FD44B5986C4E72 /* Models */,
+				F18CBD899D184506ACEBF52D /* Resources */,
+				18EF8D104ED54843AF03EE21 /* Services */,
+				A400AA0CC5D742339203717A /* Theme */,
+				CEB7F567E21F48BBBF7A5AA2 /* Utilities */,
+				6FB553BA37734FE39F31B4D9 /* Views */,
+				6B4EDE1C6FE54D51B72295DB /* NutriscopeAIApp.swift */,
+			);
+			path = NutriscopeAI;
+			sourceTree = "<group>";
+		};
+		3587C0C22FEAD3C6006F1748 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				CA3D870D23804EDD9612D55A /* HealthKit.framework */,
+				32D47EEF42C7429FBF6E0A6C /* AuthenticationServices.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		366FFE9BB53C454E9D306A97 /* Paywall */ = {
+			isa = PBXGroup;
+			children = (
+				5C36667BEAAC4636B2991B68 /* ManageSubscriptionView.swift */,
+				63C4C3226BE44EC0A6FBDCD2 /* PaywallView.swift */,
+				44025035982D4FB4895D1FBF /* ScanQuotaPaywallView.swift */,
+				63042DAF827D4C45AC5E22BD /* SubscriptionLegalLinksView.swift */,
+				1636D2A1CBF04B22A38890B5 /* SubscriptionPlansSection.swift */,
+				C51C9DB8849A4F5194FCFA62 /* SubscriptionSuccessView.swift */,
+			);
+			path = Paywall;
+			sourceTree = "<group>";
+		};
+		377DB3D61BA74C6FB6157A28 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				6F247F8D4D28458AB6600E97 /* FoodSearchView.swift */,
+				1ED43CD5F4D44633A0501D97 /* GroceryListView.swift */,
+				00E173CC3CCD44048E378181 /* RecipeCalculatorView.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		4219AE0E9D5A42B99027DD7D /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				CB2C73C3A7DD4A0BAA33E01F /* CameraPermissionPromptView.swift */,
+				6214EC328FED4535A62D6755 /* FirstScanTutorialView.swift */,
+				187DDC0A20D146929BB5FBB1 /* FollowUpQuestionsView.swift */,
+				0257B82EBDA74284B7E0E1A9 /* MealResultView.swift */,
+				8A0AD2455E6C4DFB89E044B0 /* PostScanSuccessView.swift */,
+				9149037109CF4B1C8FDF2670 /* ScanFailedView.swift */,
+				99A125DB815940F889445D7A /* ScanMealView.swift */,
+				8B49AB1375BA4CE8BC5B0129 /* VoiceListeningOverlay.swift */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		4DD1083D1D8A484C9E09D12C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BEA2F39BDC374234931B8453 /* CameraImagePicker.swift */,
+				349C15C3CC7E4D0CAC49578F /* CoachMessageView.swift */,
+				1A0C10D528D644E082648671 /* ConfidenceBadge.swift */,
+				95ADA19AA7A948098D2FB46A /* KineticComponents.swift */,
+				06BA83717E3C4A7695E3C60F /* MacroRangeView.swift */,
+				335CEDC918DB42AD903D2638 /* MealAdviceCard.swift */,
+				5D5C1031DCF740B39AF6E38D /* ProFeatureGate.swift */,
+				1C379307989C436088A1023C /* ProteinProgressBar.swift */,
+				25761416C8FF431D9DFFC097 /* ShareSheet.swift */,
+				ED67F3667F854CD599421CEA /* SignInWithAppleButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		6955DA8AB2C844C89B56F3FF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				187EB80002634EB7B09F2118 /* HankenGrotesk-Bold.ttf */,
+				A18571F5F7144AC88A8256EE /* HankenGrotesk-ExtraBold.ttf */,
+				73851671800C49B296CE29D9 /* HankenGrotesk-Regular.ttf */,
+				82BE1245138944EF93EE3CA1 /* HankenGrotesk-SemiBold.ttf */,
+				4CE6B8C72467401298E642D3 /* Inter-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		6FB553BA37734FE39F31B4D9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				19D2FE9201564DFC99001D2D /* RootView.swift */,
+				2B191D94F71F48AC963F4CBB /* Auth */,
+				9C02B6C6A4034F6A897DC7AB /* Coach */,
+				194ADEA508C8485FBF037B45 /* Home */,
+				10AF6329C5974F7D81F5CBB3 /* Meals */,
+				366FFE9BB53C454E9D306A97 /* Paywall */,
+				13FBE2C9D80D4A10A34B042C /* Profile */,
+				B8AA4C4C602A47968B0355FF /* Reports */,
+				4219AE0E9D5A42B99027DD7D /* Scan */,
+				B4A06873EE1B4F89A4FE8BAE /* Shared */,
+				377DB3D61BA74C6FB6157A28 /* Tools */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8C76C3B2E57D412F8772C420 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				B4B38D505B4B42C89E44D076 /* AppState.swift */,
+				1363831281FD441597A11C59 /* AppTab.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		9C02B6C6A4034F6A897DC7AB /* Coach */ = {
+			isa = PBXGroup;
+			children = (
+				19BC113DBB4C401C9FB9A92A /* CoachView.swift */,
+				F81787EED5834CF6905DB1A8 /* TomorrowProteinPlanView.swift */,
+			);
+			path = Coach;
+			sourceTree = "<group>";
+		};
+		A400AA0CC5D742339203717A /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				7E0C26B4E0A041ECB6CAEE4F /* AppTheme.swift */,
+				FB7684C88B9049DE8689184B /* AppTypography.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		AFDFCCB7D2FD44B5986C4E72 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				58E54DE8587B401A96E0911C /* CoachChatMessage.swift */,
+				4C8B27E232474112B5B5901E /* DietPreference.swift */,
+				7CFE73A0587B4B37AACC1B9A /* GroceryItem.swift */,
+				915C032420714ACAA682E46C /* MealAnalysis.swift */,
+				2EAE82E3C1614501B531D846 /* MealRecord.swift */,
+				179EF63A927941D4B58EC5A0 /* MealType.swift */,
+				C1347F11132A43D18B1F55AA /* ReminderSettings.swift */,
+				EC2BCD7121BD480AB9614F3E /* SavedMeal.swift */,
+				BD589F98655B4B1E89F56165 /* UserSettings.swift */,
+				E1CEF2934F8946E09A93ECFD /* WeightLog.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B4A06873EE1B4F89A4FE8BAE /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				902A220386624947A9AC0136 /* KineticPermissionPromptView.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		B7A848B20BD44BB78E7EBDA6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B7B3623068C4AAF99F428F0 /* NutriscopeAI.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B8AA4C4C602A47968B0355FF /* Reports */ = {
+			isa = PBXGroup;
+			children = (
+				42D7266EE229416FAE6BCBE9 /* InsightsTrendsView.swift */,
+				E8F7FB6E11294DFF8F2535E7 /* WeeklyReportView.swift */,
+			);
+			path = Reports;
+			sourceTree = "<group>";
+		};
+		C8C38C393DA14765AC857397 = {
+			isa = PBXGroup;
+			children = (
+				3277CC2F90174F809D4B3A37 /* NutriscopeAI */,
+				B7A848B20BD44BB78E7EBDA6 /* Products */,
+				3587C0C22FEAD3C6006F1748 /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		CEB7F567E21F48BBBF7A5AA2 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				ACF0A6A61C874EE7B5FA788B /* ImageCompression.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F18CBD899D184506ACEBF52D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				468E143917B8495F85D0DFA5 /* Assets.xcassets */,
+				752D98F45BD143858D0A203D /* Info.plist */,
+				6955DA8AB2C844C89B56F3FF /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		668FEC57A42C4569B8001390 /* NutriscopeAI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 453B630C6F1446DFACF569D4 /* Build configuration list for PBXNativeTarget "NutriscopeAI" */;
+			buildPhases = (
+				B95169FFA80746C8A9D8B6CB /* Sources */,
+				D59621E627864ECBA0CA9F2A /* Frameworks */,
+				75D07B904A2D4169BAE01DE9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NutriscopeAI;
+			productName = NutriscopeAI;
+			productReference = 3B7B3623068C4AAF99F428F0 /* NutriscopeAI.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		39DFFA7FD6024E6CA5BAA920 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					668FEC57A42C4569B8001390 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+				};
+			};
+			buildConfigurationList = 2C88DC435BFC4E6DA7D63DCD /* Build configuration list for PBXProject "NutriscopeAI" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C8C38C393DA14765AC857397;
+			productRefGroup = B7A848B20BD44BB78E7EBDA6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				668FEC57A42C4569B8001390 /* NutriscopeAI */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75D07B904A2D4169BAE01DE9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AE7CAA9A69F4BA597C848B6 /* Assets.xcassets in Resources */,
+				B6B1FD9A5E89493FB757401B /* HankenGrotesk-Bold.ttf in Resources */,
+				518596D9ABFF48B59B99E1FE /* HankenGrotesk-ExtraBold.ttf in Resources */,
+				5B3AA65BB474459697F6B62F /* HankenGrotesk-Regular.ttf in Resources */,
+				7C6024E031504CDEA1CEB9C5 /* HankenGrotesk-SemiBold.ttf in Resources */,
+				537A933C54AE466A9E2B521B /* Inter-SemiBold.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B95169FFA80746C8A9D8B6CB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEB558F59CBB4EFBA811FCB3 /* NutriscopeAIApp.swift in Sources */,
+				BB6894A8218F4547AF9F29A3 /* AppState.swift in Sources */,
+				52F52007FF5E4583ACA36A08 /* AppTab.swift in Sources */,
+				F95769FFC78E4DF7A4CF677C /* CoachChatMessage.swift in Sources */,
+				D2EE44E9CC0D42D1BE3ACDAA /* DietPreference.swift in Sources */,
+				A45954CA706D4B45B515D778 /* GroceryItem.swift in Sources */,
+				1468AB883B9D44F1B61E70EE /* MealAnalysis.swift in Sources */,
+				E76311E694E14551848CE2F7 /* MealRecord.swift in Sources */,
+				082C89167FEA4FDB99778C57 /* MealType.swift in Sources */,
+				68DE730E0F3E46D193F42B24 /* ReminderSettings.swift in Sources */,
+				D03813FF9D804550B9B83F66 /* SavedMeal.swift in Sources */,
+				8731AAF9D1694552888AC650 /* UserSettings.swift in Sources */,
+				F0A4913371DC41CA8F885BF9 /* WeightLog.swift in Sources */,
+				7624BF95AC31411C8F787A14 /* ImageCompression.swift in Sources */,
+				01D6A4F6CC854728AF8BC181 /* CameraImagePicker.swift in Sources */,
+				C81B0B9FE90D4FA9A796FB3E /* CoachMessageView.swift in Sources */,
+				A8D761C906644DA6A7A7969A /* ConfidenceBadge.swift in Sources */,
+				9E1B150EB9A84CCDA2EC0FB4 /* KineticComponents.swift in Sources */,
+				1C46829270604DF7AA55DA47 /* MacroRangeView.swift in Sources */,
+				842D8717E89546D386D4E1FC /* MealAdviceCard.swift in Sources */,
+				E65D3E2043F84FA4BCB90CAC /* ProFeatureGate.swift in Sources */,
+				AD8B7FB1715B4248A809AB06 /* ProteinProgressBar.swift in Sources */,
+				31D4509262D247CEA78DF977 /* ShareSheet.swift in Sources */,
+				C4E80F637B8B414BB2EC19C9 /* SignInWithAppleButton.swift in Sources */,
+				B41F84B70C804F768529D1D7 /* AppTheme.swift in Sources */,
+				AD235CDCA45244CC9F0AC086 /* AppTypography.swift in Sources */,
+				1E020D4B89D2498ABBC9440F /* RootView.swift in Sources */,
+				6BFE1F34E2784FD0895E1B84 /* TodayView.swift in Sources */,
+				0A6AA6A1D4AB428384BF73A6 /* FoodSearchView.swift in Sources */,
+				00EF9584231D4DD7A609BD11 /* GroceryListView.swift in Sources */,
+				38CBC34190E541318E2121AF /* RecipeCalculatorView.swift in Sources */,
+				FBE56993708A4C9496684259 /* AddFirstMealView.swift in Sources */,
+				F45819E22FCF4018986D54D9 /* AuthFlowView.swift in Sources */,
+				3656618F5CD842ECBC0BFF5F /* OnboardingIntroView.swift in Sources */,
+				8EC6D04AD945468F902C99A8 /* ResetPasswordView.swift in Sources */,
+				F0E7C6387330433BB2554653 /* SaveProgressView.swift in Sources */,
+				0A5AF87B8A214151A7830C87 /* SignInView.swift in Sources */,
+				52C34046D66948B28A06BAA8 /* SignUpView.swift in Sources */,
+				CCCB38EB02FF477495C890EC /* SplashView.swift in Sources */,
+				BD1DF6C733A745BFAF3FB7AA /* KineticPermissionPromptView.swift in Sources */,
+				36412E48E59043639AAC0A7E /* CameraPermissionPromptView.swift in Sources */,
+				870A9920AAC64829B3D54528 /* FirstScanTutorialView.swift in Sources */,
+				B3FE4AAF85224B3FA69A89B2 /* FollowUpQuestionsView.swift in Sources */,
+				AC27E1761D5C4739AB51AD24 /* MealResultView.swift in Sources */,
+				4E376FAC1E1446999990FDE1 /* PostScanSuccessView.swift in Sources */,
+				4656155814FA45B5B9B5EF76 /* ScanFailedView.swift in Sources */,
+				3C9AE647650343C2BF2878A3 /* ScanMealView.swift in Sources */,
+				79AA209ED7DD4C81BFD53484 /* VoiceListeningOverlay.swift in Sources */,
+				0B978BAEE4CE41CAA5B29446 /* CoachView.swift in Sources */,
+				04419645578748939AE8A1E8 /* TomorrowProteinPlanView.swift in Sources */,
+				DFD8E8A81E7747BEB6806925 /* DataPrivacyView.swift in Sources */,
+				1897348612D14F34A9BB760A /* ProfileAccountView.swift in Sources */,
+				0E79D6C1A0F94534838DBFC7 /* ProfileGoalsSettingsView.swift in Sources */,
+				FD020A70F8704F0AAE5DFF19 /* ProfileView.swift in Sources */,
+				DEAF5C137FE14EE0A4B2320A /* ReminderSettingsView.swift in Sources */,
+				A70BEC52C09240378E628148 /* WeightTrackingSection.swift in Sources */,
+				2674D4D3921242898D1A9F99 /* MealsView.swift in Sources */,
+				890A618F06F74CFB9ECC657A /* ManageSubscriptionView.swift in Sources */,
+				68E24583B9F2418C963F235D /* PaywallView.swift in Sources */,
+				B52BA5FD39814CFABF2C7A57 /* ScanQuotaPaywallView.swift in Sources */,
+				2C6148426CD143FF932CD28B /* SubscriptionLegalLinksView.swift in Sources */,
+				F5D1E59E97D24CF0975347F2 /* SubscriptionPlansSection.swift in Sources */,
+				1AAF7ED9FE174F83B037BC99 /* SubscriptionSuccessView.swift in Sources */,
+				C3741A9B85B84D30AFE897B5 /* InsightsTrendsView.swift in Sources */,
+				D560048E59184863B3B4F915 /* WeeklyReportView.swift in Sources */,
+				2913F6D78DFC44EE98B2119D /* AIContextBuilder.swift in Sources */,
+				90EA70B6A8B04AB69F73FA01 /* AccountDeletionService.swift in Sources */,
+				9C7BA1BFCCE7443F8975394D /* AppLegalLinks.swift in Sources */,
+				14398CE870DB483189EF37D9 /* AuthSessionManager.swift in Sources */,
+				7712CAA0B081471EA2FCF780 /* BackendAuthBootstrap.swift in Sources */,
+				120C5743607643CA92C940D1 /* BackendConfig.swift in Sources */,
+				A80FCF78329C493E8E45B205 /* GuestModeManager.swift in Sources */,
+				257D6C676F1540C7B9225550 /* HealthKitService.swift in Sources */,
+				FEED10081AD2491394E04868 /* InsightsTrendsCalculator.swift in Sources */,
+				80FCBC48624E4AF49297D931 /* MealAnalysisService.swift in Sources */,
+				248504C1891A46FDAFAD2630 /* MockMealAnalysisService.swift in Sources */,
+				F80ABA3E42CF4A18A6EC415F /* NotificationManager.swift in Sources */,
+				17E304C382A2446F830A2E58 /* OpenAIClient.swift in Sources */,
+				871D704A7C0746239DA6070A /* OpenAICoachService.swift in Sources */,
+				6853A6A6AC8E4FDBB369C538 /* OpenAIMealAnalysisService.swift in Sources */,
+				CA02396FEDC04B959F5AD10E /* PersonalizedTargetCalculator.swift in Sources */,
+				F7764803C6534B41BBDE8921 /* ProxyMealAnalysisService.swift in Sources */,
+				4D757533B89C4233B8EF457A /* RealtimeNotificationService.swift in Sources */,
+				47F6EA702A1F41ABAAD8E01E /* ScanFlowFlags.swift in Sources */,
+				17FA38C24DFB452E8ED8BF09 /* ScanQuotaManager.swift in Sources */,
+				861D57721CE44A9E8B17D500 /* SpeechTranscriptionService.swift in Sources */,
+				0B1F9B391FA1449DB12B88BC /* SubscriptionManager.swift in Sources */,
+				EFFA22E8D0FF4E35B9023A8F /* SubscriptionPricing.swift in Sources */,
+				3BE0D5F538ED420FA12C012D /* SupabaseAuthClient.swift in Sources */,
+				774A41B9DE684ED58800FB46 /* TomorrowPlanCalculator.swift in Sources */,
+				9044AC988EB64305821764A9 /* USDAFoodSearchService.swift in Sources */,
+				0BA16FA2E6F049059EEC7A84 /* WeeklyReportCalculator.swift in Sources */,
+				5782015F1630439DA7BB697C /* WhisperTranscriptionService.swift in Sources */,
+				78D8B7FBD5CE4A96B903852F /* WidgetDataStore.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		39BCA2C57DCF4F43A97F8412 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = NutriscopeAI/Resources/NutriscopeAI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NutriscopeAI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Nutriscope AI";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Nutriscope AI uses the camera to scan meals for protein and calorie estimates.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Nutriscope AI uses the microphone so you can describe meals by voice.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nutriscope AI needs photo access to analyze your meals.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Nutriscope AI converts your spoken meal description into text for logging.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nutriscopeai.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		83B43D2353B94608B32B6E10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8C795568CCB443BBA00E16BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A782C9F60DD244FB926CAF2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = NutriscopeAI/Resources/NutriscopeAI.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NutriscopeAI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Nutriscope AI";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Nutriscope AI uses the camera to scan meals for protein and calorie estimates.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Nutriscope AI uses the microphone so you can describe meals by voice.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Nutriscope AI needs photo access to analyze your meals.";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Nutriscope AI converts your spoken meal description into text for logging.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nutriscopeai.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2C88DC435BFC4E6DA7D63DCD /* Build configuration list for PBXProject "NutriscopeAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				83B43D2353B94608B32B6E10 /* Debug */,
+				8C795568CCB443BBA00E16BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		453B630C6F1446DFACF569D4 /* Build configuration list for PBXNativeTarget "NutriscopeAI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A782C9F60DD244FB926CAF2F /* Debug */,
+				39BCA2C57DCF4F43A97F8412 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 39DFFA7FD6024E6CA5BAA920 /* Project object */;
+}

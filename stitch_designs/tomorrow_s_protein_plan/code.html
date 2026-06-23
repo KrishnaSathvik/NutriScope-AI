@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Nutriscope AI - Meal Prep &amp; Planning</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-surface-variant": "#58423a",
+                        "warm-sun": "#FFD54F",
+                        "surface-container": "#f0eee9",
+                        "surface-bright": "#fbf9f4",
+                        "primary-fixed": "#ffdbcf",
+                        "background": "#fbf9f4",
+                        "secondary": "#735c00",
+                        "tertiary-fixed": "#e3e2e7",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e4e2dd",
+                        "ink-black": "#1C1C1E",
+                        "on-tertiary-container": "#2c2d31",
+                        "primary-fixed-dim": "#ffb59c",
+                        "protein-teal": "#2D6A4F",
+                        "primary-container": "#f26b38",
+                        "surface-dim": "#dbdad5",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#561700",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e4e2dd",
+                        "primary": "#a93702",
+                        "on-primary": "#ffffff",
+                        "surface": "#fbf9f4",
+                        "secondary-fixed": "#ffe087",
+                        "on-primary-fixed-variant": "#822800",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "tertiary": "#5d5e63",
+                        "surface-tint": "#a93702",
+                        "outline": "#8c7168",
+                        "inverse-surface": "#30312e",
+                        "inverse-primary": "#ffb59c",
+                        "on-secondary-container": "#725b00",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#e0c0b5",
+                        "on-surface": "#1b1c19",
+                        "coach-orange": "#F26B38",
+                        "tertiary-container": "#949499",
+                        "on-background": "#1b1c19",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-low": "#f5f3ee",
+                        "paper-white": "#FFFFFF",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "secondary-container": "#fdd34d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "margin-main": "1.25rem",
+                        "stack-lg": "1.5rem",
+                        "stack-md": "1rem",
+                        "gutter-card": "1rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .soft-shadow {
+            box-shadow: 0 8px 32px rgba(242, 107, 56, 0.08);
+        }
+        .bento-card {
+            background: var(--tw-colors-surface-container-lowest);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:active {
+            transform: scale(0.98);
+        }
+        
+        /* Custom Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: var(--tw-colors-coach-orange);
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: var(--tw-colors-coach-orange);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright text-on-surface antialiased min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar Mobile -->
+<header class="md:hidden sticky top-0 z-40 bg-surface-bright shadow-sm flex justify-between items-center w-full px-margin-main h-16 w-full">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed-dim overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A detailed 50-100 word prompt describing a modern, minimalist user avatar placeholder image. Soft lighting, neutral background, abstract geometric shapes suggesting a professional profile photo. Clean lines, warm tones of orange and cream to match the Coach-Style Modernism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_FBcBUSdVpWX9le68i44oh1YjQoU9Gwh7W6Wi7RSb0lsJwiBXiB5w4Rrfc0fTKjSI7F076FhviNsK-nbIuNSb-aAyVNPQ04wEIG4V0KOl6SuBAdN96dzno4Ms9HwbaSG9TmKay6R76_M5ybhIR26I38Q_2rWGW9H0lCBhV6D8mH0AbLbjLFKswl-tJE48hy_6sqOVZBYfOpeJL1Bwa6toKQl1vsQK0SquNsrrMYao6tDW3HdfKqi1FIm4AxaNuO3lFS_YcRQUv-DT"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-black text-coach-orange">Nutriscope AI</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors active:scale-95 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</header>
+<!-- TopAppBar Web/Tablet -->
+<header class="hidden md:flex sticky top-0 z-40 bg-surface-bright shadow-sm justify-between items-center w-full px-margin-main h-20 w-full mb-8">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-lg text-headline-lg font-black text-coach-orange">Nutriscope AI</h1>
+</div>
+<nav class="flex gap-8">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="font-label-caps text-label-caps uppercase">TODAY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-coach-orange border-b-2 border-coach-orange pb-1" href="#">
+<span class="font-label-caps text-label-caps uppercase">MEALS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="font-label-caps text-label-caps uppercase">SCAN</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="font-label-caps text-label-caps uppercase">COACH</span>
+</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors active:scale-95 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed-dim overflow-hidden flex items-center justify-center cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="A detailed 50-100 word prompt describing a modern, minimalist user avatar placeholder image. Soft lighting, neutral background, abstract geometric shapes suggesting a professional profile photo. Clean lines, warm tones of orange and cream to match the Coach-Style Modernism aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtu_YvI0UclqqCssbNxprgn8sm6FVGR9j9J0KZiFGhL-mrYyOgeGrjj3sEWkEepSpWRChtAzo6KHSWe40aqeXmU47-HzkzxfYu7F6w_Jp_lvtgvfJQf2VMw-cozxs9xYyhU3qQPTIvevQi8rT_SnyFzw6a7dGqzpeL0Qkc_Uy_hIfaKYvzsYrUhIZdk5Ta9oVhV-ijm-WS_I_SOOXRKhulMIcDxZMJLA3w1IduXk89lzixl6NzXKUlJoXzzjGN4P6Sx-N9F0bzlVw2"/>
+</div>
+</div>
+</header>
+<main class="px-margin-main max-w-5xl mx-auto py-6">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-stack-lg">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-on-surface mb-1">Tomorrow's Plan</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Let's get you ready for Tuesday</p>
+</div>
+<div class="glass-panel rounded-2xl p-4 flex items-center justify-between gap-6 soft-shadow">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-1">Target Protein</span>
+<div class="flex items-baseline gap-1">
+<span class="font-numeric-display text-numeric-display text-coach-orange">165</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">g</span>
+</div>
+</div>
+<div class="w-px h-12 bg-surface-variant mx-2"></div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider mb-1">Planned</span>
+<div class="flex items-baseline gap-1">
+<span class="font-title-md text-title-md text-on-surface">45</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">g</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Eating Out Toggle Banner -->
+<div class="bento-card p-4 md:p-6 mb-stack-lg flex items-center justify-between bg-gradient-to-r from-surface-container-lowest to-surface-bright border border-surface-container">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Eating out tomorrow?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">We'll leave space for a mystery meal.</p>
+</div>
+</div>
+<!-- Toggle Switch -->
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer border-surface-variant z-10 transition-all duration-300" id="toggle" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant cursor-pointer" for="toggle"></label>
+</div>
+</div>
+<!-- Coach Recommendations Grid -->
+<h3 class="font-title-md text-title-md font-semibold text-on-surface mb-stack-md flex items-center gap-2">
+<span class="material-symbols-outlined text-coach-orange" style="font-variation-settings: 'FILL' 1;">psychology</span>
+            Coach Recommended
+        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter-card mb-stack-lg">
+<!-- Suggestion Card 1 -->
+<div class="bento-card overflow-hidden group">
+<div class="h-40 w-full relative">
+<div class="bg-cover bg-center w-full h-full" data-alt="A close up, high-quality food photography shot of a perfectly grilled salmon fillet resting on a bed of fluffy quinoa and roasted asparagus. The lighting is bright and inviting, highlighting the texture of the grill marks and the vibrant pink of the salmon. The setting feels healthy, modern, and appetizing, fitting the Coach-Style Modernism aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCtiAt9bq6_Byx8A04MgHNWjGLTSHp1fY6P24yldNgfmP-BpeWNDDHPv5-uYfTBnWkUpMHppO-MHBlHCXY0JZdtr6rCARq6ypu8vedacNRzAffm9eTPR7Pk3oFD6mHZus-gGW1PRBUiIlT1Wxdfa6wXiydw4cLF1NqN0EUTXXsO2UeayqoHzKQu1C-dQQ2A3MoPMM3qwbVY-blrp4ErxvwvfKjuHwj2cGk3MZUaS1ptNDoq-UVg2ATMB6KgQLvQjEYk5HnqdflG4HwM')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-warm-sun" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-caps text-label-caps text-on-surface">LUNCH</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-title-md text-title-md text-on-surface pr-4">Grilled Salmon &amp; Quinoa</h4>
+<div class="bg-primary-fixed/30 text-primary-container px-2 py-1 rounded-lg flex flex-col items-center min-w-[50px]">
+<span class="font-title-md text-title-md leading-none">42g</span>
+<span class="font-label-caps text-[10px] uppercase">Protein</span>
+</div>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container px-2 py-1 rounded-md font-body-sm text-[13px] text-on-surface-variant">520 kcal</span>
+<span class="bg-surface-container px-2 py-1 rounded-md font-body-sm text-[13px] text-on-surface-variant">35g Carbs</span>
+<span class="bg-surface-container px-2 py-1 rounded-md font-body-sm text-[13px] text-on-surface-variant">22g Fat</span>
+</div>
+<button class="w-full py-3 rounded-xl bg-coach-orange text-paper-white font-title-md text-[16px] flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                        Add to Shopping List
+                    </button>
+</div>
+</div>
+<!-- Suggestion Card 2 -->
+<div class="bento-card overflow-hidden group">
+<div class="h-40 w-full relative">
+<div class="bg-cover bg-center w-full h-full" data-alt="A bright, overhead shot of a large bowl of Greek yogurt topped with fresh mixed berries, sliced almonds, and a drizzle of honey. The image should be well-lit with natural light, showcasing the creamy texture of the yogurt and the vibrant colors of the fruit. The composition should feel clean, modern, and nutritious." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQvlVwPp0r6w4DUfOKqVX6iFEFfGfTo3Rbcq1Wa2uthnurGJvnr5ZH9UaBO3GvYkjyxPsixuZ1bp46DuVEDOGnKAVDS-Pnh5Jcy9WWgPQ5Egh5yRP3orpEB6PMtU4CM3INnGdviUIrUCRml5Z8Sd4gbPDnZdSMSoNkMDqNiIfxwhup9pangRxn15pq3O7-i_nlvV5ppP-wJYk1758zNj5L_rFr5HKRaRslLjupXYr1dM-hsq2R72LAlWGBctCEM9I_H4RVpBAOIgP4')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-warm-sun" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="font-label-caps text-label-caps text-on-surface">BREAKFAST</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-title-md text-title-md text-on-surface pr-4">Power Greek Yogurt Bowl</h4>
+<div class="bg-primary-fixed/30 text-primary-container px-2 py-1 rounded-lg flex flex-col items-center min-w-[50px]">
+<span class="font-title-md text-title-md leading-none">28g</span>
+<span class="font-label-caps text-[10px] uppercase">Protein</span>
+</div>
+</div>
+<div class="flex gap-2 mb-4">
+<span class="bg-surface-container px-2 py-1 rounded-md font-body-sm text-[13px] text-on-surface-variant">310 kcal</span>
+<span class="bg-surface-container px-2 py-1 rounded-md font-body-sm text-[13px] text-on-surface-variant">24g Carbs</span>
+<span class="bg-surface-container px-2 py-1 rounded-md font-body-sm text-[13px] text-on-surface-variant">8g Fat</span>
+</div>
+<button class="w-full py-3 rounded-xl bg-transparent border-2 border-coach-orange text-coach-orange font-title-md text-[16px] flex items-center justify-center gap-2 hover:bg-primary-fixed/10 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                        Add to Day
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Mobile -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-surface-container-lowest shadow-[0_-4px_20px_rgba(242,107,56,0.1)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary transition-colors scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span class="font-label-caps text-label-caps uppercase">TODAY</span>
+</a>
+<a class="flex flex-col items-center justify-center text-coach-orange flex flex-col items-center justify-center text-coach-orange hover:text-primary transition-colors scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-caps text-label-caps uppercase">MEALS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary transition-colors scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">center_focus_strong</span>
+<span class="font-label-caps text-label-caps uppercase">SCAN</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary transition-colors scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">psychology</span>
+<span class="font-label-caps text-label-caps uppercase">COACH</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 hover:text-primary transition-colors scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-caps text-label-caps uppercase">PROFILE</span>
+</a>
+</nav>
+<script>
+        // Simple toggle interaction logic
+        document.getElementById('toggle').addEventListener('change', function(e) {
+            if(e.target.checked) {
+                // Add a subtle animation or state change if needed
+                console.log("Eating out enabled");
+            } else {
+                console.log("Eating out disabled");
+            }
+        });
+    </script>
+</body></html>
