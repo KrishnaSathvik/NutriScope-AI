@@ -33,29 +33,16 @@ struct GroceryListView: View {
     }
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            BoundedScrollView {
 
             VStack(alignment: .leading, spacing: 24) {
-                HStack(alignment: .top) {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text("Grocery List")
-                            .font(AppTypography.largeTitle)
-                            .foregroundStyle(AppTheme.textPrimary)
-                        Text("Tools to help you hit your targets.")
-                            .font(AppTypography.body)
-                            .foregroundStyle(AppTheme.textSecondary)
-                    }
-                    Spacer()
-                    Button { Task { await generateFromCoach() } } label: {
-                        Image(systemName: "plus")
-                            .font(.title3.weight(.semibold))
-                            .foregroundStyle(AppTheme.coachOrange)
-                            .frame(width: 48, height: 48)
-                            .background(AppTheme.coachOrange.opacity(0.12))
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    }
-                    .buttonStyle(.plain)
-                }
+                KineticToolHeader(
+                    title: "Grocery List",
+                    subtitle: "High-protein picks to close your gap and stock your kitchen."
+                )
 
                 if proteinGap > 0 {
                     gapSuggestionsCard
@@ -74,10 +61,9 @@ struct GroceryListView: View {
                 quickAddField
             }
             .padding(AppTheme.marginMain)
-            .padding(.bottom, 32)
-        
+
+            }
         }
-        .background(AppBackground())
         .navigationTitle("Grocery list")
         .navigationBarTitleDisplayMode(.inline)
         .task { await loadGapSuggestions() }

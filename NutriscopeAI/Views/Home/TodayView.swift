@@ -10,7 +10,6 @@ struct TodayView: View {
 
     private var user: UserSettings? { settings.first }
     private var proteinTarget: Int { user?.dailyProteinTarget ?? 135 }
-    private var showCalories: Bool { user?.showCalories ?? true }
 
     private var todaysMeals: [MealRecord] {
         meals.filter { Calendar.current.isDateInToday($0.scannedAt) }
@@ -54,20 +53,17 @@ struct TodayView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            NutriscopeTopBar(displayName: user?.displayName ?? "")
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
 
             BoundedScrollView {
-
-                VStack(alignment: .leading, spacing: 24) {
+                VStack(alignment: .leading, spacing: AppTheme.stackMD) {
                     todayHeader
                     ProteinArcRing(
                         current: proteinToday,
-                        target: proteinTarget,
-                        carbs: carbsToday,
-                        fat: fatToday,
-                        calories: caloriesToday
+                        target: proteinTarget
                     )
+                    DashboardSecondaryMacroGrid(carbs: carbsToday, fat: fatToday)
                     CoachInsightCard(
                         message: coachTip.isEmpty ? "Loading coach insight…" : coachTip,
                         actionTitle: quickAction.map(\.title),
@@ -87,28 +83,38 @@ struct TodayView: View {
                     mealsSection
                 }
                 .padding(.horizontal, AppTheme.marginMain)
+                .padding(.top, 8)
                 .padding(.bottom, 24)
-            
-        }
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(AppBackground())
         .navigationBarHidden(true)
+        .onAppear {
+            restoreCachedCoachTip()
+        }
         .task {
             if healthService.isAuthorized {
                 await healthService.refreshToday()
             }
-            await loadCoachTip()
+            await loadCoachTipIfNeeded()
         }
         .onChange(of: proteinToday) { _, _ in
             syncWidgetData()
-            Task { await loadCoachTip() }
+            Task { await loadCoachTipIfNeeded() }
         }
         .onChange(of: coachTip) { _, _ in syncWidgetData() }
     }
 
-    private func loadCoachTip() async {
-        let context = OpenAICoachService.makeContext(
+    private func restoreCachedCoachTip() {
+        let context = coachContext
+        let fingerprint = DailyCoachTipCache.fingerprint(for: context)
+        if let cached = DailyCoachTipCache.cachedTip(matching: fingerprint) {
+            coachTip = cached
+        }
+    }
+
+    private var coachContext: CoachAIContext {
+        OpenAICoachService.makeContext(
             settings: user,
             proteinToday: proteinToday,
             calorieRemaining: calorieRemaining,
@@ -119,12 +125,24 @@ struct TodayView: View {
                 proteinRemaining: proteinRemaining
             )
         )
+    }
+
+    private func loadCoachTipIfNeeded() async {
+        let context = coachContext
+        let fingerprint = DailyCoachTipCache.fingerprint(for: context)
+
+        if let cached = DailyCoachTipCache.cachedTip(matching: fingerprint) {
+            coachTip = cached
+            return
+        }
 
         do {
-            coachTip = try await OpenAICoachService.dailyTip(context: context)
+            let tip = try await OpenAICoachService.dailyTip(context: context)
+            DailyCoachTipCache.store(tip: tip, fingerprint: fingerprint)
+            coachTip = tip
         } catch {
             coachTip = (error as? LocalizedError)?.errorDescription
-                ?? "Add your OpenAI API key in Profile → Developer for personalized coaching."
+                ?? "Couldn't load your coach tip. Check your connection and try again."
         }
     }
 
@@ -141,18 +159,19 @@ struct TodayView: View {
     private var todayHeader: some View {
         HStack(alignment: .bottom) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("Today")
-                    .font(.largeTitle.weight(.heavy))
-                    .foregroundStyle(AppTheme.textPrimary)
                 Text(Date.now.formatted(.dateTime.weekday(.wide).month(.abbreviated).day()))
-                    .font(.body)
+                    .font(AppTypography.body)
                     .foregroundStyle(AppTheme.textSecondary)
+                Text("Today")
+                    .font(AppTypography.displayLGMobile)
+                    .foregroundStyle(AppTheme.textPrimary)
             }
             Spacer()
             if streak.currentStreak > 0 || streak.loggedToday {
                 StreakPill(days: max(streak.currentStreak, streak.loggedToday ? 1 : 0))
             }
         }
+        .padding(.top, 4)
     }
 
     private var tomorrowPlanLink: some View {
@@ -192,51 +211,67 @@ struct TodayView: View {
 
     @ViewBuilder
     private var mealsSection: some View {
-        Text("Today's Meals")
-            .font(.subheadline.weight(.bold))
-            .foregroundStyle(AppTheme.textPrimary)
+        HStack {
+            Text("Meals")
+                .font(AppTypography.headline)
+                .foregroundStyle(AppTheme.textPrimary)
+            Spacer()
+            if !todaysMeals.isEmpty {
+                Button("See All") {
+                    appState.selectedTab = .meals
+                }
+                .font(AppTypography.subheadline.weight(.bold))
+                .foregroundStyle(AppTheme.primary)
+            }
+        }
 
         if todaysMeals.isEmpty {
-            logMealPlaceholder(title: "Log Your First Meal")
+            emptyMealsCard
         } else {
-            ForEach(todaysMeals, id: \.id) { meal in
-                NavigationLink {
-                    MealResultView(analysis: meal.analysis, isNewScan: false, mealNote: meal.mealNote, showsLogAgain: true)
-                } label: {
-                    KineticMealRow(meal: meal)
+            ForEach(MealType.allCases) { type in
+                let mealsForType = todaysMeals
+                    .filter { $0.mealType == type }
+                    .sorted { $0.scannedAt < $1.scannedAt }
+                if !mealsForType.isEmpty {
+                    VStack(alignment: .leading, spacing: 10) {
+                        LabelCapsText(text: type.label, color: AppTheme.textSecondary)
+                        ForEach(mealsForType, id: \.id) { meal in
+                            NavigationLink {
+                                MealResultView(
+                                    analysis: meal.analysis,
+                                    isNewScan: false,
+                                    mealNote: meal.mealNote,
+                                    showsLogAgain: true
+                                )
+                            } label: {
+                                KineticMealRow(meal: meal)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
                 }
-                .buttonStyle(.plain)
             }
-            logMealPlaceholder(title: nextMealLabel)
         }
     }
 
-    private var nextMealLabel: String {
-        let hour = Calendar.current.component(.hour, from: .now)
-        switch hour {
-        case ..<11: return "Log Lunch"
-        case ..<16: return "Log Dinner"
-        default: return "Log Snack"
-        }
-    }
-
-    private func logMealPlaceholder(title: String) -> some View {
+    private var emptyMealsCard: some View {
         Button { appState.presentScanIfAllowed() } label: {
-            VStack(spacing: 8) {
-                Image(systemName: "plus.circle")
-                    .font(.title)
-                Text(title.uppercased())
-                    .font(AppTypography.labelCaps)
-                    .tracking(0.5)
+            VStack(alignment: .leading, spacing: 8) {
+                Text("No meals logged yet")
+                    .font(AppTypography.subheadline.weight(.semibold))
+                    .foregroundStyle(AppTheme.textPrimary)
+                Text("Scan or describe your first meal to start tracking protein.")
+                    .font(AppTypography.caption)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .multilineTextAlignment(.leading)
             }
-            .foregroundStyle(AppTheme.textSecondary)
-            .frame(maxWidth: .infinity)
-            .frame(height: 88)
-            .background(AppTheme.surfaceMuted)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(16)
+            .background(AppTheme.surface)
             .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous)
-                    .strokeBorder(AppTheme.outlineVariant, style: StrokeStyle(lineWidth: 2, dash: [6, 4]))
+                    .strokeBorder(AppTheme.surfaceContainerHighest, lineWidth: 1)
             )
         }
         .buttonStyle(.plain)

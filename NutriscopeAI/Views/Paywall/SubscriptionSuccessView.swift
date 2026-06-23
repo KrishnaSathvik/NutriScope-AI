@@ -8,13 +8,7 @@ struct SubscriptionSuccessView: View {
 
     var body: some View {
         ZStack {
-            AppTheme.background.ignoresSafeArea()
-
-            Circle()
-                .fill(AppTheme.coachOrange.opacity(0.12))
-                .frame(width: 320, height: 320)
-                .blur(radius: 60)
-                .offset(y: -180)
+            AppBackground(showsAmbientGlow: true)
 
             BoundedScrollView {
 
@@ -40,13 +34,13 @@ struct SubscriptionSuccessView: View {
 
                     VStack(spacing: 12) {
                         Text("You're Pro!")
-                            .font(AppTypography.largeTitle.weight(.heavy))
+                            .font(AppTypography.displayLGMobile)
                             .foregroundStyle(AppTheme.coachOrange)
                         Text("Pro is active now.")
                             .font(AppTypography.body.weight(.semibold))
                             .foregroundStyle(AppTheme.textPrimary)
                             .multilineTextAlignment(.center)
-                        Text("Create an account to save your profile and keep your Pro access connected across devices.")
+                        Text("Create an account to protect your profile and subscription access.")
                             .font(AppTypography.body)
                             .foregroundStyle(AppTheme.textSecondary)
                             .multilineTextAlignment(.center)
@@ -58,7 +52,7 @@ struct SubscriptionSuccessView: View {
                         }
                     }
 
-                    SurfaceCard {
+                    GlassCard {
                         VStack(alignment: .leading, spacing: 16) {
                             Text("Pro benefits unlocked")
                                 .font(AppTypography.headline)

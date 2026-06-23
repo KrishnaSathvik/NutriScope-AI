@@ -1,0 +1,267 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nutriscope AI - Log Saved</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#dfe0ff",
+                        "on-secondary-fixed": "#0e144d",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "surface-container": "#f1edec",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#002204",
+                        "on-primary": "#ffffff",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "on-tertiary-container": "#8fee8c",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#ffcdbd",
+                        "inverse-primary": "#ffb59c",
+                        "surface-tint": "#a93702",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "error": "#ba1a1a",
+                        "primary-container": "#a93702",
+                        "surface": "#fcf9f8",
+                        "on-secondary-container": "#444a83",
+                        "outline-variant": "#e0c0b5",
+                        "primary": "#812700",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#ddd9d8",
+                        "on-background": "#1c1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "secondary-container": "#b7bcfd",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "on-surface": "#1c1b1b",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "surface-container-highest": "#e6e1e1",
+                        "surface-container-high": "#ece7e7",
+                        "tertiary-fixed": "#99f895",
+                        "on-primary-fixed-variant": "#822800",
+                        "tertiary-container": "#006e1d",
+                        "background": "#fdf8f8",
+                        "surface-variant": "#e6e1e1",
+                        "surface-bright": "#fdf8f8",
+                        "primary-fixed-dim": "#ffb59c",
+                        "tertiary": "#005314",
+                        "inverse-on-surface": "#f4f0ef",
+                        "on-primary-fixed": "#380c00",
+                        "secondary": "#545a94",
+                        "surface-container-low": "#f7f2f2",
+                        "primary-fixed": "#ffdbcf",
+                        "on-error": "#ffffff",
+                        "outline": "#8c7168",
+                        "inverse-surface": "#313030",
+                        "gauge-track": "#eae7e7",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xs": "4px",
+                        "sm": "12px",
+                        "margin-desktop": "40px",
+                        "lg": "48px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "label-bold": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Ambient Background Gradient */
+        .ambient-bg {
+            background: radial-gradient(circle at 50% 0%, rgba(169, 55, 2, 0.05) 0%, transparent 70%),
+                        radial-gradient(circle at 100% 100%, rgba(0, 83, 20, 0.03) 0%, transparent 50%);
+            background-color: theme('colors.background');
+        }
+
+        /* Confetti Animation */
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 16px;
+            background-color: #a93702;
+            opacity: 0;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Subtle floating animation for the success icon */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* Entrance animation for card */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up {
+            animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="ambient-bg text-on-background font-body-md antialiased overflow-hidden min-h-screen relative flex flex-col">
+<!-- Confetti Container -->
+<div class="absolute inset-0 pointer-events-none z-0 overflow-hidden" id="confetti-container"></div>
+<!-- Main Content Canvas (No Nav Shell for Success Screen) -->
+<main class="flex-1 flex flex-col items-center justify-center px-margin-mobile relative z-10 w-full max-w-md mx-auto h-full py-12">
+<!-- Success Icon -->
+<div class="w-28 h-28 rounded-full bg-tertiary-container shadow-[0_8px_32px_rgba(0,110,29,0.25)] flex items-center justify-center mb-8 animate-float">
+<span class="material-symbols-outlined text-[64px] text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">
+                check_circle
+            </span>
+</div>
+<!-- Headline -->
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-background text-center mb-2 animate-slide-up" style="animation-delay: 0.1s;">
+            Log Saved!
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-center mb-10 animate-slide-up" style="animation-delay: 0.2s;">
+            Your meal has been successfully added to today's tracker.
+        </p>
+<!-- Summary Card (Glassmorphism Bento Style) -->
+<div class="w-full bg-glass-bg backdrop-blur-[20px] border border-glass-border shadow-sm rounded-xl p-md mb-12 animate-slide-up flex items-center gap-sm" style="animation-delay: 0.3s;">
+<!-- Meal Image -->
+<div class="shrink-0 relative rounded-lg overflow-hidden w-20 h-20 shadow-sm">
+<img alt="Meal photo" class="w-full h-full object-cover" data-alt="A close-up, top-down shot of a beautifully plated, healthy grilled chicken bowl. The bowl is a matte white ceramic, filled with a bed of fluffy quinoa, topped with perfectly grilled, sliced chicken breast with appealing grill marks. Around the chicken are vibrant roasted sweet potatoes, bright green steamed broccoli, and a drizzle of light tahini dressing. The lighting is soft, natural daylight creating a bright, high-key wellness aesthetic. The background is a clean, light wood surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVsJq5dt1nAtyk4-4uMLqKnvkbUZHjNt3bQwnrOFEy294NMzDdHQaX7QOb6TkhOZX-6045plmeRI3-bktmBE93LDvPOwWECzm6mixvanC1dhd1O8wKbkKhfpEaOYiaUHqWyLpoLtMoQ3HdQfd9VZ3Sbo1zWrPYSmLtTSQ0AS_g5T0xPGei9N1lOOJu4kWZmI6SHiDwPAXGimUmyfs1fezv0DVqWQXsgNahTdihkh-g296oqwbP_xhLE5Qr3fZh4WD241WKHQcKjFRk">
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+</div>
+<!-- Meal Details -->
+<div class="flex-1 min-w-0">
+<h3 class="font-headline-md text-[20px] leading-[28px] text-on-surface truncate mb-1">Grilled Chicken Bowl</h3>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-[16px] text-primary-container">local_fire_department</span>
+<span class="font-label-bold text-label-bold text-primary-container">420 kcal</span>
+</div>
+<!-- Macros -->
+<div class="flex gap-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-container/10 border border-primary-container/20 font-caption text-caption text-primary-container">
+                        35g Protein
+                    </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-caption text-caption">
+                        45g Carbs
+                    </span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-4 mt-auto animate-slide-up" style="animation-delay: 0.4s;">
+<button class="w-full py-4 rounded-full bg-primary-container text-on-primary font-label-bold text-[16px] leading-[24px] shadow-[0_4px_16px_rgba(169,55,2,0.3)] hover:scale-[1.02] transition-transform active:scale-95 flex items-center justify-center gap-2">
+                View in Today's Tracker
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="w-full py-4 rounded-full bg-transparent text-primary font-label-bold text-[16px] leading-[24px] hover:bg-primary-container/5 transition-colors active:scale-95">
+                Log Another Item
+            </button>
+</div>
+</main>
+<!-- Vanilla JS Confetti Logic -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#a93702', '#812700', '#ffb59c', '#006e1d', '#8fee8c']; // Brand primary and success colors
+            const particleCount = 75;
+
+            for (let i = 0; i < particleCount; i++) {
+                createConfetti(container, colors);
+            }
+        });
+
+        function createConfetti(container, colors) {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            
+            // Randomize properties
+            const left = Math.random() * 100; // 0 to 100 vw
+            const animationDuration = 2 + Math.random() * 3; // 2s to 5s
+            const animationDelay = Math.random() * 2; // 0s to 2s
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const width = 6 + Math.random() * 6; // 6px to 12px
+            const height = 12 + Math.random() * 12; // 12px to 24px
+
+            confetti.style.left = `${left}vw`;
+            confetti.style.backgroundColor = color;
+            confetti.style.width = `${width}px`;
+            confetti.style.height = `${height}px`;
+            confetti.style.animationDuration = `${animationDuration}s`;
+            confetti.style.animationDelay = `${animationDelay}s`;
+            
+            // Randomly make some circles
+            if (Math.random() > 0.5) {
+                confetti.style.borderRadius = '50%';
+                confetti.style.width = `${width}px`;
+                confetti.style.height = `${width}px`;
+            }
+
+            container.appendChild(confetti);
+
+            // Cleanup after animation
+            setTimeout(() => {
+                confetti.remove();
+            }, (animationDuration + animationDelay) * 1000);
+        }
+    </script>
+</body></html>

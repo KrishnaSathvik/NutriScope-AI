@@ -1,0 +1,314 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>NutriScope AI - Profile</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container": "#f0eee9",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "surface-container-highest": "#e4e2dd",
+                        "primary-fixed": "#ffdbcf",
+                        "on-surface": "#1b1c19",
+                        "background": "#fbf9f4",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-lowest": "#ffffff",
+                        "outline-variant": "#e0c0b5",
+                        "protein-teal": "#2D6A4F",
+                        "error-container": "#ffdad6",
+                        "coach-orange": "#F26B38",
+                        "surface": "#fbf9f4",
+                        "on-secondary-container": "#725b00",
+                        "secondary-fixed": "#ffe087",
+                        "on-background": "#1b1c19",
+                        "surface-container-high": "#eae8e3",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-tint": "#a93702",
+                        "on-primary": "#ffffff",
+                        "surface-container-low": "#f5f3ee",
+                        "primary-container": "#f26b38",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#30312e",
+                        "on-error": "#ffffff",
+                        "primary": "#a93702",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "secondary": "#735c00",
+                        "surface-dim": "#dbdad5",
+                        "surface-variant": "#e4e2dd",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "inverse-primary": "#ffb59c",
+                        "secondary-container": "#fdd34d",
+                        "warm-sun": "#FFD54F",
+                        "tertiary": "#5d5e63",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-bright": "#fbf9f4",
+                        "inverse-on-surface": "#f2f1ec",
+                        "ink-black": "#1C1C1E",
+                        "outline": "#8c7168",
+                        "paper-white": "#FFFFFF",
+                        "on-primary-container": "#561700",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-tertiary-container": "#2c2d31",
+                        "tertiary-container": "#949499",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "margin-main": "1.25rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-lg min-h-screen pb-24 md:pb-8 flex flex-col md:flex-row antialiased selection:bg-coach-orange selection:text-paper-white">
+<!-- TopAppBar (Visible on all screens, spans full width on mobile, top bar on desktop) -->
+<header class="w-full top-0 fixed md:sticky z-40 bg-background dark:bg-background flex flex-col justify-center border-none transition-shadow">
+<div class="flex items-center justify-between px-margin-main h-16 w-full max-w-7xl mx-auto">
+<!-- Leading Avatar -->
+<button class="w-10 h-10 rounded-full overflow-hidden hover:opacity-80 transition-opacity active:scale-95">
+<img alt="User Profile Photo" class="w-full h-full object-cover" data-alt="A close-up, high-quality photograph of a vibrant, healthy young person smiling warmly against a brightly lit, soft-focus minimalist gym background. The lighting is sunny and optimistic, reflecting a modern light-mode wellness aesthetic with subtle orange accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAN8F5SQJprJ78Vv9sNZczuey6DdostLN32S5oEBREFaXpX-iaV_Nkq_VOjwnSIw-lsgJ7Ygi2SF_4yjbupXVQGlIcjFwO_k9MR0kTLsO4JwAN1VrnLQtwksJzYt1teBfnR4JtM0sh7yVD0lWeRqHjNj5LdMUs9MJP3SiQqbMorSOliPhBovNdr30zV3E6P0uiNpV4rsgnqfE7gQuBVdMH6W8eifZ0ijZs0p_uBlhW7dwOdBaIpfEfSIxWob2WBbbIhfZz4d3n2A_DU">
+</button>
+<!-- Headline -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim tracking-tight">
+                NutriScope AI
+            </h1>
+<!-- Trailing Icon -->
+<button class="text-primary dark:text-inverse-primary hover:opacity-80 transition-opacity active:scale-95 p-2 rounded-full hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full max-w-3xl mx-auto px-margin-main pt-20 md:pt-stack-lg pb-stack-lg flex flex-col gap-stack-lg">
+<!-- Profile Header Section -->
+<section class="flex flex-col items-center justify-center text-center mt-4 mb-2">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-4 shadow-[0_8px_20px_0_rgba(242,107,56,0.15)] ring-4 ring-surface-container-lowest">
+<img alt="Large User Profile Photo" class="w-full h-full object-cover" data-alt="A close-up, high-quality photograph of a vibrant, healthy young person smiling warmly against a brightly lit, soft-focus minimalist gym background. The lighting is sunny and optimistic, reflecting a modern light-mode wellness aesthetic with subtle orange accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuACBrZbn8-CctLdlBOeAjZtM4BiFXVs1SXoc_Snf2wkQgUEr59lfYnLHkGUtJ6lWn6qC0vSfbZq-tugefMTh4ITqPfk5hLKIdmIgqYphBWj-3lCzGv7308zvhcXs8ok5R4z2P0EXqHNuvJN9ldcxj-kjau3hbQZqOs80NkdYWjBmTwFjOo-6o2pKA1_aE5gK3kUhgjjYhq58ry2ZJ6oGjBWiUViEAsShYLwDl49nPyemdedRtgvmL7Fp0M4AUGhVtvpQ_hbmWmxDsGd">
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-1">Alex Morgan</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">alex.morgan@example.com</p>
+</section>
+<!-- Subscription Bento Card -->
+<section class="bg-gradient-to-br from-surface-container-lowest to-surface-container rounded-[20px] p-gutter-card shadow-[0_12px_30px_0_rgba(242,107,56,0.08)] relative overflow-hidden group">
+<!-- Decorative Background Element -->
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-coach-orange/10 rounded-full blur-2xl group-hover:bg-coach-orange/20 transition-colors duration-500"></div>
+<div class="flex items-center justify-between relative z-10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-coach-orange/10 flex items-center justify-center text-coach-orange">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">NutriScope Pro</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Active until Oct 24, 2024</p>
+</div>
+</div>
+<button class="bg-coach-orange text-paper-white font-label-caps text-label-caps uppercase rounded-xl py-2 px-4 shadow-[0_4px_12px_0_rgba(242,107,56,0.3)] hover:scale-[1.02] active:scale-95 transition-all">
+                    Manage
+                </button>
+</div>
+</section>
+<!-- 2-Column Bento Grid for Goals & Tools -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<!-- Goals & Preferences -->
+<section class="flex flex-col gap-stack-sm">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase ml-2">Goals &amp; Preferences</h3>
+<div class="bg-surface-container-lowest rounded-[20px] p-2 shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] flex flex-col gap-1">
+<!-- Item -->
+<button class="w-full flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors active:scale-[0.98] text-left group">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-coach-orange group-hover:bg-coach-orange/10 transition-colors">
+<span class="material-symbols-outlined">flag</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight">Protein Target</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">150g / day</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-container group-hover:text-coach-orange transition-colors">chevron_right</span>
+</button>
+<!-- Divider -->
+<div class="h-[1px] w-full bg-surface-container mx-auto max-w-[90%]"></div>
+<!-- Item -->
+<button class="w-full flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors active:scale-[0.98] text-left group">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-protein-teal group-hover:bg-protein-teal/10 transition-colors">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight">Fitness Goal</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Muscle Gain</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-container group-hover:text-coach-orange transition-colors">chevron_right</span>
+</button>
+<!-- Divider -->
+<div class="h-[1px] w-full bg-surface-container mx-auto max-w-[90%]"></div>
+<!-- Item -->
+<button class="w-full flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors active:scale-[0.98] text-left group">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-warm-sun group-hover:bg-warm-sun/20 transition-colors">
+<span class="material-symbols-outlined" style="color: #d4a017;">restaurant</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight">Diet Preferences</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Gluten-Free, High Protein</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-container group-hover:text-coach-orange transition-colors">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Tools -->
+<section class="flex flex-col gap-stack-sm">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase ml-2">Tools</h3>
+<div class="bg-surface-container-lowest rounded-[20px] p-2 shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] flex flex-col gap-1">
+<!-- Item -->
+<button class="w-full flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors active:scale-[0.98] text-left group">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">calculate</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight">Recipe Calculator</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Analyze custom meals</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-container group-hover:text-coach-orange transition-colors">chevron_right</span>
+</button>
+<!-- Divider -->
+<div class="h-[1px] w-full bg-surface-container mx-auto max-w-[90%]"></div>
+<!-- Item -->
+<button class="w-full flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors active:scale-[0.98] text-left group">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight">Grocery List</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Auto-generated from plans</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-container group-hover:text-coach-orange transition-colors">chevron_right</span>
+</button>
+<!-- Divider -->
+<div class="h-[1px] w-full bg-surface-container mx-auto max-w-[90%]"></div>
+<!-- Item -->
+<button class="w-full flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors active:scale-[0.98] text-left group">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">alarm</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight">Reminders</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Water &amp; meal tracking</p>
+</div>
+<span class="material-symbols-outlined text-tertiary-container group-hover:text-coach-orange transition-colors">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+<!-- Account Actions -->
+<section class="flex flex-col gap-stack-sm mb-8">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase ml-2">Account</h3>
+<div class="bg-surface-container-lowest rounded-[20px] p-2 shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] flex flex-col gap-1">
+<button class="w-full flex items-center gap-4 p-3 hover:bg-surface-container-low rounded-xl transition-colors active:scale-[0.98] text-left group">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline group-hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">manage_accounts</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-on-surface leading-tight">Account Information</h4>
+</div>
+<span class="material-symbols-outlined text-tertiary-container group-hover:text-coach-orange transition-colors">chevron_right</span>
+</button>
+<!-- Divider -->
+<div class="h-[1px] w-full bg-surface-container mx-auto max-w-[90%]"></div>
+<button class="w-full flex items-center gap-4 p-3 hover:bg-error-container/50 rounded-xl transition-colors active:scale-[0.98] text-left group">
+<div class="w-10 h-10 rounded-full bg-error-container/30 flex items-center justify-center text-error group-hover:bg-error-container transition-colors">
+<span class="material-symbols-outlined">logout</span>
+</div>
+<div class="flex-1">
+<h4 class="font-title-md text-title-md text-error leading-tight">Sign Out</h4>
+</div>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Visible on mobile, hidden on web ideally but logic says render if it's a top level. Prompt doesn't enforce hiding on md for this specific generation explicitly except in shared components logic. We will hide on md to follow 'Responsive Pivot' rule) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 rounded-t-xl bg-surface-container-lowest dark:bg-surface-container-lowest shadow-[0_-4px_20px_0_rgba(242,107,56,0.08)] pb-safe border-none">
+<div class="flex justify-around items-center px-4 pt-3 pb-6">
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-xl">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-label-caps text-label-caps">Today</span>
+</button>
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-xl">
+<span class="material-symbols-outlined mb-1">restaurant_menu</span>
+<span class="font-label-caps text-label-caps">Meals</span>
+</button>
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-xl">
+<span class="material-symbols-outlined mb-1">qr_code_scanner</span>
+<span class="font-label-caps text-label-caps">Scan</span>
+</button>
+<!-- Inactive Tab -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors w-16 h-14 rounded-xl">
+<span class="material-symbols-outlined mb-1">smart_toy</span>
+<span class="font-label-caps text-label-caps">Coach</span>
+</button>
+<!-- Active Tab -->
+<button class="flex flex-col items-center justify-center text-coach-orange dark:text-coach-orange font-bold scale-110 transition-all duration-200 w-16 h-14 rounded-xl">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</button>
+</div>
+</nav>
+</body></html>

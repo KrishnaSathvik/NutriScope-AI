@@ -1,0 +1,280 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Coach Chat - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed": "#ffdbcf",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "outline": "#8c7168",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#735c00",
+                        "secondary-fixed": "#ffe087",
+                        "outline-variant": "#e0c0b5",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-dim": "#dbdad5",
+                        "inverse-primary": "#ffb59c",
+                        "ink-black": "#1C1C1E",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "primary-fixed-dim": "#ffb59c",
+                        "tertiary": "#5d5e63",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-surface": "#1b1c19",
+                        "tertiary-container": "#949499",
+                        "protein-teal": "#2D6A4F",
+                        "surface-container-low": "#f5f3ee",
+                        "surface": "#fbf9f4",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-highest": "#e4e2dd",
+                        "primary-container": "#f26b38",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-tertiary-container": "#2c2d31",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fdd34d",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-container-high": "#eae8e3",
+                        "on-background": "#1b1c19",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-tint": "#a93702",
+                        "on-secondary-container": "#725b00",
+                        "on-primary-container": "#561700",
+                        "primary": "#a93702",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container": "#f0eee9",
+                        "on-surface-variant": "#58423a",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2dd",
+                        "paper-white": "#FFFFFF",
+                        "background": "#fbf9f4",
+                        "coach-orange": "#F26B38",
+                        "surface-bright": "#fbf9f4",
+                        "inverse-surface": "#30312e",
+                        "warm-sun": "#FFD54F"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem",
+                        "margin-main": "1.25rem"
+                    },
+                    fontFamily: {
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "body-sm": ["15px", { lineHeight: "20px", fontWeight: "400" }],
+                        "headline-xl": ["34px", { lineHeight: "41px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "30px", fontWeight: "700" }],
+                        "headline-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "title-md": ["20px", { lineHeight: "25px", fontWeight: "600" }],
+                        "body-lg": ["17px", { lineHeight: "22px", fontWeight: "400" }],
+                        "numeric-display": ["48px", { lineHeight: "48px", letterSpacing: "-0.04em", fontWeight: "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Hide scrollbar for clean chat UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .chat-container {
+            height: calc(100vh - 4rem - 5rem - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+        }
+        .msg-enter {
+            animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        @keyframes slideUpFade {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg text-body-lg antialiased flex flex-col h-screen overflow-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim z-40">
+<div class="flex items-center justify-between px-margin-main h-16 w-full">
+<button class="text-on-surface-variant hover:opacity-80 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim">Nutriscope AI</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<!-- Main Canvas: Chat Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar chat-container px-margin-main py-stack-lg flex flex-col space-y-stack-lg relative" id="chat-messages">
+<!-- Date Divider -->
+<div class="flex justify-center w-full">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest bg-surface-container-low px-3 py-1 rounded-full">Today</span>
+</div>
+<!-- Coach Message (Greeting) -->
+<div class="flex items-end space-x-2 self-start max-w-[85%] msg-enter" style="animation-delay: 0.1s;">
+<div class="w-8 h-8 rounded-full bg-surface-dim flex items-center justify-center shrink-0 mb-1">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="bg-surface-dim text-on-surface px-4 py-3 rounded-2xl rounded-bl-sm shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] font-body-lg text-body-lg">
+<p>Hey! Ready for your afternoon check-in. How did lunch go?</p>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-end space-x-2 self-end max-w-[85%] msg-enter" style="animation-delay: 0.2s;">
+<div class="bg-primary-fixed text-on-primary-container px-4 py-3 rounded-2xl rounded-br-sm shadow-[0_4px_20px_0_rgba(242,107,56,0.08)] font-body-lg text-body-lg">
+<p>I had a turkey sandwich and some chips. Felt a bit sluggish after.</p>
+</div>
+</div>
+<!-- Coach Message (Analysis) -->
+<div class="flex items-end space-x-2 self-start max-w-[85%] msg-enter" style="animation-delay: 0.3s;">
+<div class="w-8 h-8 rounded-full bg-surface-dim flex items-center justify-center shrink-0 mb-1">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="smart_toy">smart_toy</span>
+</div>
+<div class="bg-surface-dim text-on-surface px-4 py-3 rounded-2xl rounded-bl-sm shadow-[0_4px_20px_0_rgba(0,0,0,0.03)] font-body-lg text-body-lg">
+<p>That sluggish feeling is likely a carb crash. The sandwich and chips are heavy on quick carbs, but a bit low on sustaining protein.</p>
+</div>
+</div>
+<!-- Coach Suggestion Card (Bento Style) -->
+<div class="self-start ml-10 max-w-[80%] msg-enter" style="animation-delay: 0.4s;">
+<div class="bg-paper-white border border-surface-variant rounded-2xl p-4 shadow-[0_8px_30px_0_rgba(242,107,56,0.05)] flex flex-col space-y-stack-md">
+<div class="flex items-center space-x-2 text-primary">
+<span class="material-symbols-outlined" data-icon="lightbulb" data-weight="fill">lightbulb</span>
+<span class="font-title-md text-title-md">Coach Suggestion</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Try adding <strong>20g protein</strong> to your next meal to stabilize your energy levels for the evening.
+                </p>
+<div class="flex space-x-stack-sm pt-2">
+<button class="bg-coach-orange text-white px-4 py-2 rounded-xl font-label-caps text-label-caps hover:opacity-90 transition-opacity flex-1 text-center">
+                        Add Protein Focus
+                    </button>
+<button class="bg-transparent border-2 border-coach-orange text-coach-orange px-4 py-2 rounded-xl font-label-caps text-label-caps hover:bg-primary-fixed transition-colors">
+                        Skip
+                    </button>
+</div>
+</div>
+</div>
+<!-- User Message (Image Attachment) -->
+<div class="flex items-end space-x-2 self-end max-w-[85%] msg-enter" style="animation-delay: 0.5s;">
+<div class="bg-primary-fixed p-1 rounded-2xl rounded-br-sm shadow-[0_4px_20px_0_rgba(242,107,56,0.08)]">
+<div class="bg-cover bg-center w-48 h-48 rounded-xl" data-alt="A modern, high-key photograph of a grilled chicken breast salad with vibrant green spinach, cherry tomatoes, and a light vinaigrette dressing, sitting on a clean white marble countertop under natural soft daylight. The aesthetic is clean, appetizing, and focused on healthy nutrition." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCLiGzh3EAmGu56l6L1Obq3BbKQ5W20nN9wPgA41FD_FxKPzYJ9VfltNucz8wXcWhVp7Hrg3l1Pp6xNY2Y6HbZMTXGANIPX_gJRokRM-Ig1bmlI5mTY5_ye_KRZGJJ4AY59dViq3YX55HroKIujJog7tFUio9GMGVsbnl7aeRac34eGK9Wc4aLCjj5926_xC1Q4tbOrRKea-dhaUVXowkEYVoVeQL4ROzN5qW-eAhMZFVKlWNamefeELEx-63Orh8F7qxlM2qb8JTW5')"></div>
+</div>
+</div>
+<!-- User Message text for image -->
+<div class="flex items-end space-x-2 self-end max-w-[85%] msg-enter -mt-2" style="animation-delay: 0.6s;">
+<div class="bg-primary-fixed text-on-primary-container px-4 py-2 rounded-2xl rounded-tr-sm rounded-br-sm shadow-[0_4px_20px_0_rgba(242,107,56,0.08)] font-body-sm text-body-sm">
+<p>Planning this for dinner. Is it enough?</p>
+</div>
+</div>
+<!-- Empty space for scrolling above input -->
+<div class="h-8 shrink-0"></div>
+</main>
+<!-- Chat Input Area (Pinned above BottomNav) -->
+<div class="bg-surface border-t border-surface-variant px-margin-main py-3 flex items-center space-x-stack-sm z-30 pb-24 md:pb-3 relative">
+<button class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center hover:bg-surface-variant transition-colors shrink-0">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<div class="flex-1 bg-surface-container-lowest rounded-full px-4 py-2 border border-surface-variant focus-within:border-primary-fixed-dim focus-within:shadow-[0_0_0_2px_rgba(255,219,207,0.5)] transition-all flex items-center">
+<input class="w-full bg-transparent border-none outline-none focus:ring-0 font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant" placeholder="Ask your coach..." type="text">
+</div>
+<button class="w-10 h-10 rounded-full bg-coach-orange text-white flex items-center justify-center hover:opacity-90 active:scale-95 transition-all shrink-0 shadow-[0_4px_10px_0_rgba(242,107,56,0.3)]">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface dark:bg-surface-container-lowest shadow-[0_-4px_20px_0_rgba(242,107,56,0.1)] md:hidden">
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe-area h-20 bg-surface dark:bg-surface-container-lowest rounded-t-xl">
+<!-- Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-fixed-variant px-4 py-1.5 hover:bg-surface-container-highest transition-colors rounded-xl">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-caps text-label-caps mt-1">Today</span>
+</button>
+<!-- Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-fixed-variant px-4 py-1.5 hover:bg-surface-container-highest transition-colors rounded-xl">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-label-caps text-label-caps mt-1">Meals</span>
+</button>
+<!-- Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-fixed-variant px-4 py-1.5 hover:bg-surface-container-highest transition-colors rounded-xl">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-caps text-label-caps mt-1">Scan</span>
+</button>
+<!-- ACTIVE -->
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-4 py-1.5 scale-102 transition-all duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="smart_toy" data-weight="fill">smart_toy</span>
+<span class="font-label-caps text-label-caps mt-1">Coach</span>
+</button>
+<!-- Inactive -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-fixed-variant px-4 py-1.5 hover:bg-surface-container-highest transition-colors rounded-xl">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</button>
+</div>
+</nav>
+<!-- Desktop Navigation Fallback (Hidden on Mobile) -->
+<div class="hidden md:flex fixed left-0 top-16 h-full w-64 bg-surface-container-low border-r border-surface-variant flex-col p-4 space-y-2 z-30">
+<button class="flex items-center space-x-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-colors rounded-xl w-full text-left font-title-md text-title-md">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Today</span>
+</button>
+<button class="flex items-center space-x-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-colors rounded-xl w-full text-left font-title-md text-title-md">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span>Meals</span>
+</button>
+<button class="flex items-center space-x-3 bg-primary-container text-on-primary-container px-4 py-3 rounded-xl w-full text-left font-title-md text-title-md font-bold">
+<span class="material-symbols-outlined" data-icon="smart_toy" data-weight="fill">smart_toy</span>
+<span>Coach Chat</span>
+</button>
+</div>
+<script>
+        // Simple script to auto-scroll to bottom on load to show latest messages
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatContainer = document.getElementById('chat-messages');
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        });
+    </script>
+</body></html>

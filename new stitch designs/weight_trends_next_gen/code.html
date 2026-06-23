@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Weight Tracking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e6e1e1",
+                        "surface-container": "#f1edec",
+                        "secondary-container": "#b7bcfd",
+                        "outline-variant": "#e0c0b5",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#ffcdbd",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#8fee8c",
+                        "background": "#fdf8f8",
+                        "on-secondary-fixed": "#0e144d",
+                        "surface-container-low": "#f7f2f2",
+                        "surface-tint": "#a93702",
+                        "outline": "#8c7168",
+                        "surface-container-high": "#ece7e7",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f4f0ef",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary": "#005314",
+                        "primary-fixed-dim": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "on-background": "#1c1b1b",
+                        "surface": "#fcf9f8",
+                        "secondary": "#545a94",
+                        "on-primary": "#ffffff",
+                        "primary": "#812700",
+                        "surface-dim": "#ddd9d8",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#a93702",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-container": "#006e1d",
+                        "surface-bright": "#fdf8f8",
+                        "inverse-primary": "#ffb59c",
+                        "gauge-track": "#eae7e7",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "on-secondary-container": "#444a83",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "on-primary-fixed": "#380c00",
+                        "tertiary-fixed": "#99f895"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fdf8f8;
+            background-image: radial-gradient(circle at top right, rgba(169, 55, 2, 0.05) 0%, transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(84, 90, 148, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+        
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 24px -8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 32px -8px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart-gradient-line {
+            stroke: url(#primaryGradient);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            filter: drop-shadow(0 4px 6px rgba(169, 55, 2, 0.2));
+            animation: drawLine 2s ease-out forwards;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
+
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .chart-point {
+            fill: #ffffff;
+            stroke: #a93702;
+            stroke-width: 3;
+            transition: r 0.2s ease, filter 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .chart-point:hover {
+            r: 8;
+            filter: drop-shadow(0 0 8px rgba(169, 55, 2, 0.5));
+        }
+
+        .goal-arc-bg {
+            stroke: #eae7e7;
+            stroke-width: 12;
+            fill: none;
+            stroke-linecap: round;
+        }
+
+        .goal-arc-fg {
+            stroke: url(#goalGradient);
+            stroke-width: 12;
+            fill: none;
+            stroke-linecap: round;
+            stroke-dasharray: 200;
+            stroke-dashoffset: 60; /* Adjust for progress */
+            transition: stroke-dashoffset 1s ease-out;
+            filter: drop-shadow(0 2px 8px rgba(169, 55, 2, 0.3));
+        }
+
+        .fab-shadow {
+            box-shadow: 0 8px 24px -4px rgba(169, 55, 2, 0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen pb-32 pt-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-glass-border shadow-sm bg-glass-bg flex justify-between items-center px-margin-mobile h-16">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a young professional woman smiling lightly, illuminated by soft natural window light, styled in a clean modern premium aesthetic with soft focus background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPv6Se6Ez4v9GhMoWgL464XzpACKuRId-GIUcKmvXeTLEo7S-E4QLQedXdV96-rhI4XS0Q7mTyNd17hkOLp4s4bbbI9WRgmqVNDmjf1B8Ed7Upo2iPf8R06hLwNB1p1MG-LI_2OAxbtO0LaRY8vz8C6SQVei2eJZlwII6YAtGTzXFRjcfgefViZwb6ZBGFv9AosJT_OJoXuqMdm8gl4SKoib88-3_EY1bsu2IikXjjoNuuC57VHcC69AU4l2arYk1IdvomTnGQW8tE"/>
+</div>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">Nutriscope AI</h1>
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop space-y-md">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end mb-lg">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-xs">Weight Trends</p>
+<h2 class="font-headline-md text-headline-md-mobile text-on-background">Your Progress</h2>
+</div>
+<div class="mt-sm md:mt-0 glass-card rounded-full px-sm py-xs flex items-center gap-xs">
+<span class="material-symbols-outlined text-tertiary-container" style="font-size: 18px;">trending_down</span>
+<span class="font-label-bold text-label-bold text-tertiary-container">-1.2 lbs this week</span>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Main Chart Area (Spans 8 cols on desktop) -->
+<div class="md:col-span-8 glass-card rounded-DEFAULT p-md flex flex-col relative overflow-hidden">
+<div class="flex justify-between items-start mb-xl relative z-10">
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant">Current Weight</p>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary">164.5</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant">lbs</span>
+</div>
+</div>
+<!-- Time Filters -->
+<div class="flex gap-2 bg-surface-container-high rounded-full p-1">
+<button class="px-3 py-1 rounded-full font-caption text-caption text-on-surface-variant hover:bg-surface-variant transition-colors">1W</button>
+<button class="px-3 py-1 rounded-full bg-primary-container text-on-primary-container font-caption text-caption shadow-sm">1M</button>
+<button class="px-3 py-1 rounded-full font-caption text-caption text-on-surface-variant hover:bg-surface-variant transition-colors">3M</button>
+</div>
+</div>
+<!-- SVG Chart Container -->
+<div class="w-full h-64 relative mt-auto">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="primaryGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#f26b38"></stop>
+<stop offset="100%" stop-color="#a93702"></stop>
+</lineargradient>
+<lineargradient id="areaGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="rgba(169, 55, 2, 0.15)"></stop>
+<stop offset="100%" stop-color="rgba(169, 55, 2, 0)"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<g class="stroke-surface-variant" stroke-dasharray="4,4" stroke-width="1">
+<line x1="0" x2="800" y1="50" y2="50"></line>
+<line x1="0" x2="800" y1="100" y2="100"></line>
+<line x1="0" x2="800" y1="150" y2="150"></line>
+</g>
+<!-- Area Fill -->
+<path d="M50,150 L150,130 L250,140 L350,100 L450,110 L550,70 L650,85 L750,50 L750,200 L50,200 Z" fill="url(#areaGradient)"></path>
+<!-- Line -->
+<path class="chart-gradient-line" d="M50,150 L150,130 L250,140 L350,100 L450,110 L550,70 L650,85 L750,50" fill="none"></path>
+<!-- Data Points -->
+<circle class="chart-point" cx="50" cy="150" r="5"></circle>
+<circle class="chart-point" cx="150" cy="130" r="5"></circle>
+<circle class="chart-point" cx="250" cy="140" r="5"></circle>
+<circle class="chart-point" cx="350" cy="100" r="5"></circle>
+<circle class="chart-point" cx="450" cy="110" r="5"></circle>
+<circle class="chart-point" cx="550" cy="70" r="5"></circle>
+<circle class="chart-point" cx="650" cy="85" r="5"></circle>
+<!-- Current Highlighted Point -->
+<circle cx="750" cy="50" fill="rgba(169, 55, 2, 0.1)" r="16"></circle>
+<circle class="chart-point" cx="750" cy="50" r="6" style="filter: drop-shadow(0 0 8px rgba(169, 55, 2, 0.8));"></circle>
+</svg>
+</div>
+</div>
+<!-- Secondary Insight Cards (Spans 4 cols on desktop) -->
+<div class="md:col-span-4 flex flex-col gap-md">
+<!-- Goal Progress Card -->
+<div class="glass-card rounded-DEFAULT p-md flex flex-col items-center justify-center relative">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant absolute top-md left-md">Goal: 155.0 lbs</h3>
+<div class="relative w-40 h-40 mt-sm">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<defs>
+<lineargradient id="goalGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#ffb59c"></stop>
+<stop offset="100%" stop-color="#a93702"></stop>
+</lineargradient>
+</defs>
+<circle class="goal-arc-bg" cx="50" cy="50" r="40"></circle>
+<circle class="goal-arc-fg" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="100"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md-mobile text-primary">62%</span>
+<span class="font-caption text-caption text-on-surface-variant">There</span>
+</div>
+</div>
+</div>
+<!-- Recent Log Card -->
+<div class="glass-card rounded-DEFAULT p-md flex flex-col justify-between flex-1">
+<div>
+<h3 class="font-label-bold text-label-bold text-on-surface-variant mb-sm">Latest Weigh-in</h3>
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">scale</span>
+</div>
+<div>
+<p class="font-body-lg text-body-lg text-on-background">Today, 7:30 AM</p>
+<p class="font-caption text-caption text-on-surface-variant">Fasted, Post-Workout</p>
+</div>
+</div>
+</div>
+<button class="mt-md w-full py-sm bg-surface-container hover:bg-surface-variant transition-colors rounded-lg font-label-bold text-label-bold text-primary flex items-center justify-center gap-xs">
+                        View History
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 backdrop-blur-lg rounded-t-lg shadow-lg border-t border-glass-border bg-glass-bg md:hidden h-20 flex justify-around items-center pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-bold text-label-bold text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-bold text-label-bold text-[10px]">Insights</span>
+</a>
+<!-- FAB Integration for Scan -->
+<a class="relative -top-6 flex flex-col items-center justify-center bg-primary text-on-primary w-16 h-16 rounded-full border-4 border-surface fab-shadow active:scale-95 transition-transform duration-200 z-50" href="#">
+<span class="material-symbols-outlined text-[32px]">center_focus_strong</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label-bold text-label-bold text-[10px]">Log</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-bold text-label-bold text-[10px]">Plan</span>
+</a>
+</nav>
+</body></html>

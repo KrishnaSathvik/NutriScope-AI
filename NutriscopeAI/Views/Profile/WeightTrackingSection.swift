@@ -52,7 +52,7 @@ struct WeightTrackingSection: View {
     }
 
     private var currentWeightCard: some View {
-        SurfaceCard {
+        GlassCard {
             ZStack(alignment: .topTrailing) {
                 Circle()
                     .fill(AppTheme.coachOrange.opacity(0.12))
@@ -103,7 +103,7 @@ struct WeightTrackingSection: View {
     }
 
     private var logWeightCard: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Log Today's Weight")
                     .font(AppTypography.subheadline.weight(.semibold))
@@ -124,7 +124,7 @@ struct WeightTrackingSection: View {
     }
 
     private var trendChartCard: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text("30-Day Trend")
@@ -150,7 +150,7 @@ struct WeightTrackingSection: View {
     }
 
     private var coachInsightCard: some View {
-        SurfaceCard {
+        GlassCard {
             HStack(alignment: .top, spacing: 14) {
                 Circle()
                     .fill(AppTheme.coachOrange.opacity(0.12))
@@ -187,6 +187,11 @@ struct WeightTrackingSection: View {
         modelContext.insert(WeightLog(weightKg: value))
         try? modelContext.save()
         weightInput = ""
+        ToastCenter.shared.show(
+            "Weight Logged",
+            subtitle: String(format: "%.1f kg recorded.", value),
+            style: .success
+        )
     }
 }
 

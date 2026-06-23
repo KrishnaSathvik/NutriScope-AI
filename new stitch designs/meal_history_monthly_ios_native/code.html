@@ -1,0 +1,345 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ProteinPlate AI - Meal History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed": "#380c00",
+                      "on-secondary-fixed-variant": "#3c427a",
+                      "on-tertiary-fixed": "#002204",
+                      "background": "#fdf8f8",
+                      "secondary-container": "#b7bcfd",
+                      "primary-container": "#a93702",
+                      "glass-bg": "rgba(255, 255, 255, 0.7)",
+                      "primary-fixed-dim": "#ffb59c",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#313030",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#a93702",
+                      "secondary": "#545a94",
+                      "glass-border": "rgba(255, 255, 255, 0.9)",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "surface-container-highest": "#e6e1e1",
+                      "surface-variant": "#e6e1e1",
+                      "primary": "#812700",
+                      "on-surface-variant": "#58423a",
+                      "on-primary-container": "#ffcdbd",
+                      "inverse-on-surface": "#f4f0ef",
+                      "surface-container-high": "#ece7e7",
+                      "tertiary-container": "#006e1d",
+                      "surface-dim": "#ddd9d8",
+                      "on-surface": "#1c1b1b",
+                      "tertiary-fixed": "#99f895",
+                      "on-secondary-container": "#444a83",
+                      "surface": "#fcf9f8",
+                      "secondary-fixed-dim": "#bdc2ff",
+                      "on-tertiary-container": "#8fee8c",
+                      "tertiary-fixed-dim": "#7edb7c",
+                      "surface-container": "#f1edec",
+                      "on-secondary-fixed": "#0e144d",
+                      "on-primary-fixed-variant": "#822800",
+                      "gauge-track": "#eae7e7",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#dfe0ff",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f7f2f2",
+                      "surface-bright": "#fdf8f8",
+                      "on-tertiary-fixed-variant": "#005314",
+                      "on-background": "#1c1b1b",
+                      "outline": "#8c7168",
+                      "outline-variant": "#e0c0b5",
+                      "inverse-primary": "#ffb59c",
+                      "primary-fixed": "#ffdbcf",
+                      "tertiary": "#005314"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "md": "24px",
+                      "xl": "80px",
+                      "margin-mobile": "16px",
+                      "lg": "48px",
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "sm": "12px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "caption": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-bold": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .material-symbols-outlined[data-weight="outline"] {
+            font-variation-settings: 'FILL' 0;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative overflow-x-hidden font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<div class="fixed top-0 right-0 w-96 h-96 bg-primary-container/5 rounded-full blur-[80px] pointer-events-none -z-10 transform translate-x-1/3 -translate-y-1/3"></div>
+<div class="fixed bottom-0 left-0 w-96 h-96 bg-tertiary-fixed/5 rounded-full blur-[80px] pointer-events-none -z-10 transform -translate-x-1/3 translate-y-1/3"></div>
+<header class="bg-glass-bg text-primary font-headline-md text-headline-md fixed top-0 w-full z-50 backdrop-blur-md border-b border-glass-border flex justify-between items-center px-margin-mobile h-16 w-full">
+<div class="flex items-center hover:opacity-80 transition-opacity cursor-pointer">
+<img alt="User profile photo" class="w-8 h-8 rounded-full object-cover border border-outline-variant mr-sm" data-alt="A small, professional portrait photo of a healthy individual looking optimistic, soft lighting, 1:1 aspect ratio, clean background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL3Chl8BlZDp6UqH3FJuwvTzEnXnjZA8SkJdqmzkJuGwD3giKszCmysD-Z32cbR9ZdIwrEgfIvsq1SKRHT7qdEDtb7wHjn46jNMdiLKLt6q7oNaCVcY5KZd2pp3nyDIZlJFzV5bajvCrUxhhtJVgNU4G5KEIHEs280oJhRteer98VTgmmTSV9GGmSVu1hf-TOnihjEgODwRPhelMmdn_BQRXmmWRtNBFLzTmqVuaTx8niJCd-PxenW2lNuQYZvc4Zsj_vkyGKdXQ8A">
+</div>
+<div class="font-headline-md text-headline-md font-extrabold text-primary">
+            Today
+        </div>
+<button class="hover:opacity-80 transition-opacity active:scale-95 transition-transform w-8 h-8 flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile w-full max-w-lg mx-auto">
+<section class="flex justify-between items-center mb-6">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">June 2026</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</section>
+<section class="bg-glass-bg backdrop-blur-md border border-glass-border rounded-xl p-md shadow-[0_4px_24px_rgba(0,0,0,0.02)] mb-6">
+<div class="grid grid-cols-7 gap-y-6 gap-x-2 text-center">
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">S</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">M</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">T</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">W</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">T</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">F</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">S</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface-variant opacity-50">31</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">1
+                    <div class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">2
+                    <div class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">3
+                    <div class="w-1.5 h-1.5 rounded-full bg-surface-dim mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">4
+                    <div class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">5
+                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">6
+                    <div class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">7
+                    <div class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">8
+                    <div class="w-1.5 h-1.5 rounded-full bg-surface-dim mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 bg-primary-container/10 rounded-full w-8 mx-auto -mt-1 pt-1 text-primary font-bold shadow-sm ring-1 ring-primary-container/20">9
+                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">10
+                    <div class="w-1.5 h-1.5 rounded-full bg-surface-variant mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">11
+                    <div class="w-1.5 h-1.5 rounded-full bg-surface-variant mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">12
+                    <div class="w-1.5 h-1.5 rounded-full bg-surface-variant mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">13
+                    <div class="w-1.5 h-1.5 rounded-full bg-surface-variant mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">14
+                    <div class="w-1.5 h-1.5 rounded-full bg-surface-variant mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">15
+                    <div class="w-1.5 h-1.5 rounded-full bg-surface-variant mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">16
+                    <div class="w-1.5 h-1.5 rounded-full bg-surface-variant mt-1"></div>
+</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">17</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">18</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">19</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">20</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">21</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">22</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">23</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">24</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">25</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">26</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">27</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">28</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">29</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface font-500">30</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface-variant opacity-50">1</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface-variant opacity-50">2</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface-variant opacity-50">3</div>
+<div class="flex flex-col items-center justify-start h-10 text-on-surface-variant opacity-50">4</div>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant/30 flex justify-center gap-4 text-caption font-caption text-on-surface-variant">
+<div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div> Hit Goal</div>
+<div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-primary"></div> Close</div>
+<div class="flex items-center gap-1"><div class="w-2 h-2 rounded-full bg-surface-dim"></div> Logged</div>
+</div>
+</section>
+<section class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant/20 shadow-sm flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-bold text-label-bold">
+<span class="material-symbols-outlined text-sm" data-weight="outline">analytics</span>
+                    Monthly Average
+                </div>
+<div>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">168<span class="text-headline-md">g</span></div>
+<div class="text-caption font-caption text-on-surface-variant mt-1">Protein per day</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant/20 shadow-sm flex flex-col justify-between h-32 hover:scale-[1.02] transition-transform cursor-pointer relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-tertiary-fixed/20 rounded-full blur-xl"></div>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-bold text-label-bold relative z-10">
+<span class="material-symbols-outlined text-sm" data-weight="outline">local_fire_department</span>
+                    Best Streak
+                </div>
+<div class="relative z-10">
+<div class="font-display-lg-mobile text-display-lg-mobile text-on-surface tracking-tight">12<span class="text-headline-md text-on-surface-variant"> Days</span></div>
+<div class="text-caption font-caption text-tertiary mt-1 font-500">Top 5% this month!</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="bg-glass-bg text-primary font-label-caps text-label-caps font-display-lg-mobile text-display-lg-mobile text-primary fixed bottom-0 w-full z-50 backdrop-blur-md border-t border-glass-border fixed bottom-0 left-0 w-full flex justify-around items-center pt-2 pb-6 px-4 md:hidden pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low/50 transition-colors w-16 rounded-xl py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span>Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold hover:bg-surface-container-low/50 transition-colors w-16 rounded-xl py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" data-weight="fill">restaurant_menu</span>
+<span>Meals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low/50 transition-colors w-16 rounded-xl py-1 active:scale-90 transition-transform relative -top-4 bg-primary text-on-primary shadow-lg ring-4 ring-background h-14 w-14 rounded-full" href="#">
+<span class="material-symbols-outlined" style="font-size: 28px;">barcode_scanner</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low/50 transition-colors w-16 rounded-xl py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">psychology</span>
+<span>Coach</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-low/50 transition-colors w-16 rounded-xl py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span>Profile</span>
+</a>
+</nav>
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 24px); }
+    </style>
+</body></html>

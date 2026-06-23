@@ -37,17 +37,16 @@ struct InsightsTrendsView: View {
     }
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            BoundedScrollView {
 
             VStack(alignment: .leading, spacing: 24) {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Your Trends")
-                        .font(AppTypography.largeTitle)
-                        .foregroundStyle(AppTheme.inkBlack)
-                    Text("Deep nutritional insights powered by your coach.")
-                        .font(AppTypography.body)
-                        .foregroundStyle(AppTheme.textSecondary)
-                }
+                KineticToolHeader(
+                    title: "Your Trends",
+                    subtitle: "Deep nutritional insights powered by your coach."
+                )
 
                 progressOverTimeCard
                 macroSplitCard
@@ -55,10 +54,9 @@ struct InsightsTrendsView: View {
                 proteinDensityCard
             }
             .padding(AppTheme.marginMain)
-            .padding(.bottom, 32)
-        
+
+            }
         }
-        .background(AppBackground())
         .navigationTitle("Insights")
         .navigationBarTitleDisplayMode(.inline)
         .task {
@@ -69,7 +67,7 @@ struct InsightsTrendsView: View {
     }
 
     private var progressOverTimeCard: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 16) {
                 HStack {
                     VStack(alignment: .leading, spacing: 4) {
@@ -94,7 +92,7 @@ struct InsightsTrendsView: View {
     }
 
     private var macroSplitCard: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Macro Split")
                     .font(AppTypography.title3.weight(.semibold))
@@ -136,7 +134,7 @@ struct InsightsTrendsView: View {
             }
             .padding(.horizontal, 4)
 
-            SurfaceCard {
+            GlassCard {
                 VStack(spacing: 12) {
                     ForEach(report.observations) { observation in
                         HStack(alignment: .top, spacing: 14) {
@@ -174,7 +172,7 @@ struct InsightsTrendsView: View {
     }
 
     private var proteinDensityCard: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Protein Density")
                     .font(AppTypography.title3.weight(.semibold))

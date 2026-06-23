@@ -14,10 +14,12 @@ enabled = true
 site_url = "com.nutriscopeai.app://auth-callback"
 additional_redirect_urls = ["com.nutriscopeai.app://auth-callback"]
 jwt_expiry = 3600
-enable_anonymous_sign_ins = false
+# Required for guest-first flow: BackendAuthBootstrap signs in anonymously before scans.
+enable_anonymous_sign_ins = true
 
 [auth.external.apple]
 enabled = true
+client_id = "com.nutriscopeai.app"
 
 [functions.analyze-meal]
 verify_jwt = true

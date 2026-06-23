@@ -1,0 +1,274 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Coach Advice - ProteinPlate AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a93702",
+                        "surface": "#fbf9f4",
+                        "tertiary": "#5d5e63",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb59c",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-variant": "#e4e2dd",
+                        "paper-white": "#FFFFFF",
+                        "ink-black": "#1C1C1E",
+                        "surface-tint": "#a93702",
+                        "outline": "#8c7168",
+                        "tertiary-fixed": "#e3e2e7",
+                        "protein-teal": "#2D6A4F",
+                        "surface-container-highest": "#e4e2dd",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "surface-container": "#f0eee9",
+                        "on-secondary-container": "#725b00",
+                        "primary-fixed": "#ffdbcf",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#e0c0b5",
+                        "primary-container": "#f26b38",
+                        "surface-dim": "#dbdad5",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-tertiary-container": "#2c2d31",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffe087",
+                        "on-surface": "#1b1c19",
+                        "on-secondary": "#ffffff",
+                        "background": "#fbf9f4",
+                        "coach-orange": "#F26B38",
+                        "surface-bright": "#fbf9f4",
+                        "tertiary-container": "#949499",
+                        "on-primary-container": "#561700",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#30312e",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "warm-sun": "#FFD54F",
+                        "secondary-container": "#fdd34d",
+                        "on-background": "#1b1c19",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-on-surface": "#f2f1ec",
+                        "secondary": "#735c00",
+                        "surface-container-low": "#f5f3ee",
+                        "on-surface-variant": "#58423a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem",
+                        "margin-main": "1.25rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle Ambient Glow for Cards */
+        .ambient-shadow {
+            box-shadow: 0 8px 24px -6px rgba(242, 107, 56, 0.08), 0 4px 10px -4px rgba(242, 107, 56, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-40 bg-surface flex justify-between items-center px-margin-main pt-stack-lg pb-stack-md transition-all duration-300 backdrop-blur-md bg-opacity-90">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 rounded-full overflow-hidden border-2 border-surface-container-high focus:outline-none focus:ring-2 focus:ring-primary hover:opacity-80 transition-opacity active:scale-95 duration-100">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A bright, modern avatar portrait of an athletic user, shot in a high-key light studio with soft white and warm orange undertones, reflecting a supportive and healthy lifestyle aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoy5QEqwymZJ4MjQhI1dYQWTAzL0tw60cP_XWkTuidV4jXOeCpcz7tMYeJCBDDCjNkHjrP7t5dA6eHrKayXsS41i-Ppj2p0FQgbzqa08WY2GYLOhIFItWO6N4m-OBZT2m1IAPei8nQ-S2U5s_qlyaoIdp-8QuvOwBRx5EizytUnj5MvS-QTllJMrS8eCTMJYgXBugqUFu_goiAwg7adlUwWVpQY1ZsqSgEi2XVDjp69dmNFiq53NCQO0hXPkHtuKf4GDQz-4ufl2jr">
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">ProteinPlate AI</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-primary hover:bg-primary-container/10 transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-[28px]" data-icon="monitoring">monitoring</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 px-margin-main pt-[100px] pb-[100px] flex flex-col gap-stack-lg">
+<!-- Coach Intro / Chat Bubble -->
+<section class="flex flex-col gap-stack-sm animate-fade-in-up">
+<div class="flex items-end gap-3 mb-1">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center shadow-sm shrink-0 relative">
+<span class="material-symbols-outlined text-on-primary-container text-[24px] icon-fill">robot_2</span>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-surface rounded-full"></div>
+</div>
+<div class="bg-surface-container-lowest ambient-shadow rounded-2xl rounded-bl-sm p-gutter-card max-w-[85%]">
+<p class="font-title-md text-title-md text-on-surface mb-2">Hey Alex! You're on track.</p>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        You’ve hit <strong class="text-primary font-semibold">65%</strong> of your daily protein goal. Let's look at what's working today and how to crush the rest of your targets tonight.
+                    </p>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant/60 ml-[60px] font-medium uppercase tracking-wider">Coach AI • Just now</p>
+</section>
+<!-- Protein Wins (Horizontal Bento Scroll) -->
+<section class="flex flex-col gap-stack-sm mt-stack-md">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container icon-fill">star</span>
+                    Protein Wins Today
+                </h2>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory -mx-margin-main px-margin-main scrollbar-hide">
+<!-- Win Card 1 -->
+<div class="snap-center shrink-0 w-[240px] bg-surface-container-lowest rounded-xl p-gutter-card ambient-shadow border border-outline-variant/20 flex flex-col gap-3 active:scale-[1.02] transition-transform">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined icon-fill text-[20px]">egg_alt</span>
+</div>
+<span class="font-label-caps text-label-caps text-protein-teal bg-protein-teal/10 px-2 py-1 rounded-md">Breakfast</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">3-Egg Omelette</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Great start with high bioavailability.</p>
+</div>
+<div class="mt-auto pt-2 flex items-center justify-between border-t border-surface-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Protein</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">+24g</span>
+</div>
+</div>
+<!-- Win Card 2 -->
+<div class="snap-center shrink-0 w-[240px] bg-surface-container-lowest rounded-xl p-gutter-card ambient-shadow border border-outline-variant/20 flex flex-col gap-3 active:scale-[1.02] transition-transform">
+<div class="flex justify-between items-start">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined icon-fill text-[20px]">icecream</span>
+</div>
+<span class="font-label-caps text-label-caps text-primary bg-primary/10 px-2 py-1 rounded-md">Snack</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Greek Yogurt</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Perfect mid-day casein hit.</p>
+</div>
+<div class="mt-auto pt-2 flex items-center justify-between border-t border-surface-variant">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Protein</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile text-primary">+18g</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Next Meal Strategy (Hero Card) -->
+<section class="flex flex-col gap-stack-sm">
+<h2 class="font-title-md text-title-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">restaurant</span>
+                Next Meal Strategy
+            </h2>
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow border border-outline-variant/20 group">
+<div class="h-32 w-full relative">
+<img alt="Suggested Meal" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A beautifully plated, high-protein grilled chicken salad with quinoa and vibrant green spinach, shot from above with soft natural light, embodying a clean, modern, and appetizing aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkYbOmGjiKVL5Gv6MPfBNr1DiTNHtcpcXBeewzdu-Y0u647L9IoZOQYRZPrarzwJXbPFVwdcWoaXbWv_ASo6764QCnw4kvf2JofBDeGnGn2ExPY9t8annoYEweWCkBkXEJp1TPrYBoHr4vdlpW62CRetZtVY4iTaHuXzbrGD_qu0btU1dYlSPydeV-N6k87g6eynokk0Fc2kSDt4M3F-5IeVutFwMeiBlv1uLQVoLUkQ3A1V4FzKb1o_ShzromXVDF5dL02nPMr1fh">
+<div class="absolute inset-0 bg-gradient-to-t from-ink-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex gap-2">
+<span class="bg-coach-orange text-paper-white font-label-caps text-label-caps px-2.5 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm shadow-sm">Target: 40g</span>
+</div>
+</div>
+<div class="p-gutter-card flex flex-col gap-3">
+<div>
+<h3 class="font-title-md text-title-md text-on-surface mb-1">Lean Protein Dinner</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant">You need about 40g to hit your target. A grilled chicken breast with a light quinoa salad is the perfect macro-friendly choice for tonight.</p>
+</div>
+<div class="bg-surface rounded-lg p-3 flex items-start gap-3 mt-1">
+<span class="material-symbols-outlined text-protein-teal mt-0.5">lightbulb</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+<strong class="text-on-surface">Coach Tip:</strong> Try adding half a cup of edamame to your salad for an easy extra 8g of plant-based protein.
+                        </p>
+</div>
+<button class="w-full mt-2 bg-coach-orange hover:bg-primary text-paper-white font-title-md text-title-md py-3 rounded-xl transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined">add_circle</span>
+                        Log Planned Meal
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-2 pb-safe bg-surface-container/90 backdrop-blur-md border-t-0 shadow-[0_-4px_20px_rgba(0,0,0,0.03)] z-50 rounded-t-xl transition-transform duration-300">
+<!-- Active Tab: Today (Assuming Coach Advice is part of Today's flow) -->
+<button class="flex flex-col items-center justify-center w-16 h-14 group">
+<div class="relative flex items-center justify-center w-full h-full text-primary font-bold active:scale-102 transition-transform duration-200">
+<div class="flex flex-col items-center justify-center z-10">
+<span class="material-symbols-outlined mb-1 icon-fill text-[24px] transition-transform group-active:scale-90" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-caps text-[10px] tracking-wide">Today</span>
+</div>
+<div class="absolute inset-0 bg-primary/10 rounded-xl opacity-100 transition-opacity"></div>
+</div>
+</button>
+<!-- Inactive Tab: Scan -->
+<button class="flex flex-col items-center justify-center w-16 h-14 group text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl">
+<span class="material-symbols-outlined mb-1 text-[24px] transition-transform group-active:scale-90" data-icon="document_scanner">document_scanner</span>
+<span class="font-label-caps text-[10px] tracking-wide">Scan</span>
+</button>
+<!-- Inactive Tab: History -->
+<button class="flex flex-col items-center justify-center w-16 h-14 group text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl">
+<span class="material-symbols-outlined mb-1 text-[24px] transition-transform group-active:scale-90" data-icon="history">history</span>
+<span class="font-label-caps text-[10px] tracking-wide">History</span>
+</button>
+<!-- Inactive Tab: Profile -->
+<button class="flex flex-col items-center justify-center w-16 h-14 group text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-xl">
+<span class="material-symbols-outlined mb-1 text-[24px] transition-transform group-active:scale-90" data-icon="person">person</span>
+<span class="font-label-caps text-[10px] tracking-wide">Profile</span>
+</button>
+<!-- iOS Safe Area padding element -->
+<div class="h-6 w-full absolute bottom-[-24px]"></div>
+</nav>
+<script>
+        // Lightweight JS for scroll-based shadow on TopAppBar
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-sm', 'border-b', 'border-outline-variant/20');
+            } else {
+                header.classList.remove('shadow-sm', 'border-b', 'border-outline-variant/20');
+            }
+        });
+    </script>
+</body></html>

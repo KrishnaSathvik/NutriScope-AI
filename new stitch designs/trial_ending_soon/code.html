@@ -1,0 +1,252 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Nutriscope AI - Trial Ending</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffdbcf",
+                        "on-error": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "outline": "#8c7168",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#735c00",
+                        "secondary-fixed": "#ffe087",
+                        "outline-variant": "#e0c0b5",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-dim": "#dbdad5",
+                        "inverse-primary": "#ffb59c",
+                        "ink-black": "#1C1C1E",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "primary-fixed-dim": "#ffb59c",
+                        "tertiary": "#5d5e63",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-surface": "#1b1c19",
+                        "tertiary-container": "#949499",
+                        "protein-teal": "#2D6A4F",
+                        "surface-container-low": "#f5f3ee",
+                        "surface": "#fbf9f4",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-container-highest": "#e4e2dd",
+                        "primary-container": "#f26b38",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-tertiary-container": "#2c2d31",
+                        "on-error-container": "#93000a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#fdd34d",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-container-high": "#eae8e3",
+                        "on-background": "#1b1c19",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-tint": "#a93702",
+                        "on-secondary-container": "#725b00",
+                        "on-primary-container": "#561700",
+                        "primary": "#a93702",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#380c00",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container": "#f0eee9",
+                        "on-surface-variant": "#58423a",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2dd",
+                        "paper-white": "#FFFFFF",
+                        "background": "#fbf9f4",
+                        "coach-orange": "#F26B38",
+                        "surface-bright": "#fbf9f4",
+                        "inverse-surface": "#30312e",
+                        "warm-sun": "#FFD54F"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem",
+                        "margin-main": "1.25rem"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glow-shadow {
+            box-shadow: 0 8px 32px 0 rgba(242, 107, 56, 0.15);
+        }
+        .progress-gradient {
+            background: linear-gradient(90deg, #F26B38 0%, #FFD54F 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-sm relative overflow-x-hidden">
+<!-- Top App Bar (Suppressed on Transactional Screens - Rendering a ghost back button instead) -->
+<header class="w-full top-0 sticky z-40 bg-surface flex items-center justify-between px-margin-main h-16">
+<button aria-label="Dismiss" class="text-warm-sun hover:opacity-80 transition-opacity flex items-center justify-center p-2 rounded-full">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-extrabold text-primary">
+            Nutriscope AI
+        </div>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-md mx-auto px-margin-main pb-32 flex flex-col pt-stack-md z-10">
+<!-- Urgency Header -->
+<section class="text-center mb-stack-lg animate-[fadeIn_0.5s_ease-out]">
+<div class="inline-flex items-center justify-center bg-error-container text-error rounded-full px-4 py-2 mb-stack-md">
+<span class="material-symbols-outlined mr-2" style="font-variation-settings: 'FILL' 1;">timer</span>
+<span class="font-label-caps text-label-caps uppercase">Your trial ends tomorrow</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-ink-black mb-stack-sm">
+                Keep the momentum going.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                You've built incredible habits this week. Don't stop now.
+            </p>
+</section>
+<!-- Progress Bento Grid -->
+<section class="mb-stack-lg">
+<h2 class="font-title-md text-title-md text-ink-black mb-stack-md">Trial Recap</h2>
+<div class="grid grid-cols-2 gap-gutter-card">
+<!-- Protein Goal Card -->
+<div class="bg-paper-white rounded-xl p-4 glow-shadow flex flex-col relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-20 h-20 bg-primary-fixed opacity-20 rounded-full blur-xl"></div>
+<div class="flex items-center text-primary mb-2">
+<span class="material-symbols-outlined mr-2" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-label-caps text-label-caps uppercase">Protein Goal</span>
+</div>
+<div class="font-numeric-display text-numeric-display text-ink-black mb-1">5/7</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Days Hit</div>
+<div class="w-full bg-warm-sun/20 h-2 rounded-full mt-4 overflow-hidden">
+<div class="progress-gradient h-full rounded-full w-[71%]"></div>
+</div>
+</div>
+<!-- Meals Logged Card -->
+<div class="bg-paper-white rounded-xl p-4 glow-shadow flex flex-col relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-20 h-20 bg-secondary-fixed opacity-20 rounded-full blur-xl"></div>
+<div class="flex items-center text-secondary mb-2">
+<span class="material-symbols-outlined mr-2" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-caps text-label-caps uppercase">Meals Logged</span>
+</div>
+<div class="font-numeric-display text-numeric-display text-ink-black mb-1">21</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Total Entries</div>
+<div class="mt-4 flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-paper-white flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-sm">egg_alt</span></div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-paper-white flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-sm">lunch_dining</span></div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border-2 border-paper-white flex items-center justify-center text-on-surface-variant"><span class="material-symbols-outlined text-sm">set_meal</span></div>
+</div>
+</div>
+<!-- Insights Unlocked Card (Full Width) -->
+<div class="col-span-2 bg-paper-white rounded-xl p-4 glow-shadow flex items-center justify-between">
+<div>
+<div class="flex items-center text-protein-teal mb-1">
+<span class="material-symbols-outlined mr-2" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="font-label-caps text-label-caps uppercase">AI Coach Insights</span>
+</div>
+<div class="font-title-md text-title-md text-ink-black">3 breakthrough patterns</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Ready to review</div>
+</div>
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">lock_open</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Options -->
+<section class="mb-stack-lg">
+<h2 class="font-title-md text-title-md text-ink-black mb-stack-md">Choose your plan</h2>
+<!-- Yearly Plan (Selected) -->
+<label class="block relative mb-stack-md cursor-pointer transition-transform duration-200 active:scale-95">
+<input checked="" class="peer sr-only" name="plan" type="radio" value="yearly">
+<div class="w-full bg-paper-white border-2 border-coach-orange rounded-xl p-4 flex items-center justify-between glow-shadow">
+<div class="absolute -top-3 right-4 bg-coach-orange text-white font-label-caps text-label-caps uppercase px-3 py-1 rounded-full shadow-sm">
+                        Best Value
+                    </div>
+<div>
+<div class="font-title-md text-title-md text-ink-black flex items-center">
+                            Yearly Pro
+                        </div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                            $59.99 / year
+                        </div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-coach-orange">$4.99</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">/ month</div>
+</div>
+</div>
+</label>
+<!-- Monthly Plan -->
+<label class="block cursor-pointer transition-transform duration-200 active:scale-95">
+<input class="peer sr-only" name="plan" type="radio" value="monthly">
+<div class="w-full bg-paper-white border-2 border-transparent peer-checked:border-coach-orange rounded-xl p-4 flex items-center justify-between shadow-sm hover:bg-surface-container-lowest transition-colors">
+<div>
+<div class="font-title-md text-title-md text-ink-black">
+                            Monthly Pro
+                        </div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                            Cancel anytime
+                        </div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-ink-black">$9.99</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">/ month</div>
+</div>
+</div>
+</label>
+</section>
+</main>
+<!-- Fixed Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full glass-panel border-t border-surface-container-high px-margin-main py-stack-md pb-8 z-50">
+<button class="w-full h-16 bg-coach-orange text-white rounded-xl font-title-md text-title-md flex items-center justify-center shadow-lg hover:opacity-90 transition-opacity active:scale-[0.98]">
+<span class="material-symbols-outlined mr-2" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+            Continue as Pro
+        </button>
+<p class="text-center font-body-sm text-body-sm text-on-surface-variant mt-3">
+            Auto-renews until canceled. <a class="underline" href="#">Terms</a> apply.
+        </p>
+</div>
+</body></html>

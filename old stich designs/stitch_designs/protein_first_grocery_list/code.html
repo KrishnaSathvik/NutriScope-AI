@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Grocery List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#5d5e63",
+                    "outline": "#8c7168",
+                    "on-primary-fixed": "#380c00",
+                    "on-tertiary-container": "#2c2d31",
+                    "secondary-fixed-dim": "#ebc23e",
+                    "on-tertiary-fixed": "#1a1b1f",
+                    "on-tertiary-fixed-variant": "#46464b",
+                    "surface-container-low": "#f5f3ee",
+                    "secondary-fixed": "#ffe087",
+                    "on-primary-container": "#561700",
+                    "background": "#fbf9f4",
+                    "tertiary-fixed": "#e3e2e7",
+                    "surface-container-highest": "#e4e2dd",
+                    "primary-fixed": "#ffdbcf",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#fdd34d",
+                    "tertiary-container": "#949499",
+                    "outline-variant": "#e0c0b5",
+                    "surface-bright": "#fbf9f4",
+                    "on-secondary-fixed-variant": "#574500",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error": "#ffffff",
+                    "ink-black": "#1C1C1E",
+                    "error": "#ba1a1a",
+                    "surface-container": "#f0eee9",
+                    "on-error-container": "#93000a",
+                    "on-background": "#1b1c19",
+                    "inverse-on-surface": "#f2f1ec",
+                    "on-primary-fixed-variant": "#822800",
+                    "surface-variant": "#e4e2dd",
+                    "on-surface-variant": "#58423a",
+                    "tertiary-fixed-dim": "#c6c6cb",
+                    "protein-teal": "#2D6A4F",
+                    "on-surface": "#1b1c19",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#a93702",
+                    "coach-orange": "#F26B38",
+                    "surface-container-high": "#eae8e3",
+                    "on-secondary-container": "#725b00",
+                    "inverse-surface": "#30312e",
+                    "primary-container": "#f26b38",
+                    "on-secondary-fixed": "#241a00",
+                    "error-container": "#ffdad6",
+                    "paper-white": "#FFFFFF",
+                    "primary": "#a93702",
+                    "on-primary": "#ffffff",
+                    "secondary": "#735c00",
+                    "inverse-primary": "#ffb59c",
+                    "surface-dim": "#dbdad5",
+                    "surface": "#fbf9f4",
+                    "warm-sun": "#FFD54F",
+                    "primary-fixed-dim": "#ffb59c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "1.5rem",
+                    "margin-main": "1.25rem",
+                    "gutter-card": "1rem",
+                    "stack-sm": "0.5rem",
+                    "stack-md": "1rem"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "title-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "headline-xl": [
+                            "Hanken Grotesk"
+                    ],
+                    "numeric-display": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "28px",
+                            {
+                                    "lineHeight": "34px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "17px",
+                            {
+                                    "lineHeight": "22px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "title-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "25px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "15px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "30px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-xl": [
+                            "34px",
+                            {
+                                    "lineHeight": "41px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "numeric-display": [
+                            "48px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "800"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Checkbox Custom Styling */
+        input[type="checkbox"] {
+            appearance: none;
+            background-color: transparent;
+            margin: 0;
+            font: inherit;
+            color: currentColor;
+            width: 1.5em;
+            height: 1.5em;
+            border: 2px solid theme('colors.outline');
+            border-radius: theme('borderRadius.DEFAULT');
+            display: grid;
+            place-content: center;
+            transition: all 0.2s ease-in-out;
+        }
+
+        input[type="checkbox"]::before {
+            content: "";
+            width: 0.85em;
+            height: 0.85em;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em white;
+            background-color: white;
+            transform-origin: center;
+            clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: theme('colors.coach-orange');
+            border-color: theme('colors.coach-orange');
+        }
+
+        input[type="checkbox"]:checked::before {
+            transform: scale(1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased pb-24 min-h-screen flex flex-col pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-background dark:bg-background flex items-center justify-between px-margin-main h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-surface-variant">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A small, circular avatar portrait of a fit individual smiling in a bright, modern gym setting with soft natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4Kx1sC9jyconGv4FhcWgoV6a-r4NBCxjXAAp0ZVQtDJ4qLc8D-1n8E5q90lSeqIPvLKi5YKMpXv-OJayyS_IziJ_viO9kisnubSqUXy-I6YYC3r4HITNyNvyNezuYAQI9ZIS4GSpXrKCpv7PEBM6babeeZZfvbg9c_uNWEJpYkIr39XyTy0PF0wZAaruljhjr51wz4pt7GUI3_83xfFBq7qXpKHq6ER0-o6B6Z4jjkNZMf7aJ9UYhGNg1woGKTHimHiK5xlPkjtvV"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">Nutriscope AI</h1>
+</div>
+<button class="text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-2xl" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 px-margin-main py-stack-lg max-w-3xl mx-auto w-full">
+<!-- Header Section -->
+<div class="mb-stack-lg flex items-center justify-between">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-background">Grocery List</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Tools to help you hit your targets.</p>
+</div>
+<button class="bg-primary-container/10 text-primary w-12 h-12 rounded-xl flex items-center justify-center hover:bg-primary-container/20 transition-colors">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-stack-md">
+<!-- Suggested for Protein Gap Card (Spans full width on mobile, 8 cols on tablet/desktop) -->
+<div class="md:col-span-12 lg:col-span-8 bg-paper-white rounded-xl p-gutter-card shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-surface-variant flex flex-col relative overflow-hidden">
+<!-- Subtle background glow -->
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-coach-orange/10 rounded-full blur-2xl"></div>
+<div class="flex items-center gap-2 mb-stack-md relative z-10">
+<div class="bg-primary-container/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined fill" data-icon="bolt">bolt</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-background">Suggested for your Protein Gap</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-stack-md relative z-10">You're short 45g of protein today. Add these to boost your intake.</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-stack-sm mt-auto relative z-10">
+<!-- Suggestion Item 1 -->
+<button class="flex items-center p-3 rounded-lg border border-surface-variant hover:border-coach-orange/50 hover:bg-surface-container-low transition-colors group text-left">
+<div class="w-12 h-12 rounded bg-surface-container-highest overflow-hidden mr-3 shrink-0">
+<img class="w-full h-full object-cover" data-alt="A clean, appetizing close-up of a bowl of thick Greek yogurt topped with a few almonds, shot in bright natural light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPZvddhVUiVjM3GqA1--7Cf-djdlUbmnxOZHTYhu32Wa7zs9oNBtNeymSncA3xrGJ69wurpA9CcWn1Liv_Wd57jKIn2R1aVoLZMgH2IrAYUvWSgirvJCN662w-H3W1oyVN7_-a8B_xS5sewyGXrqwgCAsB7WtNCiWEj_CS_ZN2vYYKyHpW1gwHS4qr-9EX7BzwnWJm7Qqsf5vKPKmyDFlZ9S_O1lhmvWBjQpxdc-xqQ2UNKRXGmtRdpWFtznMHxFrCdEIjj5de5h2a"/>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-background text-sm">Greek Yogurt</div>
+<div class="font-body-sm text-body-sm text-primary">+15g Protein</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-coach-orange ml-auto opacity-0 group-hover:opacity-100 transition-opacity" data-icon="add_circle">add_circle</span>
+</button>
+<!-- Suggestion Item 2 -->
+<button class="flex items-center p-3 rounded-lg border border-surface-variant hover:border-coach-orange/50 hover:bg-surface-container-low transition-colors group text-left">
+<div class="w-12 h-12 rounded bg-surface-container-highest overflow-hidden mr-3 shrink-0">
+<img class="w-full h-full object-cover" data-alt="Two perfectly boiled eggs sliced in half on a clean white plate, bright modern kitchen aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaIlDIhR2gGlAjV1ZQPG-QiseAwoLA-hVdfh4IH2hlwDRwOAFvxrkrNo3seQnh0lWqIjfcESzYRhTcyZdplLW6PmUXFog-3Vq8mCcpZubpbI3qiAWVsTpv80BgeMgp_IJxouLBhuBKOWkHcX04luYtQ81JPg0xr9HVRoioTWOuZhx54hA-GRvdhi9EGBrGsnm3yZ3DTyNdVJNjxN-IhlZPkmV4cql6qxsXXNjaEUhWkSN1OGGoGl2IIRcBFY5-OnEdH_4sxPgjqTDz"/>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-background text-sm">Eggs (x3)</div>
+<div class="font-body-sm text-body-sm text-primary">+18g Protein</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-coach-orange ml-auto opacity-0 group-hover:opacity-100 transition-opacity" data-icon="add_circle">add_circle</span>
+</button>
+<!-- Suggestion Item 3 -->
+<button class="flex items-center p-3 rounded-lg border border-surface-variant hover:border-coach-orange/50 hover:bg-surface-container-low transition-colors group text-left">
+<div class="w-12 h-12 rounded bg-surface-container-highest overflow-hidden mr-3 shrink-0">
+<img class="w-full h-full object-cover" data-alt="A package of fresh, lean sliced turkey breast from a deli, minimalist packaging, bright lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7x8bM38ca1qjvu_YTiaBwIiuQF5b7e9ce5Et8Ak3LjY25Vg7XyOiJp4DfgkozJ0xHl1BZ8jzHi14ruXX798UFnbGhzbrw_N7qTeUD2LPAfbkhIVHMio6rfyXhFOQ6IdBj2YVx8TIivUUIg5Z4UuJEaouUQ_P7ZZJ3B5uNF19kSnuVmEEbNZ0-2n2iOrlVFA2IK6hHMJVkgMJ00fLy5a5lo6yxW4HeLf14D2kspa6DwXD21glO545Jm-4Q2zzlL3kRvxq1vS0z_e_y"/>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-background text-sm">Lean Turkey</div>
+<div class="font-body-sm text-body-sm text-primary">+22g Protein</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-coach-orange ml-auto opacity-0 group-hover:opacity-100 transition-opacity" data-icon="add_circle">add_circle</span>
+</button>
+</div>
+</div>
+<!-- Macro Summary Card (Spans 4 cols on tablet/desktop) -->
+<div class="md:col-span-12 lg:col-span-4 bg-surface-container-low rounded-xl p-gutter-card flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-4xl text-coach-orange mb-2" data-icon="shopping_basket">shopping_basket</span>
+<div class="font-headline-lg text-headline-lg text-on-background">12 Items</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Ready for checkout</div>
+<div class="w-full bg-surface-variant rounded-full h-2 mt-stack-md overflow-hidden">
+<div class="bg-coach-orange h-full rounded-full" style="width: 60%"></div>
+</div>
+<div class="w-full flex justify-between font-label-caps text-label-caps text-on-surface-variant mt-2 uppercase">
+<span>Healthy Choice</span>
+<span>60%</span>
+</div>
+</div>
+<!-- Manual Grocery List -->
+<div class="md:col-span-12 bg-paper-white rounded-xl p-gutter-card shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-surface-variant mt-stack-sm">
+<div class="flex items-center justify-between mb-stack-md border-b border-surface-variant pb-4">
+<h3 class="font-title-md text-title-md text-on-background">Your List</h3>
+<button class="font-body-sm text-body-sm text-coach-orange hover:underline">Clear Checked</button>
+</div>
+<div class="space-y-1">
+<!-- List Item -->
+<label class="flex items-center p-3 hover:bg-surface-container-lowest rounded-lg cursor-pointer group transition-colors">
+<input class="mr-4" type="checkbox"/>
+<span class="font-body-lg text-body-lg text-on-background group-has-[:checked]:line-through group-has-[:checked]:text-on-surface-variant transition-all">Almond Milk (Unsweetened)</span>
+<div class="ml-auto flex items-center gap-2">
+<span class="font-label-caps text-label-caps bg-surface-variant text-on-surface-variant px-2 py-1 rounded-full uppercase">Dairy Aisle</span>
+<button class="text-tertiary hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+</label>
+<!-- List Item -->
+<label class="flex items-center p-3 hover:bg-surface-container-lowest rounded-lg cursor-pointer group transition-colors">
+<input class="mr-4" type="checkbox"/>
+<span class="font-body-lg text-body-lg text-on-background group-has-[:checked]:line-through group-has-[:checked]:text-on-surface-variant transition-all">Spinach (Large Bag)</span>
+<div class="ml-auto flex items-center gap-2">
+<span class="font-label-caps text-label-caps bg-protein-teal/10 text-protein-teal px-2 py-1 rounded-full uppercase">Produce</span>
+<button class="text-tertiary hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+</label>
+<!-- List Item -->
+<label class="flex items-center p-3 hover:bg-surface-container-lowest rounded-lg cursor-pointer group transition-colors">
+<input checked="" class="mr-4" type="checkbox"/>
+<span class="font-body-lg text-body-lg text-on-background group-has-[:checked]:line-through group-has-[:checked]:text-on-surface-variant transition-all">Chicken Breast (2 lbs)</span>
+<div class="ml-auto flex items-center gap-2">
+<span class="font-label-caps text-label-caps bg-coach-orange/10 text-coach-orange px-2 py-1 rounded-full uppercase">Meat</span>
+<button class="text-tertiary hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+</label>
+<!-- List Item -->
+<label class="flex items-center p-3 hover:bg-surface-container-lowest rounded-lg cursor-pointer group transition-colors">
+<input class="mr-4" type="checkbox"/>
+<span class="font-body-lg text-body-lg text-on-background group-has-[:checked]:line-through group-has-[:checked]:text-on-surface-variant transition-all">Oats</span>
+<div class="ml-auto flex items-center gap-2">
+<span class="font-label-caps text-label-caps bg-warm-sun/20 text-on-secondary-container px-2 py-1 rounded-full uppercase">Pantry</span>
+<button class="text-tertiary hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+</label>
+</div>
+<!-- Quick Add Input -->
+<div class="mt-stack-md pt-4 border-t border-surface-variant">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant" data-icon="add">add</span>
+<input class="w-full bg-surface-container-lowest border-none rounded-lg py-3 pl-10 pr-4 font-body-lg text-body-lg text-on-background placeholder:text-on-surface-variant focus:ring-2 focus:ring-coach-orange focus:outline-none transition-shadow" placeholder="Add custom item..." type="text"/>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container-lowest dark:bg-surface-container-lowest shadow-[0_-4px_20px_0_rgba(242,107,56,0.1)] md:hidden">
+<ul class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-paper-white">
+<li>
+<a class="flex flex-col items-center justify-center text-tertiary hover:text-primary transition-colors scale-105 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-caps text-label-caps">Today</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center justify-center text-tertiary hover:text-primary transition-colors scale-105 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="restaurant">restaurant</span>
+<span class="font-label-caps text-label-caps">Meals</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center justify-center text-tertiary hover:text-primary transition-colors scale-105 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-caps text-label-caps">Scan</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center justify-center text-primary font-bold bg-primary-container/10 rounded-xl px-3 py-1 hover:text-primary transition-colors scale-105 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined fill mb-1" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-caps text-label-caps">Coach</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center justify-center text-tertiary hover:text-primary transition-colors scale-105 active:scale-95 transition-all duration-200" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</li>
+</ul>
+</nav>
+</body></html>

@@ -114,8 +114,8 @@ struct MealResultView: View {
             .padding(.bottom, 32)
         
         }
-        .background(AppTheme.background)
-        .navigationTitle("Meal result")
+        .background(AppBackground(showsAmbientGlow: true))
+        .navigationTitle("Scan Results")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showFollowUp) {
             FollowUpQuestionsView(questions: analysis.followUpQuestions) { updated in
@@ -170,14 +170,14 @@ struct MealResultView: View {
             }
             .frame(height: 220)
             .frame(maxWidth: .infinity)
-            .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
             .overlay {
                 LinearGradient(
-                    colors: [.clear, AppTheme.background.opacity(0.4)],
+                    colors: [.clear, AppTheme.background.opacity(0.5)],
                     startPoint: .center,
                     endPoint: .bottom
                 )
-                .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
             }
 
             ConfidenceBadge(level: analysis.confidence)
@@ -209,7 +209,7 @@ struct MealResultView: View {
     }
 
     private var confirmationCard: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Sounds right?")
                     .font(AppTypography.headline)

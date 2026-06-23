@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>NutriScope AI - Profile Basics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Work+Sans:wght@400;500&amp;family=Geist:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a83900",
+                        "surface-container-highest": "#e4e2e4",
+                        "primary-container": "#f06a33",
+                        "inverse-surface": "#303032",
+                        "on-secondary-container": "#316e52",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb59a",
+                        "tertiary": "#7c5800",
+                        "surface-tint": "#a83900",
+                        "inverse-primary": "#ffb59a",
+                        "surface-container-low": "#f6f3f5",
+                        "on-background": "#1b1b1d",
+                        "outline": "#8c7168",
+                        "on-primary-fixed-variant": "#812900",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "secondary-container": "#aeeecb",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "on-tertiary-fixed": "#271900",
+                        "tertiary-fixed": "#ffdea8",
+                        "surface-dim": "#dcd9dc",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae7ea",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#5e4200",
+                        "on-surface": "#1b1b1d",
+                        "on-primary-fixed": "#380d00",
+                        "surface": "#fcf8fb",
+                        "surface-bright": "#fcf8fb",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "outline-variant": "#e0c0b5",
+                        "background": "#fcf8fb",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e4e2e4",
+                        "on-tertiary-container": "#3b2800",
+                        "on-surface-variant": "#584239",
+                        "secondary": "#2c694e",
+                        "tertiary-fixed-dim": "#ffba20",
+                        "secondary-fixed": "#b1f0ce",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#ffdbcf",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-container": "#531800",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#bf8900",
+                        "surface-container": "#f0edef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "container-margin": "20px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "stack-gap": "12px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Work Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Geist"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "title-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "mono-data": ["Geist"],
+                        "body-md": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "label-sm": ["13px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Custom iOS-style Input Fields */
+        .ios-input-group {
+            background-color: theme('colors.surface-container-low');
+            border-radius: theme('borderRadius.lg');
+            padding: theme('spacing.sm') theme('spacing.md');
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .ios-input-group:focus-within {
+            background-color: theme('colors.surface-container');
+            box-shadow: inset 0 0 0 1px theme('colors.primary-container');
+        }
+        
+        .ios-input-label {
+            font-size: 12px;
+            color: theme('colors.on-surface-variant');
+            font-weight: 500;
+            margin-bottom: 2px;
+            display: block;
+        }
+        
+        .ios-input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 0;
+            color: theme('colors.on-surface');
+            font-family: theme('fontFamily.body-lg');
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .ios-input:focus {
+            outline: none;
+            box-shadow: none;
+        }
+        
+        /* Glass Platter */
+        .glass-platter {
+            background-color: rgba(246, 243, 245, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 0.5px solid rgba(224, 192, 181, 0.3);
+        }
+        
+        /* Dynamic Target Animation */
+        .target-card {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .target-card.updating {
+            transform: scale(1.05);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased font-body-md selection:bg-primary/20">
+<!-- Top Navigation Shell (Suppressed Nav icons per rules for linear onboarding) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/30 h-16 flex items-center justify-between px-container-margin md:hidden">
+<button class="text-on-surface-variant scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="font-title-md text-title-md text-primary font-bold">NutriScope AI</span>
+<!-- Empty div to balance flex spacing since trailing icon is suppressed -->
+<div class="w-6 h-6"></div>
+</header>
+<!-- Main Canvas -->
+<main class="pt-24 pb-32 px-container-margin max-w-lg mx-auto flex flex-col gap-xl">
+<!-- Header Section -->
+<section class="flex flex-col gap-sm">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">About you.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Friendly info — not a medical form. This helps us set your initial protein targets.</p>
+</section>
+<!-- Form Section -->
+<section class="flex flex-col gap-stack-gap">
+<div class="ios-input-group">
+<label class="ios-input-label" for="name">Name (Optional)</label>
+<input class="ios-input" id="name" placeholder="What should we call you?" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-stack-gap">
+<div class="ios-input-group">
+<label class="ios-input-label" for="age">Age</label>
+<input class="ios-input" id="age" max="120" min="18" placeholder="Years" type="number"/>
+</div>
+<div class="ios-input-group relative">
+<label class="ios-input-label" for="gender">Gender</label>
+<select class="ios-input appearance-none bg-transparent w-full" id="gender">
+<option disabled="" selected="" value="">Select</option>
+<option value="female">Female</option>
+<option value="male">Male</option>
+<option value="other">Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-stack-gap">
+<div class="ios-input-group relative">
+<label class="ios-input-label" for="height">Height</label>
+<div class="flex items-center">
+<input class="ios-input w-2/3" id="height" placeholder="0" type="number"/>
+<span class="text-on-surface-variant font-label-sm text-label-sm w-1/3 text-right">cm</span>
+</div>
+</div>
+<div class="ios-input-group relative">
+<label class="ios-input-label" for="weight">Weight</label>
+<div class="flex items-center">
+<input class="ios-input w-2/3" id="weight" placeholder="0" type="number"/>
+<span class="text-on-surface-variant font-label-sm text-label-sm w-1/3 text-right">kg</span>
+</div>
+</div>
+</div>
+<!-- Activity Level Bento Box -->
+<div class="mt-sm">
+<label class="ios-input-label mb-sm">Activity Level</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-sm">
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="activity" type="radio" value="sedentary"/>
+<div class="glass-platter rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs peer-checked:bg-primary-container/10 peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="chair">chair</span>
+<span class="font-label-sm text-label-sm text-on-surface">Light</span>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="activity" type="radio" value="active"/>
+<div class="glass-platter rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs peer-checked:bg-primary-container/10 peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="directions_walk">directions_walk</span>
+<span class="font-label-sm text-label-sm text-on-surface">Active</span>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="activity" type="radio" value="very_active"/>
+<div class="glass-platter rounded-lg p-md flex flex-col items-center justify-center text-center gap-xs peer-checked:bg-primary-container/10 peer-checked:border-primary peer-checked:ring-1 peer-checked:ring-primary transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="fitness_center">fitness_center</span>
+<span class="font-label-sm text-label-sm text-on-surface">Intense</span>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Dynamic Targets Preview Platter -->
+<section class="mt-md">
+<div class="glass-platter rounded-xl p-lg flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<h3 class="font-title-md text-title-md text-on-surface">Initial Targets</h3>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container px-sm py-xs rounded-full">Dynamic</span>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="target-card bg-surface-container-lowest rounded-lg p-md border border-outline-variant/50 flex flex-col items-center justify-center" id="proteinTarget">
+<span class="font-display-lg text-display-lg text-primary font-extrabold tracking-tight">120<span class="font-title-md text-title-md">g</span></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Protein Goal</span>
+</div>
+<div class="target-card bg-surface-container-lowest rounded-lg p-md border border-outline-variant/50 flex flex-col items-center justify-center" id="calorieTarget">
+<span class="font-display-lg text-display-lg text-on-surface font-extrabold tracking-tight">2100</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Calories</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Fixed Bottom CTA -->
+<div class="fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-2xl border-t border-outline-variant/20 p-container-margin pb-safe z-50">
+<button class="w-full bg-primary text-on-primary font-title-md text-title-md py-md rounded-full shadow-lg shadow-primary/20 active:scale-95 transition-all hover:opacity-90">
+            Continue
+        </button>
+</div>
+<script>
+        // Micro-interaction: Simulate dynamic target updates
+        const inputs = document.querySelectorAll('input, select');
+        const proteinTarget = document.getElementById('proteinTarget');
+        const calorieTarget = document.getElementById('calorieTarget');
+        const proteinVal = proteinTarget.querySelector('.font-display-lg');
+        const calorieVal = calorieTarget.querySelector('.font-display-lg');
+
+        inputs.forEach(input => {
+            input.addEventListener('change', () => {
+                // Add updating class for animation
+                proteinTarget.classList.add('updating');
+                calorieTarget.classList.add('updating');
+                
+                setTimeout(() => {
+                    // Very rudimentary simulation of numbers changing based on input
+                    let newProtein = Math.floor(Math.random() * (180 - 90) + 90);
+                    let newCals = Math.floor(Math.random() * (2800 - 1500) + 1500);
+                    
+                    proteinVal.innerHTML = `${newProtein}<span class="font-title-md text-title-md">g</span>`;
+                    calorieVal.innerHTML = `${newCals}`;
+                    
+                    // Remove animation class
+                    proteinTarget.classList.remove('updating');
+                    calorieTarget.classList.remove('updating');
+                }, 300);
+            });
+        });
+    </script>
+</body></html>

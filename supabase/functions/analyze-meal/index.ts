@@ -134,6 +134,7 @@ Deno.serve(async (req: Request) => {
       global: { headers: { Authorization: authHeader } },
     })
 
+    // Accepts any valid JWT — including anonymous guest sessions (is_anonymous: true).
     const { data: userData, error: userError } = await supabase.auth.getUser()
     if (userError || !userData.user) {
       return new Response(JSON.stringify({ error: "Unauthorized" }), {

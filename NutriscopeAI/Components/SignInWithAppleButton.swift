@@ -1,5 +1,6 @@
 import AuthenticationServices
 import CryptoKit
+import SwiftData
 import SwiftUI
 import UIKit
 
@@ -7,6 +8,7 @@ struct SignInWithAppleButton: View {
     var onSuccess: () -> Void
     var onError: (String) -> Void
 
+    @Environment(\.modelContext) private var modelContext
     @State private var coordinator = SignInWithAppleCoordinator()
 
     var body: some View {
@@ -37,6 +39,9 @@ struct SignInWithAppleButton: View {
             let displayName = credential.displayName.isEmpty ? "Apple User" : credential.displayName
 
             AuthSessionManager.applyAppleSignIn(email: email, displayName: displayName)
+
+            let settings = try? modelContext.fetch(FetchDescriptor<UserSettings>()).first
+            await IOSUserProfileSyncService.upsertAfterAuthentication(settings: settings)
 
             onSuccess()
         } catch {

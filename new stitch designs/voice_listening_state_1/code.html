@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Voice Input</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Hanken Grotesk and Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#735c00",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "tertiary": "#5d5e63",
+                        "secondary-container": "#fdd34d",
+                        "on-surface": "#1b1c19",
+                        "warm-sun": "#FFD54F",
+                        "on-primary-fixed": "#380c00",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf9f4",
+                        "surface": "#fbf9f4",
+                        "inverse-primary": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-tint": "#a93702",
+                        "surface-bright": "#fbf9f4",
+                        "surface-container-high": "#eae8e3",
+                        "outline-variant": "#e0c0b5",
+                        "surface-container": "#f0eee9",
+                        "inverse-on-surface": "#f2f1ec",
+                        "primary-container": "#f26b38",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-background": "#1b1c19",
+                        "on-primary-container": "#561700",
+                        "on-tertiary-container": "#2c2d31",
+                        "primary": "#a93702",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-surface-variant": "#58423a",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#725b00",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dbdad5",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-container": "#949499",
+                        "ink-black": "#1C1C1E",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "surface-container-low": "#f5f3ee",
+                        "paper-white": "#FFFFFF",
+                        "error-container": "#ffdad6",
+                        "protein-teal": "#2D6A4F",
+                        "tertiary-fixed": "#e3e2e7",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error-container": "#93000a",
+                        "outline": "#8c7168",
+                        "inverse-surface": "#30312e",
+                        "surface-variant": "#e4e2dd",
+                        "secondary-fixed": "#ffe087",
+                        "on-error": "#ffffff",
+                        "coach-orange": "#F26B38",
+                        "on-tertiary-fixed": "#1a1b1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "gutter-card": "1rem"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Smooth base styles */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Ambient Glow Shadow */
+        .ambient-glow {
+            box-shadow: 0 8px 32px rgba(242, 107, 56, 0.15);
+        }
+
+        /* Stronger glow for the active mic */
+        .mic-glow {
+            box-shadow: 0 0 40px rgba(242, 107, 56, 0.4);
+        }
+
+        /* Waveform Animation */
+        @keyframes wave {
+            0%, 100% { height: 12px; }
+            50% { height: 48px; }
+        }
+        
+        .wave-bar {
+            width: 8px;
+            background-color: theme('colors.coach-orange');
+            border-radius: 9999px;
+            animation: wave 1.2s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .wave-bar:nth-child(1) { animation-delay: 0.0s; height: 16px; }
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; height: 32px; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; height: 48px; }
+        .wave-bar:nth-child(4) { animation-delay: 0.6s; height: 32px; }
+        .wave-bar:nth-child(5) { animation-delay: 0.8s; height: 16px; }
+
+        /* Pulse Ring Animation */
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.6; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .animate-pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        /* Typewriter effect simulation for text entering */
+        @keyframes fade-in-text {
+            from { opacity: 0.5; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .typing-text {
+            animation: fade-in-text 0.4s ease-out forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-sm relative overflow-hidden">
+<!-- TopAppBar (From JSON, styled as instructed) -->
+<!-- Suppressing bottom nav because this is a task-focused screen, but keeping top bar to allow contextual exit if needed, though we will style it cleanly as the JSON demands. -->
+<header class="flex justify-between items-center w-full px-margin-main h-16 bg-surface-bright shadow-sm relative z-10 transition-transform duration-200">
+<!-- Leading Avatar -->
+<button class="w-8 h-8 rounded-full overflow-hidden hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-coach-orange focus:ring-offset-2">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A brightly lit, high-quality headshot of an energetic fitness enthusiast smiling, styled in a warm, modern light-mode interface aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCYECOvWyrbc_VpNkPjcupJBO5QvYM5qgBurzsh06PSKhC_e1jPySnhib45ncvT26wTgXmsIaxjKENJB6H_XoWHAyRiGTgb8mORjGwMUSG7kAexFIskTKiOnZpGJQbF4DVdZSOzUpFJqgS8nkcqCp3vxnBDhyDmymi-tA-t3sVh0oNME_QJ6EFrCrdaFPvjtltuDWXUsyCYssIxkLVNP4YZhCm9ljuNDyYBXv2V1V8pHWI9ZyidxZbEoKNOTsJB9CPLlyNf9YdCfQ9"/>
+</button>
+<!-- Headline / Brand Anchor -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-black text-coach-orange tracking-tight">
+            Nutriscope AI
+        </h1>
+<!-- Trailing Icon -->
+<button class="hover:opacity-80 transition-opacity text-on-surface-variant flex items-center justify-center p-1 rounded-full">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col items-center justify-center px-margin-main pb-8 z-10 w-full max-w-md mx-auto">
+<!-- Animated Waveform -->
+<div class="flex items-center justify-center gap-2 mb-12 h-16">
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+<div class="wave-bar"></div>
+</div>
+<!-- Listening Status -->
+<h2 class="font-title-md text-title-md text-coach-orange mb-stack-lg tracking-wide text-center">
+            Listening...
+        </h2>
+<!-- Glowing Microphone Button Centerpiece -->
+<div class="relative w-32 h-32 flex items-center justify-center mb-12">
+<!-- Ripple Effects -->
+<div class="absolute inset-0 bg-coach-orange rounded-full animate-pulse-ring"></div>
+<div class="absolute inset-0 bg-coach-orange rounded-full animate-pulse-ring" style="animation-delay: 1s;"></div>
+<!-- Core Button -->
+<button class="relative w-24 h-24 bg-coach-orange rounded-full flex items-center justify-center text-paper-white mic-glow scale-102 hover:scale-105 active:scale-95 transition-transform duration-300 z-10 shadow-lg">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<!-- Real-time Transcription Box (Glassmorphism / Tonal Card) -->
+<div class="w-full bg-paper-white rounded-xl p-gutter-card ambient-glow relative overflow-hidden mb-stack-lg border border-surface-container-highest">
+<!-- Subtle decorative gradient at the top of the card -->
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-warm-sun to-coach-orange opacity-80"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant italic leading-relaxed typing-text">
+                "Grilled chicken breast with half a cup of quinoa and some roasted asparagus..."
+            </p>
+<!-- Pulsing cursor indicator -->
+<span class="inline-block w-2 h-5 bg-coach-orange ml-1 align-middle animate-pulse"></span>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex gap-4 mt-auto md:mt-12">
+<!-- Secondary/Ghost Button -->
+<button class="flex-1 py-4 px-6 rounded-xl border-2 border-surface-container-high bg-transparent text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container-lowest active:scale-95 transition-all duration-200">
+                Cancel
+            </button>
+<!-- Primary Button -->
+<button class="flex-1 py-4 px-6 rounded-xl bg-coach-orange text-paper-white font-label-caps text-label-caps uppercase tracking-wider shadow-md hover:opacity-90 active:scale-95 transition-all duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">check</span>
+                Done
+            </button>
+</div>
+</main>
+<!-- Background Atmospheric Blur Element -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary-fixed opacity-20 blur-[100px] rounded-full pointer-events-none z-0"></div>
+</body></html>

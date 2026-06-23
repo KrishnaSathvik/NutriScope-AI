@@ -1,0 +1,257 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Scan Results - Kinetic Harvest</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e6e1e1",
+                    "background": "#fdf8f8",
+                    "surface-dim": "#ddd9d8",
+                    "primary-container": "#f26b38",
+                    "on-tertiary-container": "#8fee8c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#002204",
+                    "inverse-on-surface": "#f4f0ef",
+                    "tertiary-container": "#006e1d",
+                    "surface-container-high": "#ece7e7",
+                    "gauge-track": "#eae7e7",
+                    "secondary-container": "#b7bcfd",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e6e1e1",
+                    "on-primary-fixed-variant": "#822800",
+                    "tertiary-fixed-dim": "#7edb7c",
+                    "on-primary-container": "#ffcdbd",
+                    "on-tertiary-fixed-variant": "#005314",
+                    "on-secondary-fixed": "#0e144d",
+                    "surface-container": "#f1edec",
+                    "primary": "#812700",
+                    "on-secondary-fixed-variant": "#3c427a",
+                    "surface-container-low": "#f7f2f2",
+                    "secondary-fixed-dim": "#bdc2ff",
+                    "on-error": "#ffffff",
+                    "glass-border": "rgba(255, 255, 255, 0.9)",
+                    "inverse-primary": "#ffb59c",
+                    "on-secondary-container": "#444a83",
+                    "on-primary-fixed": "#380c00",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#fdf8f8",
+                    "secondary-fixed": "#dfe0ff",
+                    "outline-variant": "#e0c0b5",
+                    "primary-fixed": "#ffdbcf",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#58423a",
+                    "primary-fixed-dim": "#ffb59c",
+                    "tertiary": "#005314",
+                    "outline": "#8c7168",
+                    "on-background": "#1c1b1b",
+                    "tertiary-fixed": "#99f895",
+                    "glass-bg": "rgba(255, 255, 255, 0.7)",
+                    "secondary": "#545a94",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#a93702",
+                    "on-surface": "#1c1b1b",
+                    "surface": "#fcf9f8",
+                    "inverse-surface": "#313030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "xl": "80px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-bold": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "caption": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-caps": ["10px", {"lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Ring Animation Styles */
+        @keyframes fillRing {
+            from { stroke-dashoffset: 100; }
+            to { stroke-dashoffset: var(--target-offset); }
+        }
+        
+        .macro-ring {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: fillRing 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation-delay: 0.3s;
+            stroke-linecap: round;
+        }
+        
+        .glow-shadow {
+            filter: drop-shadow(0 0 8px var(--glow-color));
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #f26b38, #a93702);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col overflow-x-hidden">
+<!-- Top Navigation (Mobile Only/Hidden Desktop) - Simplified for Scan Results -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 w-full glass-panel border-b-0">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container/50 hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<span class="font-headline-md text-headline-md text-primary">Scan Results</span>
+<div class="w-10 h-10"></div> <!-- Spacer for alignment -->
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full max-w-[1280px] mx-auto pb-32 md:pb-16 relative">
+<!-- Hero Section: Meal Photo & Coach Bubble -->
+<section class="relative w-full h-[442px] min-h-[400px]">
+<!-- Meal Image Background -->
+<div class="absolute inset-0 w-full h-full">
+<div class="w-full h-full bg-cover bg-center" data-alt="A highly detailed, professional food photography shot of a seared salmon fillet resting on a bed of vibrant green asparagus and quinoa. The lighting is bright, natural, and modern, highlighting the glistening texture of the fish and the fresh, crisp greens. The setting is clean and high-end, fitting a premium wellness aesthetic with a light-mode color palette featuring bright whites, soft grays, and the natural orange and green hues of the meal." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBymL2VhOGxX2FhsQSRBjv7k9PFy1aoJWWdB1TMfwBW_4sMc1uH8rKKF-NWorWi2TjCBFCfHQfM_WaTnYRjDHOMCWFEjlS8TML-j-1oBvCiG-egHrIGbPBvXkKrqko9U5TKHdjKoBIApdqO3bkt40EGZC8p1IDXja0baYVt0do842meR3DswE1yBgGV20HLZwVH48S94eEkOB4W1D8Xmc7voD2yDRLNX2pBBw7_nzIBA-BQWyOiMXogVfMSxKGmsEPrbOtamdDooogt')"></div>
+<!-- Gradient Overlay for readability -->
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+</div>
+<!-- Glassmorphic Coach Insight Bubble -->
+<div class="absolute bottom-8 left-margin-mobile right-margin-mobile md:left-1/2 md:transform md:-translate-x-1/2 md:w-full md:max-w-md">
+<div class="glass-panel rounded-xl p-md shadow-lg transform transition-transform hover:scale-[1.01]">
+<div class="flex items-start gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div>
+<p class="font-label-bold text-label-bold text-primary mb-1">Coach Insight</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-tight">Excellent choice! This meal provides a perfect balance of Omega-3s and complex carbs for your recovery.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Data Visualization: Macro Rings -->
+<section class="px-margin-mobile md:px-gutter mt-8 mb-12">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-center mb-2">Wild Caught Salmon</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant text-center mb-8">450 kcal • 340g</p>
+<div class="grid grid-cols-3 gap-xs max-w-lg mx-auto">
+<!-- Protein Ring -->
+<div class="flex flex-col items-center">
+<div class="relative w-24 h-24 mb-2">
+<!-- Background Track -->
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-gauge-track stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<!-- Active Progress -->
+<path class="macro-ring text-primary stroke-current glow-shadow" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5" style="--target-offset: 25; --glow-color: rgba(129, 39, 0, 0.4);"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-on-surface">42g</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Protein</span>
+</div>
+<!-- Carbs Ring -->
+<div class="flex flex-col items-center">
+<div class="relative w-24 h-24 mb-2">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-gauge-track stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="macro-ring text-secondary stroke-current glow-shadow" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5" style="--target-offset: 60; --glow-color: rgba(84, 90, 148, 0.4);"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-on-surface">12g</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Carbs</span>
+</div>
+<!-- Fats Ring -->
+<div class="flex flex-col items-center">
+<div class="relative w-24 h-24 mb-2">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<path class="text-gauge-track stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="macro-ring text-tertiary-container stroke-current glow-shadow" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3.5" style="--target-offset: 40; --glow-color: rgba(0, 110, 29, 0.4);"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-on-surface">24g</span>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Fats</span>
+</div>
+</div>
+</section>
+<!-- Minimalist Ingredients List -->
+<section class="px-margin-mobile md:px-gutter max-w-2xl mx-auto mb-12">
+<h3 class="font-label-bold text-label-bold text-on-surface mb-4">Detected Ingredients</h3>
+<div class="glass-panel rounded-xl p-4 flex flex-col gap-3">
+<div class="flex items-center justify-between pb-3 border-b border-surface-dim/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-xl">set_meal</span>
+<span class="font-body-md text-body-md text-on-surface">Atlantic Salmon</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">200g</span>
+</div>
+<div class="flex items-center justify-between pb-3 border-b border-surface-dim/50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary-container text-xl">grass</span>
+<span class="font-body-md text-body-md text-on-surface">Asparagus Spears</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">80g</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">grain</span>
+<span class="font-body-md text-body-md text-on-surface">Quinoa Base</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">60g</span>
+</div>
+</div>
+</section>
+<!-- Floating Action Button (Log Meal) -->
+<div class="fixed bottom-8 left-0 w-full px-margin-mobile md:px-gutter flex justify-center z-40 pointer-events-none">
+<button class="pointer-events-auto w-full max-w-sm bg-primary text-on-primary font-headline-md text-headline-md py-4 rounded-full flex items-center justify-center gap-2 shadow-[0_8px_32px_rgba(129,39,0,0.3)] hover:shadow-[0_12px_40px_rgba(129,39,0,0.4)] hover:-translate-y-1 transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                Log Meal
+            </button>
+</div>
+</main>
+</body></html>

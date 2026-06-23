@@ -1,0 +1,162 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Nutriscope AI - Confirmation Dialogs</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#735c00",
+                        "surface-bright": "#fbf9f4",
+                        "secondary-fixed": "#ffe087",
+                        "secondary-container": "#fdd34d",
+                        "on-background": "#1b1c19",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed": "#380c00",
+                        "on-surface": "#1b1c19",
+                        "on-primary-container": "#561700",
+                        "protein-teal": "#2D6A4F",
+                        "on-primary-fixed-variant": "#822800",
+                        "primary-fixed-dim": "#ffb59c",
+                        "warm-sun": "#FFD54F",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-dim": "#dbdad5",
+                        "paper-white": "#FFFFFF",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2dd",
+                        "surface-tint": "#a93702",
+                        "on-secondary-container": "#725b00",
+                        "coach-orange": "#F26B38",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "surface-container-lowest": "#ffffff",
+                        "ink-black": "#1C1C1E",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-container": "#949499",
+                        "outline": "#8c7168",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "outline-variant": "#e0c0b5",
+                        "inverse-surface": "#30312e",
+                        "surface-container": "#f0eee9",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-tertiary-container": "#2c2d31",
+                        "error": "#ba1a1a",
+                        "background": "#fbf9f4",
+                        "surface": "#fbf9f4",
+                        "on-surface-variant": "#58423a",
+                        "primary-container": "#f26b38",
+                        "on-secondary": "#ffffff",
+                        "primary": "#a93702",
+                        "inverse-primary": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-container-low": "#f5f3ee",
+                        "surface-container-high": "#eae8e3",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "tertiary": "#5d5e63",
+                        "surface-container-highest": "#e4e2dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-card": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "stack-md": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased font-body-lg min-h-screen flex flex-col items-center justify-center relative md:hidden">
+<!-- Dimmed Background Overlay -->
+<div class="absolute inset-0 bg-ink-black/40 z-10"></div>
+<!-- Main Container for Dialogs (Stacking them for display purposes) -->
+<div class="relative z-20 w-full px-margin-main flex flex-col gap-stack-lg">
+<!-- Destructive Action Dialog: Delete Meal Log -->
+<div class="bg-paper-white rounded-xl p-6 shadow-lg transform transition-all scale-100 flex flex-col gap-stack-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">delete</span>
+</div>
+<h2 class="font-title-md text-title-md text-on-surface">Delete Meal Log?</h2>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                This action cannot be undone. All macros and data associated with this entry will be removed from your daily progress.
+            </p>
+<div class="flex gap-3 mt-2">
+<button class="flex-1 py-3 px-4 rounded-xl border-2 border-outline-variant font-title-md text-title-md text-on-surface-variant bg-transparent hover:bg-surface-container-low transition-colors">
+                    Cancel
+                </button>
+<button class="flex-1 py-3 px-4 rounded-xl bg-error font-title-md text-title-md text-on-error hover:bg-[#a61717] transition-colors">
+                    Delete
+                </button>
+</div>
+</div>
+<!-- Warning/Discard Dialog: Discard Changes -->
+<div class="bg-paper-white rounded-xl p-6 shadow-lg transform transition-all scale-100 flex flex-col gap-stack-md">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="font-title-md text-title-md text-on-surface">Discard Changes?</h2>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                You have unsaved edits to your Coach preferences. Are you sure you want to discard them?
+            </p>
+<div class="flex gap-3 mt-2">
+<button class="flex-1 py-3 px-4 rounded-xl text-coach-orange font-title-md text-title-md hover:bg-surface-container-low transition-colors">
+                    Keep Editing
+                </button>
+<button class="flex-1 py-3 px-4 rounded-xl bg-coach-orange font-title-md text-title-md text-paper-white hover:bg-[#d95b2b] transition-colors">
+                    Discard
+                </button>
+</div>
+</div>
+</div>
+</body></html>

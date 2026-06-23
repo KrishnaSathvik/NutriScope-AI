@@ -21,6 +21,7 @@ struct RootView: View {
             appState.subscriptionManager.startObservingTransactionUpdates()
             await appState.subscriptionManager.refreshEntitlements()
             try? await BackendAuthBootstrap.ensureBackendSession()
+            appState.evaluateTrialEndingPromptIfNeeded()
         }
         .sheet(item: Binding(
             get: { appState.activeSheet },
@@ -28,11 +29,16 @@ struct RootView: View {
         )) { sheet in
             switch sheet {
             case .scan: ScanMealView()
+            case .manualLog: ManualMealLogView()
             case .paywall: PaywallView()
             case .scanQuota: ScanQuotaPaywallView()
             case .subscriptionSuccess: SubscriptionSuccessView()
             case .saveProgress: SaveProgressView()
+            case .trialEnding: TrialEndingSoonView()
             }
+        }
+        .overlay(alignment: .top) {
+            KineticToastHost()
         }
     }
 }
@@ -77,6 +83,7 @@ struct MainTabView: View {
                 appState.selectedTab = .today
             }
             lastContentTab = appState.selectedTab == .scan ? .today : appState.selectedTab
+            appState.evaluateTrialEndingPromptIfNeeded()
             if let user = settings.first {
                 Task {
                     await NotificationManager.syncFromStoredSettings(
@@ -141,30 +148,37 @@ struct MainTabView: View {
     private var kineticTabBar: some View {
         HStack(spacing: 0) {
             ForEach(AppTab.navigationTabs) { tab in
-                tabButton(tab)
+                if tab == .scan {
+                    scanFAB
+                } else {
+                    tabButton(tab)
+                }
             }
         }
         .padding(.horizontal, 8)
         .padding(.top, 12)
         .padding(.bottom, 28)
         .background {
-            UnevenRoundedRectangle(topLeadingRadius: 20, topTrailingRadius: 20)
+            UnevenRoundedRectangle(topLeadingRadius: 24, topTrailingRadius: 24)
                 .fill(AppTheme.surface)
                 .shadow(color: AppTheme.coachOrange.opacity(0.12), radius: 20, y: -4)
                 .ignoresSafeArea(edges: .bottom)
         }
     }
 
+    private var scanFAB: some View {
+        ScanFABButton {
+            appState.presentScanIfAllowed()
+        }
+        .frame(maxWidth: .infinity)
+    }
+
     private func tabButton(_ tab: AppTab) -> some View {
-        let isSelected = tab == .scan ? false : activeTab == tab
+        let isSelected = activeTab == tab
 
         return Button {
-            if tab == .scan {
-                appState.presentScanIfAllowed()
-            } else {
-                lastContentTab = tab
-                appState.selectedTab = tab
-            }
+            lastContentTab = tab
+            appState.selectedTab = tab
         } label: {
             VStack(spacing: 4) {
                 Image(systemName: tab.systemImage)

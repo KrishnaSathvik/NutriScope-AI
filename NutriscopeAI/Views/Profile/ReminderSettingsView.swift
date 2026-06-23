@@ -15,36 +15,35 @@ struct ReminderSettingsView: View {
     }
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            BoundedScrollView {
 
             VStack(alignment: .leading, spacing: 24) {
                 KineticToolHeader(
                     title: "Reminders",
-                    subtitle: "Scheduled meal nudges plus real-time smart alerts when your protein gap changes."
+                    subtitle: "Scheduled meal nudges plus smart alerts when your protein gap changes."
                 )
 
-                SurfaceCard {
-                    Toggle("Enable reminders", isOn: $reminderSettings.enabled)
-                        .tint(AppTheme.coachOrange)
-                    Text("Uses Apple’s local notification system on this device.")
-                        .font(AppTypography.caption)
-                        .foregroundStyle(AppTheme.textSecondary)
+                ProfileMenuSection(title: "") {
+                    ProfileSettingsToggleRow(
+                        title: "Enable reminders",
+                        isOn: $reminderSettings.enabled
+                    )
                 }
 
                 if reminderSettings.enabled {
                     ProfileMenuSection(title: "Smart alerts") {
-                        Toggle("Real-time gap alerts", isOn: $reminderSettings.smartAlertsEnabled)
-                            .tint(AppTheme.coachOrange)
-                            .padding(10)
+                        ProfileSettingsToggleRow(
+                            title: "Real-time gap alerts",
+                            isOn: $reminderSettings.smartAlertsEnabled
+                        )
                         ProfileMenuDivider()
-                        Toggle("Post-workout recovery nudges", isOn: $reminderSettings.workoutRecoveryAlerts)
-                            .tint(AppTheme.proteinTeal)
-                            .padding(10)
-                        Text("Fires when you log meals, finish workouts, or background with a large protein gap.")
-                            .font(AppTypography.caption)
-                            .foregroundStyle(AppTheme.textSecondary)
-                            .padding(.horizontal, 10)
-                            .padding(.bottom, 8)
+                        ProfileSettingsToggleRow(
+                            title: "Post-workout recovery nudges",
+                            isOn: $reminderSettings.workoutRecoveryAlerts
+                        )
                     }
 
                     ProfileMenuSection(title: "Meal nudges") {
@@ -82,10 +81,9 @@ struct ReminderSettingsView: View {
                 .buttonStyle(PrimaryButtonStyle(pill: true))
             }
             .padding(AppTheme.marginMain)
-            .padding(.bottom, 32)
-        
+
+            }
         }
-        .background(AppBackground())
         .navigationTitle("Reminders")
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
@@ -109,17 +107,16 @@ struct ReminderSettingsView: View {
         }
     }
 
-    @ViewBuilder
     private func reminderToggleRow(_ title: String, isOn: Binding<Bool>, hour: Binding<Int>) -> some View {
         VStack(alignment: .leading, spacing: 8) {
-            Toggle(title, isOn: isOn)
-                .tint(AppTheme.coachOrange)
+            ProfileSettingsToggleRow(title: title, isOn: isOn)
             if isOn.wrappedValue {
                 Stepper("Notify at \(hour.wrappedValue):00", value: hour, in: 6...22)
                     .font(AppTypography.subheadline)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 10)
             }
         }
-        .padding(10)
     }
 
     private func saveReminders() async {

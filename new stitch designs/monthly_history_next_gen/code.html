@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Meal History</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e6e1e1",
+                        "surface-container": "#f1edec",
+                        "secondary-container": "#b7bcfd",
+                        "outline-variant": "#e0c0b5",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#ffcdbd",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#8fee8c",
+                        "background": "#fdf8f8",
+                        "on-secondary-fixed": "#0e144d",
+                        "surface-container-low": "#f7f2f2",
+                        "surface-tint": "#a93702",
+                        "outline": "#8c7168",
+                        "surface-container-high": "#ece7e7",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f4f0ef",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary": "#005314",
+                        "primary-fixed-dim": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "on-background": "#1c1b1b",
+                        "surface": "#fcf9f8",
+                        "secondary": "#545a94",
+                        "on-primary": "#ffffff",
+                        "primary": "#812700",
+                        "surface-dim": "#ddd9d8",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#a93702",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-container": "#006e1d",
+                        "surface-bright": "#fdf8f8",
+                        "inverse-primary": "#ffb59c",
+                        "gauge-track": "#eae7e7",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "on-secondary-container": "#444a83",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "on-primary-fixed": "#380c00",
+                        "tertiary-fixed": "#99f895"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #fdf8f8;
+            background-image: radial-gradient(circle at top right, rgba(169, 55, 2, 0.05), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(84, 90, 148, 0.05), transparent 40%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        .glow-success {
+            box-shadow: 0 0 15px rgba(169, 55, 2, 0.4);
+            background: linear-gradient(135deg, #f26b38 0%, #a93702 100%);
+            color: white;
+        }
+        .calendar-day-hover {
+            transition: all 0.3s ease;
+        }
+        .calendar-day-hover:active {
+            transform: scale(0.95);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background font-body-md antialiased pb-24 md:pb-0 pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-md border-b border-glass-border shadow-sm flex justify-between items-center px-margin-mobile h-16 bg-glass-bg">
+<div class="flex items-center gap-2">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="A small, high-quality circular user avatar photo showing a person smiling in soft natural lighting, reflecting a premium wellness lifestyle." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAomJGwJaNO4f0VBFquReG3nIZ-VWnIE8pCcVojgenCHy6mLCdDJXc8dqGr0-jprRp0DVYILVBrf711lJbYVkLUy-2ALUWrxP6I5Y1nsCgn82L-NmLhmtC9Be3WvBm74K-F1YICWjDK60nxo5OY1ZIp1Y-WBz4zRPtcxyoxgcFFjbLxygCuSxR0Kqp52nlOKFs-PKWJh6H0EZe0ceqztTx-07kzNwFI6D1FPU_BE33fHNoYoHZA7N4aRtAJIEKqMBpH95W7FO8_eVQg"/>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">Nutriscope AI</h1>
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg">
+<!-- Header Section -->
+<div class="mb-lg flex flex-col items-center text-center">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-2">October 2023</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Your protein consistency is improving. You hit your goal 18 days this month.</p>
+</div>
+<!-- Bento Grid Layout for History -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Calendar Section (Spans 8 columns on desktop) -->
+<section class="md:col-span-8 bg-glass-bg backdrop-blur-md rounded-xl border border-glass-border shadow-sm p-md relative overflow-hidden">
+<!-- Decorative background blur inside card -->
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-primary-container opacity-5 blur-[80px] rounded-full pointer-events-none"></div>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary">Monthly View</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-surface-variant"></span>
+<span class="font-caption text-caption text-on-surface-variant">Missed</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full glow-success"></span>
+<span class="font-caption text-caption text-on-surface-variant">Hit Goal</span>
+</div>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="grid grid-cols-7 gap-y-6 gap-x-2 text-center">
+<!-- Days of week -->
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">SUN</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">MON</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">TUE</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">WED</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">THU</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">FRI</div>
+<div class="font-label-caps text-label-caps text-on-surface-variant mb-2">SAT</div>
+<!-- Blank days for start of month -->
+<div></div>
+<div></div>
+<!-- Day 1-3 (Missed) -->
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">1</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">2</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">3</button>
+<!-- Day 4-6 (Hit Goal) -->
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">4</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">5</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">6</button>
+<!-- Day 7-10 (Mixed) -->
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">7</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">8</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">9</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">10</button>
+<!-- More days... (Simplified for brevity, assuming standard 31 days) -->
+<!-- Active Day Example (Day 11) - Selected State -->
+<div class="relative w-full flex justify-center">
+<button class="calendar-day-hover w-12 h-12 rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success ring-4 ring-primary/20 z-10">11</button>
+</div>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">12</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">13</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">14</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">15</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">16</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">17</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">18</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">19</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">20</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">21</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">22</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">23</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">24</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">25</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">26</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">27</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">28</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-body-md text-body-md bg-surface-variant text-on-surface-variant">29</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">30</button>
+<button class="calendar-day-hover w-10 h-10 mx-auto rounded-full flex items-center justify-center font-label-bold text-label-bold glow-success">31</button>
+</div>
+</section>
+<!-- Expanded Day Details (Spans 4 columns on desktop) -->
+<section class="md:col-span-4 flex flex-col gap-sm">
+<!-- Day Summary Card -->
+<div class="bg-glass-bg backdrop-blur-md rounded-xl border border-glass-border shadow-sm p-md">
+<h3 class="font-headline-md text-headline-md-mobile text-primary mb-4">Oct 11 Summary</h3>
+<div class="flex items-center justify-between mb-6">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">PROTEIN HIT</p>
+<p class="font-display-lg-mobile text-display-lg-mobile text-primary">145g <span class="text-body-md font-body-md text-on-surface-variant">/ 140g</span></p>
+</div>
+<div class="w-16 h-16 rounded-full flex items-center justify-center glow-success">
+<span class="material-symbols-outlined text-3xl">check</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex flex-col gap-2 p-3 bg-surface-variant/30 rounded-lg border border-glass-border">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="A small, elegant top-down photo of an avocado toast with poached eggs on a minimalist ceramic plate, soft morning lighting, clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjLQsG7IC-nTeiCC13iC3-Nd4qWEbgXukd0euOEYL0aXaAQWb78fJ6nRyvo-hp5ZEc5h_j38kwn4ubPVHvCJADojfH_ef9WEly_FP3m89sMlgmHeOC6OB2_WwQiZk6PUCap3rLLw34xxGPdI5ALxzLW8ES98ttVsFi3R1Xfj0dwWrXI1L_4NkoCP9s3Yl0H6FRKQC3VGH6PeqD1PwWTzXwYETixj8vrshgLWdhdXAs5B5uIkaV8zewo1IzDma5bcPH57c4fE5o0wUv"/>
+<div class="flex-1">
+<p class="font-label-bold text-label-bold text-on-surface">Morning Scramble</p>
+<p class="font-caption text-caption text-on-surface-variant">8:30 AM</p>
+</div>
+<div class="text-right">
+<p class="font-label-bold text-label-bold text-primary">32g</p>
+<p class="font-caption text-caption text-on-surface-variant">Protein</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-3 bg-surface-variant/30 rounded-lg border border-glass-border">
+<div class="flex items-center gap-3">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="A small, elegant photo of a grilled chicken breast salad with vibrant green leaves and cherry tomatoes in a sleek glass bowl, studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdLDF1s-yk413ntlsK4QO_pzW3fiEXbovYaah9RRG-Whm7WyHHH5zz45NdEJXxeEq8JfhlEPF_EiHhjDZSlbQkkpNLvr-gm5dDdP-3RURWqAwPRl3M2danPtJ4Y17VA6qvuE3vMQYQqGyUXqxuAteJ-uvfK2nmQtnYMm4lbTcfLmgjr2CcbMfpjcD4xwC-a3Jx38e0eY8Js1KhkGozwbheD-GJD0wV4gJi7DFNEUi4xnIGb2b5JvloOKVh4stLgc0PmRSxjABdBW_h"/>
+<div class="flex-1">
+<p class="font-label-bold text-label-bold text-on-surface">Grilled Chicken Salad</p>
+<p class="font-caption text-caption text-on-surface-variant">1:15 PM</p>
+</div>
+<div class="text-right">
+<p class="font-label-bold text-label-bold text-primary">45g</p>
+<p class="font-caption text-caption text-on-surface-variant">Protein</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-2 p-3 bg-surface-variant/30 rounded-lg border border-glass-border">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">local_drink</span>
+</div>
+<div class="flex-1">
+<p class="font-label-bold text-label-bold text-on-surface">Whey Isolate Shake</p>
+<p class="font-caption text-caption text-on-surface-variant">4:00 PM</p>
+</div>
+<div class="text-right">
+<p class="font-label-bold text-label-bold text-primary">25g</p>
+<p class="font-caption text-caption text-on-surface-variant">Protein</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 backdrop-blur-lg rounded-t-lg border-t border-glass-border shadow-lg bg-glass-bg fixed bottom-0 left-0 w-full h-20 flex justify-around items-center pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-bold text-label-bold text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1">analytics</span>
+<span class="font-label-bold text-label-bold text-[10px]">Insights</span>
+</a>
+<div class="relative -top-4">
+<button class="w-16 h-16 rounded-full bg-primary text-on-primary shadow-lg flex flex-col items-center justify-center border-4 border-surface active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">center_focus_strong</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1">restaurant</span>
+<span class="font-label-bold text-label-bold text-[10px]">Log</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-label-bold text-label-bold text-[10px]">Plan</span>
+</a>
+</nav>
+</body></html>

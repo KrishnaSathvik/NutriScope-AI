@@ -55,13 +55,24 @@ struct CoachView: View {
     ]
 
     var body: some View {
-        VStack(spacing: 0) {
-            NutriscopeTopBar()
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
 
-            ScrollViewReader { proxy in
+            VStack(spacing: 0) {
+                coachHeader
+
+                ScrollViewReader { proxy in
                 GeometryReader { geometry in
                     ScrollView(showsIndicators: false) {
                         LazyVStack(spacing: 16) {
+                            DailyGapCard(
+                                proteinCurrent: proteinToday,
+                                proteinTarget: proteinTarget,
+                                message: proteinRemaining > 0
+                                    ? "You're \(proteinRemaining)g from your goal today."
+                                    : "You've hit your protein goal — nice work!"
+                            )
+
                             KineticChatDateDivider(label: "Today")
                                 .padding(.bottom, 4)
 
@@ -87,7 +98,7 @@ struct CoachView: View {
                         if replying { scrollToBottom(proxy, anchor: "coach-typing") }
                     }
                 }
-            }
+                }
 
             KineticCoachChatInputBar(
                 text: $draftMessage,
@@ -95,9 +106,9 @@ struct CoachView: View {
                 onQuickPrompts: { showQuickPrompts = true }
             )
             .disabled(isReplying)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(AppBackground())
         .navigationBarHidden(true)
         .sheet(isPresented: $showQuickPrompts) {
             quickPromptsSheet
@@ -113,6 +124,32 @@ struct CoachView: View {
             didSeedConversation = true
             await seedConversation()
         }
+    }
+
+    private var coachHeader: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Protein Coach")
+                    .font(AppTypography.displayLGMobile)
+                    .foregroundStyle(AppTheme.textPrimary)
+                Text("Your next move")
+                    .font(AppTypography.body)
+                    .foregroundStyle(AppTheme.textSecondary)
+            }
+            Spacer()
+            Circle()
+                .fill(AppTheme.coachOrange)
+                .frame(width: 44, height: 44)
+                .shadow(color: AppTheme.coachOrange.opacity(0.3), radius: 8, y: 4)
+                .overlay {
+                    Image(systemName: "brain.head.profile")
+                        .font(.title3)
+                        .foregroundStyle(.white)
+                }
+        }
+        .padding(.horizontal, AppTheme.marginMain)
+        .padding(.top, 8)
+        .padding(.bottom, 4)
     }
 
     @ViewBuilder
@@ -233,7 +270,7 @@ struct CoachView: View {
 
     private func aiErrorMessage(_ error: Error) -> String {
         (error as? LocalizedError)?.errorDescription
-            ?? "Couldn't reach the coach right now. Check your API key in Profile → Developer and try again."
+            ?? "Couldn't reach the coach right now. Check your connection and try again."
     }
 
     private func scrollToBottom(_ proxy: ScrollViewProxy, anchor: AnyHashable? = nil) {

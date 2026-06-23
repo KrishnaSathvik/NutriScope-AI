@@ -1,0 +1,233 @@
+<!DOCTYPE html><html class="dark" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ProteinPlate AI - Meal Logged Successfully</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "protein-teal": "#2D6A4F",
+                        "surface-container-high": "#eae8e3",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-container": "#f0eee9",
+                        "tertiary": "#5d5e63",
+                        "surface-dim": "#dbdad5",
+                        "inverse-surface": "#30312e",
+                        "paper-white": "#FFFFFF",
+                        "tertiary-container": "#949499",
+                        "on-background": "#1b1c19",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "outline": "#8c7168",
+                        "primary-fixed": "#ffdbcf",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59c",
+                        "primary-container": "#f26b38",
+                        "on-surface": "#1b1c19",
+                        "secondary": "#735c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffe087",
+                        "surface-variant": "#e4e2dd",
+                        "surface-tint": "#a93702",
+                        "on-secondary-fixed": "#241a00",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-primary": "#ffb59c",
+                        "surface": "#fbf9f4",
+                        "warm-sun": "#FFD54F",
+                        "surface-bright": "#fbf9f4",
+                        "on-surface-variant": "#58423a",
+                        "on-secondary-container": "#725b00",
+                        "ink-black": "#1C1C1E",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#2c2d31",
+                        "surface-container-highest": "#e4e2dd",
+                        "background": "#fbf9f4",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fdd34d",
+                        "on-secondary": "#ffffff",
+                        "primary": "#a93702",
+                        "outline-variant": "#e0c0b5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "coach-orange": "#F26B38",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f2f1ec",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f5f3ee",
+                        "on-primary-container": "#561700",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-primary-fixed": "#380c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "gutter-card": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-lg": ["17px", {"lineHeight": "22px", "fontWeight": "400"}],
+                        "title-md": ["20px", {"lineHeight": "25px", "fontWeight": "600"}],
+                        "numeric-display": ["48px", {"lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "headline-xl": ["34px", {"lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "30px", "fontWeight": "700"}],
+                        "body-sm": ["15px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .success-bounce {
+            animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #F26B38;
+            border-radius: 50%;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col font-body-lg">
+<!-- TopAppBar Semantic Shell Navigation -->
+<!-- Suppressed on this screen as it is a transactional/success splash screen as per the "Linear/Transactional" rule -->
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-margin-main py-8 relative overflow-hidden">
+<!-- Confetti Container (Injected via JS) -->
+<div class="absolute inset-0 pointer-events-none z-0" id="confetti-container"><div class="confetti-piece" style="width: 9.6604px; height: 9.6604px; background-color: rgb(255, 213, 79); left: 42.443vw; top: -10px; animation: 2.23143s linear 0.355931s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 8.59895px; height: 8.59895px; background-color: rgb(255, 213, 79); left: 36.2422vw; top: -10px; animation: 3.70007s linear 0.192196s 1 normal forwards running fall; border-radius: 0px; transform: rotate(336.166deg);"></div><div class="confetti-piece" style="width: 5.67328px; height: 5.67328px; background-color: rgb(45, 106, 79); left: 29.1491vw; top: -10px; animation: 3.93131s linear 0.280523s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 5.35769px; height: 5.35769px; background-color: rgb(169, 55, 2); left: 35.5391vw; top: -10px; animation: 3.0293s linear 0.224803s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 6.95085px; height: 6.95085px; background-color: rgb(255, 213, 79); left: 59.7987vw; top: -10px; animation: 2.83109s linear 0.104115s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 7.41828px; height: 7.41828px; background-color: rgb(45, 106, 79); left: 73.4203vw; top: -10px; animation: 4.62165s linear 0.316912s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 9.12312px; height: 9.12312px; background-color: rgb(45, 106, 79); left: 3.54133vw; top: -10px; animation: 2.55673s linear 0.194224s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 5.38692px; height: 5.38692px; background-color: rgb(242, 107, 56); left: 46.2611vw; top: -10px; animation: 4.91288s linear 0.426913s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 4.99023px; height: 4.99023px; background-color: rgb(169, 55, 2); left: 63.0349vw; top: -10px; animation: 4.04042s linear 0.306151s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 6.70625px; height: 6.70625px; background-color: rgb(169, 55, 2); left: 79.9245vw; top: -10px; animation: 4.21467s linear 0.0687992s 1 normal forwards running fall; border-radius: 0px; transform: rotate(336.475deg);"></div><div class="confetti-piece" style="width: 5.00959px; height: 5.00959px; background-color: rgb(45, 106, 79); left: 36.3124vw; top: -10px; animation: 3.31582s linear 0.478238s 1 normal forwards running fall; border-radius: 0px; transform: rotate(190.511deg);"></div><div class="confetti-piece" style="width: 7.96116px; height: 7.96116px; background-color: rgb(242, 107, 56); left: 68.9152vw; top: -10px; animation: 4.2726s linear 0.174981s 1 normal forwards running fall; border-radius: 0px; transform: rotate(169.402deg);"></div><div class="confetti-piece" style="width: 8.28193px; height: 8.28193px; background-color: rgb(255, 213, 79); left: 52.1506vw; top: -10px; animation: 2.46754s linear 0.193221s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 4.84906px; height: 4.84906px; background-color: rgb(255, 213, 79); left: 58.1176vw; top: -10px; animation: 2.81837s linear 0.0582786s 1 normal forwards running fall; border-radius: 0px; transform: rotate(206.236deg);"></div><div class="confetti-piece" style="width: 5.15634px; height: 5.15634px; background-color: rgb(255, 213, 79); left: 72.6356vw; top: -10px; animation: 2.41769s linear 0.116626s 1 normal forwards running fall; border-radius: 0px; transform: rotate(135.463deg);"></div><div class="confetti-piece" style="width: 6.01492px; height: 6.01492px; background-color: rgb(255, 213, 79); left: 14.9154vw; top: -10px; animation: 2.78382s linear 0.464897s 1 normal forwards running fall; border-radius: 0px; transform: rotate(193.893deg);"></div><div class="confetti-piece" style="width: 6.37377px; height: 6.37377px; background-color: rgb(45, 106, 79); left: 23.0588vw; top: -10px; animation: 3.50679s linear 0.49515s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 6.47105px; height: 6.47105px; background-color: rgb(255, 213, 79); left: 76.2209vw; top: -10px; animation: 3.6565s linear 0.45145s 1 normal forwards running fall; border-radius: 0px; transform: rotate(98.0377deg);"></div><div class="confetti-piece" style="width: 4.64579px; height: 4.64579px; background-color: rgb(45, 106, 79); left: 77.4339vw; top: -10px; animation: 4.41452s linear 0.0452699s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 7.47847px; height: 7.47847px; background-color: rgb(242, 107, 56); left: 73.1062vw; top: -10px; animation: 4.20336s linear 0.0572869s 1 normal forwards running fall; border-radius: 0px; transform: rotate(292.977deg);"></div><div class="confetti-piece" style="width: 6.05254px; height: 6.05254px; background-color: rgb(45, 106, 79); left: 13.8532vw; top: -10px; animation: 4.47364s linear 0.252989s 1 normal forwards running fall; border-radius: 0px; transform: rotate(293.238deg);"></div><div class="confetti-piece" style="width: 4.10784px; height: 4.10784px; background-color: rgb(169, 55, 2); left: 37.6109vw; top: -10px; animation: 3.07264s linear 0.25831s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 4.44362px; height: 4.44362px; background-color: rgb(242, 107, 56); left: 75.733vw; top: -10px; animation: 2.74921s linear 0.466673s 1 normal forwards running fall; border-radius: 0px; transform: rotate(173.147deg);"></div><div class="confetti-piece" style="width: 8.61844px; height: 8.61844px; background-color: rgb(255, 213, 79); left: 43.2023vw; top: -10px; animation: 3.76444s linear 0.22656s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 9.74256px; height: 9.74256px; background-color: rgb(255, 213, 79); left: 52.6957vw; top: -10px; animation: 3.9804s linear 0.481735s 1 normal forwards running fall; border-radius: 0px; transform: rotate(210.731deg);"></div><div class="confetti-piece" style="width: 7.58612px; height: 7.58612px; background-color: rgb(255, 213, 79); left: 44.2644vw; top: -10px; animation: 3.00244s linear 0.333207s 1 normal forwards running fall; border-radius: 0px; transform: rotate(88.7822deg);"></div><div class="confetti-piece" style="width: 7.7094px; height: 7.7094px; background-color: rgb(255, 213, 79); left: 88.3925vw; top: -10px; animation: 4.87669s linear 0.0740695s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 9.48347px; height: 9.48347px; background-color: rgb(169, 55, 2); left: 49.2046vw; top: -10px; animation: 4.33789s linear 0.467121s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 5.12553px; height: 5.12553px; background-color: rgb(242, 107, 56); left: 73.5489vw; top: -10px; animation: 4.94991s linear 0.394595s 1 normal forwards running fall; border-radius: 0px; transform: rotate(198.707deg);"></div><div class="confetti-piece" style="width: 8.9096px; height: 8.9096px; background-color: rgb(45, 106, 79); left: 48.5059vw; top: -10px; animation: 4.09648s linear 0.275157s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 4.14603px; height: 4.14603px; background-color: rgb(242, 107, 56); left: 34.6199vw; top: -10px; animation: 4.3867s linear 0.445692s 1 normal forwards running fall; border-radius: 0px; transform: rotate(316.798deg);"></div><div class="confetti-piece" style="width: 9.9512px; height: 9.9512px; background-color: rgb(242, 107, 56); left: 38.2238vw; top: -10px; animation: 3.64285s linear 0.0404138s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 9.97408px; height: 9.97408px; background-color: rgb(242, 107, 56); left: 50.8023vw; top: -10px; animation: 3.82371s linear 0.26881s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 8.47609px; height: 8.47609px; background-color: rgb(45, 106, 79); left: 23.232vw; top: -10px; animation: 4.13696s linear 0.00231639s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 4.69615px; height: 4.69615px; background-color: rgb(255, 213, 79); left: 63.2568vw; top: -10px; animation: 2.38555s linear 0.00880238s 1 normal forwards running fall; border-radius: 0px; transform: rotate(145.967deg);"></div><div class="confetti-piece" style="width: 9.7042px; height: 9.7042px; background-color: rgb(45, 106, 79); left: 76.907vw; top: -10px; animation: 2.17336s linear 0.376301s 1 normal forwards running fall;"></div><div class="confetti-piece" style="width: 5.04257px; height: 5.04257px; background-color: rgb(242, 107, 56); left: 72.6466vw; top: -10px; animation: 4.32212s linear 0.135205s 1 normal forwards running fall; border-radius: 0px; transform: rotate(274.231deg);"></div><div class="confetti-piece" style="width: 4.82568px; height: 4.82568px; background-color: rgb(45, 106, 79); left: 54.3689vw; top: -10px; animation: 4.82406s linear 0.262349s 1 normal forwards running fall; border-radius: 0px; transform: rotate(295.316deg);"></div><div class="confetti-piece" style="width: 6.75785px; height: 6.75785px; background-color: rgb(255, 213, 79); left: 1.71431vw; top: -10px; animation: 4.51789s linear 0.260882s 1 normal forwards running fall; border-radius: 0px; transform: rotate(110.161deg);"></div><div class="confetti-piece" style="width: 8.13885px; height: 8.13885px; background-color: rgb(45, 106, 79); left: 28.1231vw; top: -10px; animation: 4.65806s linear 0.0595666s 1 normal forwards running fall; border-radius: 0px; transform: rotate(214.381deg);"></div></div>
+<!-- Success Animation & Icon -->
+<div class="relative z-10 flex flex-col items-center success-bounce mb-stack-lg">
+<div class="w-24 h-24 bg-protein-teal bg-opacity-20 rounded-full flex items-center justify-center mb-stack-sm relative">
+<div class="absolute inset-0 rounded-full animate-ping bg-protein-teal bg-opacity-10" style="animation-duration: 2s;"></div>
+<span class="material-symbols-outlined text-protein-teal text-[48px]" data-icon="check_circle" data-weight="fill">check_circle</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-center mt-stack-md text-on-surface">Log Saved!</h1>
+<p class="font-body-lg text-body-lg text-center mt-stack-sm max-w-xs text-on-surface text-on-surface-variant">
+                Your post-workout meal has been successfully added to your daily tracker. Keep up the momentum!
+            </p>
+</div>
+<!-- Summary Card -->
+<div class="w-full max-w-sm bg-paper-white dark:bg-surface-container-low rounded-xl p-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-surface-variant relative z-10 mb-stack-lg transition-transform duration-300 hover:scale-[1.02]">
+<div class="flex items-center justify-between border-b border-surface-variant pb-3 mb-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A stylized, modern, top-down view of a grilled chicken salad bowl in a minimalist white ceramic dish. Soft, bright natural lighting emphasizes the fresh greens and grill marks on the chicken. High-key light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxF_bkgd90OTzTcz_RKY3hh_Wl72-skQ4hsNdUkGjTtliKchuTOwJF1sqG_OoiBPHyLuLG6f4MVD8OjoAqttDAjEzvoRl2bloXRoVfDhbMyZcwCwLx5Imdicu_wGtxy6ZzbnP9P9vzUkxWHWCEsZ12KGE6KQYYi0F_pkYmRC3GsJzgZgAnZPBAqWnY9eVCRRvnFiYU1aLgOwKKXxVXTHFVFAQXUHAjMMxkPaFBBZsd0JmFkwVTrfzyaj1Rg-R4gj8arrUu7wDX5mqi">
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Grilled Chicken Bowl</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lunch</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-1">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase tracking-wider">Protein</span>
+<div class="flex items-baseline gap-1">
+<span class="font-numeric-display text-numeric-display text-protein-teal leading-none">35</span>
+<span class="font-body-lg text-body-lg text-protein-teal font-semibold">g</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-1 uppercase tracking-wider">Calories</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg leading-none text-on-surface">420</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-on-surface">kcal</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full max-w-sm flex flex-col gap-stack-md relative z-10 mt-auto sm:mt-0">
+<button class="w-full h-14 bg-coach-orange hover:bg-surface-tint text-paper-white font-title-md text-title-md rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 shadow-[0_4px_15px_rgba(242,107,56,0.2)] active:scale-95">
+<span class="">View in Today's Tracker</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full h-14 bg-transparent border-2 border-coach-orange text-coach-orange font-title-md text-title-md rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 hover:bg-coach-orange hover:bg-opacity-5 active:scale-95">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="">Log Another Item</span>
+</button>
+<button class="w-full py-2 mt-2 text-on-surface-variant font-body-lg text-body-lg hover:text-ink-black transition-colors duration-200">
+                Dismiss
+            </button>
+</div>
+</main>
+<!-- BottomNavBar Semantic Shell Navigation -->
+<!-- Suppressed on this screen as it is a transactional/success splash screen as per the "Linear/Transactional" rule -->
+<script>
+        // Simple confetti effect for success screen
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#F26B38', '#2D6A4F', '#FFD54F', '#a93702'];
+            
+            for (let i = 0; i < 40; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti-piece');
+                
+                // Random properties
+                const size = Math.random() * 6 + 4 + 'px';
+                confetti.style.width = size;
+                confetti.style.height = size;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = -10 + 'px';
+                
+                // Random animation
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 0.5;
+                confetti.style.animation = `fall ${duration}s linear ${delay}s forwards`;
+                
+                // Shape variation
+                if (Math.random() > 0.5) {
+                    confetti.style.borderRadius = '0';
+                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                }
+                
+                container.appendChild(confetti);
+            }
+        });
+    </script>
+
+
+</body></html>

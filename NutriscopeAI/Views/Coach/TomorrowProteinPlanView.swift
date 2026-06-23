@@ -7,7 +7,6 @@ struct TomorrowProteinPlanView: View {
 
     @State private var eatingOutTomorrow = false
     @State private var addedMealIDs: Set<UUID> = []
-    @State private var showAddedToast = false
     @State private var plan: TomorrowPlanCalculator.Plan?
     @State private var isLoading = true
     @State private var loadError: String?
@@ -19,7 +18,10 @@ struct TomorrowProteinPlanView: View {
     private var tomorrowLabel: String { TomorrowPlanCalculator.tomorrowLabel() }
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            BoundedScrollView {
 
             VStack(alignment: .leading, spacing: 24) {
                 headerSection
@@ -30,7 +32,7 @@ struct TomorrowProteinPlanView: View {
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 32)
                 } else if let loadError {
-                    SurfaceCard {
+                    GlassCard {
                         VStack(alignment: .leading, spacing: 8) {
                             Text("Couldn't load plan")
                                 .font(AppTypography.headline)
@@ -46,26 +48,11 @@ struct TomorrowProteinPlanView: View {
                 }
             }
             .padding(AppTheme.marginMain)
-            .padding(.bottom, 32)
-        
-        }
-        .background(AppBackground())
-        .navigationTitle("Tomorrow's Plan")
-        .navigationBarTitleDisplayMode(.inline)
-        .overlay(alignment: .bottom) {
-            if showAddedToast {
-                Text("Added to grocery list")
-                    .font(AppTypography.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .background(AppTheme.proteinTeal)
-                    .clipShape(Capsule())
-                    .padding(.bottom, 24)
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
+
             }
         }
-        .animation(.spring(response: 0.35), value: showAddedToast)
+        .navigationTitle("Tomorrow's Plan")
+        .navigationBarTitleDisplayMode(.inline)
         .task { await loadPlan() }
         .onChange(of: eatingOutTomorrow) { _, _ in
             Task { await loadPlan() }
@@ -74,13 +61,10 @@ struct TomorrowProteinPlanView: View {
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Tomorrow's Plan")
-                    .font(AppTypography.largeTitle)
-                Text("Let's get you ready for \(tomorrowLabel)")
-                    .font(AppTypography.body)
-                    .foregroundStyle(AppTheme.textSecondary)
-            }
+            KineticToolHeader(
+                title: "Tomorrow's Plan",
+                subtitle: "Let's get you ready for \(tomorrowLabel)"
+            )
 
             HStack(spacing: 0) {
                 planStat(
@@ -278,7 +262,7 @@ struct TomorrowProteinPlanView: View {
             )
         } catch {
             loadError = (error as? LocalizedError)?.errorDescription
-                ?? "Add your OpenAI API key in Profile → Developer and try again."
+                ?? "Couldn't build your plan. Check your connection and try again."
         }
     }
 
@@ -293,9 +277,11 @@ struct TomorrowProteinPlanView: View {
             }
             try? modelContext.save()
             addedMealIDs.insert(meal.id)
-            showAddedToast = true
-            try? await Task.sleep(for: .seconds(2))
-            showAddedToast = false
+            ToastCenter.shared.show(
+                "Added to Grocery List",
+                subtitle: meal.name,
+                style: .success
+            )
         } catch {
             loadError = (error as? LocalizedError)?.errorDescription
                 ?? "Couldn't add grocery items. Try again."

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post-Scan Success</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#8fee8c",
+                        "secondary-container": "#b7bcfd",
+                        "surface-dim": "#ddd9d8",
+                        "secondary-fixed": "#dfe0ff",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary-container": "#006e1d",
+                        "inverse-primary": "#ffb59c",
+                        "background": "#fdf8f8",
+                        "secondary": "#545a94",
+                        "tertiary": "#005314",
+                        "primary-fixed": "#ffdbcf",
+                        "outline-variant": "#e0c0b5",
+                        "on-surface": "#1c1b1b",
+                        "on-primary-container": "#ffcdbd",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "surface-variant": "#e6e1e1",
+                        "on-primary-fixed": "#380c00",
+                        "surface-tint": "#a93702",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#822800",
+                        "gauge-track": "#eae7e7",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "outline": "#8c7168",
+                        "inverse-surface": "#313030",
+                        "surface-container-highest": "#e6e1e1",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f1edec",
+                        "primary-container": "#a93702",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#ece7e7",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "inverse-on-surface": "#f4f0ef",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface": "#fcf9f8",
+                        "on-background": "#1c1b1b",
+                        "surface-container-low": "#f7f2f2",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "on-secondary-container": "#444a83",
+                        "surface-bright": "#fdf8f8",
+                        "primary": "#812700",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "tertiary-fixed": "#99f895",
+                        "on-secondary-fixed": "#0e144d",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    },
+                    "animation": {
+                        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                    },
+                    "keyframes": {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { filter: 'drop-shadow(0 0 15px rgba(129, 39, 0, 0.3))' },
+                            '50%': { filter: 'drop-shadow(0 0 25px rgba(129, 39, 0, 0.6))' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { 
+            font-family: 'Hanken Grotesk', sans-serif; 
+            background-color: #fdf8f8;
+            background-image: radial-gradient(circle at top left, rgba(255,219,207,0.4), transparent 50%),
+                              radial-gradient(circle at bottom right, rgba(169,55,2,0.1), transparent 50%);
+            background-attachment: fixed;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .material-symbols-outlined.filled {
+          font-variation-settings: 'FILL' 1;
+        }
+        .fab-shadow {
+            box-shadow: 0 8px 24px rgba(169, 55, 2, 0.3);
+        }
+    </style>
+</head>
+<body class="text-on-background antialiased overflow-hidden min-h-screen relative pb-24 md:pb-0">
+<!-- Confetti Canvas -->
+<canvas class="fixed inset-0 z-10 pointer-events-none" id="confetti-canvas"></canvas>
+<!-- Main Content -->
+<main class="relative z-20 w-full min-h-screen flex flex-col items-center justify-center p-margin-mobile md:p-margin-desktop">
+<div class="w-full max-w-md flex flex-col items-center text-center animate-fade-in-up">
+<!-- Celebration Badge -->
+<div class="w-24 h-24 rounded-full bg-tertiary-fixed flex items-center justify-center mb-6 shadow-[0_0_40px_rgba(153,248,149,0.5)]">
+<span class="material-symbols-outlined text-[60px] text-tertiary filled">check_circle</span>
+</div>
+<!-- Headline Text -->
+<h1 class="font-display-lg-mobile md:font-display-lg text-primary mb-8 tracking-tight">Log Saved!</h1>
+<!-- High-Fidelity Meal Card -->
+<div class="w-full glass-card rounded-xl p-6 mb-10 text-left relative">
+<h3 class="font-headline-md text-on-surface mb-4">Grilled Chicken Bowl</h3>
+<div class="flex justify-between items-center">
+<div class="flex gap-2">
+<span class="bg-primary-container/10 border border-primary/20 text-primary px-3 py-1 rounded-full font-label-bold">35g P</span>
+</div>
+<div class="h-12 w-px bg-outline-variant/50"></div>
+<div class="flex flex-col text-right">
+<span class="font-label-caps text-on-surface-variant uppercase tracking-widest mb-1">Calories</span>
+<span class="font-headline-md text-on-surface leading-none mt-2">420 kcal</span>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="w-full flex flex-col gap-4">
+<button class="w-full bg-primary-container text-on-primary font-label-bold py-4 px-6 rounded-full shadow-[0_4px_14px_rgba(169,55,2,0.2)] hover:bg-primary-container/90 hover:shadow-[0_6px_20px_rgba(169,55,2,0.3)] transition-all duration-200 flex justify-center items-center gap-2 group">
+                    View in Today's Tracker
+                    <span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform duration-200">arrow_forward</span>
+</button>
+<button class="w-full text-on-surface-variant font-label-bold py-4 px-6 rounded-full border-2 border-outline-variant hover:bg-surface-variant transition-colors duration-200">
+                    Log Another Item
+                </button>
+<a class="mt-4 font-body-md text-on-surface-variant underline hover:text-on-surface transition-colors duration-200" href="#">Dismiss</a>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-glass-bg dark:bg-inverse-surface/80 fixed bottom-0 w-full z-50 backdrop-blur-lg rounded-t-lg shadow-lg border-none">
+<div class="flex justify-around items-center h-20 pb-safe px-2">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">home</span>
+<span class="font-label-bold text-label-caps">Home</span>
+</a>
+<!-- Insights -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">analytics</span>
+<span class="font-label-bold text-label-caps">Insights</span>
+</a>
+<!-- FAB Substitute (Scan) -->
+<div class="relative -top-6">
+<button class="w-16 h-16 rounded-full bg-primary text-on-primary shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all border-4 border-[#fdf8f8] fab-shadow">
+<span class="material-symbols-outlined text-[32px]">center_focus_strong</span>
+</button>
+</div>
+<!-- Log (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-bold text-label-caps">Log</span>
+</a>
+<!-- Plan -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span class="font-label-bold text-label-caps">Plan</span>
+</a>
+</div>
+</nav>
+<!-- Interactions & Animations Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Lightweight Confetti Implementation
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const confettiCount = 80;
+            const confettiArr = [];
+            // Use theme colors for confetti
+            const colors = ['#812700', '#a93702', '#99f895', '#ffb59c'];
+
+            class Confetti {
+                constructor() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = (Math.random() * canvas.height) - canvas.height;
+                    this.w = Math.random() * 8 + 4;
+                    this.h = Math.random() * 12 + 6;
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    this.vy = Math.random() * 3 + 2;
+                    this.vx = Math.random() * 2 - 1;
+                    this.rotation = Math.random() * 360;
+                    this.rotationSpeed = Math.random() * 10 - 5;
+                }
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x + this.w / 2, this.y + this.h / 2);
+                    ctx.rotate(this.rotation * Math.PI / 180);
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
+                    ctx.restore();
+                }
+                update() {
+                    this.y += this.vy;
+                    this.x += this.vx;
+                    this.rotation += this.rotationSpeed;
+                    if (this.y > canvas.height) {
+                        this.y = -20;
+                        this.x = Math.random() * canvas.width;
+                    }
+                    this.draw();
+                }
+            }
+
+            for (let i = 0; i < confettiCount; i++) {
+                confettiArr.push(new Confetti());
+            }
+
+            let animationId;
+            let frames = 0;
+            const maxFrames = 300; // Stop confetti after a few seconds
+
+            function renderConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                confettiArr.forEach(c => c.update());
+                frames++;
+                
+                if(frames < maxFrames) {
+                    animationId = requestAnimationFrame(renderConfetti);
+                } else {
+                    // Fade out canvas
+                    canvas.style.transition = 'opacity 1s ease';
+                    canvas.style.opacity = '0';
+                    setTimeout(() => cancelAnimationFrame(animationId), 1000);
+                }
+            }
+
+            renderConfetti();
+
+            // Handle Resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        });
+    </script>
+</body></html>

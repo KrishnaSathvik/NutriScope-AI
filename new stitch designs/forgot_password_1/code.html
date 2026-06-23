@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Forgot Password</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "protein-teal": "#2D6A4F",
+                        "outline-variant": "#e0c0b5",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#561700",
+                        "surface-bright": "#fbf9f4",
+                        "on-primary-fixed": "#380c00",
+                        "secondary": "#735c00",
+                        "on-secondary-fixed-variant": "#574500",
+                        "outline": "#8c7168",
+                        "on-background": "#1b1c19",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "surface-container-low": "#f5f3ee",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#f0eee9",
+                        "tertiary-container": "#949499",
+                        "primary": "#a93702",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-tint": "#a93702",
+                        "inverse-surface": "#30312e",
+                        "on-secondary-container": "#725b00",
+                        "on-secondary": "#ffffff",
+                        "ink-black": "#1C1C1E",
+                        "coach-orange": "#F26B38",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container-high": "#eae8e3",
+                        "tertiary": "#5d5e63",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-dim": "#dbdad5",
+                        "tertiary-fixed": "#e3e2e7",
+                        "on-tertiary-container": "#2c2d31",
+                        "primary-fixed": "#ffdbcf",
+                        "paper-white": "#FFFFFF",
+                        "background": "#fbf9f4",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "on-surface": "#1b1c19",
+                        "secondary-container": "#fdd34d",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-container": "#f26b38",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "inverse-primary": "#ffb59c",
+                        "warm-sun": "#FFD54F",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#ffe087",
+                        "surface": "#fbf9f4",
+                        "surface-variant": "#e4e2dd",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "1.5rem",
+                        "gutter-card": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-md": "1rem",
+                        "margin-main": "1.25rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-margin-main md:p-0 relative overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-warm-sun/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-coach-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="w-full max-w-md relative z-10">
+<!-- Header Section -->
+<div class="text-center mb-stack-lg">
+<div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mx-auto mb-stack-md shadow-[0_4px_20px_0_rgba(242,107,56,0.15)]">
+<span class="material-symbols-outlined text-coach-orange text-3xl" data-icon="lock_reset" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock_reset</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-stack-sm">Reset Password</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[280px] mx-auto leading-relaxed">
+                Enter your email and we'll send you a link to reset your password.
+            </p>
+</div>
+<!-- Form Card -->
+<div class="bg-paper-white rounded-xl p-gutter-card shadow-[0_8px_30px_0_rgba(242,107,56,0.08)] mb-stack-lg">
+<form action="#" class="space-y-stack-md" method="POST">
+<!-- Email Input -->
+<div class="space-y-stack-sm">
+<label class="block font-label-caps text-label-caps text-on-surface-variant uppercase" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-tertiary" data-icon="mail">mail</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 border-0 bg-surface-container-low rounded-lg text-on-background font-body-lg text-body-lg placeholder:text-tertiary focus:ring-2 focus:ring-coach-orange focus:bg-surface-bright transition-colors" id="email" name="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full flex justify-center py-4 px-4 border border-transparent rounded-xl shadow-[0_4px_15px_0_rgba(242,107,56,0.2)] text-on-primary bg-coach-orange hover:bg-primary-container focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-coach-orange font-title-md text-title-md transition-transform active:scale-[0.98] mt-stack-md" type="submit">
+                    Send Reset Link
+                </button>
+</form>
+</div>
+<!-- Secondary Action -->
+<div class="text-center">
+<a class="inline-flex items-center font-body-lg text-body-lg text-warm-sun hover:text-secondary-fixed-dim transition-colors group" href="#">
+<span class="material-symbols-outlined mr-2 text-xl group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+                Back to Sign In
+            </a>
+</div>
+</div>
+</body></html>

@@ -16,17 +16,7 @@ struct ScanQuotaPaywallView: View {
     var body: some View {
         ZStack {
             AppTheme.surface.ignoresSafeArea()
-
-            Circle()
-                .fill(AppTheme.coachOrange.opacity(0.1))
-                .frame(width: 400, height: 400)
-                .blur(radius: 80)
-                .offset(x: 120, y: -200)
-            Circle()
-                .fill(AppTheme.warmSun.opacity(0.1))
-                .frame(width: 500, height: 500)
-                .blur(radius: 100)
-                .offset(x: -140, y: 280)
+            KineticAmbientBackground()
 
             BoundedScrollView {
 

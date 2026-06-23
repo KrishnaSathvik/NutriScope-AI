@@ -15,11 +15,30 @@ struct CoachAIContext: Sendable {
 }
 
 enum OpenAICoachService {
+    private static var usesProxy: Bool {
+        BackendConfig.isSupabaseConfigured && !BackendConfig.usesDeviceOpenAIForCoach
+    }
+
     static func chatReply(
         history: [CoachChatMessage],
         userMessage: String,
         context: CoachAIContext
     ) async throws -> String {
+        if usesProxy {
+            let historyPayload: [[String: String]] = history
+                .filter { $0.role != .suggestion }
+                .map { message in
+                    [
+                        "role": message.role == .user ? "user" : "assistant",
+                        "content": message.text,
+                    ]
+                }
+            var payload = ProxyAIService.contextPayload(context)
+            payload["history"] = historyPayload
+            payload["userMessage"] = userMessage
+            return try await ProxyAIService.text(action: "coach_chat", payload: payload)
+        }
+
         let system = """
         You are Nutriscope AI, a protein-first nutrition coach. Be warm, concise, and actionable.
         Use the user's real numbers. Suggest meals with approximate protein grams. No medical claims.
@@ -37,6 +56,13 @@ enum OpenAICoachService {
     }
 
     static func greeting(context: CoachAIContext) async throws -> String {
+        if usesProxy {
+            return try await ProxyAIService.text(
+                action: "coach_greeting",
+                payload: ProxyAIService.contextPayload(context)
+            )
+        }
+
         let prompt = """
         Write a short coach greeting (1-2 sentences) for a check-in chat.
         Mention protein remaining if > 0. Reference time of day naturally.
@@ -46,13 +72,20 @@ enum OpenAICoachService {
         return try await OpenAIClient.chatCompletion(
             messages: [
                 ["role": "system", "content": "You are a protein-first nutrition coach."],
-                ["role": "user", "content": prompt]
+                ["role": "user", "content": prompt],
             ],
             maxTokens: 120
         )
     }
 
     static func dailyTip(context: CoachAIContext) async throws -> String {
+        if usesProxy {
+            return try await ProxyAIService.text(
+                action: "daily_tip",
+                payload: ProxyAIService.contextPayload(context)
+            )
+        }
+
         let prompt = """
         Write one short coach tip (max 2 sentences) for the Today dashboard.
         \(contextBlock(context))
@@ -61,7 +94,7 @@ enum OpenAICoachService {
         return try await OpenAIClient.chatCompletion(
             messages: [
                 ["role": "system", "content": "You are a protein-first nutrition coach."],
-                ["role": "user", "content": prompt]
+                ["role": "user", "content": prompt],
             ],
             maxTokens: 120
         )
@@ -71,6 +104,16 @@ enum OpenAICoachService {
         proteinRemaining: Int,
         context: CoachAIContext
     ) async throws -> [String] {
+        if usesProxy {
+            var payload = ProxyAIService.contextPayload(context)
+            payload["proteinRemaining"] = proteinRemaining
+            let json = try await ProxyAIService.invoke(action: "protein_suggestions", payload: payload)
+            guard let suggestions = json["suggestions"] as? [String] else {
+                throw ProxyAIError.invalidResponse
+            }
+            return suggestions
+        }
+
         let prompt = """
         Return JSON: {"suggestions": ["string", "string", "string"]}
         Give 3 specific meal/snack ideas to close \(proteinRemaining)g protein remaining today.
@@ -86,6 +129,17 @@ enum OpenAICoachService {
     }
 
     static func suggestionCardProtein(context: CoachAIContext) async throws -> Int {
+        if usesProxy {
+            let json = try await ProxyAIService.invoke(
+                action: "suggestion_card_protein",
+                payload: ProxyAIService.contextPayload(context)
+            )
+            guard let grams = json["proteinGrams"] as? Int else {
+                throw ProxyAIError.invalidResponse
+            }
+            return grams
+        }
+
         let prompt = """
         Return JSON: {"proteinGrams": int}
         How many grams of protein should the user aim for in their next meal? Remaining today: \(context.proteinRemaining)g.
@@ -105,6 +159,28 @@ enum OpenAICoachService {
         eatingOutTomorrow: Bool,
         tomorrowLabel: String
     ) async throws -> TomorrowPlanCalculator.Plan {
+        if usesProxy {
+            let json = try await ProxyAIService.invoke(
+                action: "tomorrow_plan",
+                payload: [
+                    "proteinTarget": proteinTarget,
+                    "dietPreferences": dietPreferences.map(\.label),
+                    "eatingOutTomorrow": eatingOutTomorrow,
+                    "tomorrowLabel": tomorrowLabel,
+                ]
+            )
+            let data = try JSONSerialization.data(withJSONObject: json)
+            let dto = try JSONDecoder().decode(TomorrowPlanDTO.self, from: data)
+            let meals = dto.meals.compactMap { $0.toSuggestion() }
+            let plannedProtein = meals.reduce(0) { $0 + $1.protein }
+            return TomorrowPlanCalculator.Plan(
+                targetProtein: proteinTarget,
+                plannedProtein: min(plannedProtein, proteinTarget),
+                meals: meals,
+                tomorrowLabel: tomorrowLabel
+            )
+        }
+
         let prefs = dietPreferences.map(\.label).joined(separator: ", ")
         let prompt = """
         Return JSON:
@@ -138,6 +214,20 @@ enum OpenAICoachService {
         proteinGap: Int,
         dietPreferences: Set<DietPreference>
     ) async throws -> [String] {
+        if usesProxy {
+            let json = try await ProxyAIService.invoke(
+                action: "grocery_suggestions",
+                payload: [
+                    "proteinGap": proteinGap,
+                    "dietPreferences": dietPreferences.map(\.label),
+                ]
+            )
+            guard let items = json["items"] as? [String] else {
+                throw ProxyAIError.invalidResponse
+            }
+            return items
+        }
+
         let prefs = dietPreferences.map(\.label).joined(separator: ", ")
         let prompt = """
         Return JSON: {"items": ["string"]}
@@ -154,6 +244,17 @@ enum OpenAICoachService {
     }
 
     static func groceryItemsForMeals(_ mealNames: [String]) async throws -> [String] {
+        if usesProxy {
+            let json = try await ProxyAIService.invoke(
+                action: "grocery_items_for_meals",
+                payload: ["mealNames": mealNames]
+            )
+            guard let items = json["items"] as? [String] else {
+                throw ProxyAIError.invalidResponse
+            }
+            return items
+        }
+
         let prompt = """
         Return JSON: {"items": ["string"]}
         Grocery ingredients needed for: \(mealNames.joined(separator: ", ")).
@@ -178,6 +279,23 @@ enum OpenAICoachService {
             guard let selected = q.selectedOption else { return nil }
             return "\(q.prompt): \(selected)"
         }.joined(separator: "; ")
+
+        if usesProxy {
+            let json = try await ProxyAIService.invoke(
+                action: "followup_advice",
+                payload: [
+                    "mealName": analysis.mealName,
+                    "proteinFormatted": analysis.protein.formatted,
+                    "caloriesFormatted": analysis.calories.formatted,
+                    "followUpAnswers": answerText,
+                    "dailyProteinTarget": dailyProteinTarget,
+                    "proteinConsumedToday": proteinConsumedToday,
+                ]
+            )
+            let data = try JSONSerialization.data(withJSONObject: json)
+            let dto = try JSONDecoder().decode(AdviceDTO.self, from: data)
+            return dto.toAdvice()
+        }
 
         let prompt = """
         Return JSON matching:
@@ -227,7 +345,7 @@ enum OpenAICoachService {
             "Protein remaining: \(context.proteinRemaining)g",
             "Calorie room: ~\(context.calorieRemainingMin)–\(context.calorieRemainingMax) kcal",
             "Meals logged today: \(context.mealsLoggedToday)",
-            "Coach style: \(context.preferredCoachStyle)"
+            "Coach style: \(context.preferredCoachStyle)",
         ]
         if !context.dietPreferences.isEmpty {
             lines.append("Diet: \(context.dietPreferences.joined(separator: ", "))")

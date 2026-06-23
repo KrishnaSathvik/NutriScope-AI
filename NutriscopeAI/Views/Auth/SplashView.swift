@@ -8,29 +8,40 @@ struct SplashView: View {
 
     var body: some View {
         ZStack {
-            AppTheme.background.ignoresSafeArea()
+            AppBackground(showsAmbientGlow: true)
 
-            VStack(spacing: 16) {
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .fill(AppTheme.coachOrange)
-                    .frame(width: 88, height: 88)
+            VStack(spacing: 20) {
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [AppTheme.coachOrange, AppTheme.primary],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 96, height: 96)
                     .overlay {
                         Image(systemName: "leaf.fill")
-                            .font(.system(size: 40, weight: .semibold))
+                            .font(.system(size: 44, weight: .semibold))
                             .foregroundStyle(.white)
                     }
-                    .shadow(color: AppTheme.coachOrange.opacity(0.3), radius: 16, y: 8)
+                    .shadow(color: AppTheme.coachOrange.opacity(0.35), radius: 20, y: 10)
                     .scaleEffect(logoScale)
                     .opacity(logoOpacity)
 
-                Text("Nutriscope AI")
-                    .font(.system(size: 28, weight: .heavy))
-                    .foregroundStyle(AppTheme.textPrimary)
-                    .opacity(logoOpacity)
+                VStack(spacing: 6) {
+                    Text("Nutriscope AI")
+                        .font(AppTypography.displayLGMobile)
+                        .foregroundStyle(AppTheme.textPrimary)
+                    Text("Protein-first meal tracking")
+                        .font(AppTypography.caption)
+                        .foregroundStyle(AppTheme.textSecondary)
+                }
+                .opacity(logoOpacity)
             }
         }
         .onAppear {
-            withAnimation(.spring(response: 0.55, dampingFraction: 0.72)) {
+            withAnimation(.nsBouncySpring) {
                 logoScale = 1
                 logoOpacity = 1
             }

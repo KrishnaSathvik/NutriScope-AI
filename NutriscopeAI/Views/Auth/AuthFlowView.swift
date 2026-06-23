@@ -4,12 +4,10 @@ import SwiftUI
 enum AuthFlowStep: Equatable {
     case splash
     case welcome
-    case introTrackFast
-    case introProteinProgress
-    case introSmartMeals
     case goals
     case diet
-    case target
+    case profile
+    case planReady
     case firstMeal
     case createAccount
     case signIn
@@ -41,10 +39,8 @@ struct AuthFlowView: View {
     @State private var authError: String?
     @State private var signInCameFromWelcome = false
     @State private var showOnboardingScan = false
-    @State private var opensCameraForFirstMeal = false
+    @State private var showOnboardingManualLog = false
     @State private var restoreMessage: String?
-
-    private let genders = ["Female", "Male", "Non-binary", "Prefer not to say"]
 
     var body: some View {
         VStack(spacing: 0) {
@@ -52,7 +48,6 @@ struct AuthFlowView: View {
                 OnboardingChrome(
                     step: stepNum,
                     totalSteps: 3,
-                    showsFinalizing: step == .target,
                     onBack: goBackFromOnboarding
                 )
             }
@@ -64,44 +59,30 @@ struct AuthFlowView: View {
                         withAnimation { step = .welcome }
                     }
                 case .welcome: welcomePage
-                case .introTrackFast:
-                    OnboardingIntroView(
-                        page: OnboardingIntroPage.pages[0],
-                        pageIndex: 0,
-                        totalPages: 3,
-                        onBack: { withAnimation { step = .welcome } },
-                        onContinue: { withAnimation { step = .introProteinProgress } }
-                    )
-                case .introProteinProgress:
-                    OnboardingIntroView(
-                        page: OnboardingIntroPage.pages[1],
-                        pageIndex: 1,
-                        totalPages: 3,
-                        onBack: { withAnimation { step = .introTrackFast } },
-                        onContinue: { withAnimation { step = .introSmartMeals } }
-                    )
-                case .introSmartMeals:
-                    OnboardingIntroView(
-                        page: OnboardingIntroPage.pages[2],
-                        pageIndex: 2,
-                        totalPages: 3,
-                        onBack: { withAnimation { step = .introProteinProgress } },
-                        onContinue: { withAnimation { step = .goals } }
-                    )
                 case .goals: goalPage
                 case .diet: dietPage
-                case .target: targetPage
+                case .profile: profilePage
+                case .planReady:
+                    OnboardingPlanReadyView(
+                        displayName: name,
+                        goal: selectedGoal,
+                        proteinTarget: proteinTarget,
+                        calorieMin: calorieMin,
+                        calorieMax: calorieMax,
+                        onContinue: {
+                            persistProfileDraft()
+                            withAnimation { step = .firstMeal }
+                        }
+                    )
                 case .firstMeal:
                     AddFirstMealView(
                         onScanPhoto: {
-                            opensCameraForFirstMeal = true
                             showOnboardingScan = true
                         },
                         onTypeMeal: {
-                            opensCameraForFirstMeal = false
-                            showOnboardingScan = true
+                            showOnboardingManualLog = true
                         },
-                        onBack: { withAnimation { step = .target } }
+                        onBack: { withAnimation { step = .planReady } }
                     )
                 case .createAccount:
                     SignUpView(
@@ -167,9 +148,12 @@ struct AuthFlowView: View {
         .fullScreenCover(isPresented: $showOnboardingScan) {
             ScanMealView(
                 skipsFlowTutorial: true,
-                opensCameraOnAppear: opensCameraForFirstMeal,
+                opensCameraOnAppear: true,
                 onFirstMealSaved: finishOnboardingAfterFirstMeal
             )
+        }
+        .fullScreenCover(isPresented: $showOnboardingManualLog) {
+            ManualMealLogView(onFirstMealSaved: finishOnboardingAfterFirstMeal)
         }
         .onAppear {
             recalculateTargets()
@@ -183,6 +167,7 @@ struct AuthFlowView: View {
         }
         appState.hasCompletedOnboarding = true
         showOnboardingScan = false
+        showOnboardingManualLog = false
     }
 
     private func resumeFlowIfNeeded() {
@@ -201,17 +186,17 @@ struct AuthFlowView: View {
         switch step {
         case .goals: 1
         case .diet: 2
-        case .target: 3
+        case .profile: 3
         default: nil
         }
     }
 
     private func goBackFromOnboarding() {
-        withAnimation {
+        withAnimation(.nsStandardSpring) {
             switch step {
-            case .goals: step = .introSmartMeals
+            case .goals: step = .welcome
             case .diet: step = .goals
-            case .target: step = .diet
+            case .profile: step = .diet
             default: break
             }
         }
@@ -219,8 +204,8 @@ struct AuthFlowView: View {
 
     private var showsBottomButton: Bool {
         switch step {
-        case .splash, .welcome, .introTrackFast, .introProteinProgress, .introSmartMeals,
-             .firstMeal, .createAccount, .signIn, .resetPassword: false
+        case .splash, .welcome, .firstMeal, .createAccount, .signIn, .resetPassword,
+             .planReady: false
         default: true
         }
     }
@@ -241,7 +226,6 @@ struct AuthFlowView: View {
         switch step {
         case .goals: 0
         case .diet: 1
-        case .target: 2
         default: 0
         }
     }
@@ -251,96 +235,119 @@ struct AuthFlowView: View {
     private var welcomePage: some View {
         GeometryReader { geo in
             ZStack(alignment: .bottom) {
+                Image("welcome-hero")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geo.size.width, height: geo.size.height)
+                    .clipped()
+                    .accessibilityLabel("Healthy high-protein meal")
+
+                LinearGradient(
+                    colors: [
+                        Color.black.opacity(0.06),
+                        AppTheme.background.opacity(0.5),
+                        AppTheme.background
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+
                 VStack(spacing: 0) {
-                    Image("welcome-hero")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: geo.size.width, height: geo.size.height * 0.58)
-                        .clipped()
-                        .overlay {
-                            LinearGradient(
-                                colors: [
-                                    AppTheme.background.opacity(0.05),
-                                    AppTheme.background.opacity(0.6),
-                                    AppTheme.background
-                                ],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
-                        }
-                    Spacer(minLength: 0)
-                }
-                .ignoresSafeArea()
-
-                VStack(spacing: 20) {
-                    VStack(spacing: 12) {
-                        Text("Track protein without overthinking calories.")
-                            .font(.system(size: 34, weight: .heavy))
-                            .multilineTextAlignment(.center)
-                            .foregroundStyle(AppTheme.textPrimary)
-                        Text("Scan meals, see your progress, and get smart next-meal suggestions.")
-                            .font(.body)
-                            .foregroundStyle(AppTheme.textSecondary)
-                            .multilineTextAlignment(.center)
+                    HStack(spacing: 10) {
+                        Image(systemName: "fork.knife")
+                            .font(.body.weight(.semibold))
+                            .foregroundStyle(.white)
+                            .frame(width: 40, height: 40)
+                            .background(AppTheme.coachOrange)
+                            .clipShape(Circle())
+                            .shadow(color: AppTheme.coachOrange.opacity(0.35), radius: 8, y: 4)
+                        Text("Nutriscope AI")
+                            .font(AppTypography.title3.weight(.semibold))
+                            .foregroundStyle(AppTheme.inkBlack)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, AppTheme.marginMain)
+                    .padding(.top, geo.safeAreaInsets.top + 12)
 
-                    VStack(spacing: 12) {
-                        Button {
-                            withAnimation { step = .introTrackFast }
-                        } label: {
-                            HStack(spacing: 8) {
-                                Text("Get Started")
-                                Image(systemName: "arrow.right")
+                    Spacer()
+
+                    VStack(spacing: 24) {
+                        VStack(spacing: 10) {
+                            (
+                                Text("Eat smarter.\n")
+                                    .foregroundStyle(AppTheme.inkBlack)
+                                + Text("Live stronger.")
+                                    .foregroundStyle(AppTheme.coachOrange)
+                            )
+                            .font(AppTypography.headlineXL)
+                            .multilineTextAlignment(.center)
+                            .fixedSize(horizontal: false, vertical: true)
+
+                            Text("Your personal nutrition coach. Track protein, build habits, and feel your best without the stress.")
+                                .font(AppTypography.bodyLG)
+                                .foregroundStyle(AppTheme.textSecondary)
+                                .multilineTextAlignment(.center)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .padding(.horizontal, 8)
+                        }
+
+                        VStack(spacing: 14) {
+                            Button {
+                                withAnimation(.nsStandardSpring) { step = .goals }
+                            } label: {
+                                HStack(spacing: 8) {
+                                    Text("Get Started")
+                                    Image(systemName: "arrow.right")
+                                }
+                            }
+                            .buttonStyle(PrimaryButtonStyle(pill: false))
+
+                            Button {
+                                authError = nil
+                                signInCameFromWelcome = true
+                                withAnimation(.nsStandardSpring) { step = .signIn }
+                            } label: {
+                                Text("I already have an account")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            .buttonStyle(SecondaryButtonStyle(pill: false))
+
+                            RestorePurchasesButton(
+                                isLoading: appState.subscriptionManager.isLoading
+                            ) {
+                                Task { await restorePurchasesFromAuth() }
+                            }
+
+                            if let restoreMessage {
+                                Text(restoreMessage)
+                                    .font(.caption)
+                                    .foregroundStyle(AppTheme.proteinTeal)
+                                    .multilineTextAlignment(.center)
                             }
                         }
-                        .buttonStyle(PrimaryButtonStyle(pill: true))
-
-                        Button {
-                            authError = nil
-                            signInCameFromWelcome = true
-                            withAnimation { step = .signIn }
-                        } label: {
-                            Text("I already have an account")
-                                .frame(maxWidth: .infinity)
-                        }
-                        .buttonStyle(OutlineButtonStyle())
-
-                        RestorePurchasesButton(
-                            isLoading: appState.subscriptionManager.isLoading
-                        ) {
-                            Task { await restorePurchasesFromAuth() }
-                        }
-
-                        if let restoreMessage {
-                            Text(restoreMessage)
-                                .font(.caption)
-                                .foregroundStyle(AppTheme.proteinTeal)
-                                .multilineTextAlignment(.center)
-                        }
                     }
-
-                    Text("No shame. No perfect logging. Just better choices.")
-                        .font(.caption)
-                        .foregroundStyle(AppTheme.outline)
-                        .multilineTextAlignment(.center)
-                        .padding(.bottom, 24)
+                    .padding(.horizontal, AppTheme.marginMain)
+                    .padding(.bottom, max(geo.safeAreaInsets.bottom, 24) + 16)
                 }
-                .padding(.horizontal, AppTheme.marginMain)
             }
         }
+        .ignoresSafeArea()
     }
 
     // MARK: - Onboarding pages
 
     private var goalPage: some View {
         BoundedScrollView {
-
-            VStack(spacing: 16) {
-                Text("What is your goal?")
-                    .font(.system(size: 34, weight: .heavy))
-                    .multilineTextAlignment(.center)
-                    .foregroundStyle(AppTheme.textPrimary)
-                    .padding(.top, 8)
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("What's your goal?")
+                        .font(AppTypography.displayLGMobile)
+                        .foregroundStyle(AppTheme.textPrimary)
+                    Text("We'll tailor your daily targets based on your choice.")
+                        .font(AppTypography.bodyLG)
+                        .foregroundStyle(AppTheme.textSecondary)
+                }
+                .padding(.top, 4)
 
                 ForEach(FitnessGoal.allCases) { goal in
                     KineticGoalCard(goal: goal, isSelected: selectedGoal == goal) {
@@ -351,24 +358,21 @@ struct AuthFlowView: View {
             }
             .padding(.horizontal, AppTheme.marginMain)
             .padding(.bottom, 24)
-        
         }
     }
 
     private var dietPage: some View {
         BoundedScrollView {
-
             VStack(alignment: .leading, spacing: 20) {
-                Text("What's your diet style?")
-                    .font(.system(size: 34, weight: .heavy))
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
-                    .padding(.top, 8)
-                Text("Pick all that apply — we'll tailor meal estimates and coaching.")
-                    .font(.body)
-                    .foregroundStyle(AppTheme.textSecondary)
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("What's your diet style?")
+                        .font(AppTypography.displayLGMobile)
+                        .foregroundStyle(AppTheme.textPrimary)
+                    Text("Pick all that apply — we'll tailor meal estimates and coaching.")
+                        .font(AppTypography.bodyLG)
+                        .foregroundStyle(AppTheme.textSecondary)
+                }
+                .padding(.top, 4)
 
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                     ForEach(DietPreference.allCases) { pref in
@@ -387,176 +391,97 @@ struct AuthFlowView: View {
             }
             .padding(.horizontal, AppTheme.marginMain)
             .padding(.bottom, 24)
-        
         }
     }
 
-    private var targetPage: some View {
+    private var profilePage: some View {
         BoundedScrollView {
-
-            VStack(spacing: 24) {
-                VStack(spacing: 8) {
-                    Text("Target Locked")
-                        .font(.system(size: 28, weight: .heavy))
-                        .multilineTextAlignment(.center)
-                    Text("Your personalized nutritional baseline.")
-                        .font(.body)
+            VStack(alignment: .leading, spacing: 20) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Let's get personal.")
+                        .font(AppTypography.displayLGMobile)
+                        .foregroundStyle(AppTheme.textPrimary)
+                    Text("We need a few details to calibrate your nutritional engine accurately.")
+                        .font(AppTypography.bodyLG)
                         .foregroundStyle(AppTheme.textSecondary)
-                        .multilineTextAlignment(.center)
                 }
-                .padding(.top, 8)
+                .padding(.top, 4)
 
                 profileCalibrationSection
-
-                OnboardingTargetHero(proteinTarget: proteinTarget, goal: selectedGoal)
-
-                HStack(spacing: 14) {
-                    Image(systemName: "flame.fill")
-                        .font(.title3)
-                        .foregroundStyle(AppTheme.outline)
-                        .frame(width: 40, height: 40)
-                        .background(AppTheme.surfaceContainerHighest)
-                        .clipShape(Circle())
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Energy Range")
-                            .font(.headline)
-                        Text("Daily caloric intake")
-                            .font(.caption)
-                            .foregroundStyle(AppTheme.textSecondary)
-                    }
-                    Spacer()
-                    VStack(alignment: .trailing, spacing: 2) {
-                        Text("\(calorieMin.formatted())–\(calorieMax.formatted())")
-                            .font(.headline)
-                        Text("kcal")
-                            .font(.caption)
-                            .foregroundStyle(AppTheme.textSecondary)
-                    }
-                }
-                .padding(16)
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .strokeBorder(AppTheme.surfaceContainerHighest, lineWidth: 1)
-                )
-
-                if !targetExplanation.isEmpty {
-                    HStack(alignment: .top, spacing: 12) {
-                        Image(systemName: "person.fill.questionmark")
-                            .font(.caption)
-                            .foregroundStyle(.white)
-                            .frame(width: 32, height: 32)
-                            .background(AppTheme.coachOrange)
-                            .clipShape(Circle())
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("Coach's Note")
-                                .font(.headline)
-                            Text(targetExplanation)
-                                .font(.subheadline)
-                                .foregroundStyle(AppTheme.textSecondary)
-                        }
-                    }
-                    .padding(16)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(AppTheme.surfaceMuted)
-                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                }
-
-                Text("You can adjust targets anytime in Profile.")
-                    .font(.footnote)
-                    .foregroundStyle(AppTheme.textTertiary)
-                    .multilineTextAlignment(.center)
             }
             .padding(.horizontal, AppTheme.marginMain)
             .padding(.bottom, 24)
-        
         }
-        .onAppear { recalculateTargets() }
     }
 
     private var profileCalibrationSection: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            Text("About you")
-                .font(.headline)
-            Text("We use this to calculate your protein and calorie targets.")
-                .font(.caption)
-                .foregroundStyle(AppTheme.textSecondary)
+        VStack(alignment: .leading, spacing: 20) {
+            OnboardingGenderSegment(gender: $gender)
+
+            OnboardingProfileMetricField(
+                label: "Age",
+                text: Binding(
+                    get: { "\(age)" },
+                    set: { age = Int($0.filter(\.isNumber)) ?? age; recalculateTargets() }
+                ),
+                suffix: "years",
+                placeholder: "e.g. 28"
+            )
+
+            HStack(spacing: 12) {
+                OnboardingProfileMetricField(
+                    label: "Height",
+                    text: Binding(
+                        get: { "\(heightCm)" },
+                        set: { heightCm = Int($0.filter(\.isNumber)) ?? heightCm; recalculateTargets() }
+                    ),
+                    suffix: "cm",
+                    placeholder: "170"
+                )
+                OnboardingProfileMetricField(
+                    label: "Weight",
+                    text: Binding(
+                        get: { "\(weightKg)" },
+                        set: { weightKg = Int($0.filter(\.isNumber)) ?? weightKg; recalculateTargets() }
+                    ),
+                    suffix: "kg",
+                    placeholder: "65"
+                )
+            }
+
+            VStack(alignment: .leading, spacing: 10) {
+                Text("Activity Level")
+                    .font(AppTypography.subheadline.weight(.bold))
+
+                VStack(spacing: 10) {
+                    ForEach(ActivityLevel.allCases) { level in
+                        OnboardingActivityRadioRow(
+                            level: level,
+                            isSelected: activity == level
+                        ) {
+                            activity = level
+                            recalculateTargets()
+                        }
+                    }
+                }
+            }
 
             VStack(alignment: .leading, spacing: 6) {
                 Text("Name (optional)")
-                    .font(.caption.weight(.semibold))
+                    .font(AppTypography.caption)
                     .foregroundStyle(AppTheme.textSecondary)
                 TextField("e.g. Taylor Smith", text: $name)
-                    .padding(12)
+                    .font(AppTypography.body)
+                    .padding(16)
                     .background(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     .overlay(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .strokeBorder(AppTheme.outlineVariant.opacity(0.5), lineWidth: 1)
+                        RoundedRectangle(cornerRadius: 16, style: .continuous)
+                            .strokeBorder(AppTheme.outlineVariant.opacity(0.35), lineWidth: 1)
                     )
             }
-
-            HStack(spacing: 12) {
-                profileStatField(title: "Age", value: Binding(
-                    get: { "\(age)" },
-                    set: { age = Int($0.filter(\.isNumber)) ?? age; recalculateTargets() }
-                ), suffix: "yrs")
-                VStack(spacing: 12) {
-                    profileStatField(title: "Height", value: Binding(
-                        get: { "\(heightCm)" },
-                        set: { heightCm = Int($0.filter(\.isNumber)) ?? heightCm; recalculateTargets() }
-                    ), suffix: "cm")
-                    profileStatField(title: "Weight", value: Binding(
-                        get: { "\(weightKg)" },
-                        set: { weightKg = Int($0.filter(\.isNumber)) ?? weightKg; recalculateTargets() }
-                    ), suffix: "kg")
-                }
-            }
-
-            Picker("Gender", selection: $gender) {
-                ForEach(genders, id: \.self) { Text($0).tag($0) }
-            }
-            .pickerStyle(.menu)
-            .onChange(of: gender) { _, _ in recalculateTargets() }
-
-            Text("Activity level")
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(AppTheme.textSecondary)
-            ForEach(ActivityLevel.allCases) { level in
-                KineticActivityCard(level: level, isSelected: activity == level) {
-                    activity = level
-                    recalculateTargets()
-                }
-            }
         }
-        .padding(16)
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .strokeBorder(AppTheme.outlineVariant.opacity(0.4), lineWidth: 1)
-        )
-    }
-
-    private func profileStatField(title: String, value: Binding<String>, suffix: String) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(title)
-                .font(.caption.weight(.semibold))
-                .foregroundStyle(AppTheme.textSecondary)
-            HStack(alignment: .firstTextBaseline, spacing: 4) {
-                TextField("0", text: value)
-                    .keyboardType(.numberPad)
-                    .font(.title2.weight(.bold))
-                Text(suffix)
-                    .font(.caption)
-                    .foregroundStyle(AppTheme.textSecondary)
-            }
-            .padding(12)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(AppTheme.surfaceMuted)
-            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-        }
+        .onChange(of: gender) { _, _ in recalculateTargets() }
     }
 
     // MARK: - Reset password
@@ -610,8 +535,7 @@ struct AuthFlowView: View {
     private var buttonTitle: String {
         switch step {
         case .welcome: "Continue" // unused
-        case .goals, .diet: "Continue"
-        case .target: "Add first meal"
+        case .goals, .diet, .profile: "Continue"
         case .createAccount: "Create account"
         case .signIn: "Sign in"
         default: "Continue"
@@ -622,14 +546,14 @@ struct AuthFlowView: View {
         authError = nil
         switch step {
         case .welcome:
-            withAnimation { step = .introTrackFast }
+            withAnimation { step = .goals }
         case .goals:
             withAnimation { step = .diet }
         case .diet:
-            withAnimation { step = .target }
-        case .target:
-            persistProfileDraft()
-            withAnimation { step = .firstMeal }
+            withAnimation { step = .profile }
+        case .profile:
+            recalculateTargets()
+            withAnimation { step = .planReady }
         case .createAccount:
             submitCreateAccount()
         case .signIn:
@@ -648,6 +572,8 @@ struct AuthFlowView: View {
                 if BackendConfig.isSupabaseConfigured {
                     _ = try await SupabaseAuthClient.signUpWithEmail(email: email, password: password)
                 }
+                let settings = try? modelContext.fetch(FetchDescriptor<UserSettings>()).first
+                await IOSUserProfileSyncService.upsertAfterAuthentication(settings: settings)
                 isSaving = false
                 GuestModeManager.isGuest = false
                 completeReturningSignIn()
@@ -666,6 +592,8 @@ struct AuthFlowView: View {
                 if BackendConfig.isSupabaseConfigured {
                     _ = try await SupabaseAuthClient.signInWithEmail(email: email, password: password)
                 }
+                let settings = try? modelContext.fetch(FetchDescriptor<UserSettings>()).first
+                await IOSUserProfileSyncService.upsertAfterAuthentication(settings: settings)
                 isSaving = false
                 completeReturningSignIn()
             } catch {

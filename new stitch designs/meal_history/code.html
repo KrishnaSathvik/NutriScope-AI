@@ -1,0 +1,369 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Meal History - ProteinPlate AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#e0c0b5",
+                    "tertiary-fixed": "#e3e2e7",
+                    "surface-container": "#f0eee9",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#5d5e63",
+                    "primary-fixed-dim": "#ffb59c",
+                    "on-background": "#1b1c19",
+                    "inverse-surface": "#30312e",
+                    "secondary": "#735c00",
+                    "primary-fixed": "#ffdbcf",
+                    "on-tertiary-container": "#2c2d31",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed": "#ffe087",
+                    "secondary-container": "#fdd34d",
+                    "surface-container-high": "#eae8e3",
+                    "coach-orange": "#F26B38",
+                    "paper-white": "#FFFFFF",
+                    "error": "#ba1a1a",
+                    "background": "#fbf9f4",
+                    "on-primary-fixed": "#380c00",
+                    "error-container": "#ffdad6",
+                    "ink-black": "#1C1C1E",
+                    "on-primary-fixed-variant": "#822800",
+                    "tertiary-fixed-dim": "#c6c6cb",
+                    "outline": "#8c7168",
+                    "inverse-primary": "#ffb59c",
+                    "on-tertiary-fixed-variant": "#46464b",
+                    "surface": "#fbf9f4",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e4e2dd",
+                    "on-primary-container": "#561700",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#ebc23e",
+                    "surface-container-highest": "#e4e2dd",
+                    "on-secondary-container": "#725b00",
+                    "surface-tint": "#a93702",
+                    "surface-container-low": "#f5f3ee",
+                    "on-surface-variant": "#58423a",
+                    "on-surface": "#1b1c19",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#949499",
+                    "protein-teal": "#2D6A4F",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#dbdad5",
+                    "primary": "#a93702",
+                    "surface-bright": "#fbf9f4",
+                    "on-tertiary-fixed": "#1a1b1f",
+                    "primary-container": "#f26b38",
+                    "warm-sun": "#FFD54F",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-secondary-fixed": "#241a00",
+                    "inverse-on-surface": "#f2f1ec"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter-card": "1rem",
+                    "stack-sm": "0.5rem",
+                    "stack-lg": "1.5rem",
+                    "stack-md": "1rem",
+                    "margin-main": "1.25rem"
+            },
+            "fontFamily": {
+                    "body-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "headline-xl": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "title-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "numeric-display": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "body-lg": [
+                            "17px",
+                            {
+                                    "lineHeight": "22px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "28px",
+                            {
+                                    "lineHeight": "34px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-xl": [
+                            "34px",
+                            {
+                                    "lineHeight": "41px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-sm": [
+                            "15px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "30px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "title-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "25px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "numeric-display": [
+                            "48px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "800"
+                            }
+                    ]
+            }
+        },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar for web view */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e4e2dd; border-radius: 4px; }
+        
+        /* Subtle entry animation for cards */
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-card-entry {
+            animation: slideUpFade 0.4s ease-out forwards;
+            opacity: 0;
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-lg min-h-screen pb-24 md:pb-0 selection:bg-coach-orange/20 antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-background w-full top-0 sticky flex justify-between items-center px-margin-main h-16 z-40 transition-shadow duration-300" id="top-nav">
+<!-- Leading Avatar -->
+<button class="w-9 h-9 rounded-full overflow-hidden border border-outline-variant hover:opacity-80 active:scale-95 transition-all focus:outline-none focus:ring-2 focus:ring-coach-orange">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A brightly lit, professional portrait of a fitness coach with a warm smile, set against a clean, light-mode background with soft shadows. The lighting is flattering and optimistic, emphasizing health and approachability in a premium mobile app context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ_abt1v18OL_kB0BgYVy2gTm_jP6ocurHpkmuVemJzTCsUrEQ5HjySIQqErqdWI_JhLpCduA50RkMKzhWqAZuDU0oxrL3jo2m8Ay1m-P4piXF6t19UhXIT-yKBdvRe70nb1cTODkcFGKFSnBXEW3bLJoTMxtW2Vi__E9epXy-qhc-SU0QjBxc3dEKx-n9b5bJQsvg0tq7fP0s3m5CFtjppYd2Tb-y-u_1eeSzzfY3bFgjHd89_uLU_6fGlbAuA6XsUe25Xx8Sow8D">
+</button>
+<!-- Headline -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-coach-orange tracking-tight">ProteinPlate AI</h1>
+<!-- Trailing Icon -->
+<button class="text-primary hover:opacity-80 active:scale-95 transition-transform duration-200 focus:outline-none w-10 h-10 flex items-center justify-center rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="px-margin-main py-stack-lg max-w-2xl mx-auto flex flex-col gap-stack-lg relative">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-stack-sm animate-card-entry">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-background tracking-tight">History</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Review your recent nutrition logs.</p>
+</div>
+<button class="text-coach-orange font-label-caps text-label-caps flex items-center gap-1 bg-coach-orange/10 px-3 py-1.5 rounded-full hover:bg-coach-orange/20 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 16px;">filter_list</span>
+                Filter
+            </button>
+</div>
+<!-- Group: Today -->
+<section class="flex flex-col gap-stack-md animate-card-entry delay-100">
+<h3 class="font-title-md text-title-md text-on-surface flex items-center gap-2">
+                Today
+                <span class="text-body-sm font-body-sm text-on-surface-variant font-normal">Oct 24</span>
+</h3>
+<div class="flex flex-col gap-stack-sm">
+<!-- Meal Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-gutter-card flex gap-stack-md items-center relative overflow-hidden shadow-[0_4px_20px_0_rgba(242,107,56,0.03)] hover:shadow-[0_4px_25px_0_rgba(242,107,56,0.08)] transition-all duration-300 cursor-pointer active:scale-[0.98] group">
+<!-- Thumbnail -->
+<div class="w-[72px] h-[72px] rounded-lg overflow-hidden shrink-0 bg-surface-container-low relative">
+<img alt="Grilled Chicken Salad" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautifully composed top-down shot of a grilled chicken salad in a pristine white bowl. The lighting is bright, soft, and modern, casting gentle shadows that emphasize the fresh greens, cherry tomatoes, and perfectly seared grill marks on the chicken breast. The overall aesthetic is clean, healthy, and appetizing, fitting a premium high-end nutrition tracking app. Soft warm daylight style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ-u4zzi0nHoLwnzZbcH-ZW3j2U3Gkq5tJ0jiwfGejvlORKj7fNfa3meFUDWB7InPmCHpj0BhMC4euchAs7t6KVPUpXzoj9UFlp3p7a0RiJfwlXJuzcZDo9hEb36e2ZZ5l681tO8ZISZu6h61qd1srZqeTUY5dnvIjvVK0jZZe-ItQzrxoF_nLPxJdo4-g2mwJRtIxTIT7F4nuyO2bLYyOrXJynd3spQlFk-c4m7j6UaKHiLdpLMkiAF65JC2WPIffBOK5zvR107B8">
+<!-- Confidence Badge (High) -->
+<div class="absolute top-1 left-1 bg-protein-teal/90 backdrop-blur-sm text-on-primary font-label-caps text-[10px] px-1.5 py-0.5 rounded shadow-sm flex items-center gap-0.5">
+<span class="material-symbols-outlined" style="font-size: 10px; font-variation-settings: 'FILL' 1;">verified</span>
+                            High
+                        </div>
+</div>
+<!-- Info -->
+<div class="flex-1 min-w-0">
+<h4 class="font-title-md text-title-md text-on-background truncate">Grilled Chicken Salad</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px;">schedule</span>
+                                12:30 PM
+                            </span>
+<span class="w-1 h-1 rounded-full bg-surface-variant"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">420 kcal</span>
+</div>
+<div class="flex gap-2 mt-2">
+<span class="bg-surface-container px-2 py-0.5 rounded-full font-label-caps text-[10px] text-tertiary">Post-Workout</span>
+</div>
+</div>
+<!-- Protein Stat -->
+<div class="flex flex-col items-end justify-center pl-2 border-l border-surface-variant/50 h-full shrink-0">
+<span class="font-numeric-display text-[36px] font-extrabold text-coach-orange leading-none tracking-tighter">45<span class="text-title-md text-coach-orange/70">g</span></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">Protein</span>
+</div>
+</article>
+<!-- Meal Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-gutter-card flex gap-stack-md items-center relative overflow-hidden shadow-[0_4px_20px_0_rgba(242,107,56,0.03)] hover:shadow-[0_4px_25px_0_rgba(242,107,56,0.08)] transition-all duration-300 cursor-pointer active:scale-[0.98] group">
+<div class="w-[72px] h-[72px] rounded-lg overflow-hidden shrink-0 bg-surface-container-low relative">
+<img alt="Chocolate Protein Shake" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek, frosted glass filled with a creamy chocolate protein shake, resting on a clean, light marble countertop. A few scattered cocoa nibs sit near the base. The lighting is bright, high-key, and minimalist, emphasizing the smooth texture of the drink and the condensation on the glass. The aesthetic is modern, fitness-oriented, and aspirational, shot in a bright light-mode environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPjfPPYwjm3KhTFZYICSHOIaTzWrgXDdPtiOB8-kcxcnq5oCb8kU05XrRyC2zwinFx6NlmTRm_tQgA-7aaB5j6Bc0Uk1j7snpCinTSd80DiVy2GgjrJ-eTm55akYdcPkpbMsYFnX8iTGB6nX6Hy6KY1DGIBJfDQNYrhsZEKhmfWK7etN_5E9guW80-F2ae2Jnhbk5DlrMElugF1kAfQDr7ZpulXuDFL-CPFbir6RmWFaiXNSoCKLwKWadRf3wyq-86At1mxUynxVQQ">
+<!-- Confidence Badge (Medium) -->
+<div class="absolute top-1 left-1 bg-warm-sun/90 backdrop-blur-sm text-secondary-fixed font-label-caps text-[10px] px-1.5 py-0.5 rounded shadow-sm flex items-center gap-0.5">
+<span class="material-symbols-outlined" style="font-size: 10px; font-variation-settings: 'FILL' 1;">help</span>
+                            Med
+                        </div>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-title-md text-title-md text-on-background truncate">Choco Whey Shake</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px;">schedule</span>
+                                8:15 AM
+                            </span>
+<span class="w-1 h-1 rounded-full bg-surface-variant"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">180 kcal</span>
+</div>
+</div>
+<div class="flex flex-col items-end justify-center pl-2 border-l border-surface-variant/50 h-full shrink-0">
+<span class="font-numeric-display text-[36px] font-extrabold text-coach-orange leading-none tracking-tighter">24<span class="text-title-md text-coach-orange/70">g</span></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">Protein</span>
+</div>
+</article>
+</div>
+</section>
+<!-- Group: Yesterday -->
+<section class="flex flex-col gap-stack-md mt-stack-md animate-card-entry delay-200">
+<h3 class="font-title-md text-title-md text-on-surface flex items-center gap-2">
+                Yesterday
+                <span class="text-body-sm font-body-sm text-on-surface-variant font-normal">Oct 23</span>
+</h3>
+<div class="flex flex-col gap-stack-sm">
+<!-- Meal Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-gutter-card flex gap-stack-md items-center relative overflow-hidden shadow-[0_4px_20px_0_rgba(242,107,56,0.03)] hover:shadow-[0_4px_25px_0_rgba(242,107,56,0.08)] transition-all duration-300 cursor-pointer active:scale-[0.98] group opacity-90">
+<div class="w-[72px] h-[72px] rounded-lg overflow-hidden shrink-0 bg-surface-container-low relative">
+<img alt="Steak and Asparagus" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A perfectly cooked medium-rare steak sliced alongside vibrant green asparagus spears on an elegant matte white plate. The lighting highlights the juiciness of the meat and the charred edges of the vegetables. The scene is shot with shallow depth of field in a clean, brightly lit modern kitchen setting. The mood is high-performance dining with a warm, inviting tone suitable for a modern nutrition app." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG2o-bJQcfHk_f7u7iB-MKeJ0iRLNGh9a-AzY2_E99-4rCyBk6clzUcgvjdCAeA_8CADPztw1DnjHxN90Gsgz-jfsrGSXYXCa2RzQsfpV3NOLWl5ebqj1Ped90RyZ3KQAcjMPU7scbTFEQgwQfI9543RUEMzQPz43lbiDYXj7DGY3yqLvLN_Z85i_PFsE_kupwNYQrdDHdUJ72TjdZJb_H0a53gJfrLMEu3S9D9rkUlJEZEbwLeeLGzDx2-Q7nL_ZShvsic2_HCVa9">
+<!-- Confidence Badge (Low) -->
+<div class="absolute top-1 left-1 bg-error/90 backdrop-blur-sm text-on-error font-label-caps text-[10px] px-1.5 py-0.5 rounded shadow-sm flex items-center gap-0.5">
+<span class="material-symbols-outlined" style="font-size: 10px; font-variation-settings: 'FILL' 1;">warning</span>
+                            Low
+                        </div>
+</div>
+<div class="flex-1 min-w-0">
+<h4 class="font-title-md text-title-md text-on-background truncate">Steak &amp; Asparagus</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 14px;">schedule</span>
+                                7:45 PM
+                            </span>
+<span class="w-1 h-1 rounded-full bg-surface-variant"></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-error font-medium flex items-center gap-1">
+                                ~650 kcal
+                            </span>
+</div>
+<p class="font-label-caps text-[10px] text-error mt-1.5 flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 12px;">edit</span> Needs Review
+                        </p>
+</div>
+<div class="flex flex-col items-end justify-center pl-2 border-l border-surface-variant/50 h-full shrink-0">
+<span class="font-numeric-display text-[36px] font-extrabold text-coach-orange leading-none tracking-tighter">55<span class="text-title-md text-coach-orange/70">g</span></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">Protein</span>
+</div>
+</article>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface-container-low shadow-[0_-4px_20px_0_rgba(242,107,56,0.1)] rounded-t-xl">
+<!-- Today (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors w-16 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">event_note</span>
+<span class="font-label-caps text-label-caps">Today</span>
+</a>
+<!-- Scan (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors w-16 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">camera_enhance</span>
+<span class="font-label-caps text-label-caps">Scan</span>
+</a>
+<!-- History (Active) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1 scale-105 transition-all duration-200 w-20 shadow-sm" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-label-caps text-label-caps">History</span>
+</a>
+<!-- Profile (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors w-16 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple script to add a subtle shadow to top app bar on scroll
+        const topNav = document.getElementById('top-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                topNav.classList.add('shadow-sm', 'bg-surface-container-lowest');
+                topNav.classList.remove('bg-background');
+            } else {
+                topNav.classList.remove('shadow-sm', 'bg-surface-container-lowest');
+                topNav.classList.add('bg-background');
+            }
+        });
+    </script>
+</body></html>

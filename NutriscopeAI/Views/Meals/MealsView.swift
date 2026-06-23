@@ -80,12 +80,14 @@ struct MealsView: View {
     }
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
 
-            VStack(alignment: .leading, spacing: 24) {
-                NutriscopeTopBar()
+            BoundedScrollView {
+                VStack(alignment: .leading, spacing: AppTheme.stackMD) {
+                    mealsHeader
 
-                KineticPeriodPills(items: MealsPeriod.allCases, selection: $period)
+                    KineticPeriodPills(items: MealsPeriod.allCases, selection: $period)
 
                 if filter != .saved {
                     frequentMealsSection
@@ -137,11 +139,23 @@ struct MealsView: View {
                 }
             }
             .padding(.horizontal, AppTheme.marginMain)
+            .padding(.top, 8)
             .padding(.bottom, 24)
-        
+            }
         }
-        .background(AppBackground())
         .navigationBarHidden(true)
+    }
+
+    private var mealsHeader: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text("Meal History")
+                .font(AppTypography.displayLGMobile)
+                .foregroundStyle(AppTheme.textPrimary)
+            Text("Your weekly protein arc")
+                .font(AppTypography.body)
+                .foregroundStyle(AppTheme.textSecondary)
+        }
+        .padding(.top, 4)
     }
 
     @ViewBuilder

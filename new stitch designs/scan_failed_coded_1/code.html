@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Kinetic Harvest - Scan Failed</title>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Kinetic Harvest Custom Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'kh-cream': '#FFFDF9',
+            'kh-orange': '#E88B4C',
+            'kh-orange-hover': '#D67A3D',
+            'kh-text-main': '#333333',
+            'kh-text-muted': '#666666',
+          },
+          fontFamily: {
+            sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Styles for specific component tweaks if needed -->
+<style data-purpose="layout-tweaks">
+    /* Ensuring full height for iOS mobile view */
+    html, body {
+      height: 100%;
+      background-color: theme('colors.kh-cream');
+      overscroll-behavior-y: none;
+    }
+  </style>
+</head>
+<body class="antialiased text-kh-text-main font-sans flex flex-col h-full safe-area-pt safe-area-pb">
+<!-- BEGIN: MainContent -->
+<main class="flex-1 flex flex-col justify-between px-6 py-8 h-full" data-purpose="scan-failed-container">
+<!-- Top Section: Illustration & Text -->
+<section class="flex flex-col items-center pt-8 mt-4" data-purpose="illustration-and-text">
+<!-- Illustration Container -->
+<div class="w-64 h-64 mb-8 relative rounded-2xl overflow-hidden shadow-sm" data-purpose="error-illustration">
+<img alt="Illustration showing a magnifying glass over a plate of food with a question mark indicating a scan failure" class="object-cover w-full h-full" src="https://lh3.googleusercontent.com/aida/AP1WRLsGW0bzjYRAXjlcu652RSYE5Zqjeu_pajidZ64R8L7SC-feCDEGbDCQQrMcXa8hD8PmY56lYcyRSzkEvA1kZDklI23tTn-yTetuRxFxpY3H1EfMs9HlmQPrnyz7LqJNA9JjmBad57OU4S6k2OTFD-vOaXVVEnvAToJ9o6e1kilWID1pTBo3IULQn_EdKOLigcSToZ0rGXhFOQpr6ZGwHucDDv-IJTJZ0AQy4XwsQscF0HdUylIm_fgSJ7mB"/>
+</div>
+<!-- Typography -->
+<div class="text-center space-y-3" data-purpose="message-text">
+<h1 class="text-2xl font-semibold tracking-tight text-kh-text-main">
+          Stumped by this one
+        </h1>
+<p class="text-base text-kh-text-muted leading-relaxed max-w-[280px] mx-auto">
+          The lighting or angle made it hard for our AI to be sure. Would you like to try again or just describe it?
+        </p>
+</div>
+</section>
+<!-- Bottom Section: Actions -->
+<section class="flex flex-col gap-4 pb-6 w-full" data-purpose="action-buttons">
+<!-- Primary Action -->
+<button class="w-full bg-kh-orange hover:bg-kh-orange-hover text-white font-medium py-3.5 px-6 rounded-xl transition-colors duration-200 active:scale-[0.98] shadow-sm flex items-center justify-center gap-2" data-purpose="retry-btn" type="button">
+<!-- SVG Icon: Camera/Retry -->
+<svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke-linecap="round" stroke-linejoin="round"></path>
+<path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+        Retry Photo
+      </button>
+<!-- Secondary Action -->
+<button class="w-full bg-transparent border-2 border-kh-orange text-kh-orange font-medium py-3 px-6 rounded-xl transition-colors duration-200 active:bg-kh-orange/5" data-purpose="manual-entry-btn" type="button">
+        Describe Manually
+      </button>
+<!-- Tertiary Link Action -->
+<div class="mt-4 text-center">
+<a class="text-sm font-medium text-kh-text-muted hover:text-kh-orange transition-colors underline decoration-kh-text-muted/30 underline-offset-4" data-purpose="database-link" href="#">
+          Add from Database
+        </a>
+</div>
+</section>
+</main>
+<!-- END: MainContent -->
+</body></html>

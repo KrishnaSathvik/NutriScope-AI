@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Nutriscope AI - Log Meal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e6e1e1",
+                    "surface-container": "#f1edec",
+                    "secondary-container": "#b7bcfd",
+                    "outline-variant": "#e0c0b5",
+                    "on-tertiary": "#ffffff",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#ffcdbd",
+                    "on-surface": "#1c1b1b",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#8fee8c",
+                    "background": "#fdf8f8",
+                    "on-secondary-fixed": "#0e144d",
+                    "surface-container-low": "#f7f2f2",
+                    "surface-tint": "#a93702",
+                    "outline": "#8c7168",
+                    "surface-container-high": "#ece7e7",
+                    "on-primary-fixed-variant": "#822800",
+                    "inverse-surface": "#313030",
+                    "inverse-on-surface": "#f4f0ef",
+                    "glass-border": "rgba(255, 255, 255, 0.9)",
+                    "on-tertiary-fixed": "#002204",
+                    "tertiary": "#005314",
+                    "primary-fixed-dim": "#ffb59c",
+                    "primary-fixed": "#ffdbcf",
+                    "on-background": "#1c1b1b",
+                    "surface": "#fcf9f8",
+                    "secondary": "#545a94",
+                    "on-primary": "#ffffff",
+                    "primary": "#812700",
+                    "surface-dim": "#ddd9d8",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#a93702",
+                    "surface-variant": "#e5e2e1",
+                    "tertiary-container": "#006e1d",
+                    "surface-bright": "#fdf8f8",
+                    "inverse-primary": "#ffb59c",
+                    "gauge-track": "#eae7e7",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed-variant": "#005314",
+                    "tertiary-fixed-dim": "#7edb7c",
+                    "on-secondary-container": "#444a83",
+                    "secondary-fixed": "#dfe0ff",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#58423a",
+                    "glass-bg": "rgba(255, 255, 255, 0.7)",
+                    "secondary-fixed-dim": "#bdc2ff",
+                    "on-secondary-fixed-variant": "#3c427a",
+                    "on-primary-fixed": "#380c00",
+                    "tertiary-fixed": "#99f895"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "sm": "12px",
+                    "md": "24px",
+                    "margin-mobile": "16px",
+                    "xl": "80px",
+                    "margin-desktop": "40px",
+                    "base": "8px",
+                    "lg": "48px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-bold": ["Hanken Grotesk"],
+                    "caption": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-caps": ["10px", {"lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            background-image: radial-gradient(circle at 50% 0%, theme('colors.primary-fixed-dim'), transparent 40%),
+                              radial-gradient(circle at 100% 100%, theme('colors.secondary-fixed-dim'), transparent 50%);
+            background-attachment: fixed;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .numpad-btn {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid theme('colors.glass-border');
+            transition: all 0.15s ease-out;
+        }
+        .numpad-btn:active {
+            transform: scale(0.95);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 12px rgba(169, 55, 2, 0.15);
+        }
+
+        .macro-ring {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: stroke-dashoffset 0.5s ease-out;
+        }
+        
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 32px;
+            width: 32px;
+            border-radius: 50%;
+            background: theme('colors.primary');
+            cursor: pointer;
+            margin-top: -14px;
+            box-shadow: 0 4px 12px rgba(129, 39, 0, 0.4);
+            border: 2px solid theme('colors.on-primary');
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: theme('colors.surface-variant');
+            border-radius: 4px;
+        }
+        
+        .glass-card {
+            background: theme('colors.glass-bg');
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid theme('colors.glass-border');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen pb-[100px] flex flex-col font-body-md antialiased overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-md bg-glass-bg border-b border-glass-border shadow-sm flex justify-between items-center px-margin-mobile h-16 md:px-margin-desktop md:h-20">
+<div class="flex items-center gap-sm cursor-pointer hover:opacity-80 transition-opacity active:scale-95 transition-transform" onclick="window.history.back()">
+<span class="material-symbols-outlined text-primary text-2xl">arrow_back</span>
+<span class="font-headline-md text-headline-md-mobile md:text-headline-md text-primary tracking-tight">Manual Log</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform p-2">
+<span class="material-symbols-outlined text-2xl" data-icon="barcode_scanner">barcode_scanner</span>
+</button>
+</div>
+</header>
+<main class="flex-grow pt-24 px-margin-mobile md:px-margin-desktop max-w-2xl mx-auto w-full flex flex-col gap-md">
+<!-- Input Display Area -->
+<div class="glass-card rounded-xl p-md shadow-sm flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute top-0 right-0 p-3">
+<span class="material-symbols-outlined text-primary/20 text-6xl">restaurant</span>
+</div>
+<input autocomplete="off" class="w-full text-center bg-transparent border-none text-headline-md-mobile font-headline-md text-on-surface focus:ring-0 placeholder:text-on-surface-variant/50 mb-xs" id="food-name" placeholder="Enter food name..." type="text"/>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight" id="amount-display">0</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider">grams</span>
+</div>
+</div>
+<!-- Real-time Macro Rings (Bento Style) -->
+<div class="grid grid-cols-3 gap-sm">
+<!-- Protein -->
+<div class="glass-card rounded-lg p-sm flex flex-col items-center justify-center gap-2">
+<div class="relative w-16 h-16">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-gauge-track stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<circle class="text-primary stroke-current macro-ring" cx="50" cy="50" fill="transparent" id="protein-ring" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-label-bold text-label-bold text-on-surface leading-none" id="protein-val">0g</span>
+</div>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Protein</span>
+</div>
+<!-- Carbs -->
+<div class="glass-card rounded-lg p-sm flex flex-col items-center justify-center gap-2">
+<div class="relative w-16 h-16">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-gauge-track stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<circle class="text-secondary stroke-current macro-ring" cx="50" cy="50" fill="transparent" id="carbs-ring" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-label-bold text-label-bold text-on-surface leading-none" id="carbs-val">0g</span>
+</div>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Carbs</span>
+</div>
+<!-- Fat -->
+<div class="glass-card rounded-lg p-sm flex flex-col items-center justify-center gap-2">
+<div class="relative w-16 h-16">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-gauge-track stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<circle class="text-tertiary stroke-current macro-ring" cx="50" cy="50" fill="transparent" id="fat-ring" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="font-label-bold text-label-bold text-on-surface leading-none" id="fat-val">0g</span>
+</div>
+</div>
+<span class="font-caption text-caption text-on-surface-variant">Fat</span>
+</div>
+</div>
+<!-- Total Calories Banner -->
+<div class="flex items-center justify-between px-md py-sm bg-primary/10 rounded-lg border border-primary/20">
+<span class="font-label-bold text-label-bold text-on-surface-variant">Estimated Calories</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md-mobile text-primary" id="cals-val">0</span>
+<span class="font-caption text-caption text-primary/70">kcal</span>
+</div>
+</div>
+<!-- Slider Input -->
+<div class="w-full px-2 py-4">
+<input class="w-full" id="weight-slider" max="500" min="0" type="range" value="0"/>
+<div class="flex justify-between text-caption font-caption text-on-surface-variant mt-2 px-1">
+<span>0g</span>
+<span>250g</span>
+<span>500g</span>
+</div>
+</div>
+<!-- Glass Numpad -->
+<div class="grid grid-cols-3 gap-sm mt-auto mb-md">
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('1')">1</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('2')">2</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('3')">3</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('4')">4</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('5')">5</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('6')">6</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('7')">7</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('8')">8</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('9')">9</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center text-on-surface-variant" onclick="appendNum('.')">.</button>
+<button class="numpad-btn h-16 rounded-xl font-headline-md text-headline-md-mobile text-on-surface flex items-center justify-center" onclick="appendNum('0')">0</button>
+<button class="numpad-btn h-16 rounded-xl text-on-surface-variant flex items-center justify-center" onclick="deleteNum()">
+<span class="material-symbols-outlined text-2xl" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- Log Action -->
+<button class="w-full bg-primary text-on-primary font-label-bold text-label-bold py-4 rounded-xl shadow-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2 mb-md" style="box-shadow: 0 8px 24px rgba(169, 55, 2, 0.3);">
+<span class="material-symbols-outlined text-xl" data-icon="check_circle">check_circle</span>
+            Save Entry
+        </button>
+</main>
+<!-- BottomNavBar (Hidden on desktop, shown on mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 flex justify-around items-center pb-safe px-2 z-50 bg-glass-bg backdrop-blur-lg rounded-t-lg border-t border-glass-border shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="home">home</span>
+<span class="font-label-bold text-label-caps uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="analytics">analytics</span>
+<span class="font-label-bold text-label-caps uppercase">Insights</span>
+</a>
+<!-- FAB Container -->
+<div class="relative -top-6">
+<button class="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-on-primary shadow-lg border-4 border-background active:scale-90 transition-transform" style="box-shadow: 0 8px 24px rgba(169, 55, 2, 0.4);">
+<span class="material-symbols-outlined text-3xl" data-icon="add" data-weight="fill">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="restaurant" data-weight="fill">restaurant</span>
+<span class="font-label-bold text-label-caps uppercase">Log</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined text-2xl mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-bold text-label-caps uppercase">Plan</span>
+</a>
+</nav>
+<script>
+        // Simple logic for the logger interface
+        let currentAmount = "0";
+        const display = document.getElementById('amount-display');
+        const slider = document.getElementById('weight-slider');
+        
+        // Mock macro multipliers per gram (e.g., Chicken Breast)
+        const macrosPerGram = {
+            protein: 0.31,
+            carbs: 0.0,
+            fat: 0.036,
+            cals: 1.65
+        };
+
+        const CIRCUMFERENCE = 251.2; // 2 * pi * 40
+
+        function updateDisplay() {
+            display.innerText = currentAmount || "0";
+            slider.value = currentAmount || 0;
+            updateMacros(parseFloat(currentAmount || 0));
+        }
+
+        function setRingProgress(ringId, percent) {
+            const ring = document.getElementById(ringId);
+            // Cap at 100% for visual purposes
+            const p = Math.min(Math.max(percent, 0), 100);
+            const offset = CIRCUMFERENCE - (p / 100) * CIRCUMFERENCE;
+            ring.style.strokeDashoffset = offset;
+        }
+
+        function updateMacros(grams) {
+            const p = (grams * macrosPerGram.protein).toFixed(1);
+            const c = (grams * macrosPerGram.carbs).toFixed(1);
+            const f = (grams * macrosPerGram.fat).toFixed(1);
+            const cals = Math.round(grams * macrosPerGram.cals);
+
+            document.getElementById('protein-val').innerText = p + 'g';
+            document.getElementById('carbs-val').innerText = c + 'g';
+            document.getElementById('fat-val').innerText = f + 'g';
+            document.getElementById('cals-val').innerText = cals;
+
+            // Arbitrary daily goals for ring percentages
+            setRingProgress('protein-ring', (p / 150) * 100);
+            setRingProgress('carbs-ring', (c / 250) * 100);
+            setRingProgress('fat-ring', (f / 70) * 100);
+        }
+
+        function appendNum(num) {
+            if (currentAmount === "0" && num !== ".") {
+                currentAmount = num;
+            } else if (num === "." && currentAmount.includes(".")) {
+                return; // Prevent multiple decimals
+            } else if (currentAmount.length < 5) {
+                currentAmount += num;
+            }
+            updateDisplay();
+        }
+
+        function deleteNum() {
+            if (currentAmount.length > 1) {
+                currentAmount = currentAmount.slice(0, -1);
+            } else {
+                currentAmount = "0";
+            }
+            updateDisplay();
+        }
+
+        // Slider interaction
+        slider.addEventListener('input', (e) => {
+            currentAmount = e.target.value;
+            updateDisplay();
+        });
+
+        // Initial setup
+        updateDisplay();
+    </script>
+</body></html>

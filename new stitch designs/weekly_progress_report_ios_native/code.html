@@ -1,0 +1,282 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Weekly Progress Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "warm-sun": "#FFD54F",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-secondary-container": "#725b00",
+                        "inverse-primary": "#ffb59c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container-high": "#eae8e3",
+                        "surface-bright": "#fbf9f4",
+                        "tertiary-fixed": "#e3e2e7",
+                        "primary": "#a93702",
+                        "paper-white": "#FFFFFF",
+                        "primary-container": "#f26b38",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#949499",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "on-primary-fixed": "#380c00",
+                        "secondary": "#735c00",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-variant": "#e4e2dd",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary-container": "#2c2d31",
+                        "background": "#fbf9f4",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-surface": "#1b1c19",
+                        "surface-dim": "#dbdad5",
+                        "tertiary": "#5d5e63",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1b1c19",
+                        "secondary-fixed": "#ffe087",
+                        "on-primary": "#ffffff",
+                        "protein-teal": "#2D6A4F",
+                        "on-error": "#ffffff",
+                        "surface": "#fbf9f4",
+                        "surface-tint": "#a93702",
+                        "secondary-container": "#fdd34d",
+                        "primary-fixed-dim": "#ffb59c",
+                        "ink-black": "#1C1C1E",
+                        "outline-variant": "#e0c0b5",
+                        "on-secondary-fixed": "#241a00",
+                        "outline": "#8c7168",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-surface": "#30312e",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-primary-container": "#561700",
+                        "on-surface-variant": "#58423a",
+                        "coach-orange": "#F26B38",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#f0eee9",
+                        "surface-container-low": "#f5f3ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "gutter-card": "1rem",
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Ambient glows for cards */
+        .ambient-glow {
+            box-shadow: 0 10px 30px -10px rgba(242, 107, 56, 0.15);
+        }
+        
+        /* Chart Bar Animations */
+        @keyframes growBar {
+            from { height: 0; }
+            to { height: var(--target-height); }
+        }
+        .chart-bar {
+            animation: growBar 1s ease-out forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-lg antialiased pb-24 selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface/70 dark:bg-surface-container/70 backdrop-blur-md text-primary dark:text-primary-fixed-dim font-headline-md text-headline-md fixed top-0 w-full border-b border-white/90 dark:border-outline-variant shadow-sm flex justify-between items-center px-margin-mobile h-16 z-50">
+<div class="flex items-center gap-3">
+<button class="w-10 h-10 rounded-full bg-surface-container overflow-hidden active:scale-95 duration-150 transition-transform">
+<span class="material-symbols-outlined text-primary">person</span>
+</button>
+<h1 class="font-display-lg text-display-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim">Kinetic Harvest</h1>
+</div>
+<button class="active:scale-95 duration-150 transition-transform text-on-surface-variant dark:text-on-surface-variant hover:opacity-80 transition-opacity p-2">
+<span class="material-symbols-outlined icon-fill">settings</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-margin-main flex flex-col gap-stack-lg max-w-2xl mx-auto pb-8">
+<!-- Header Section -->
+<section class="flex flex-col gap-stack-sm">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Weekly Progress</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Oct 16 - Oct 22</p>
+</section>
+<!-- High-level Summary Card -->
+<section class="bg-paper-white rounded-xl p-gutter-card ambient-glow flex flex-col gap-stack-md relative overflow-hidden active:scale-[1.02] transition-transform duration-200">
+<div class="absolute -top-10 -right-10 w-32 h-32 bg-primary-container opacity-10 rounded-full blur-2xl"></div>
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-1">
+<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider">Avg Daily Protein</span>
+<div class="flex items-baseline gap-1">
+<span class="font-numeric-display text-numeric-display text-protein-teal">145</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">g</span>
+</div>
+</div>
+<div class="bg-primary-container/10 px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-coach-orange text-sm icon-fill">trending_up</span>
+<span class="font-label-caps text-label-caps text-coach-orange">+12g vs last week</span>
+</div>
+</div>
+<div class="w-full h-2 bg-warm-sun/20 rounded-full overflow-hidden mt-2">
+<div class="h-full bg-gradient-to-r from-coach-orange to-primary rounded-full w-[85%] relative">
+<div class="absolute inset-0 bg-white/20 w-full h-full animate-[shimmer_2s_infinite] -translate-x-full" style="background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);"></div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-right">85% Consistency Score</p>
+</section>
+<!-- Bar Chart Card (Native iOS Style) -->
+<section class="bg-paper-white rounded-xl p-gutter-card ambient-glow flex flex-col gap-stack-lg">
+<div class="flex justify-between items-center">
+<h3 class="font-title-md text-title-md text-on-surface">Daily Intake vs Target</h3>
+<span class="material-symbols-outlined text-tertiary">bar_chart</span>
+</div>
+<!-- Chart Container -->
+<div class="h-48 flex items-end justify-between gap-2 relative mt-4">
+<!-- Target Line -->
+<div class="absolute w-full border-t border-dashed border-tertiary-fixed-dim top-[20%] flex items-center justify-end z-0">
+<span class="bg-surface px-1 font-label-caps text-label-caps text-tertiary -mt-3 relative z-10">160g Target</span>
+</div>
+<!-- Days -->
+<!-- M -->
+<div class="flex flex-col items-center gap-2 flex-1 z-10">
+<div class="w-full bg-surface-container rounded-t-sm h-full flex items-end relative overflow-hidden">
+<div class="w-full bg-coach-orange rounded-t-sm chart-bar opacity-80" style="--target-height: 70%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">M</span>
+</div>
+<!-- T -->
+<div class="flex flex-col items-center gap-2 flex-1 z-10">
+<div class="w-full bg-surface-container rounded-t-sm h-full flex items-end relative overflow-hidden">
+<div class="w-full bg-coach-orange rounded-t-sm chart-bar opacity-80" style="--target-height: 85%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">T</span>
+</div>
+<!-- W -->
+<div class="flex flex-col items-center gap-2 flex-1 z-10">
+<div class="w-full bg-surface-container rounded-t-sm h-full flex items-end relative overflow-hidden">
+<div class="w-full bg-coach-orange rounded-t-sm chart-bar opacity-100" style="--target-height: 95%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface">W</span>
+</div>
+<!-- T -->
+<div class="flex flex-col items-center gap-2 flex-1 z-10">
+<div class="w-full bg-surface-container rounded-t-sm h-full flex items-end relative overflow-hidden">
+<div class="w-full bg-coach-orange rounded-t-sm chart-bar opacity-80" style="--target-height: 60%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">T</span>
+</div>
+<!-- F -->
+<div class="flex flex-col items-center gap-2 flex-1 z-10">
+<div class="w-full bg-surface-container rounded-t-sm h-full flex items-end relative overflow-hidden">
+<div class="w-full bg-coach-orange rounded-t-sm chart-bar opacity-80" style="--target-height: 90%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">F</span>
+</div>
+<!-- S -->
+<div class="flex flex-col items-center gap-2 flex-1 z-10">
+<div class="w-full bg-surface-container rounded-t-sm h-full flex items-end relative overflow-hidden">
+<div class="w-full bg-primary rounded-t-sm chart-bar opacity-100 shadow-[0_0_10px_rgba(169,55,2,0.5)]" style="--target-height: 110%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-primary font-bold">S</span>
+</div>
+<!-- S -->
+<div class="flex flex-col items-center gap-2 flex-1 z-10">
+<div class="w-full bg-surface-container rounded-t-sm h-full flex items-end relative overflow-hidden">
+<div class="w-full bg-coach-orange rounded-t-sm chart-bar opacity-80" style="--target-height: 75%;"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">S</span>
+</div>
+</div>
+</section>
+<!-- AI Coach Win of the Week -->
+<section class="bg-surface-bright border border-surface-dim rounded-xl p-gutter-card flex gap-4 items-start shadow-sm">
+<div class="w-12 h-12 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined icon-fill">smart_toy</span>
+</div>
+<div class="flex flex-col gap-2">
+<h3 class="font-title-md text-title-md text-on-surface">Win of the Week</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    You crushed your post-workout fueling on Saturday! Hitting 45g of protein right after lifting is a huge step up from last week. Keep focusing on that recovery window.
+                </p>
+<div class="mt-2 flex gap-2">
+<span class="px-3 py-1 bg-warm-sun/10 text-secondary rounded-full font-label-caps text-label-caps">Recovery</span>
+<span class="px-3 py-1 bg-warm-sun/10 text-secondary rounded-full font-label-caps text-label-caps">Consistency</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-glass-bg dark:bg-inverse-surface/80 backdrop-blur-md text-primary dark:text-primary-fixed-dim font-label-bold text-label-bold font-headline-md text-headline-md text-primary fixed bottom-0 w-full rounded-t-lg border-t border-glass-border dark:border-outline-variant shadow-lg fixed bottom-0 w-full z-50 flex justify-around items-center px-4 pt-2 pb-8 md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-transform group" href="#">
+<span class="material-symbols-outlined group-hover:icon-fill transition-all">calendar_today</span>
+<span class="font-label-caps text-[10px] mt-1">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-transform group" href="#">
+<span class="material-symbols-outlined group-hover:icon-fill transition-all">restaurant</span>
+<span class="font-label-caps text-[10px] mt-1">Meals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-transform group relative -top-4" href="#">
+<div class="bg-primary text-on-primary p-3 rounded-full shadow-lg">
+<span class="material-symbols-outlined icon-fill">qr_code_scanner</span>
+</div>
+<span class="font-label-caps text-[10px] mt-1 hidden">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim bg-primary-container/10 rounded-xl px-3 py-1 hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-transform group" href="#">
+<span class="material-symbols-outlined icon-fill transition-all">smart_toy</span>
+<span class="font-label-caps text-[10px] mt-1 font-bold">Coach</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim active:scale-90 transition-transform group" href="#">
+<span class="material-symbols-outlined group-hover:icon-fill transition-all">person</span>
+<span class="font-label-caps text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Subscription Success - Nutriscope Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "warm-sun": "#FFD54F",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-secondary-container": "#725b00",
+                        "inverse-primary": "#ffb59c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container-high": "#eae8e3",
+                        "surface-bright": "#fbf9f4",
+                        "tertiary-fixed": "#e3e2e7",
+                        "primary": "#a93702",
+                        "paper-white": "#FFFFFF",
+                        "primary-container": "#f26b38",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#949499",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "on-primary-fixed": "#380c00",
+                        "secondary": "#735c00",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-variant": "#e4e2dd",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary-container": "#2c2d31",
+                        "background": "#fbf9f4",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-surface": "#1b1c19",
+                        "surface-dim": "#dbdad5",
+                        "tertiary": "#5d5e63",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1b1c19",
+                        "secondary-fixed": "#ffe087",
+                        "on-primary": "#ffffff",
+                        "protein-teal": "#2D6A4F",
+                        "on-error": "#ffffff",
+                        "surface": "#fbf9f4",
+                        "surface-tint": "#a93702",
+                        "secondary-container": "#fdd34d",
+                        "primary-fixed-dim": "#ffb59c",
+                        "ink-black": "#1C1C1E",
+                        "outline-variant": "#e0c0b5",
+                        "on-secondary-fixed": "#241a00",
+                        "outline": "#8c7168",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-surface": "#30312e",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-primary-container": "#561700",
+                        "on-surface-variant": "#58423a",
+                        "coach-orange": "#F26B38",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#f0eee9",
+                        "surface-container-low": "#f5f3ee"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "stack-md": "1rem",
+                        "gutter-card": "1rem",
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    fontFamily: {
+                        "label-caps": ["Inter", "sans-serif"],
+                        "headline-xl": ["Hanken Grotesk", "sans-serif"],
+                        "body-sm": ["Hanken Grotesk", "sans-serif"],
+                        "numeric-display": ["Hanken Grotesk", "sans-serif"],
+                        "headline-lg-mobile": ["Hanken Grotesk", "sans-serif"],
+                        "body-lg": ["Hanken Grotesk", "sans-serif"],
+                        "title-md": ["Hanken Grotesk", "sans-serif"],
+                        "headline-lg": ["Hanken Grotesk", "sans-serif"]
+                    },
+                    fontSize: {
+                        "label-caps": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+                        "headline-xl": ["34px", { lineHeight: "41px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "body-sm": ["15px", { lineHeight: "20px", fontWeight: "400" }],
+                        "numeric-display": ["48px", { lineHeight: "48px", letterSpacing: "-0.04em", fontWeight: "800" }],
+                        "headline-lg-mobile": ["24px", { lineHeight: "30px", fontWeight: "700" }],
+                        "body-lg": ["17px", { lineHeight: "22px", fontWeight: "400" }],
+                        "title-md": ["20px", { lineHeight: "25px", fontWeight: "600" }],
+                        "headline-lg": ["28px", { lineHeight: "34px", letterSpacing: "-0.01em", fontWeight: "700" }]
+                    },
+                    animation: {
+                        'float-up': 'floatUp 1s ease-out forwards',
+                        'pop-in': 'popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+                        'fade-in-delayed': 'fadeIn 0.5s ease-out 0.8s forwards',
+                    },
+                    keyframes: {
+                        floatUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        popIn: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Ambient glows for celebration */
+        .ambient-glow {
+            box-shadow: 0 0 40px 10px rgba(242, 107, 56, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-lowest text-on-surface min-h-screen flex flex-col items-center justify-center relative overflow-hidden font-body-lg">
+<!-- Confetti Canvas overlay -->
+<canvas id="confetti-canvas"></canvas>
+<!-- Main Content Container -->
+<main class="w-full max-w-md mx-auto px-margin-main flex flex-col items-center text-center relative z-20">
+<!-- Trophy / Success Icon -->
+<div class="mb-stack-lg relative animate-pop-in">
+<div class="w-24 h-24 rounded-full bg-surface-container flex items-center justify-center ambient-glow">
+<span class="material-symbols-outlined text-coach-orange text-5xl" data-icon="trophy" style="font-variation-settings: 'FILL' 1;">trophy</span>
+</div>
+<!-- Sparkles around trophy -->
+<span class="material-symbols-outlined absolute -top-2 -right-2 text-warm-sun text-xl animate-pulse" data-icon="auto_awesome">auto_awesome</span>
+<span class="material-symbols-outlined absolute bottom-4 -left-4 text-primary-fixed-dim text-lg animate-pulse" data-icon="auto_awesome" style="animation-delay: 0.2s;">auto_awesome</span>
+</div>
+<!-- Headline -->
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-stack-sm animate-float-up" style="animation-delay: 0.2s;">
+            Welcome to Pro
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-stack-lg animate-float-up opacity-0" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
+            Your Nutriscope Pro subscription is active. Let's hit those goals.
+        </p>
+<!-- Unlocked Features Summary (Bento-style list) -->
+<div class="w-full bg-paper-white rounded-xl p-gutter-card shadow-sm ambient-glow mb-stack-lg animate-float-up opacity-0 space-y-stack-md text-left" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-coach-orange" data-icon="barcode_scanner">barcode_scanner</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Unlimited Scans</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Log meals instantly without limits.</p>
+</div>
+</div>
+<div class="h-px w-full bg-surface-variant"></div>
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-coach-orange" data-icon="monitoring">monitoring</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Deep Insights</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Advanced macro and micro tracking.</p>
+</div>
+</div>
+<div class="h-px w-full bg-surface-variant"></div>
+<div class="flex items-center gap-stack-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-coach-orange" data-icon="psychology">psychology</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Pro Coach</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Personalized AI nutrition guidance.</p>
+</div>
+</div>
+</div>
+<!-- Primary CTA -->
+<button class="w-full bg-coach-orange text-paper-white font-title-md text-title-md py-4 rounded-xl flex justify-center items-center gap-2 hover:opacity-90 active:scale-95 transition-all animate-fade-in-delayed opacity-0">
+            Get Started
+            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</main>
+<!-- Confetti Script -->
+<script>
+        // Simple Confetti Implementation
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const confetti = [];
+        const confettiCount = 100;
+        const gravity = 0.5;
+        const terminalVelocity = 5;
+        const drag = 0.075;
+        const colors = [
+            { front: '#F26B38', back: '#a93702' }, // coach-orange / primary
+            { front: '#FFD54F', back: '#ebc23e' }, // warm-sun
+            { front: '#2D6A4F', back: '#1e4835' }  // protein-teal
+        ];
+
+        function initConfetti() {
+            for (let i = 0; i < confettiCount; i++) {
+                confetti.push({
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    dimensions: {
+                        x: Math.random() * 10 + 5,
+                        y: Math.random() * 20 + 10
+                    },
+                    position: {
+                        x: Math.random() * canvas.width,
+                        y: canvas.height - 1 - Math.random() * 50 // start near top
+                    },
+                    rotation: Math.random() * 2 * Math.PI,
+                    scale: { x: 1, y: 1 },
+                    velocity: {
+                        x: Math.random() * 10 - 5,
+                        y: Math.random() * -15 - 5 // initial upward burst
+                    }
+                });
+            }
+        }
+
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            confetti.forEach((confetto, index) => {
+                let width = confetto.dimensions.x * confetto.scale.x;
+                let height = confetto.dimensions.y * confetto.scale.y;
+                
+                // Move confetti
+                confetto.velocity.y += gravity;
+                confetto.velocity.x -= confetto.velocity.x * drag;
+                if(confetto.velocity.y > terminalVelocity) confetto.velocity.y = terminalVelocity;
+                
+                confetto.position.x += confetto.velocity.x;
+                confetto.position.y += confetto.velocity.y;
+                
+                // Spin
+                confetto.scale.y = Math.cos(confetto.position.y * 0.1);
+                
+                ctx.translate(confetto.position.x, confetto.position.y);
+                ctx.rotate(confetto.rotation);
+                
+                // Determine color based on spin
+                ctx.fillStyle = confetto.scale.y > 0 ? confetto.color.front : confetto.color.back;
+                
+                ctx.fillRect(-width / 2, -height / 2, width, height);
+                
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+            });
+
+            // remove offscreen confetti to save performance (optional, keeping it simple here)
+
+            requestAnimationFrame(render);
+        }
+
+        // Handle resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Start animation after a slight delay to let the UI load
+        setTimeout(() => {
+            // override positions to start from center top for a 'pop' effect
+             for (let i = 0; i < confettiCount; i++) {
+                confetti.push({
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    dimensions: { x: Math.random() * 10 + 5, y: Math.random() * 20 + 10 },
+                    position: { x: canvas.width / 2, y: canvas.height / 2 },
+                    rotation: Math.random() * 2 * Math.PI,
+                    scale: { x: 1, y: 1 },
+                    velocity: {
+                        x: Math.random() * 30 - 15,
+                        y: Math.random() * -20 - 10
+                    }
+                });
+            }
+            render();
+        }, 300);
+
+    </script>
+</body></html>

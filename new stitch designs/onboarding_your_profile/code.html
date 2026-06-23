@@ -1,0 +1,279 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Onboarding - ProteinPlate AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a93702",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary": "#735c00",
+                        "outline-variant": "#e0c0b5",
+                        "warm-sun": "#FFD54F",
+                        "tertiary-container": "#949499",
+                        "on-secondary-fixed-variant": "#574500",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-background": "#1b1c19",
+                        "primary-container": "#f26b38",
+                        "background": "#fbf9f4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-primary-container": "#561700",
+                        "coach-orange": "#F26B38",
+                        "surface-dim": "#dbdad5",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "tertiary": "#5d5e63",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#a93702",
+                        "paper-white": "#FFFFFF",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e4e2dd",
+                        "secondary-container": "#fdd34d",
+                        "on-secondary-fixed": "#241a00",
+                        "on-surface": "#1b1c19",
+                        "inverse-surface": "#30312e",
+                        "surface": "#fbf9f4",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb59c",
+                        "outline": "#8c7168",
+                        "protein-teal": "#2D6A4F",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-container-high": "#eae8e3",
+                        "on-surface-variant": "#58423a",
+                        "surface-bright": "#fbf9f4",
+                        "ink-black": "#1C1C1E",
+                        "secondary-fixed": "#ffe087",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "surface-container-low": "#f5f3ee",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#f2f1ec",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-secondary-container": "#725b00",
+                        "surface-container": "#f0eee9",
+                        "tertiary-fixed": "#e3e2e7",
+                        "on-tertiary-container": "#2c2d31",
+                        "on-primary-fixed": "#380c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter-card": "1rem",
+                        "margin-main": "1.25rem",
+                        "stack-md": "1rem",
+                        "stack-lg": "1.5rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .chip-selected {
+            background-color: rgba(242, 107, 56, 0.1);
+            border-color: #F26B38;
+            color: #F26B38;
+        }
+        .progress-bar-gradient {
+            background: linear-gradient(90deg, rgba(242, 107, 56, 0.8) 0%, rgba(242, 107, 56, 1) 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen antialiased flex flex-col font-body-lg">
+<!-- Top Navigation (Onboarding - Minimal) -->
+<header class="w-full top-0 sticky bg-background z-50 flex justify-between items-center px-margin-main h-16 w-full flat no shadows">
+<button aria-label="Go back" class="text-on-surface-variant hover:opacity-80 transition-opacity flex items-center justify-center p-2 -ml-2 rounded-full" type="button">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-coach-orange flex-1 text-center pr-8">
+            ProteinPlate AI
+        </div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col px-margin-main pb-32 pt-4 max-w-2xl mx-auto w-full">
+<!-- Onboarding Progress -->
+<div class="w-full mb-stack-lg">
+<div class="flex justify-between items-center mb-stack-sm">
+<span class="font-label-caps text-label-caps text-on-surface-variant">STEP 2 OF 4</span>
+<span class="font-label-caps text-label-caps text-coach-orange">50%</span>
+</div>
+<div class="h-2 w-full bg-warm-sun/20 rounded-full overflow-hidden">
+<div class="h-full w-1/2 progress-bar-gradient rounded-full"></div>
+</div>
+</div>
+<div class="mb-stack-lg">
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-stack-sm">About You</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Help us tailor your nutrition plan by sharing a few details.</p>
+</div>
+<!-- Form Area -->
+<form class="space-y-stack-lg flex-1">
+<!-- Basic Stats Grid -->
+<div class="grid grid-cols-2 gap-stack-md">
+<!-- Age -->
+<div class="flex flex-col space-y-stack-sm">
+<label class="font-title-md text-title-md text-on-surface" for="age">Age</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3 font-body-lg text-body-lg text-on-background focus:ring-2 focus:ring-coach-orange focus:bg-surface-container-high transition-colors placeholder-on-surface-variant/50" id="age" name="age" placeholder="e.g. 30" type="number">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-body-sm text-body-sm pointer-events-none">yrs</span>
+</div>
+</div>
+<!-- Gender (Optional but common in these flows, kept simple) -->
+<div class="flex flex-col space-y-stack-sm">
+<label class="font-title-md text-title-md text-on-surface" for="sex">Sex</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3 font-body-lg text-body-lg text-on-background focus:ring-2 focus:ring-coach-orange focus:bg-surface-container-high transition-colors appearance-none" id="sex" name="sex">
+<option disabled="" selected="" value="">Select</option>
+<option value="male">Male</option>
+<option value="female">Female</option>
+<option value="other">Other</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 pt-8 text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">expand_more</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-stack-md">
+<!-- Height -->
+<div class="flex flex-col space-y-stack-sm">
+<label class="font-title-md text-title-md text-on-surface" for="height">Height</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3 font-body-lg text-body-lg text-on-background focus:ring-2 focus:ring-coach-orange focus:bg-surface-container-high transition-colors placeholder-on-surface-variant/50" id="height" name="height" placeholder="e.g. 175" type="number">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-body-sm text-body-sm pointer-events-none">cm</span>
+</div>
+</div>
+<!-- Weight -->
+<div class="flex flex-col space-y-stack-sm">
+<label class="font-title-md text-title-md text-on-surface" for="weight">Weight</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3 font-body-lg text-body-lg text-on-background focus:ring-2 focus:ring-coach-orange focus:bg-surface-container-high transition-colors placeholder-on-surface-variant/50" id="weight" name="weight" placeholder="e.g. 70" type="number">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-body-sm text-body-sm pointer-events-none">kg</span>
+</div>
+</div>
+</div>
+<!-- Activity Level Selection -->
+<div class="flex flex-col space-y-stack-sm pt-stack-sm">
+<label class="font-title-md text-title-md text-on-surface">Activity Level</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-sm">
+<!-- Chip 1 -->
+<label class="cursor-pointer">
+<input class="peer sr-only" name="activity" type="radio" value="sedentary">
+<div class="flex items-center p-4 rounded-xl border-2 border-surface-container-highest bg-paper-white text-on-surface hover:bg-surface-container-low transition-colors peer-checked:chip-selected">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant peer-checked:text-coach-orange" style="font-variation-settings: 'FILL' 0;">weekend</span>
+<div class="flex flex-col">
+<span class="font-title-md text-body-lg font-semibold">Sedentary</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-80">Little or no exercise</span>
+</div>
+</div>
+</label>
+<!-- Chip 2 -->
+<label class="cursor-pointer">
+<input class="peer sr-only" name="activity" type="radio" value="light">
+<div class="flex items-center p-4 rounded-xl border-2 border-surface-container-highest bg-paper-white text-on-surface hover:bg-surface-container-low transition-colors peer-checked:chip-selected">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant peer-checked:text-coach-orange" style="font-variation-settings: 'FILL' 0;">directions_walk</span>
+<div class="flex flex-col">
+<span class="font-title-md text-body-lg font-semibold">Lightly Active</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-80">Light exercise 1-3 days/wk</span>
+</div>
+</div>
+</label>
+<!-- Chip 3 -->
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="activity" type="radio" value="moderate">
+<div class="flex items-center p-4 rounded-xl border-2 border-surface-container-highest bg-paper-white text-on-surface hover:bg-surface-container-low transition-colors peer-checked:chip-selected">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant peer-checked:text-coach-orange" style="font-variation-settings: 'FILL' 0;">fitness_center</span>
+<div class="flex flex-col">
+<span class="font-title-md text-body-lg font-semibold">Moderately Active</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-80">Moderate exercise 3-5 days/wk</span>
+</div>
+</div>
+</label>
+<!-- Chip 4 -->
+<label class="cursor-pointer">
+<input class="peer sr-only" name="activity" type="radio" value="very">
+<div class="flex items-center p-4 rounded-xl border-2 border-surface-container-highest bg-paper-white text-on-surface hover:bg-surface-container-low transition-colors peer-checked:chip-selected">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant peer-checked:text-coach-orange" style="font-variation-settings: 'FILL' 0;">sprint</span>
+<div class="flex flex-col">
+<span class="font-title-md text-body-lg font-semibold">Very Active</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant opacity-80">Heavy exercise 6-7 days/wk</span>
+</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Primary Goal Selection -->
+<div class="flex flex-col space-y-stack-sm pt-stack-sm">
+<label class="font-title-md text-title-md text-on-surface">Primary Goal</label>
+<div class="flex flex-wrap gap-3">
+<label class="cursor-pointer flex-1 min-w-[120px]">
+<input class="peer sr-only" name="goal" type="radio" value="lose">
+<div class="flex flex-col items-center justify-center py-4 px-2 rounded-xl border-2 border-surface-container-highest bg-paper-white text-on-surface hover:bg-surface-container-low transition-colors peer-checked:chip-selected text-center h-full">
+<span class="material-symbols-outlined mb-2 text-on-surface-variant peer-checked:text-coach-orange text-3xl" style="font-variation-settings: 'FILL' 0;">trending_down</span>
+<span class="font-title-md text-body-lg font-semibold leading-tight">Lose Fat</span>
+</div>
+</label>
+<label class="cursor-pointer flex-1 min-w-[120px]">
+<input checked="" class="peer sr-only" name="goal" type="radio" value="maintain">
+<div class="flex flex-col items-center justify-center py-4 px-2 rounded-xl border-2 border-surface-container-highest bg-paper-white text-on-surface hover:bg-surface-container-low transition-colors peer-checked:chip-selected text-center h-full">
+<span class="material-symbols-outlined mb-2 text-on-surface-variant peer-checked:text-coach-orange text-3xl" style="font-variation-settings: 'FILL' 0;">trending_flat</span>
+<span class="font-title-md text-body-lg font-semibold leading-tight">Maintain</span>
+</div>
+</label>
+<label class="cursor-pointer flex-1 min-w-[120px]">
+<input class="peer sr-only" name="goal" type="radio" value="build">
+<div class="flex flex-col items-center justify-center py-4 px-2 rounded-xl border-2 border-surface-container-highest bg-paper-white text-on-surface hover:bg-surface-container-low transition-colors peer-checked:chip-selected text-center h-full">
+<span class="material-symbols-outlined mb-2 text-on-surface-variant peer-checked:text-coach-orange text-3xl" style="font-variation-settings: 'FILL' 0;">trending_up</span>
+<span class="font-title-md text-body-lg font-semibold leading-tight">Build Muscle</span>
+</div>
+</label>
+</div>
+</div>
+</form>
+</main>
+<!-- Fixed Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full bg-background/90 backdrop-blur-md pb-8 pt-4 px-margin-main z-40 border-t border-surface-container-highest/50 shadow-[0_-10px_30px_0_rgba(0,0,0,0.02)]">
+<div class="max-w-2xl mx-auto flex gap-4">
+<button class="flex-1 bg-coach-orange text-on-primary font-title-md text-title-md py-4 rounded-xl shadow-[0_4px_20px_0_rgba(242,107,56,0.3)] hover:opacity-90 active:scale-[0.98] transition-all duration-200 flex justify-center items-center" type="button">
+                Continue
+                <span class="material-symbols-outlined ml-2" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

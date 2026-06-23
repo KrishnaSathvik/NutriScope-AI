@@ -9,12 +9,7 @@ struct PaywallView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                LinearGradient(
-                    colors: [AppTheme.coachOrange.opacity(0.08), AppTheme.background, AppTheme.background],
-                    startPoint: .top,
-                    endPoint: .center
-                )
-                .ignoresSafeArea()
+                AppBackground(showsAmbientGlow: true)
 
                 BoundedScrollView {
 
@@ -32,13 +27,13 @@ struct PaywallView: View {
                             .clipShape(Capsule())
 
                             Text("Hit your protein goal without manual tracking.")
-                                .font(AppTypography.title.weight(.bold))
+                                .font(AppTypography.headlineLG)
                                 .multilineTextAlignment(.center)
                                 .foregroundStyle(AppTheme.textPrimary)
                         }
                         .padding(.top, 8)
 
-                        SurfaceCard {
+                        GlassCard {
                             VStack(spacing: 4) {
                                 KineticPaywallFeatureRow(
                                     icon: "camera.viewfinder",

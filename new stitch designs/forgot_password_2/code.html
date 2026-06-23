@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Forgot Password - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "secondary": "#735c00",
+                    "secondary-fixed-dim": "#ebc23e",
+                    "tertiary": "#5d5e63",
+                    "secondary-container": "#fdd34d",
+                    "on-surface": "#1b1c19",
+                    "warm-sun": "#FFD54F",
+                    "on-primary-fixed": "#380c00",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#fbf9f4",
+                    "surface": "#fbf9f4",
+                    "inverse-primary": "#ffb59c",
+                    "primary-fixed": "#ffdbcf",
+                    "surface-tint": "#a93702",
+                    "surface-bright": "#fbf9f4",
+                    "surface-container-high": "#eae8e3",
+                    "outline-variant": "#e0c0b5",
+                    "surface-container": "#f0eee9",
+                    "inverse-on-surface": "#f2f1ec",
+                    "primary-container": "#f26b38",
+                    "on-primary-fixed-variant": "#822800",
+                    "on-background": "#1b1c19",
+                    "on-primary-container": "#561700",
+                    "on-tertiary-container": "#2c2d31",
+                    "primary": "#a93702",
+                    "surface-container-highest": "#e4e2dd",
+                    "on-surface-variant": "#58423a",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#725b00",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#dbdad5",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#c6c6cb",
+                    "on-secondary-fixed": "#241a00",
+                    "tertiary-container": "#949499",
+                    "ink-black": "#1C1C1E",
+                    "on-tertiary-fixed-variant": "#46464b",
+                    "surface-container-low": "#f5f3ee",
+                    "paper-white": "#FFFFFF",
+                    "error-container": "#ffdad6",
+                    "protein-teal": "#2D6A4F",
+                    "tertiary-fixed": "#e3e2e7",
+                    "primary-fixed-dim": "#ffb59c",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-error-container": "#93000a",
+                    "outline": "#8c7168",
+                    "inverse-surface": "#30312e",
+                    "surface-variant": "#e4e2dd",
+                    "secondary-fixed": "#ffe087",
+                    "on-error": "#ffffff",
+                    "coach-orange": "#F26B38",
+                    "on-tertiary-fixed": "#1a1b1f"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+                "spacing": {
+                    "stack-md": "1rem",
+                    "stack-sm": "0.5rem",
+                    "stack-lg": "1.5rem",
+                    "margin-main": "1.25rem",
+                    "gutter-card": "1rem"
+                },
+                "fontFamily": {
+                    "title-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "label-caps": ["Inter"],
+                    "headline-xl": ["Hanken Grotesk"],
+                    "body-sm": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "numeric-display": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"]
+                },
+                "fontSize": {
+                    "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                    "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                    "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                    "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                    "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                    "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                    "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }]
+                }
+            }
+        }
+    }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface min-h-screen flex flex-col text-on-surface antialiased">
+<!-- Top Navigation / Back Action (Suppressed global nav for transactional flow) -->
+<header class="w-full px-margin-main py-4 flex items-center justify-start">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-low active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 300;">arrow_back_ios_new</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col px-margin-main pt-8 pb-12 w-full max-w-md mx-auto">
+<!-- Illustration -->
+<div class="w-full flex justify-center mb-stack-lg">
+<div class="w-32 h-32 bg-cover bg-center bg-no-repeat rounded-full bg-surface-container-low shadow-[0_10px_30px_rgba(242,107,56,0.05)]" data-alt="A high-quality 3D rendered illustration of a stylized padlock with a circular refresh arrow looping around it. The design embodies a modern, welcoming 'Coach-Style' aesthetic typical of premium health apps. The lock is rendered in soft, matte textures using a color palette of warm off-whites, subtle grays, and accents of vibrant Coach Orange. The lighting is soft and studio-quality, casting gentle ambient glows and subtle drop shadows against a pristine light background. The overall mood is secure, supportive, and clean." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDP5iIVZ_0TjezDQ11bLAdH11hzcl-LWG_qEOo7Bn9XzXgxpj8trVIFjEOw9s4JrkrFoeEsq6iyNFAJ9egkjVI8aWKyAV014rwl8qedPcsEPs0nY0G9k4XISYgnCE9vh1bjaHmnsKA1c6G_FdMt1Z1dC5NDTiIYY-0Orx7HafACMEMfMVQYkAxv_SWGgGJMI0fbS_nlOGuAdVP7C9y3iEXPVApw7RlcCNp2iSSBgJB2oGR5ZLpQybEod0y52vnE0pY_i_I_YBekypN6')"></div>
+</div>
+<!-- Typography Cluster -->
+<div class="flex flex-col gap-stack-sm mb-stack-lg text-center md:text-left">
+<h1 class="font-headline-xl text-headline-xl text-on-surface">Reset Password</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Enter your email address to receive a secure link to reset your password.</p>
+</div>
+<!-- Form Elements -->
+<form class="flex flex-col gap-stack-lg w-full" onsubmit="event.preventDefault();">
+<div class="flex flex-col relative group">
+<input class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-4 font-body-lg text-body-lg text-on-surface placeholder-on-surface-variant/60 focus:ring-2 focus:ring-coach-orange/30 focus:bg-paper-white transition-all duration-200 shadow-sm" id="email" placeholder="Email Address" required="" type="email"/>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full bg-coach-orange text-paper-white font-label-caps text-label-caps py-4 rounded-xl shadow-[0_8px_20px_rgba(242,107,56,0.2)] hover:shadow-[0_12px_25px_rgba(242,107,56,0.3)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 uppercase tracking-widest flex items-center justify-center gap-2" type="submit">
+                Send Reset Link
+                <span class="material-symbols-outlined text-[18px]">forward_to_inbox</span>
+</button>
+</form>
+<!-- Secondary Action (Ghost/Link) -->
+<div class="mt-auto pt-12 flex justify-center w-full">
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-coach-orange transition-colors duration-200 uppercase tracking-wider underline-offset-4 hover:underline">
+                Back to Sign In
+            </button>
+</div>
+</main>
+</body></html>

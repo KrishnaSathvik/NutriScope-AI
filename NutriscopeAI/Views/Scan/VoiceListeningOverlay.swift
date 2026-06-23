@@ -40,7 +40,13 @@ struct VoiceListeningOverlay: View {
                         .frame(width: pulse ? 132 : 112, height: pulse ? 132 : 112)
                         .animation(.easeInOut(duration: 1.2).repeatForever(autoreverses: true), value: pulse)
                     Circle()
-                        .fill(AppTheme.coachOrange)
+                        .fill(
+                            LinearGradient(
+                                colors: [AppTheme.coachOrange, AppTheme.primary],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
                         .frame(width: 96, height: 96)
                         .shadow(color: AppTheme.coachOrange.opacity(0.4), radius: 16, y: 8)
                         .overlay {

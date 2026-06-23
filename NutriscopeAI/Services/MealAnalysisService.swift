@@ -34,9 +34,13 @@ enum MealAnalysisError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .missingAPIKey:
-            "Add your OpenAI API key in Profile → Developer to use live AI scans."
+            "Meal scans use Supabase, not a device OpenAI key. Add Supabase URL + anon key in Profile → Developer and tap Save, or fix Backend.xcconfig and rebuild."
         case .missingBackendConfiguration:
-            "Supabase backend is not configured. Add URL and anon key in Profile → Developer."
+            if let hint = BackendConfig.supabaseConfigurationHint {
+                hint
+            } else {
+                "Supabase backend is not configured. Add URL and anon key in Profile → Developer."
+            }
         case .unauthorized:
             "Guest sign-in failed. In Supabase enable Anonymous sign-ins, then Profile → Account → Save & test connection."
         case .invalidResponse:
@@ -52,7 +56,7 @@ enum MealAnalysisError: LocalizedError {
 enum MealAnalysisServiceFactory {
     /// Resolves the meal analysis backend for the current build configuration.
     /// Release builds always use the Supabase proxy unless offline demo mode is on.
-    static func make(hasProAccess _: Bool = false) -> any MealAnalysisServiceProtocol {
+    static func make() -> any MealAnalysisServiceProtocol {
         if BackendConfig.offlineDemoMode {
             return MockMealAnalysisService()
         }
@@ -77,11 +81,7 @@ enum MealAnalysisServiceFactory {
         }
         #endif
 
-        if BackendConfig.isReleaseBuild {
-            return UnconfiguredMealAnalysisService(reason: .missingBackendConfiguration)
-        }
-
-        return UnconfiguredMealAnalysisService(reason: .missingAPIKey)
+        return UnconfiguredMealAnalysisService(reason: .missingBackendConfiguration)
     }
 }
 

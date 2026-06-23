@@ -17,12 +17,15 @@ struct DataPrivacyView: View {
     @State private var cacheClearedMessage: String?
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            BoundedScrollView {
 
             VStack(alignment: .leading, spacing: 24) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Data & Privacy")
-                        .font(AppTypography.largeTitle)
+                        .font(AppTypography.headlineLG)
                     Text("Your meal data stays local-first. Export or wipe anytime.")
                         .font(AppTypography.body)
                         .foregroundStyle(AppTheme.textSecondary)
@@ -55,30 +58,35 @@ struct DataPrivacyView: View {
             }
             .padding(AppTheme.marginMain)
             .padding(.bottom, 32)
-        
+            }
         }
-        .background(AppBackground())
         .navigationTitle("Data & privacy")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showShareSheet) {
             ShareSheet(items: shareItems)
         }
-        .confirmationDialog("Wipe local cache?", isPresented: $showClearCacheConfirm) {
-            Button("Wipe cache", role: .destructive) { wipeCache() }
-            Button("Cancel", role: .cancel) {}
-        }
-        .confirmationDialog("Delete all data?", isPresented: $showDeleteAllConfirm) {
-            Button("Delete everything", role: .destructive) {
-                Task { await deleteAllData() }
-            }
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("This cannot be undone.")
-        }
+        .kineticConfirmationDialog(
+            isPresented: $showClearCacheConfirm,
+            icon: "trash.fill",
+            title: "Wipe local cache?",
+            message: "Remove cached images and temp files. Meals and settings are kept.",
+            confirmTitle: "Wipe cache",
+            onConfirm: { wipeCache() }
+        )
+        .kineticConfirmationDialog(
+            isPresented: $showDeleteAllConfirm,
+            icon: "exclamationmark.triangle.fill",
+            iconBackground: AppTheme.warmSun.opacity(0.35),
+            iconColor: Color(hex: 0x574500),
+            title: "Delete all data?",
+            message: "This permanently deletes your account (if signed in), meals, settings, and returns to Welcome. This cannot be undone.",
+            confirmTitle: "Delete everything",
+            onConfirm: { Task { await deleteAllData() } }
+        )
     }
 
     private var exportCard: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 14) {
                 HStack(spacing: 12) {
                     Circle()
@@ -106,7 +114,7 @@ struct DataPrivacyView: View {
     }
 
     private var cacheCard: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 14) {
                 HStack(spacing: 12) {
                     Circle()
@@ -163,7 +171,11 @@ struct DataPrivacyView: View {
 
     private func wipeCache() {
         URLCache.shared.removeAllCachedResponses()
-        cacheClearedMessage = "Cache cleared."
+        ToastCenter.shared.show(
+            "Cache Cleared",
+            subtitle: "Temp files removed. Meals and settings kept.",
+            style: .success
+        )
     }
 
     private func deleteAllData() async {

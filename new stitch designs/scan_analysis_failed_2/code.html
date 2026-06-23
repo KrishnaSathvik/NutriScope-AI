@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Nutriscope AI - Scan Analysis Failed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#735c00",
+                      "secondary-fixed-dim": "#ebc23e",
+                      "tertiary": "#5d5e63",
+                      "secondary-container": "#fdd34d",
+                      "on-surface": "#1b1c19",
+                      "warm-sun": "#FFD54F",
+                      "on-primary-fixed": "#380c00",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#fbf9f4",
+                      "surface": "#fbf9f4",
+                      "inverse-primary": "#ffb59c",
+                      "primary-fixed": "#ffdbcf",
+                      "surface-tint": "#a93702",
+                      "surface-bright": "#fbf9f4",
+                      "surface-container-high": "#eae8e3",
+                      "outline-variant": "#e0c0b5",
+                      "surface-container": "#f0eee9",
+                      "inverse-on-surface": "#f2f1ec",
+                      "primary-container": "#f26b38",
+                      "on-primary-fixed-variant": "#822800",
+                      "on-background": "#1b1c19",
+                      "on-primary-container": "#561700",
+                      "on-tertiary-container": "#2c2d31",
+                      "primary": "#a93702",
+                      "surface-container-highest": "#e4e2dd",
+                      "on-surface-variant": "#58423a",
+                      "error": "#ba1a1a",
+                      "on-secondary-container": "#725b00",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#dbdad5",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "on-secondary-fixed": "#241a00",
+                      "tertiary-container": "#949499",
+                      "ink-black": "#1C1C1E",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "surface-container-low": "#f5f3ee",
+                      "paper-white": "#FFFFFF",
+                      "error-container": "#ffdad6",
+                      "protein-teal": "#2D6A4F",
+                      "tertiary-fixed": "#e3e2e7",
+                      "primary-fixed-dim": "#ffb59c",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-error-container": "#93000a",
+                      "outline": "#8c7168",
+                      "inverse-surface": "#30312e",
+                      "surface-variant": "#e4e2dd",
+                      "secondary-fixed": "#ffe087",
+                      "on-error": "#ffffff",
+                      "coach-orange": "#F26B38",
+                      "on-tertiary-fixed": "#1a1b1f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "1rem",
+                      "stack-sm": "0.5rem",
+                      "stack-lg": "1.5rem",
+                      "margin-main": "1.25rem",
+                      "gutter-card": "1rem"
+              },
+              "fontFamily": {
+                      "title-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "numeric-display": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "title-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "25px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-xl": [
+                              "34px",
+                              {
+                                      "lineHeight": "41px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-sm": [
+                              "15px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "numeric-display": [
+                              "48px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "17px",
+                              {
+                                      "lineHeight": "22px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .glow-shadow {
+            box-shadow: 0 10px 30px -10px rgba(242, 107, 56, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-lg antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation (Suppressed for Task-Focused Flow, but keeping a simple header for back action) -->
+<header class="w-full px-margin-main h-16 flex items-center justify-between sticky top-0 z-50 bg-background/80 backdrop-blur-md">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Analysis</div>
+<div class="w-10 h-10"></div> <!-- Spacer for center alignment -->
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center px-margin-main py-8 w-full max-w-md mx-auto relative">
+<!-- Background decorative elements -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden flex items-center justify-center z-[-1]">
+<div class="w-[150%] aspect-square rounded-full bg-surface-container-low opacity-50 blur-3xl translate-y-1/4"></div>
+</div>
+<!-- Illustration Area -->
+<div class="relative w-full aspect-square max-w-[320px] mx-auto mb-stack-lg animate-[fade-in-up_0.6s_ease-out]">
+<!-- Subtle glow behind image -->
+<div class="absolute inset-0 bg-primary/5 rounded-full blur-2xl scale-90"></div>
+<img alt="Scan analysis failed illustration" class="w-full h-full object-contain relative z-10 drop-shadow-xl hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLsGW0bzjYRAXjlcu652RSYE5Zqjeu_pajidZ64R8L7SC-feCDEGbDCQQrMcXa8hD8PmY56lYcyRSzkEvA1kZDklI23tTn-yTetuRxFxpY3H1EfMs9HlmQPrnyz7LqJNA9JjmBad57OU4S6k2OTFD-vOaXVVEnvAToJ9o6e1kilWID1pTBo3IULQn_EdKOLigcSToZ0rGXhFOQpr6ZGwHucDDv-IJTJZ0AQy4XwsQscF0HdUylIm_fgSJ7mB"/>
+<!-- Floating badge -->
+<div class="absolute top-4 right-4 bg-error-container text-on-error-container px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm border border-error/10 z-20 animate-[bounce-subtle_3s_infinite_ease-in-out]">
+<span class="material-symbols-outlined text-[16px] icon-fill">warning</span>
+<span class="font-label-caps text-label-caps uppercase">Scan Incomplete</span>
+</div>
+</div>
+<!-- Text Content -->
+<div class="text-center w-full max-w-sm mx-auto mb-10 space-y-stack-sm animate-[fade-in-up_0.7s_ease-out_0.1s_both]">
+<h1 class="font-headline-xl text-headline-xl md:font-headline-xl md:text-headline-xl text-ink-black tracking-tight">Stumped by this one</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed px-4">
+                We couldn't clearly identify the ingredients in this photo. A different angle or better lighting might help.
+            </p>
+</div>
+<!-- Action Buttons (Bento-style layout for web, stacked for mobile) -->
+<div class="w-full max-w-sm mx-auto flex flex-col gap-stack-md animate-[fade-in-up_0.8s_ease-out_0.2s_both]">
+<!-- Primary Action -->
+<button class="w-full h-14 bg-coach-orange text-paper-white font-title-md text-title-md rounded-xl flex items-center justify-center gap-2 glow-shadow hover:bg-primary transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined icon-fill">photo_camera</span>
+                Retry Photo
+            </button>
+<!-- Secondary Action -->
+<button class="w-full h-14 bg-transparent text-coach-orange font-title-md text-title-md rounded-xl flex items-center justify-center gap-2 border-2 border-coach-orange/30 hover:border-coach-orange hover:bg-coach-orange/5 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">edit_note</span>
+                Describe Manually
+            </button>
+<!-- Tertiary / Ghost Action -->
+<button class="w-full py-3 mt-2 text-on-surface-variant hover:text-on-surface font-body-sm text-body-sm text-center transition-colors">
+                Skip for now
+            </button>
+</div>
+</main>
+<!-- Custom CSS Animations defined inline -->
+<style>
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce-subtle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+    </style>
+</body></html>

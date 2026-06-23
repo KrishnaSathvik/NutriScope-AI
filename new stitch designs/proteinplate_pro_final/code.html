@@ -1,0 +1,237 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ProteinPlate AI - Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#5d5e63",
+                        "tertiary-container": "#949499",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#e3e2e7",
+                        "primary-container": "#f26b38",
+                        "surface-container-low": "#f5f3ee",
+                        "on-tertiary-container": "#2c2d31",
+                        "inverse-surface": "#30312e",
+                        "secondary-container": "#fdd34d",
+                        "surface-variant": "#e4e2dd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed-variant": "#574500",
+                        "primary": "#a93702",
+                        "surface-container-high": "#eae8e3",
+                        "surface": "#fbf9f4",
+                        "background": "#fbf9f4",
+                        "on-surface-variant": "#58423a",
+                        "surface-dim": "#dbdad5",
+                        "on-surface": "#1b1c19",
+                        "protein-teal": "#2D6A4F",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#a93702",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "secondary-fixed": "#ffe087",
+                        "secondary": "#735c00",
+                        "inverse-on-surface": "#f2f1ec",
+                        "surface-container": "#f0eee9",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "warm-sun": "#FFD54F",
+                        "on-primary-fixed": "#380c00",
+                        "ink-black": "#1C1C1E",
+                        "on-error-container": "#93000a",
+                        "surface-container-highest": "#e4e2dd",
+                        "paper-white": "#FFFFFF",
+                        "inverse-primary": "#ffb59c",
+                        "outline": "#8c7168",
+                        "on-secondary-container": "#725b00",
+                        "on-primary-container": "#561700",
+                        "on-background": "#1b1c19",
+                        "outline-variant": "#e0c0b5",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "coach-orange": "#F26B38",
+                        "surface-bright": "#fbf9f4",
+                        "on-secondary-fixed": "#241a00",
+                        "primary-fixed": "#ffdbcf",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#ebc23e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-main": "1.25rem",
+                        "gutter-card": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "stack-md": "1rem"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Subtle glow for premium feel */
+        .premium-glow {
+            box-shadow: 0 4px 20px 0 rgba(242, 107, 56, 0.15);
+        }
+        
+        .selected-tier {
+            border: 2px solid theme('colors.coach-orange');
+            background-color: theme('colors.surface-container-low');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col items-center pb-24 md:pb-8">
+<!-- Top App Bar (Suppressed Navigation logic applies here - this is a transactional/modal view, but we keep a simplified header or back button) -->
+<header class="w-full sticky top-0 bg-background z-50 flex justify-between items-center px-margin-main h-16">
+<button aria-label="Close" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-coach-orange flex-1 text-center pr-10">
+            ProteinPlate Pro
+        </div>
+</header>
+<main class="w-full max-w-md px-margin-main flex flex-col flex-1 mt-4">
+<!-- Hero Graphic Area -->
+<div class="flex justify-center mb-stack-lg">
+<div class="w-24 h-24 rounded-full bg-surface-container-high flex items-center justify-center premium-glow relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-coach-orange/20 to-transparent"></div>
+<span class="material-symbols-outlined text-coach-orange text-[48px]" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+</div>
+<!-- Value Prop -->
+<div class="text-center mb-stack-lg">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-stack-sm">Unlock Peak Performance</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Get the tools you need to crush your nutrition goals.</p>
+</div>
+<!-- Feature List -->
+<div class="flex flex-col gap-stack-md mb-stack-lg">
+<!-- Feature 1 -->
+<div class="flex items-center bg-paper-white p-gutter-card rounded-xl premium-glow">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-coach-orange">camera_enhance</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Unlimited AI Scans</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Scan any meal, anytime.</p>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="flex items-center bg-paper-white p-gutter-card rounded-xl premium-glow">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-coach-orange">psychology</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Advanced Coach Advice</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Personalized insights &amp; tweaks.</p>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="flex items-center bg-paper-white p-gutter-card rounded-xl premium-glow">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-coach-orange">support_agent</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Priority Support</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Skip the line when you need help.</p>
+</div>
+</div>
+</div>
+<!-- Pricing Tiers -->
+<div class="flex flex-col gap-stack-sm mb-stack-lg mt-auto">
+<!-- Lifetime (Highlighted) -->
+<button class="w-full text-left bg-paper-white p-gutter-card rounded-xl selected-tier relative overflow-hidden transition-transform active:scale-[0.98]">
+<div class="absolute top-0 right-0 bg-coach-orange text-white font-label-caps text-label-caps px-3 py-1 rounded-bl-lg">
+                    Launch Special
+                </div>
+<div class="flex justify-between items-center">
+<div>
+<div class="font-title-md text-title-md text-on-surface">Lifetime</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Pay once, yours forever</div>
+</div>
+<div class="text-right">
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-coach-orange">$49.00</div>
+</div>
+</div>
+</button>
+<!-- Yearly -->
+<button class="w-full text-left bg-paper-white border-2 border-transparent p-gutter-card rounded-xl hover:border-surface-variant transition-colors active:scale-[0.98]">
+<div class="flex justify-between items-center">
+<div>
+<div class="font-title-md text-title-md text-on-surface">Yearly</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Billed annually</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-on-surface">$49.99</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">/ year</div>
+</div>
+</div>
+</button>
+<!-- Monthly -->
+<button class="w-full text-left bg-paper-white border-2 border-transparent p-gutter-card rounded-xl hover:border-surface-variant transition-colors active:scale-[0.98]">
+<div class="flex justify-between items-center">
+<div>
+<div class="font-title-md text-title-md text-on-surface">Monthly</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Cancel anytime</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md text-on-surface">$7.99</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">/ mo</div>
+</div>
+</div>
+</button>
+</div>
+<!-- CTA -->
+<div class="w-full pb-8">
+<button class="w-full h-16 bg-coach-orange text-white font-title-md text-title-md rounded-xl flex items-center justify-center premium-glow hover:opacity-90 active:scale-[0.98] transition-all">
+                Continue
+            </button>
+<p class="text-center font-body-sm text-body-sm text-on-surface-variant mt-stack-sm opacity-70">
+                Terms of Service &amp; Privacy Policy
+            </p>
+</div>
+</main>
+<!-- Bottom Nav & FAB suppressed for transactional view as per guidelines -->
+</body></html>

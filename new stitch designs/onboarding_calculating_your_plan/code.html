@@ -1,0 +1,208 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Calculating Your Plan - ProteinPlate AI</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e4e2dd",
+                        "on-secondary": "#ffffff",
+                        "surface": "#fbf9f4",
+                        "ink-black": "#1C1C1E",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-tint": "#a93702",
+                        "on-tertiary-container": "#2c2d31",
+                        "tertiary-container": "#949499",
+                        "secondary-fixed": "#ffe087",
+                        "surface-dim": "#dbdad5",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#5d5e63",
+                        "on-surface-variant": "#58423a",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f5f3ee",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-error-container": "#93000a",
+                        "background": "#fbf9f4",
+                        "protein-teal": "#2D6A4F",
+                        "coach-orange": "#F26B38",
+                        "on-background": "#1b1c19",
+                        "inverse-primary": "#ffb59c",
+                        "paper-white": "#FFFFFF",
+                        "secondary": "#735c00",
+                        "outline-variant": "#e0c0b5",
+                        "inverse-surface": "#30312e",
+                        "on-surface": "#1b1c19",
+                        "surface-container": "#f0eee9",
+                        "on-primary-fixed-variant": "#822800",
+                        "tertiary-fixed": "#e3e2e7",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-bright": "#fbf9f4",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "secondary-container": "#fdd34d",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-primary-container": "#561700",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e4e2dd",
+                        "primary": "#a93702",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-primary-fixed": "#380c00",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#eae8e3",
+                        "on-secondary-container": "#725b00",
+                        "outline": "#8c7168",
+                        "warm-sun": "#FFD54F",
+                        "primary-container": "#f26b38",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "stack-lg": "1.5rem",
+                        "stack-sm": "0.5rem",
+                        "margin-main": "1.25rem",
+                        "gutter-card": "1rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "label-caps": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Custom Keyframes for elegant SVG loading animation */
+        @keyframes dash {
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+            50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35px;
+            }
+            100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124px;
+            }
+        }
+        .circular-loader-path {
+            animation: dash 1.5s ease-in-out infinite;
+            stroke-linecap: round;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center p-margin-main relative overflow-hidden font-body-lg">
+<!-- Ambient Background Glows for Depth -->
+<div class="absolute top-1/4 left-1/4 w-[50vw] h-[50vw] max-w-md max-h-md bg-coach-orange opacity-[0.03] blur-[100px] rounded-full pointer-events-none"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[60vw] h-[60vw] max-w-lg max-h-lg bg-warm-sun opacity-[0.04] blur-[120px] rounded-full pointer-events-none"></div>
+<!-- Main Content Canvas -->
+<main class="w-full max-w-sm mx-auto flex flex-col items-center justify-center z-10">
+<!-- Elegant Progress Indicator -->
+<div class="relative flex items-center justify-center w-48 h-48 mb-stack-lg">
+<!-- Background Track -->
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewBox="25 25 50 50">
+<circle class="text-surface-container-high" cx="50" cy="50" fill="none" r="20" stroke="currentColor" stroke-width="2"></circle>
+</svg>
+<!-- Animated Progress Line -->
+<svg class="absolute inset-0 w-full h-full transform -rotate-90 animate-[spin_2s_linear_infinite]" viewBox="25 25 50 50">
+<circle class="text-coach-orange circular-loader-path" cx="50" cy="50" fill="none" r="20" stroke="currentColor" stroke-width="2.5" style="filter: drop-shadow(0px 0px 8px rgba(242, 107, 56, 0.4));"></circle>
+</svg>
+<!-- Center Pulse Element -->
+<div class="w-20 h-20 bg-surface-container-lowest rounded-full shadow-[0_4px_20px_rgba(242,107,56,0.1)] flex items-center justify-center animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite] z-10 border border-surface-variant">
+<span class="material-symbols-outlined text-coach-orange text-4xl" style="font-variation-settings: 'FILL' 1;">
+                    auto_awesome
+                </span>
+</div>
+</div>
+<!-- Dynamic Text Area -->
+<div class="h-24 flex flex-col items-center text-center w-full">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-stack-sm md:font-headline-lg md:text-headline-lg">
+                Crafting Your Plan
+            </h1>
+<!-- Container to prevent layout shift during text changes -->
+<div class="relative w-full h-8 flex justify-center items-center">
+<p class="font-body-lg text-body-lg text-on-surface-variant absolute transition-opacity duration-500 ease-in-out opacity-100 w-full text-center px-4" id="loading-message">
+                    Analyzing your activity level...
+                </p>
+</div>
+</div>
+</main>
+<!-- Subtle Brand Anchor -->
+<div class="absolute bottom-margin-main w-full flex justify-center pb-safe">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-coach-orange opacity-40 scale-75 select-none tracking-tight">
+            ProteinPlate AI
+        </span>
+</div>
+<!-- Micro-interaction Script for Dynamic Text -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const messages = [
+                "Analyzing your activity level...",
+                "Optimizing protein targets...",
+                "Calibrating macro ratios...",
+                "Building your custom coach profile...",
+                "Finalizing your nutrition strategy..."
+            ];
+            
+            const messageElement = document.getElementById('loading-message');
+            let currentIndex = 0;
+
+            setInterval(() => {
+                // Fade out
+                messageElement.style.opacity = '0';
+                
+                setTimeout(() => {
+                    // Update text and fade in
+                    currentIndex = (currentIndex + 1) % messages.length;
+                    messageElement.textContent = messages[currentIndex];
+                    messageElement.style.opacity = '1';
+                }, 500); // Wait for fade out to complete (matches tailwind duration-500)
+                
+            }, 3000); // Change message every 3 seconds
+        });
+    </script>
+</body></html>

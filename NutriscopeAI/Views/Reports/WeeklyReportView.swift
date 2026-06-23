@@ -29,17 +29,16 @@ struct WeeklyReportView: View {
     }
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            BoundedScrollView {
 
             VStack(alignment: .leading, spacing: 24) {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("Weekly Report")
-                        .font(AppTypography.largeTitle)
-                        .foregroundStyle(AppTheme.textPrimary)
-                    Text(weekRangeLabel)
-                        .font(AppTypography.body)
-                        .foregroundStyle(AppTheme.textSecondary)
-                }
+                KineticToolHeader(
+                    title: "Weekly Report",
+                    subtitle: weekRangeLabel
+                )
 
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
                     KineticReportStatCard(
@@ -104,9 +103,9 @@ struct WeeklyReportView: View {
                 }
             }
             .padding(AppTheme.marginMain)
-        
+
+            }
         }
-        .background(AppBackground())
         .navigationTitle("Weekly report")
         .navigationBarTitleDisplayMode(.inline)
     }

@@ -1,0 +1,334 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Nutriscope Pro Paywall</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e6e1e1",
+                    "background": "#fdf8f8",
+                    "surface-dim": "#ddd9d8",
+                    "primary-container": "#f26b38",
+                    "on-tertiary-container": "#8fee8c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#002204",
+                    "inverse-on-surface": "#f4f0ef",
+                    "tertiary-container": "#006e1d",
+                    "surface-container-high": "#ece7e7",
+                    "gauge-track": "#eae7e7",
+                    "secondary-container": "#b7bcfd",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e6e1e1",
+                    "on-primary-fixed-variant": "#822800",
+                    "tertiary-fixed-dim": "#7edb7c",
+                    "on-primary-container": "#ffcdbd",
+                    "on-tertiary-fixed-variant": "#005314",
+                    "on-secondary-fixed": "#0e144d",
+                    "surface-container": "#f1edec",
+                    "primary": "#812700",
+                    "on-secondary-fixed-variant": "#3c427a",
+                    "surface-container-low": "#f7f2f2",
+                    "secondary-fixed-dim": "#bdc2ff",
+                    "on-error": "#ffffff",
+                    "glass-border": "rgba(255, 255, 255, 0.9)",
+                    "inverse-primary": "#ffb59c",
+                    "on-secondary-container": "#444a83",
+                    "on-primary-fixed": "#380c00",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#fdf8f8",
+                    "secondary-fixed": "#dfe0ff",
+                    "outline-variant": "#e0c0b5",
+                    "primary-fixed": "#ffdbcf",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#58423a",
+                    "primary-fixed-dim": "#ffb59c",
+                    "tertiary": "#005314",
+                    "outline": "#8c7168",
+                    "on-background": "#1c1b1b",
+                    "tertiary-fixed": "#99f895",
+                    "glass-bg": "rgba(255, 255, 255, 0.7)",
+                    "secondary": "#545a94",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#a93702",
+                    "on-surface": "#1c1b1b",
+                    "surface": "#fcf9f8",
+                    "inverse-surface": "#313030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "xl": "80px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-bold": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "display-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "display-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "caption": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-caps": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-md": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "label-bold": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "caption": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-caps": [
+                            "10px",
+                            {
+                                    "lineHeight": "12px",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+        },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+        
+        .premium-shadow {
+            box-shadow: 0 8px 32px rgba(129, 39, 0, 0.08);
+        }
+        
+        .button-glow {
+            box-shadow: 0 12px 24px rgba(129, 39, 0, 0.2);
+        }
+        
+        body {
+            background-color: #fcf9f8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Hide scrollbar for a cleaner iOS feel */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(252, 249, 248, 0.3) 0%, rgba(252, 249, 248, 0.8) 40%, rgba(252, 249, 248, 1) 100%);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="text-on-surface min-h-screen flex flex-col relative font-body-md text-body-md overflow-x-hidden">
+<!-- Background Image with Overlay -->
+<div class="hero-bg">
+<img alt="Nutriscope Premium Content" src="https://lh3.googleusercontent.com/aida/AP1WRLsHTTS8qBx9h9R0sYUFjDAVS_5zuYbxSWSAbFyEXhJnpNRTm6eoo6z4iKyunYk7sCEzloNFeAvcAykKg93JSk0RGqp9OOTe-cDE5WdkOtZEPhkoIDCzaUcLmW81BpbmuNoWOsMxWVUqu3ccfKrmlUnTmKjyScX6EkJ-h0IJG4CLuu5iS9zNtRXTuWLpFCE3_LIE8Mfq77Em7zwWd4Mrp2YhGCX4gopcr2lGWY6FT6ap1FjRN-u2">
+<div class="hero-overlay"></div>
+</div>
+<!-- Header Actions -->
+<header class="flex justify-between items-center p-margin-mobile pt-12 md:px-margin-desktop md:pt-margin-desktop z-10 sticky top-0">
+<button class="w-10 h-10 rounded-full glass-panel flex items-center justify-center text-on-surface hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+<div class="text-on-surface-variant font-label-bold text-label-bold glass-panel px-4 py-1 rounded-full">
+            Restore
+        </div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col px-margin-mobile md:px-margin-desktop pb-32 pt-16 z-10 max-w-[1280px] mx-auto w-full">
+<!-- Hero Section -->
+<div class="text-center mb-lg">
+<div class="inline-flex items-center justify-center mb-sm px-3 py-1 rounded-full bg-primary-container/20 text-primary border border-primary/20">
+<span class="material-symbols-outlined text-sm mr-1" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-caps text-label-caps tracking-widest uppercase">Nutriscope Pro</span>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-xs">
+                Unlock Your<br>Potential
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
+                Precision nutrition tracking and personalized coaching designed to elevate your health journey.
+            </p>
+</div>
+<!-- Features Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-xl">
+<!-- Feature 1 -->
+<div class="glass-panel rounded-lg p-md premium-shadow hover:scale-[1.02] transition-transform duration-300">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">document_scanner</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Unlimited AI Scans</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Instantly analyze meals with our advanced visual recognition. No daily limits, just pure macro precision.
+                </p>
+</div>
+<!-- Feature 2 -->
+<div class="glass-panel rounded-lg p-md premium-shadow hover:scale-[1.02] transition-transform duration-300">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">1-on-1 Pro Coaching</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Get weekly adjustments and personalized insights from our certified AI nutritionists tailored to your metabolism.
+                </p>
+</div>
+<!-- Feature 3 -->
+<div class="glass-panel rounded-lg p-md premium-shadow hover:scale-[1.02] transition-transform duration-300">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Advanced Analytics</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Dive deep into your micro-nutrient trends, sleep correlations, and energy levels with exportable reports.
+                </p>
+</div>
+<!-- Feature 4 -->
+<div class="glass-panel rounded-lg p-md premium-shadow hover:scale-[1.02] transition-transform duration-300">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Premium Recipes</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Access over 5,000 chef-created, macro-balanced recipes. Automatically added to your daily log with one tap.
+                </p>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full glass-panel border-t-0 rounded-t-xl z-50 p-margin-mobile pb-8 md:p-margin-desktop md:pb-margin-desktop">
+<div class="max-w-[1280px] mx-auto">
+<!-- Pricing Toggle -->
+<div class="flex justify-center mb-6">
+<div class="bg-surface-container-high rounded-full p-1 inline-flex items-center">
+<button class="px-6 py-2 rounded-full font-label-bold text-label-bold bg-surface text-primary shadow-sm">Yearly</button>
+<button class="px-6 py-2 rounded-full font-label-bold text-label-bold text-on-surface-variant">Monthly</button>
+</div>
+</div>
+<!-- Price Display -->
+<div class="text-center mb-6">
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary">$59.99<span class="font-body-lg text-body-lg text-on-surface-variant"> / year</span></div>
+<div class="font-caption text-caption text-on-surface-variant mt-1">That's just $4.99 a month. Billed annually.</div>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full bg-primary text-on-primary rounded-full py-4 font-label-bold text-label-bold flex items-center justify-center button-glow hover:opacity-90 active:scale-95 transition-all mb-4">
+                Continue with Pro
+            </button>
+<div class="text-center font-caption text-caption text-on-surface-variant max-w-md mx-auto leading-relaxed">
+                Recurring billing. Cancel anytime. By continuing, you agree to our <a class="underline hover:text-primary" href="#">Terms of Service</a> and <a class="underline hover:text-primary" href="#">Privacy Policy</a>.
+            </div>
+</div>
+</div>
+</body></html>

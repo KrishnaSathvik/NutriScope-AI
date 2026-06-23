@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Authentication</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e6e1e1",
+                        "surface-container": "#f1edec",
+                        "secondary-container": "#b7bcfd",
+                        "outline-variant": "#e0c0b5",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#ffcdbd",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#8fee8c",
+                        "background": "#fdf8f8",
+                        "on-secondary-fixed": "#0e144d",
+                        "surface-container-low": "#f7f2f2",
+                        "surface-tint": "#a93702",
+                        "outline": "#8c7168",
+                        "surface-container-high": "#ece7e7",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f4f0ef",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary": "#005314",
+                        "primary-fixed-dim": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "on-background": "#1c1b1b",
+                        "surface": "#fcf9f8",
+                        "secondary": "#545a94",
+                        "on-primary": "#ffffff",
+                        "primary": "#812700",
+                        "surface-dim": "#ddd9d8",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#a93702",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-container": "#006e1d",
+                        "surface-bright": "#fdf8f8",
+                        "inverse-primary": "#ffb59c",
+                        "gauge-track": "#eae7e7",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "on-secondary-container": "#444a83",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "on-primary-fixed": "#380c00",
+                        "tertiary-fixed": "#99f895"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-gradient-radial {
+            background: radial-gradient(circle at center, var(--tw-gradient-stops));
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md relative overflow-hidden">
+<!-- Immersive Background -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-radial from-primary-fixed/30 to-background z-10 mix-blend-multiply"></div>
+<img alt="Immersive Background" class="w-full h-full object-cover filter blur-[20px] scale-110 opacity-60" data-alt="A highly aesthetic, macro photograph of fresh, vibrant ingredients like citrus, leafy greens, and exotic spices arranged artistically. The image is significantly blurred to create a soft, abstract background with smooth bokeh, emphasizing an airy, premium wellness feel in light mode with bright, natural studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoV3Tgh1gA-gFtVwj_96S7PH3lTBGMpnedkFc9DI9cUvl_3Wh0Ok9EbMmu04pfLdFavfE5pyF_7UXv0ycNRS7pcGy9uOXoIA-qcNwoM2SRaJ3xRV3X3GVHYIai_qEIVQgTEWR2QgCgodXNQsK7OZlMRU9SBVjjLRW-nyB7VNGnoro62ImFCtdMMwwsPPL-1AJOZPaX6T3dxD5g04_tcY5dMsg9tu9Ue2SpV2aH0WOyqJd583Zx58iRsxL0rN8zdswGAwEDtpPgSkxl"/>
+</div>
+<!-- Main Container -->
+<main class="relative z-10 min-h-screen flex items-center justify-center p-margin-mobile md:p-margin-desktop">
+<!-- Auth Card Container -->
+<div class="w-full max-w-[440px] relative">
+<!-- Brand Element -->
+<div class="text-center mb-8">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight md:font-display-lg md:text-display-lg">Nutriscope AI</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">Precision nutrition, elevated.</p>
+</div>
+<!-- Glassmorphic Auth Card -->
+<div class="bg-glass-bg backdrop-blur-[20px] border border-glass-border rounded-[2rem] p-8 shadow-lg transition-transform duration-300 hover:scale-[1.01]">
+<!-- Toggle Container -->
+<div class="flex bg-surface-variant/50 rounded-full p-1 mb-8">
+<button class="flex-1 py-2 rounded-full font-label-bold text-label-bold bg-white text-primary shadow-sm transition-all" id="btn-login">Log In</button>
+<button class="flex-1 py-2 rounded-full font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-all" id="btn-signup">Sign Up</button>
+</div>
+<!-- Form Area -->
+<form class="space-y-6" id="auth-form">
+<div class="space-y-4">
+<!-- Email Input -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60">mail</span>
+<input class="w-full pl-12 pr-4 py-4 bg-white/80 border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl font-body-md text-body-md text-on-surface transition-all placeholder:text-on-surface-variant/50 outline-none shadow-sm backdrop-blur-sm" placeholder="Email address" type="email"/>
+</div>
+<!-- Password Input -->
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60">lock</span>
+<input class="w-full pl-12 pr-4 py-4 bg-white/80 border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 rounded-xl font-body-md text-body-md text-on-surface transition-all placeholder:text-on-surface-variant/50 outline-none shadow-sm backdrop-blur-sm" placeholder="Password" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">visibility_off</span>
+</button>
+</div>
+</div>
+<!-- Forgot Password Link -->
+<div class="flex justify-end">
+<a class="font-caption text-caption text-primary hover:text-primary-container transition-colors" href="#">Forgot password?</a>
+</div>
+<!-- Primary CTA -->
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-label-bold text-label-bold flex items-center justify-center gap-2 shadow-[0_8px_16px_rgba(169,55,2,0.2)] hover:bg-primary-container hover:shadow-[0_12px_24px_rgba(169,55,2,0.3)] transition-all active:scale-[0.98]" type="submit">
+<span>Continue</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="flex items-center gap-4 my-8">
+<div class="flex-1 h-px bg-outline-variant/50"></div>
+<span class="font-caption text-caption text-on-surface-variant uppercase tracking-wider">Or continue with</span>
+<div class="flex-1 h-px bg-outline-variant/50"></div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 py-3 bg-white/60 border border-glass-border rounded-xl font-label-bold text-label-bold text-on-surface hover:bg-white transition-colors shadow-sm">
+<svg class="w-5 h-5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"></path></svg>
+                        Google
+                    </button>
+<button class="flex items-center justify-center gap-2 py-3 bg-white/60 border border-glass-border rounded-xl font-label-bold text-label-bold text-on-surface hover:bg-white transition-colors shadow-sm">
+<svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.05.28.05.43zm4.565 15.71c-.03.07-1.736 6.05-5.58 6.05-1.09 0-2.31-.8-3.46-.8-1.114 0-2.33.8-3.48.8-3.75 0-5.3-5.92-5.3-5.92-1.07-2.76-1.07-6.04.61-8.27 1.36-1.83 3.314-2.82 4.994-2.82 1.47 0 2.72.66 3.46.66.75 0 2.22-.72 3.66-.72 1.48 0 3.12.56 4.49 1.83-3.61 1.6-2.69 6.22.606 7.69z"></path></svg>
+                        Apple
+                    </button>
+</div>
+</div>
+<div class="text-center mt-6">
+<p class="font-caption text-caption text-on-surface-variant/80">By continuing, you agree to our <a class="underline hover:text-primary" href="#">Terms of Service</a> and <a class="underline hover:text-primary" href="#">Privacy Policy</a>.</p>
+</div>
+</div>
+</main>
+<script>
+        // Simple UI toggle logic for demonstration
+        const btnLogin = document.getElementById('btn-login');
+        const btnSignup = document.getElementById('btn-signup');
+        
+        btnSignup.addEventListener('click', () => {
+            btnSignup.classList.add('bg-white', 'text-primary', 'shadow-sm');
+            btnSignup.classList.remove('text-on-surface-variant');
+            btnLogin.classList.remove('bg-white', 'text-primary', 'shadow-sm');
+            btnLogin.classList.add('text-on-surface-variant');
+        });
+
+        btnLogin.addEventListener('click', () => {
+            btnLogin.classList.add('bg-white', 'text-primary', 'shadow-sm');
+            btnLogin.classList.remove('text-on-surface-variant');
+            btnSignup.classList.remove('bg-white', 'text-primary', 'shadow-sm');
+            btnSignup.classList.add('text-on-surface-variant');
+        });
+    </script>
+</body></html>

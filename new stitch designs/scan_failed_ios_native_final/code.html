@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Scan Failed - Kinetic Harvest</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#313030",
+                    "on-primary-fixed": "#380c00",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e6e1e1",
+                    "gauge-track": "#eae7e7",
+                    "on-tertiary-fixed-variant": "#005314",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#dfe0ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#822800",
+                    "secondary": "#545a94",
+                    "background": "#fdf8f8",
+                    "secondary-fixed-dim": "#bdc2ff",
+                    "primary-container": "#a93702",
+                    "on-error": "#ffffff",
+                    "surface": "#fcf9f8",
+                    "outline-variant": "#e0c0b5",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#a93702",
+                    "on-surface": "#1c1b1b",
+                    "secondary-container": "#b7bcfd",
+                    "on-surface-variant": "#58423a",
+                    "inverse-on-surface": "#f4f0ef",
+                    "primary-fixed-dim": "#ffb59c",
+                    "surface-bright": "#fdf8f8",
+                    "on-secondary-fixed": "#0e144d",
+                    "on-secondary-fixed-variant": "#3c427a",
+                    "inverse-primary": "#ffb59c",
+                    "surface-dim": "#ddd9d8",
+                    "on-tertiary-fixed": "#002204",
+                    "tertiary-fixed-dim": "#7edb7c",
+                    "tertiary": "#005314",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#ffcdbd",
+                    "surface-container-highest": "#e6e1e1",
+                    "tertiary-container": "#006e1d",
+                    "surface-container-low": "#f7f2f2",
+                    "glass-border": "rgba(255, 255, 255, 0.9)",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#ffdbcf",
+                    "on-background": "#1c1b1b",
+                    "surface-container-high": "#ece7e7",
+                    "tertiary-fixed": "#99f895",
+                    "glass-bg": "rgba(255, 255, 255, 0.7)",
+                    "primary": "#812700",
+                    "on-tertiary-container": "#8fee8c",
+                    "surface-container": "#f1edec",
+                    "on-secondary-container": "#444a83",
+                    "outline": "#8c7168"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "48px",
+                    "md": "24px",
+                    "margin-desktop": "40px",
+                    "sm": "12px",
+                    "xl": "80px",
+                    "base": "8px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "label-bold": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "caption": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                    "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                    "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                    "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                    "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                    "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background: radial-gradient(circle at top left, #fcf9f8, #fdf8f8);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- Modal Navigation Bar (Suppressed global nav due to task-focus) -->
+<header class="flex justify-between items-center px-margin-mobile h-14 bg-surface/80 backdrop-blur-md sticky top-0 z-50">
+<button class="font-body-md text-body-md text-primary active:opacity-70 transition-opacity flex-1 text-left">
+            Cancel
+        </button>
+<h1 class="font-label-bold text-label-bold text-on-surface flex-1 text-center truncate">
+            Analysis
+        </h1>
+<div class="flex-1"></div> <!-- Spacer for center alignment -->
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col items-center justify-center px-margin-mobile pt-12 pb-8 w-full max-w-md mx-auto relative">
+<!-- Subtle Background Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-error-container/20 rounded-full blur-3xl -z-10"></div>
+<!-- Illustration -->
+<div class="relative w-56 h-56 mb-10 rounded-[2.5rem] overflow-hidden shadow-sm glass-panel group">
+<img class="w-full h-full object-cover opacity-80" data-alt="A minimalist, beautifully lit flat-lay photograph of an empty, high-end white ceramic bowl resting on a pristine, light-colored marble surface. A soft, glowing, semi-transparent holographic question mark subtly hovers above the center of the bowl. The scene is bright, airy, and soft-focused, representing a clean, premium wellness aesthetic with a color palette consisting predominantly of soft whites, gentle greys, and a delicate hint of warm terracotta in the ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIKxI2K0egDe0ij0HX-KEw3EdL_i_OxpzBe6KXfT5cMuG6iiM4bxhYQvjRzzZxRvuk5W4pf0kCTrHqeRmN920rvRMu3t-uKtQM3FyRZ-xbbFoQluWd-kWAkzl6JvDl_lu8d0V7Ifzc5cRPWZUj_PuS6qzkr_rxZ6rlmaUlG30VB4UG14C5TEAQK9e7xGKlWIMj-P11tFnDTp4etCSUg5-bNDbQqgBbV0SyDJFPLJxaYit1zIqAiuZ_QaGwknG-N72cwwZIbFi1SQjg">
+<!-- Overlay and Icon -->
+<div class="absolute inset-0 bg-surface/40 backdrop-blur-[2px] flex items-center justify-center transition-all duration-500 group-hover:bg-surface/30">
+<div class="w-16 h-16 rounded-full bg-error-container text-error flex items-center justify-center shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">question_mark</span>
+</div>
+</div>
+</div>
+<!-- Typography -->
+<div class="text-center flex flex-col items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4">Scan Incomplete</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] text-center">
+                We couldn't get a clear read on this meal. Ensure the food is well-lit and fully visible in the frame for accurate analysis.
+            </p>
+</div>
+</main>
+<!-- Bottom Actions -->
+<footer class="w-full max-w-md mx-auto px-margin-mobile pb-[env(safe-area-inset-bottom,32px)] pt-4 flex flex-col gap-sm relative z-10">
+<!-- Primary Action -->
+<button class="w-full h-14 rounded-full bg-primary text-on-primary font-label-bold text-label-bold flex items-center justify-center gap-2 shadow-[0_4px_14px_rgba(129,39,0,0.25)] hover:bg-primary/90 active:scale-[0.98] transition-all duration-200">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">camera_alt</span>
+            Retry Photo
+        </button>
+<!-- Secondary Action -->
+<button class="w-full h-14 rounded-full bg-surface-container text-on-surface font-label-bold text-label-bold flex items-center justify-center gap-2 hover:bg-surface-container-high active:scale-[0.98] transition-all duration-200">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0;">edit_note</span>
+            Describe Manually
+        </button>
+</footer>
+</body></html>

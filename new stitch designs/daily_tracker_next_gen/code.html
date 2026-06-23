@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Next-Gen Daily Tracker</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e6e1e1",
+                      "surface-container": "#f1edec",
+                      "secondary-container": "#b7bcfd",
+                      "outline-variant": "#e0c0b5",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary-container": "#ffcdbd",
+                      "on-surface": "#1c1b1b",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#8fee8c",
+                      "background": "#fdf8f8",
+                      "on-secondary-fixed": "#0e144d",
+                      "surface-container-low": "#f7f2f2",
+                      "surface-tint": "#a93702",
+                      "outline": "#8c7168",
+                      "surface-container-high": "#ece7e7",
+                      "on-primary-fixed-variant": "#822800",
+                      "inverse-surface": "#313030",
+                      "inverse-on-surface": "#f4f0ef",
+                      "glass-border": "rgba(255, 255, 255, 0.9)",
+                      "on-tertiary-fixed": "#002204",
+                      "tertiary": "#005314",
+                      "primary-fixed-dim": "#ffb59c",
+                      "primary-fixed": "#ffdbcf",
+                      "on-background": "#1c1b1b",
+                      "surface": "#fcf9f8",
+                      "secondary": "#545a94",
+                      "on-primary": "#ffffff",
+                      "primary": "#812700",
+                      "surface-dim": "#ddd9d8",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#a93702",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-container": "#006e1d",
+                      "surface-bright": "#fdf8f8",
+                      "inverse-primary": "#ffb59c",
+                      "gauge-track": "#eae7e7",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005314",
+                      "tertiary-fixed-dim": "#7edb7c",
+                      "on-secondary-container": "#444a83",
+                      "secondary-fixed": "#dfe0ff",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#58423a",
+                      "glass-bg": "rgba(255, 255, 255, 0.7)",
+                      "secondary-fixed-dim": "#bdc2ff",
+                      "on-secondary-fixed-variant": "#3c427a",
+                      "on-primary-fixed": "#380c00",
+                      "tertiary-fixed": "#99f895"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "margin-mobile": "16px",
+                      "xl": "80px",
+                      "margin-desktop": "40px",
+                      "base": "8px",
+                      "lg": "48px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-bold": [
+                              "Hanken Grotesk"
+                      ],
+                      "caption": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background: radial-gradient(circle at top left, rgba(255,219,207,0.4), transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(169,55,2,0.1), transparent 50%);
+            background-color: #fdf8f8;
+            background-attachment: fixed;
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+          font-variation-settings: 'FILL' 1;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+        }
+
+        .arc-glow {
+            filter: drop-shadow(0 0 12px rgba(169, 55, 2, 0.4));
+        }
+        
+        .fab-shadow {
+            box-shadow: 0 8px 24px rgba(169, 55, 2, 0.3);
+        }
+        
+        /* Circular Progress styling */
+        .circular-chart {
+            display: block;
+            margin: 0 auto;
+            max-width: 80%;
+            max-height: 250px;
+        }
+        .circle-bg {
+            fill: none;
+            stroke: #eae7e7;
+            stroke-width: 2.5;
+        }
+        .circle {
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            transition: stroke-dasharray 1s ease-out;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-md bg-glass-bg border-b border-glass-border shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 transition-all duration-300">
+<div class="flex items-center gap-sm cursor-pointer hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-glass-border shadow-sm">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close up, highly detailed, high fashion lifestyle portrait of a healthy individual with glowing skin, bright lighting, warm optimistic mood, premium modern wellness aesthetic, shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPY4wtluEgeLghZPus-CF79NlaJJUyL80t2q_LLv65suaGCnlKDrWCgBlbhTlvmj9nNyxRjo4D-G2U_56GeehMJFoz1YUpZOnIsOzLD8ujcQgdhC8Xfc2bryTOMMmW2ONJC2ybeDU1bx9cE6zsVtwVZJwVkJktR868Ss654Zhmcoi1t6GT9ZRV0tsawe0lrgRBmcXr7hS4MtZjncg27-kF7oB4J0KosAsqwEN2c_qbKCPNPr8axxCr8UR-FWxUy9k2SOg3a1n5AF_i"/>
+</div>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">Nutriscope AI</h1>
+<button class="p-2 rounded-full hover:bg-surface-variant transition-colors text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto space-y-md md:space-y-lg">
+<!-- Welcome Header -->
+<div class="flex justify-between items-end mb-sm">
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant">Today's Overview</p>
+<h2 class="font-headline-md text-headline-md text-on-surface">You're on track, Sarah!</h2>
+</div>
+<div class="bg-primary-container text-on-primary-container px-sm py-xs rounded-full font-label-bold text-label-bold flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] filled" data-icon="local_fire_department">local_fire_department</span>
+                12 Day Streak
+            </div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Main Protein Arc (Spans 8 columns on desktop) -->
+<div class="glass-card rounded-xl p-md md:col-span-8 flex flex-col md:flex-row items-center gap-md relative overflow-hidden group hover:scale-[1.01] transition-transform duration-300">
+<div class="absolute top-0 right-0 p-sm opacity-50 text-primary">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+</div>
+<!-- Circular Chart Area -->
+<div class="relative w-full md:w-1/2 flex justify-center items-center">
+<svg class="circular-chart text-primary w-full h-auto max-w-[280px]" viewbox="0 0 36 36">
+<defs>
+<lineargradient id="arcGradient" x1="0%" x2="100%" y1="100%" y2="0%">
+<stop offset="0%" stop-color="#f26b38"></stop>
+<stop offset="100%" stop-color="#a93702"></stop>
+</lineargradient>
+</defs>
+<!-- Track -->
+<path class="circle-bg" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831"></path>
+<!-- Progress Arc -->
+<path class="circle arc-glow" d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831" stroke="url(#arcGradient)" stroke-dasharray="75, 100"></path>
+</svg>
+<!-- Center Content -->
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight">120g</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1 uppercase tracking-widest">Protein</span>
+</div>
+</div>
+<!-- Stats Text Area -->
+<div class="w-full md:w-1/2 flex flex-col justify-center space-y-sm text-center md:text-left">
+<div class="bg-primary/10 border border-primary/20 text-primary px-sm py-xs rounded-full inline-block self-center md:self-start mb-xs w-max">
+<span class="font-label-bold text-label-bold flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] filled" data-icon="check_circle">check_circle</span>
+                            Target 150g
+                        </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Excellent Progress</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">You've hit 80% of your daily protein goal. One more high-protein snack will get you there!</p>
+</div>
+</div>
+<!-- Secondary Macros (Spans 4 columns on desktop) -->
+<div class="md:col-span-4 flex flex-col gap-md">
+<!-- Carbs Card -->
+<div class="glass-card rounded-DEFAULT p-sm flex items-center justify-between hover:scale-[1.01] transition-transform duration-300">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="grain">grain</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Carbs</p>
+<p class="font-headline-md text-headline-md-mobile text-on-surface">180<span class="font-body-md text-body-md text-on-surface-variant">/200g</span></p>
+</div>
+</div>
+<div class="w-16 h-2 bg-gauge-track rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[90%] rounded-full"></div>
+</div>
+</div>
+<!-- Fats Card -->
+<div class="glass-card rounded-DEFAULT p-sm flex items-center justify-between hover:scale-[1.01] transition-transform duration-300">
+<div class="flex items-center gap-sm">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="water_drop">water_drop</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant uppercase">Fats</p>
+<p class="font-headline-md text-headline-md-mobile text-on-surface">45<span class="font-body-md text-body-md text-on-surface-variant">/60g</span></p>
+</div>
+</div>
+<div class="w-16 h-2 bg-gauge-track rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[75%] rounded-full"></div>
+</div>
+</div>
+<!-- Coach Insight Bubble -->
+<div class="glass-card rounded-DEFAULT p-sm flex items-start gap-sm bg-surface-container-low border-none shadow-sm relative mt-auto">
+<div class="absolute -top-2 -left-2 w-4 h-4 bg-primary rounded-full animate-pulse"></div>
+<span class="material-symbols-outlined text-primary mt-1" data-icon="tips_and_updates">tips_and_updates</span>
+<div>
+<p class="font-label-bold text-label-bold text-on-surface">Coach Insight</p>
+<p class="font-caption text-caption text-on-surface-variant mt-xs">Your fat intake is optimal for hormone health today. Consider a handful of almonds later if you feel hungry.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full h-20 flex justify-around items-center pb-safe px-2 bg-glass-bg border-t border-glass-border shadow-lg backdrop-blur-lg rounded-t-lg z-50 md:hidden">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined filled" data-icon="home">home</span>
+<span class="font-label-bold text-[10px] mt-1">Home</span>
+</a>
+<!-- Insights -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-bold text-[10px] mt-1">Insights</span>
+</a>
+<!-- FAB Container (Center) -->
+<div class="relative -top-6">
+<button class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center fab-shadow border-4 border-surface hover:scale-105 active:scale-95 transition-transform duration-200 focus:outline-none focus:ring-4 focus:ring-primary/20">
+<span class="material-symbols-outlined text-[32px]" data-icon="center_focus_strong">center_focus_strong</span>
+</button>
+</div>
+<!-- Log -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-label-bold text-[10px] mt-1">Log</span>
+</a>
+<!-- Plan -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-bold text-[10px] mt-1">Plan</span>
+</a>
+</nav>
+<!-- Desktop Navigation (Hidden on Mobile) -->
+<nav class="hidden md:flex fixed top-0 right-margin-desktop h-16 items-center gap-md z-50 mr-xl">
+<a class="font-label-bold text-label-bold text-primary border-b-2 border-primary py-1" href="#">Home</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors py-1" href="#">Insights</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors py-1" href="#">Log</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors py-1" href="#">Plan</a>
+<button class="bg-primary text-on-primary px-md py-sm rounded-full font-label-bold text-label-bold hover:shadow-lg active:scale-95 transition-all ml-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="center_focus_strong">center_focus_strong</span>
+            Scan Meal
+        </button>
+</nav>
+</body></html>

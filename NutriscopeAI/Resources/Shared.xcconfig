@@ -1,0 +1,3 @@
+// Nutriscope AI — project-wide build settings.
+// Optional local secrets: copy Backend.xcconfig.example → Backend.xcconfig (gitignored).
+#include? "Backend.xcconfig"

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Goal Setting</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e6e1e1",
+                        "surface-container": "#f1edec",
+                        "secondary-container": "#b7bcfd",
+                        "outline-variant": "#e0c0b5",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#ffcdbd",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#8fee8c",
+                        "background": "#fdf8f8",
+                        "on-secondary-fixed": "#0e144d",
+                        "surface-container-low": "#f7f2f2",
+                        "surface-tint": "#a93702",
+                        "outline": "#8c7168",
+                        "surface-container-high": "#ece7e7",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f4f0ef",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary": "#005314",
+                        "primary-fixed-dim": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "on-background": "#1c1b1b",
+                        "surface": "#fcf9f8",
+                        "secondary": "#545a94",
+                        "on-primary": "#ffffff",
+                        "primary": "#812700",
+                        "surface-dim": "#ddd9d8",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#a93702",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-container": "#006e1d",
+                        "surface-bright": "#fdf8f8",
+                        "inverse-primary": "#ffb59c",
+                        "gauge-track": "#eae7e7",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "on-secondary-container": "#444a83",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "on-primary-fixed": "#380c00",
+                        "tertiary-fixed": "#99f895"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .radial-bg {
+            background: radial-gradient(circle at top right, rgba(169, 55, 2, 0.05), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(84, 90, 148, 0.05), transparent 50%);
+            background-color: theme('colors.background');
+        }
+        
+        .goal-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .goal-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 24px -10px rgba(169, 55, 2, 0.15);
+        }
+        
+        .goal-card.selected {
+            border-color: theme('colors.primary-container');
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,219,207,0.4) 100%);
+            box-shadow: 0 8px 32px -8px rgba(169, 55, 2, 0.2), inset 0 0 0 2px theme('colors.primary-container');
+        }
+        
+        .goal-card.selected .card-icon {
+            color: theme('colors.primary-container');
+            background-color: theme('colors.primary-fixed');
+        }
+
+        .goal-card.selected .check-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .progress-glow {
+            box-shadow: 0 0 12px 2px rgba(169, 55, 2, 0.4);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="radial-bg text-on-background min-h-screen flex flex-col font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-white">
+<!-- Top Navigation (Onboarding Focus - Suppressed standard shell, custom progress header) -->
+<header class="fixed top-0 w-full z-50 bg-glass-bg backdrop-blur-md border-b border-glass-border pt-safe">
+<!-- Progress Bar -->
+<div class="h-1.5 w-full bg-surface-variant/50">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container w-1/3 progress-glow transition-all duration-700 ease-out"></div>
+</div>
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 max-w-7xl mx-auto">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant/50 transition-colors group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-on-surface transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<span class="font-label-bold text-label-bold text-primary tracking-widest uppercase">Step 2 of 6</span>
+<button class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors">Skip</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-32 pb-32 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto w-full flex flex-col items-center">
+<!-- Header Section -->
+<div class="text-center mb-12 md:mb-16 max-w-2xl">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface tracking-tight mb-4 animate-fade-in-up">What brings you to <span class="text-primary-container">Nutriscope?</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant animate-fade-in-up" style="animation-delay: 100ms;">Select your primary goal to help us personalize your nutrition insights and meal recommendations.</p>
+</div>
+<!-- Goal Selection Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl">
+<!-- Goal 1: Build Muscle -->
+<label class="relative cursor-pointer group">
+<input checked="" class="peer sr-only" name="primary_goal" type="radio" value="muscle"/>
+<div class="goal-card selected h-full bg-glass-bg backdrop-blur-md rounded-xl border border-glass-border p-6 flex flex-col relative overflow-hidden">
+<!-- Decorative Background Element -->
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary-fixed/30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex justify-between items-start mb-6 z-10">
+<div class="card-icon w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+</div>
+<div class="check-icon w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-white opacity-0 transform scale-50 transition-all duration-300">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="z-10 mt-auto">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface mb-2">Build Muscle</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">High-protein meal plans designed to support hypertrophy and strength gains.</p>
+</div>
+</div>
+</label>
+<!-- Goal 2: Lose Weight -->
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="primary_goal" type="radio" value="weight_loss"/>
+<div class="goal-card h-full bg-glass-bg backdrop-blur-md rounded-xl border border-glass-border p-6 flex flex-col relative overflow-hidden peer-checked:border-primary-container peer-checked:bg-gradient-to-br peer-checked:from-white/90 peer-checked:to-primary-fixed/40 peer-checked:shadow-[0_8px_32px_-8px_rgba(169,55,2,0.2),inset_0_0_0_2px_theme('colors.primary-container')]">
+<div class="flex justify-between items-start mb-6 z-10">
+<div class="card-icon w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors peer-checked:text-primary-container peer-checked:bg-primary-fixed">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">monitor_weight</span>
+</div>
+<div class="check-icon w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-white opacity-0 transform scale-50 transition-all duration-300 peer-checked:opacity-100 peer-checked:scale-100">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="z-10 mt-auto">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface mb-2">Lose Weight</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Calorie-conscious insights and satisfying meals for sustainable fat loss.</p>
+</div>
+</div>
+</label>
+<!-- Goal 3: Maintain & Health -->
+<label class="relative cursor-pointer group">
+<input class="peer sr-only" name="primary_goal" type="radio" value="maintain"/>
+<div class="goal-card h-full bg-glass-bg backdrop-blur-md rounded-xl border border-glass-border p-6 flex flex-col relative overflow-hidden peer-checked:border-primary-container peer-checked:bg-gradient-to-br peer-checked:from-white/90 peer-checked:to-primary-fixed/40 peer-checked:shadow-[0_8px_32px_-8px_rgba(169,55,2,0.2),inset_0_0_0_2px_theme('colors.primary-container')]">
+<div class="flex justify-between items-start mb-6 z-10">
+<div class="card-icon w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant transition-colors peer-checked:text-primary-container peer-checked:bg-primary-fixed">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="check-icon w-6 h-6 rounded-full bg-primary-container flex items-center justify-center text-white opacity-0 transform scale-50 transition-all duration-300 peer-checked:opacity-100 peer-checked:scale-100">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="z-10 mt-auto">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface mb-2">General Wellness</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Balanced macro profiles for maintaining current weight and boosting energy.</p>
+</div>
+</div>
+</label>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<div class="fixed bottom-0 w-full bg-gradient-to-t from-background via-background/90 to-transparent pt-12 pb-safe px-margin-mobile md:px-margin-desktop z-40">
+<div class="max-w-2xl mx-auto mb-8">
+<button class="w-full bg-primary-container hover:bg-primary text-on-primary font-label-bold text-label-bold py-4 px-8 rounded-full shadow-[0_8px_16px_rgba(169,55,2,0.2)] hover:shadow-[0_12px_24px_rgba(169,55,2,0.3)] transition-all transform hover:-translate-y-1 active:translate-y-0 active:scale-95 flex items-center justify-center gap-2">
+                Continue
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+        // Simple JS to handle the visual state change of the custom radio cards
+        // Tailwind's peer-checked handles most of it, but we need JS for the initially selected card's special classes 
+        // that differ slightly from the pure CSS implementation for robustness.
+        const radios = document.querySelectorAll('input[name="primary_goal"]');
+        const cards = document.querySelectorAll('.goal-card');
+
+        radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // Remove selected class from all
+                cards.forEach(card => card.classList.remove('selected'));
+                
+                // Add to the parent goal-card of the checked radio
+                if (e.target.checked) {
+                    e.target.closest('.goal-card').classList.add('selected');
+                }
+            });
+        });
+    </script>
+</body></html>

@@ -38,11 +38,13 @@ struct ProfileView: View {
     }
 
     var body: some View {
-        VStack(spacing: 0) {
-            NutriscopeTopBar(displayName: displayName)
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
 
-            BoundedScrollView {
+            VStack(spacing: 0) {
+                profileHeader
 
+                BoundedScrollView(bottomPadding: 56) {
                 VStack(spacing: 24) {
                     ProfileHeroHeader(displayName: displayName, email: displayEmail)
 
@@ -64,13 +66,28 @@ struct ProfileView: View {
                     accountSection
                 }
                 .padding(.horizontal, AppTheme.marginMain)
-                .padding(.bottom, 24)
-            
-        }
+                }
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(AppBackground())
         .navigationBarHidden(true)
+    }
+
+    private var profileHeader: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Profile")
+                    .font(AppTypography.displayLGMobile)
+                    .foregroundStyle(AppTheme.textPrimary)
+                Text(displayName)
+                    .font(AppTypography.body)
+                    .foregroundStyle(AppTheme.textSecondary)
+            }
+            Spacer()
+        }
+        .padding(.horizontal, AppTheme.marginMain)
+        .padding(.top, 8)
+        .padding(.bottom, 4)
     }
 
     private var goalsSection: some View {
@@ -78,29 +95,29 @@ struct ProfileView: View {
             NavigationLink { ProfileGoalsSettingsView() } label: {
                 ProfileMenuRow(
                     icon: "flag.fill",
-                    iconColor: AppTheme.coachOrange,
+                    iconColor: AppTheme.primary,
                     title: "Protein Target",
-                    subtitle: "\(user.dailyProteinTarget)g / day"
+                    trailingValue: "\(user.dailyProteinTarget)g / day"
                 )
             }
             .buttonStyle(.plain)
             ProfileMenuDivider()
             NavigationLink { ProfileGoalsSettingsView() } label: {
                 ProfileMenuRow(
-                    icon: "dumbbell.fill",
+                    icon: "figure.strengthtraining.traditional",
                     iconColor: AppTheme.proteinTeal,
                     title: "Fitness Goal",
-                    subtitle: user.goal.label
+                    trailingValue: user.goal.label
                 )
             }
             .buttonStyle(.plain)
             ProfileMenuDivider()
             NavigationLink { ProfileGoalsSettingsView() } label: {
                 ProfileMenuRow(
-                    icon: "leaf.fill",
+                    icon: "fork.knife",
                     iconColor: AppTheme.warmSun,
                     title: "Diet Preferences",
-                    subtitle: dietSummary
+                    trailingValue: dietSummary
                 )
             }
             .buttonStyle(.plain)
@@ -109,28 +126,50 @@ struct ProfileView: View {
 
     private var toolsSection: some View {
         ProfileMenuSection(title: "Tools") {
-            profileToolLink("Recipe Calculator", subtitle: "Analyze custom meals", icon: "function", destination: RecipeCalculatorView())
+            profileToolLink(
+                "Recipe Calculator",
+                icon: "function",
+                iconColor: AppTheme.primary,
+                destination: RecipeCalculatorView()
+            )
             ProfileMenuDivider()
-            profileToolLink("Grocery List", subtitle: "Auto-generated from plans", icon: "cart.fill", destination: GroceryListView())
+            profileToolLink(
+                "Grocery List",
+                icon: "cart.fill",
+                iconColor: AppTheme.coachOrange,
+                destination: GroceryListView()
+            )
             ProfileMenuDivider()
-            profileToolLink("Reminders", subtitle: "Meal & protein nudges", icon: "bell.fill", destination: ReminderSettingsView())
+            profileToolLink(
+                "Reminders",
+                icon: "bell.fill",
+                iconColor: AppTheme.textTertiary,
+                destination: ReminderSettingsView()
+            )
             ProfileMenuDivider()
-            profileToolLink("Weekly Report", subtitle: "Your logging trends", icon: "chart.bar.fill", destination: WeeklyReportView())
+            profileToolLink(
+                "Weekly Report",
+                icon: "chart.bar.fill",
+                iconColor: AppTheme.proteinTeal,
+                destination: WeeklyReportView()
+            )
             ProfileMenuDivider()
             NavigationLink {
                 ProFeatureGate(feature: "Insights & Trends") { InsightsTrendsView() }
             } label: {
                 ProfileMenuRow(
-                    icon: "chart.xyaxis.line",
+                    icon: "chart.line.uptrend.xyaxis",
                     iconColor: AppTheme.proteinTeal,
-                    title: "Insights & Trends",
-                    subtitle: "Deep nutrition analysis"
+                    title: "Insights & Trends"
                 )
             }
             .buttonStyle(.plain)
             ProfileMenuDivider()
-            profileToolLink("Tomorrow's Plan", subtitle: "Coach meal prep", icon: "calendar.badge.clock", destination:
-                ProFeatureGate(feature: "Tomorrow's Plan") { TomorrowProteinPlanView() }
+            profileToolLink(
+                "Tomorrow's Plan",
+                icon: "calendar.badge.clock",
+                iconColor: AppTheme.coachOrange,
+                destination: ProFeatureGate(feature: "Tomorrow's Plan") { TomorrowProteinPlanView() }
             )
         }
     }
@@ -139,8 +178,8 @@ struct ProfileView: View {
         ProfileMenuSection(title: "Account") {
             NavigationLink { ProfileAccountView() } label: {
                 ProfileMenuRow(
-                    icon: "person.crop.circle",
-                    iconColor: AppTheme.textSecondary,
+                    icon: "person.fill",
+                    iconColor: AppTheme.primary,
                     title: "Account Information"
                 )
             }
@@ -154,9 +193,10 @@ struct ProfileView: View {
             } label: {
                 ProfileMenuRow(
                     icon: "rectangle.portrait.and.arrow.right",
-                    iconColor: AppTheme.primary,
+                    iconColor: .red,
                     title: "Sign Out",
-                    isDestructive: true
+                    isDestructive: true,
+                    showsChevron: false
                 )
             }
             .buttonStyle(.plain)
@@ -165,16 +205,15 @@ struct ProfileView: View {
 
     private func profileToolLink<D: View>(
         _ title: String,
-        subtitle: String,
         icon: String,
+        iconColor: Color,
         destination: D
     ) -> some View {
         NavigationLink { destination } label: {
             ProfileMenuRow(
                 icon: icon,
-                iconColor: AppTheme.textSecondary,
-                title: title,
-                subtitle: subtitle
+                iconColor: iconColor,
+                title: title
             )
         }
         .buttonStyle(.plain)

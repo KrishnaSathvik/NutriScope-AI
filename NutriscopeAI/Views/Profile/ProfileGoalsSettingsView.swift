@@ -9,6 +9,7 @@ struct ProfileGoalsSettingsView: View {
     @State private var calorieMinText = ""
     @State private var calorieMaxText = ""
     @State private var healthService = HealthKitService.shared
+    @State private var savedConfirmation = false
 
     private var user: UserSettings {
         if let s = settings.first { return s }
@@ -18,169 +19,266 @@ struct ProfileGoalsSettingsView: View {
     }
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
 
-            VStack(alignment: .leading, spacing: 20) {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Goals & Preferences")
-                        .font(AppTypography.title2.weight(.black))
+            BoundedScrollView {
+                VStack(alignment: .leading, spacing: 24) {
+                    KineticToolHeader(
+                        title: "Goals & Preferences",
+                        subtitle: "Protein targets, fitness goal, diet, and body stats."
+                    )
+
+                    proteinTargetCard
+                    fitnessGoalSection
+                    dietPreferencesSection
+                    bodyStatsSection
+                    coachPreferencesSection
+                    weightSection
+                    healthSection
+
+                    if savedConfirmation {
+                        Label("Goals saved", systemImage: "checkmark.circle.fill")
+                            .font(AppTypography.caption.weight(.semibold))
+                            .foregroundStyle(AppTheme.proteinTeal)
+                            .frame(maxWidth: .infinity)
+                    }
+                }
+                .padding(AppTheme.marginMain)
+            }
+        }
+        .navigationTitle("Goals")
+        .navigationBarTitleDisplayMode(.inline)
+        .onAppear { syncGoalFields() }
+    }
+
+    // MARK: - Sections
+
+    private var proteinTargetCard: some View {
+        SurfaceCard {
+            VStack(alignment: .leading, spacing: 16) {
+                LabelCapsText(text: "Daily protein target", color: AppTheme.textSecondary)
+
+                HStack(alignment: .firstTextBaseline, spacing: 4) {
+                    TextField("150", text: $proteinTargetText)
+                        .keyboardType(.numberPad)
+                        .font(.system(size: 48, weight: .heavy, design: .rounded))
                         .foregroundStyle(AppTheme.coachOrange)
-                    Text("Protein targets, fitness goal, diet, and body stats.")
-                        .font(AppTypography.body)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: 120)
+                    Text("g / day")
+                        .font(AppTypography.bodyLG)
                         .foregroundStyle(AppTheme.textSecondary)
                 }
 
-                ProfileMenuSection(title: "Daily targets") {
-                    VStack(alignment: .leading, spacing: 14) {
-                        HStack {
-                            Text("Protein")
-                            Spacer()
-                            TextField("g", text: $proteinTargetText)
-                                .keyboardType(.numberPad)
-                                .multilineTextAlignment(.trailing)
-                                .frame(width: 72)
-                        }
-                        HStack {
-                            Text("Calorie range")
-                            Spacer()
-                            TextField("min", text: $calorieMinText)
-                                .keyboardType(.numberPad)
-                                .multilineTextAlignment(.trailing)
-                                .frame(width: 64)
-                            Text("–")
-                            TextField("max", text: $calorieMaxText)
-                                .keyboardType(.numberPad)
-                                .multilineTextAlignment(.trailing)
-                                .frame(width: 64)
-                        }
-                        Button("Save goals") { applyGoals() }
-                            .buttonStyle(PrimaryButtonStyle())
-                        Button("Recalculate from profile") { recalculateFromProfile() }
-                            .buttonStyle(OutlineButtonStyle())
-                    }
-                    .padding(.horizontal, 12)
-                    .padding(.bottom, 8)
-                }
+                ProfileMenuDivider()
 
-                SurfaceCard {
-                    Picker("Fitness goal", selection: Binding(
-                        get: { user.goal },
-                        set: { user.goal = $0; syncGoalFields(); save() }
-                    )) {
-                        ForEach(FitnessGoal.allCases) { Text($0.label).tag($0) }
+                HStack {
+                    Text("Calorie range")
+                        .font(AppTypography.bodyLG)
+                        .foregroundStyle(AppTheme.textPrimary)
+                    Spacer()
+                    HStack(spacing: 6) {
+                        TextField("min", text: $calorieMinText)
+                            .keyboardType(.numberPad)
+                            .multilineTextAlignment(.trailing)
+                            .frame(width: 56)
+                            .padding(8)
+                            .background(AppTheme.surfaceMuted)
+                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        Text("–")
+                            .foregroundStyle(AppTheme.textSecondary)
+                        TextField("max", text: $calorieMaxText)
+                            .keyboardType(.numberPad)
+                            .multilineTextAlignment(.trailing)
+                            .frame(width: 56)
+                            .padding(8)
+                            .background(AppTheme.surfaceMuted)
+                            .clipShape(RoundedRectangle(cornerRadius: 8, style: .continuous))
+                        Text("kcal")
+                            .font(AppTypography.caption)
+                            .foregroundStyle(AppTheme.textSecondary)
                     }
                 }
 
-                SurfaceCard {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Diet preferences")
-                            .font(AppTypography.headline)
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 140), spacing: 8)], spacing: 8) {
-                            ForEach(DietPreference.allCases) { pref in
-                                let isSelected = user.dietPreferences.contains(pref)
-                                Button { toggleDietPreference(pref) } label: {
-                                    Text(pref.label)
-                                        .font(AppTypography.caption.weight(.semibold))
-                                        .foregroundStyle(isSelected ? .white : AppTheme.textPrimary)
-                                        .frame(maxWidth: .infinity)
-                                        .padding(.vertical, 10)
-                                        .background(isSelected ? AppTheme.coachOrange : AppTheme.surfaceMuted)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                                }
-                                .buttonStyle(.plain)
-                            }
+                HStack(spacing: 12) {
+                    Button("Save targets") { applyGoals() }
+                        .buttonStyle(PrimaryButtonStyle())
+                    Button("Recalculate") { recalculateFromProfile() }
+                        .buttonStyle(OutlineButtonStyle())
+                }
+            }
+        }
+    }
+
+    private var fitnessGoalSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            sectionLabel("Fitness goal")
+            ForEach(FitnessGoal.allCases) { goal in
+                KineticGoalCard(goal: goal, isSelected: user.goal == goal) {
+                    user.goal = goal
+                    recalculateFromProfile()
+                    save()
+                }
+            }
+        }
+    }
+
+    private var dietPreferencesSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            sectionLabel("Diet preferences")
+            SurfaceCard {
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 12) {
+                    ForEach(DietPreference.allCases) { pref in
+                        KineticDietChip(
+                            title: pref.label,
+                            isSelected: user.dietPreferences.contains(pref)
+                        ) {
+                            toggleDietPreference(pref)
                         }
                     }
                 }
+            }
+        }
+    }
 
-                SurfaceCard {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Coach preferences")
-                            .font(AppTypography.headline)
-                        Toggle("Show calories", isOn: Binding(
-                            get: { user.showCalories },
-                            set: { user.showCalories = $0; save() }
-                        ))
-                        Picker("Focus mode", selection: Binding(
-                            get: { user.focusMode },
-                            set: { user.focusMode = $0; save() }
-                        )) {
-                            ForEach(FocusMode.allCases) { Text($0.label).tag($0) }
-                        }
-                        Picker("Tone", selection: Binding(
-                            get: { user.tone },
-                            set: { user.tone = $0; save() }
-                        )) {
-                            ForEach(CoachTone.allCases) { Text($0.label).tag($0) }
-                        }
+    private var bodyStatsSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            sectionLabel("Body stats")
+            SurfaceCard {
+                VStack(alignment: .leading, spacing: 16) {
+                    OnboardingGenderSegment(gender: Binding(
+                        get: { user.genderRaw },
+                        set: { user.genderRaw = $0; save() }
+                    ))
+
+                    OnboardingProfileMetricField(
+                        label: "Age",
+                        text: Binding(
+                            get: { "\(user.age)" },
+                            set: { user.age = Int($0.filter(\.isNumber)) ?? user.age; save() }
+                        ),
+                        suffix: "years",
+                        placeholder: "e.g. 28"
+                    )
+
+                    HStack(spacing: 12) {
+                        OnboardingProfileMetricField(
+                            label: "Height",
+                            text: Binding(
+                                get: { "\(user.heightCm)" },
+                                set: { user.heightCm = Int($0.filter(\.isNumber)) ?? user.heightCm; save() }
+                            ),
+                            suffix: "cm",
+                            placeholder: "170"
+                        )
+                        OnboardingProfileMetricField(
+                            label: "Weight",
+                            text: Binding(
+                                get: { "\(user.weightKg)" },
+                                set: { user.weightKg = Int($0.filter(\.isNumber)) ?? user.weightKg; save() }
+                            ),
+                            suffix: "kg",
+                            placeholder: "65"
+                        )
                     }
-                }
 
-                SurfaceCard {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("Body stats")
-                            .font(AppTypography.headline)
-                        Stepper("Age: \(user.age)", value: Binding(
-                            get: { user.age },
-                            set: { user.age = $0; save() }
-                        ), in: 16...90)
-                        Picker("Gender", selection: Binding(
-                            get: { user.genderRaw },
-                            set: { user.genderRaw = $0; save() }
-                        )) {
-                            ForEach(["Female", "Male", "Non-binary", "Prefer not to say"], id: \.self) { Text($0) }
-                        }
-                        Stepper("Height: \(user.heightCm) cm", value: Binding(
-                            get: { user.heightCm },
-                            set: { user.heightCm = $0; save() }
-                        ), in: 120...220)
-                        Stepper("Weight: \(user.weightKg) kg", value: Binding(
-                            get: { user.weightKg },
-                            set: { user.weightKg = $0; save() }
-                        ), in: 35...200)
-                        Picker("Activity", selection: Binding(
-                            get: { user.activity },
-                            set: { user.activity = $0; save() }
-                        )) {
-                            ForEach(ActivityLevel.allCases) { Text($0.label).tag($0) }
-                        }
-                    }
-                }
-
-                SurfaceCard {
-                    WeightTrackingSection()
-                }
-
-                if healthService.isAvailable {
-                    SurfaceCard {
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("Apple Health")
-                                .font(AppTypography.headline)
-                            if healthService.isAuthorized {
-                                DailyHealthCard(snapshot: healthService.todaySnapshot, onConnect: nil)
-                                Button("Refresh health data") {
-                                    Task { await healthService.refreshToday() }
-                                }
-                                .buttonStyle(SecondaryButtonStyle())
-                            } else {
-                                Button("Connect Apple Health") {
-                                    Task { try? await healthService.requestAuthorization() }
-                                }
-                                .buttonStyle(OutlineButtonStyle())
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Activity level")
+                            .font(AppTypography.subheadline.weight(.bold))
+                        ForEach(ActivityLevel.allCases) { level in
+                            OnboardingActivityRadioRow(
+                                level: level,
+                                isSelected: user.activity == level
+                            ) {
+                                user.activity = level
+                                recalculateFromProfile()
+                                save()
                             }
                         }
                     }
                 }
             }
-            .padding(AppTheme.marginMain)
-            .padding(.bottom, 32)
-        
         }
-        .background(AppBackground())
-        .navigationTitle("Goals")
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear { syncGoalFields() }
     }
+
+    private var coachPreferencesSection: some View {
+        ProfileMenuSection(title: "Coach preferences") {
+            ProfileSettingsToggleRow(
+                title: "Show calories",
+                isOn: Binding(
+                    get: { user.showCalories },
+                    set: { user.showCalories = $0; save() }
+                )
+            )
+            ProfileMenuDivider()
+            ProfileSettingsPickerRow(title: "Focus mode", value: user.focusMode.label) {
+                Picker("", selection: Binding(
+                    get: { user.focusMode },
+                    set: { user.focusMode = $0; save() }
+                )) {
+                    ForEach(FocusMode.allCases) { Text($0.label).tag($0) }
+                }
+                .labelsHidden()
+                .tint(AppTheme.coachOrange)
+            }
+            ProfileMenuDivider()
+            ProfileSettingsPickerRow(title: "Tone", value: user.tone.label) {
+                Picker("", selection: Binding(
+                    get: { user.tone },
+                    set: { user.tone = $0; save() }
+                )) {
+                    ForEach(CoachTone.allCases) { Text($0.label).tag($0) }
+                }
+                .labelsHidden()
+                .tint(AppTheme.coachOrange)
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var weightSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            sectionLabel("Weight tracking")
+            SurfaceCard {
+                WeightTrackingSection()
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var healthSection: some View {
+        if healthService.isAvailable {
+            VStack(alignment: .leading, spacing: 12) {
+                sectionLabel("Apple Health")
+                SurfaceCard {
+                    VStack(alignment: .leading, spacing: 12) {
+                        if healthService.isAuthorized {
+                            DailyHealthCard(snapshot: healthService.todaySnapshot, onConnect: nil)
+                            Button("Refresh health data") {
+                                Task { await healthService.refreshToday() }
+                            }
+                            .buttonStyle(SecondaryButtonStyle())
+                        } else {
+                            Button("Connect Apple Health") {
+                                Task { try? await healthService.requestAuthorization() }
+                            }
+                            .buttonStyle(OutlineButtonStyle())
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private func sectionLabel(_ text: String) -> some View {
+        Text(text.uppercased())
+            .font(AppTypography.labelCaps)
+            .foregroundStyle(AppTheme.textSecondary)
+            .padding(.leading, 4)
+    }
+
+    // MARK: - Actions
 
     private func syncGoalFields() {
         proteinTargetText = "\(user.dailyProteinTarget)"
@@ -198,6 +296,7 @@ struct ProfileGoalsSettingsView: View {
         }
         syncGoalFields()
         save()
+        savedConfirmation = true
     }
 
     private func toggleDietPreference(_ pref: DietPreference) {
@@ -212,10 +311,43 @@ struct ProfileGoalsSettingsView: View {
         PersonalizedTargetCalculator.apply(targets, to: user)
         syncGoalFields()
         save()
+        savedConfirmation = true
     }
 
     private func save() {
         try? modelContext.save()
+    }
+}
+
+struct ProfileSettingsToggleRow: View {
+    let title: String
+    @Binding var isOn: Bool
+
+    var body: some View {
+        Toggle(title, isOn: $isOn)
+            .font(AppTypography.bodyLG)
+            .tint(AppTheme.coachOrange)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+    }
+}
+
+struct ProfileSettingsPickerRow<PickerContent: View>: View {
+    let title: String
+    let value: String
+    @ViewBuilder let picker: () -> PickerContent
+
+    var body: some View {
+        HStack {
+            Text(title)
+                .font(AppTypography.bodyLG)
+                .foregroundStyle(AppTheme.textPrimary)
+            Spacer()
+            picker()
+                .frame(maxWidth: 180)
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
     }
 }
 

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kinetic Harvest - Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#313030",
+                    "surface": "#fcf9f8",
+                    "tertiary": "#005314",
+                    "secondary-fixed": "#dfe0ff",
+                    "surface-dim": "#ddd9d8",
+                    "primary": "#812700",
+                    "gauge-track": "#eae7e7",
+                    "outline": "#8c7168",
+                    "on-secondary-container": "#444a83",
+                    "on-surface": "#1c1b1b",
+                    "primary-container": "#f26b38",
+                    "error-container": "#ffdad6",
+                    "background": "#fdf8f8",
+                    "surface-container-low": "#f7f2f2",
+                    "on-primary-fixed": "#380c00",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#58423a",
+                    "on-tertiary-fixed-variant": "#005314",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#8fee8c",
+                    "tertiary-fixed": "#99f895",
+                    "surface-variant": "#e6e1e1",
+                    "tertiary-container": "#006e1d",
+                    "secondary": "#545a94",
+                    "primary-fixed-dim": "#ffb59c",
+                    "secondary-container": "#b7bcfd",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#ffcdbd",
+                    "on-primary-fixed-variant": "#822800",
+                    "inverse-primary": "#ffb59c",
+                    "outline-variant": "#e0c0b5",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-tint": "#a93702",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#ece7e7",
+                    "surface-container-highest": "#e6e1e1",
+                    "secondary-fixed-dim": "#bdc2ff",
+                    "glass-bg": "rgba(255, 255, 255, 0.7)",
+                    "surface-container": "#f1edec",
+                    "on-background": "#1c1b1b",
+                    "tertiary-fixed-dim": "#7edb7c",
+                    "on-tertiary-fixed": "#002204",
+                    "surface-bright": "#fdf8f8",
+                    "inverse-on-surface": "#f4f0ef",
+                    "primary-fixed": "#ffdbcf",
+                    "on-secondary-fixed-variant": "#3c427a",
+                    "on-secondary-fixed": "#0e144d",
+                    "glass-border": "rgba(255, 255, 255, 0.9)"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "base": "8px",
+                    "sm": "12px",
+                    "xl": "80px",
+                    "margin-mobile": "16px",
+                    "lg": "48px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Hanken Grotesk"],
+                    "label-bold": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-caps": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "caption": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                    "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                    "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                    "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                    "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                    "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar to match premium feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--tw-colors-surface-dim);
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface min-h-screen relative overflow-x-hidden font-body-md text-on-surface antialiased">
+<!-- Ambient Background Gradients -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary-container/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[20%] right-[-10%] w-[40%] h-[40%] bg-surface-variant/40 rounded-full blur-[80px]"></div>
+</div>
+<!-- TopAppBar JSON Render -->
+<header class="bg-surface/70 backdrop-blur-md fixed top-0 w-full border-b border-white/90 shadow-sm flex justify-between items-center px-margin-mobile h-16 z-50">
+<div class="flex items-center gap-sm cursor-pointer hover:opacity-80 transition-opacity active:scale-95 duration-150">
+<!-- Leading Avatar -->
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-glass-border">
+<img class="w-full h-full object-cover" data-alt="A close-up, high-end profile portrait of a modern wellness enthusiast in an airy, sunlit studio setting. Bright, optimistic lighting, soft focus background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXd971c_VDpHpfJ5UAMNHXewAqu0XHhL43JsEfNj1AKWwSAeIQQTiTtZsqL2AmKmOjczChojOeawd0jFjveo17bsHMMHLtNWQzSEHMcIPSgLTP1HqNW17lXf0_HP4stWXXK4o2o0uBHQmUcNGXc3tR41aHHfpN0PjmQVyZ5YozR5pBl6NkpCBiMjWApV_V3zAffg7Oi1V3DfATMOcV_nCeair6KqJYTbdeY1ysAEncHxy2S8GE9lgEY49tFt8NAu51f8u9n00rkklX"/>
+</div>
+<h1 class="font-headline-md text-headline-md text-primary">Kinetic Harvest</h1>
+</div>
+<!-- Trailing Icon -->
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</header>
+<!-- Main Canvas -->
+<main class="relative z-10 pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto min-h-screen flex flex-col">
+<!-- Search Input Area -->
+<section class="w-full max-w-2xl mx-auto mb-16 relative group">
+<div class="absolute inset-0 bg-primary-container/5 rounded-full blur-xl group-hover:bg-primary-container/10 transition-colors duration-300"></div>
+<div class="relative flex items-center bg-glass-bg backdrop-blur-md border border-glass-border rounded-full shadow-sm p-1 transition-all duration-300 hover:shadow-md focus-within:shadow-md focus-within:border-primary-container/30">
+<div class="pl-4 pr-2 text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full bg-transparent border-none py-3 text-body-lg font-body-lg text-on-surface focus:ring-0 placeholder:text-on-surface-variant/40" placeholder="Search for a food..." type="text" value="Spicy Miso Ramen"/>
+<button aria-label="Clear search" class="pr-4 pl-2 text-on-surface-variant hover:text-primary transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">cancel</span>
+</button>
+</div>
+<!-- Quick filters as context -->
+<div class="flex gap-2 mt-4 overflow-x-auto pb-2 no-scrollbar px-2">
+<span class="px-4 py-1.5 rounded-full bg-surface-container border border-surface-variant text-label-bold font-label-bold text-on-surface-variant whitespace-nowrap opacity-60">All Foods</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container border border-surface-variant text-label-bold font-label-bold text-on-surface-variant whitespace-nowrap opacity-60">My Meals</span>
+<span class="px-4 py-1.5 rounded-full bg-surface-container border border-surface-variant text-label-bold font-label-bold text-on-surface-variant whitespace-nowrap opacity-60">Favorites</span>
+</div>
+</section>
+<!-- Empty State Content -->
+<section class="flex-grow flex flex-col items-center justify-center text-center max-w-lg mx-auto w-full -mt-12">
+<!-- Premium Empty State Illustration -->
+<div class="relative w-48 h-48 md:w-64 md:h-64 mb-8">
+<!-- Ambient glow behind image -->
+<div class="absolute inset-4 bg-primary-container/10 rounded-full blur-2xl"></div>
+<img class="w-full h-full object-contain relative z-10 drop-shadow-xl" data-alt="A premium 3D rendering of a translucent glass magnifying glass hovering over an elegant, pristine white ceramic plate. The scene is lit with soft, warm studio lighting, creating delicate caustic reflections on the surface. Minimalist, airy studio space in soft off-white tones. Subtle accents of vibrant orange reflected in the glass, sophisticated wellness aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwnFETs5tcvxRkAK66Vle1il19RyvY8xE6d44GFm19xlui4yKCJz9pIE7i8p6CLvWa5gvu2iQ3mpP_XtvaEBDsHy_mGwXMu3JHrY3UzesCGpLrAfG56Dd6D7MBSXr_PB-v1PuXb_GAkcd94m0cYSnDA6Omvh-1MOpv6jQqOVlV7Fo35cBApTSmeQIhL8Zynio2LO5UvC0UoWMtmW0hZHg90JzZo2uLpFdLLl1cYyj_qhS6_YHRh61rdRayIzjC5cmeqKQCom5ADPAr"/>
+</div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-4">No results found</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-sm">
+                We couldn't find a match for that exact phrase. Try a different keyword or add a custom food to your database.
+            </p>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+<button class="flex items-center justify-center gap-2 bg-primary-container text-on-primary px-8 py-4 rounded-full font-label-bold text-label-bold shadow-[0_8px_20px_rgba(242,107,56,0.25)] hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(242,107,56,0.3)] transition-all duration-300 active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                    Add Custom Food
+                </button>
+<button class="flex items-center justify-center gap-2 bg-glass-bg backdrop-blur-md border border-glass-border text-on-surface px-8 py-4 rounded-full font-label-bold text-label-bold shadow-sm hover:bg-surface-variant/50 transition-colors duration-300 active:scale-95">
+<span class="material-symbols-outlined">refresh</span>
+                    Search Again
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar JSON Render (Mobile Focused) -->
+<nav class="bg-glass-bg backdrop-blur-md fixed bottom-0 w-full rounded-t-lg border-t border-glass-border shadow-lg z-50 flex justify-around items-center px-4 pt-2 pb-8 md:hidden">
+<!-- Tab: Today -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-caps text-label-caps">Today</span>
+</a>
+<!-- Tab: Meals (ACTIVE STATE) -->
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-caps text-label-caps font-bold">Meals</span>
+</a>
+<!-- Tab: Scan -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-label-caps text-label-caps">Scan</span>
+</a>
+<!-- Tab: Coach -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-caps text-label-caps">Coach</span>
+</a>
+<!-- Tab: Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary active:scale-90 transition-transform w-16" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+</body></html>

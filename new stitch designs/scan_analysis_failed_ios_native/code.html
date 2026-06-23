@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Nutriscope AI - Scan Analysis Failed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#735c00",
+                      "secondary-fixed-dim": "#ebc23e",
+                      "tertiary": "#5d5e63",
+                      "secondary-container": "#fdd34d",
+                      "on-surface": "#1b1c19",
+                      "warm-sun": "#FFD54F",
+                      "on-primary-fixed": "#380c00",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#F2F2F7", /* iOS grouped background */
+                      "surface": "#ffffff",
+                      "inverse-primary": "#ffb59c",
+                      "primary-fixed": "#ffdbcf",
+                      "surface-tint": "#a93702",
+                      "surface-bright": "#fbf9f4",
+                      "surface-container-high": "#eae8e3",
+                      "outline-variant": "#e0c0b5",
+                      "surface-container": "#f0eee9",
+                      "inverse-on-surface": "#f2f1ec",
+                      "primary-container": "#f26b38",
+                      "on-primary-fixed-variant": "#822800",
+                      "on-background": "#000000",
+                      "on-primary-container": "#561700",
+                      "on-tertiary-container": "#2c2d31",
+                      "primary": "#007AFF", /* iOS Blue */
+                      "surface-container-highest": "#e4e2dd",
+                      "on-surface-variant": "#3C3C43", /* iOS Secondary Label */
+                      "error": "#FF3B30", /* iOS Red */
+                      "on-secondary-container": "#725b00",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#dbdad5",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "on-secondary-fixed": "#241a00",
+                      "tertiary-container": "#949499",
+                      "ink-black": "#000000",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "surface-container-low": "#f5f3ee",
+                      "paper-white": "#FFFFFF",
+                      "error-container": "#ffdad6",
+                      "protein-teal": "#2D6A4F",
+                      "tertiary-fixed": "#e3e2e7",
+                      "primary-fixed-dim": "#ffb59c",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-error-container": "#93000a",
+                      "outline": "#8c7168",
+                      "inverse-surface": "#30312e",
+                      "surface-variant": "#e4e2dd",
+                      "secondary-fixed": "#ffe087",
+                      "on-error": "#ffffff",
+                      "coach-orange": "#F26B38",
+                      "on-tertiary-fixed": "#1a1b1f"
+              },
+              "fontFamily": {
+                      "sans": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "SF Pro Text",
+                              "Segoe UI",
+                              "Roboto",
+                              "Helvetica",
+                              "Arial",
+                              "sans-serif"
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-sans antialiased overflow-x-hidden">
+<!-- Top Navigation iOS Native Style -->
+<header class="w-full px-4 h-[44px] flex items-center justify-between sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-[#3C3C43]/20 pt-safe">
+<button aria-label="Cancel" class="text-primary font-normal text-[17px] active:opacity-70 transition-opacity">
+            Cancel
+        </button>
+<div class="font-semibold text-[17px] text-on-background absolute left-1/2 -translate-x-1/2">Analysis</div>
+<div class="w-16"></div> <!-- Spacer for center alignment -->
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col items-center justify-center px-4 py-8 w-full max-w-md mx-auto">
+<!-- Illustration Area -->
+<div class="relative w-full aspect-square max-w-[280px] mx-auto mb-8">
+<img alt="Scan analysis failed illustration" class="w-full h-full object-contain relative z-10" src="https://lh3.googleusercontent.com/aida/AP1WRLsGW0bzjYRAXjlcu652RSYE5Zqjeu_pajidZ64R8L7SC-feCDEGbDCQQrMcXa8hD8PmY56lYcyRSzkEvA1kZDklI23tTn-yTetuRxFxpY3H1EfMs9HlmQPrnyz7LqJNA9JjmBad57OU4S6k2OTFD-vOaXVVEnvAToJ9o6e1kilWID1pTBo3IULQn_EdKOLigcSToZ0rGXhFOQpr6ZGwHucDDv-IJTJZ0AQy4XwsQscF0HdUylIm_fgSJ7mB"/>
+</div>
+<!-- Text Content -->
+<div class="text-center w-full max-w-[340px] mx-auto mb-10 space-y-2">
+<h1 class="text-[28px] font-bold text-on-background tracking-tight">Scan Incomplete</h1>
+<p class="text-[17px] text-on-surface-variant leading-[22px] font-normal">
+                We couldn't clearly identify the ingredients in this photo. A different angle or better lighting might help.
+            </p>
+</div>
+<!-- Action Buttons iOS Style -->
+<div class="w-full flex flex-col gap-3">
+<!-- Primary Action -->
+<button class="w-full h-[50px] bg-primary text-white font-semibold text-[17px] rounded-[14px] flex items-center justify-center active:bg-primary/80 transition-colors">
+                Retry Photo
+            </button>
+<!-- Secondary Action -->
+<button class="w-full h-[50px] bg-white text-primary font-semibold text-[17px] rounded-[14px] flex items-center justify-center active:bg-gray-100 transition-colors border border-gray-200">
+                Describe Manually
+            </button>
+<!-- Tertiary Action -->
+<button class="w-full py-3 mt-2 text-primary font-normal text-[17px] text-center active:opacity-70 transition-opacity">
+                Skip for now
+            </button>
+</div>
+</main>
+</body></html>

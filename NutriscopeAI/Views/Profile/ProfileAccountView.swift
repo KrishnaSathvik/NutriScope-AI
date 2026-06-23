@@ -10,7 +10,6 @@ struct ProfileAccountView: View {
     @State private var usdaKey = Secrets.usdaAPIKey
     @State private var supabaseURL = BackendConfig.supabaseURL
     @State private var supabaseAnonKey = BackendConfig.supabaseAnonKey
-    @State private var offlineDemo = BackendConfig.offlineDemoMode
     @State private var isRestoring = false
     @State private var restoreMessage: String?
     @State private var showDeleteAccountConfirm = false
@@ -29,37 +28,47 @@ struct ProfileAccountView: View {
     }
 
     private var predictedScanMode: String {
-        if offlineDemo { return "Mock scans (offline demo)" }
+        if BackendConfig.isSupabaseConfigured { return "Supabase edge functions" }
         #if DEBUG
         if BackendConfig.useDirectOpenAIInDebug, !apiKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return "Direct OpenAI on device"
+            return "Direct OpenAI on device (Debug)"
         }
         #endif
-        if supabaseLooksConfigured { return "Supabase edge function" }
         if !apiKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            return "Direct OpenAI fallback"
+            return "Direct OpenAI fallback (Debug)"
         }
         return "Not configured"
     }
 
+    private var predictedCoachMode: String {
+        if BackendConfig.isSupabaseConfigured, !BackendConfig.usesDeviceOpenAIForCoach {
+            return "Supabase ai-proxy"
+        }
+        #if DEBUG
+        if !apiKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return "Direct OpenAI on device (Debug)"
+        }
+        #endif
+        return "needs Supabase or Debug OpenAI key"
+    }
+
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            BoundedScrollView {
 
             VStack(alignment: .leading, spacing: 20) {
-                VStack(alignment: .leading, spacing: 6) {
-                    Text("Account")
-                        .font(AppTypography.title2.weight(.black))
-                        .foregroundStyle(AppTheme.coachOrange)
-                    Text("Sign-in details, privacy, and subscription.")
-                        .font(AppTypography.body)
-                        .foregroundStyle(AppTheme.textSecondary)
-                }
+                KineticToolHeader(
+                    title: "Account",
+                    subtitle: "Sign-in details, privacy, and subscription."
+                )
 
                 ProfileMenuSection(title: "Sign in") {
                     if let account = AuthSessionManager.currentAccount, AuthSessionManager.isSignedIn {
                         ProfileMenuRow(
                             icon: "person.crop.circle.fill",
-                            iconColor: AppTheme.coachOrange,
+                            iconColor: AppTheme.primary,
                             title: account.displayName.isEmpty ? account.email : account.displayName,
                             subtitle: account.email
                         )
@@ -109,16 +118,15 @@ struct ProfileAccountView: View {
                     if appState.subscriptionManager.isSubscribed {
                         ProfileMenuRow(
                             icon: "crown.fill",
-                            iconColor: AppTheme.warmSun,
+                            iconColor: AppTheme.coachOrange,
                             title: "Nutriscope Pro active",
-                            subtitle: "Unlimited scans and coaching"
+                            trailingValue: "Active"
                         )
                         NavigationLink { ManageSubscriptionView() } label: {
                             ProfileMenuRow(
-                                icon: "gearshape.fill",
-                                iconColor: AppTheme.coachOrange,
-                                title: "Manage subscription",
-                                subtitle: "Billing and plan details"
+                                icon: "creditcard.fill",
+                                iconColor: AppTheme.primary,
+                                title: "Manage subscription"
                             )
                         }
                         .buttonStyle(.plain)
@@ -126,8 +134,8 @@ struct ProfileAccountView: View {
                         ProfileMenuRow(
                             icon: "camera.viewfinder",
                             iconColor: AppTheme.proteinTeal,
-                            title: "\(appState.quotaManager.scansRemaining) free scans left",
-                            subtitle: "Resets weekly · Upgrade for unlimited"
+                            title: "Free scans remaining",
+                            trailingValue: "\(appState.quotaManager.scansRemaining)"
                         )
                         Button("Upgrade to Pro") { appState.presentPaywall() }
                             .buttonStyle(PrimaryButtonStyle())
@@ -164,8 +172,7 @@ struct ProfileAccountView: View {
                         ProfileMenuRow(
                             icon: "lock.shield.fill",
                             iconColor: AppTheme.proteinTeal,
-                            title: "Data & privacy",
-                            subtitle: "Export, cache, and delete"
+                            title: "Data & privacy"
                         )
                     }
                     .buttonStyle(.plain)
@@ -176,7 +183,7 @@ struct ProfileAccountView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("Testing setup")
                             .font(.subheadline.weight(.semibold))
-                        Text("1. Paste Supabase URL + anon key (enable Anonymous auth in Supabase).\n2. Deploy analyze-meal edge function with OPENAI_API_KEY secret.\n3. Paste OpenAI key here for Coach + Today tips.\n4. Turn OFF offline demo mode for live scans.")
+                        Text("1. Paste Supabase URL + anon key (enable Anonymous auth in Supabase).\n2. Deploy analyze-meal + ai-proxy edge functions with OPENAI_API_KEY secret.\n3. Meal scans + Coach use Supabase — OpenAI key here is only for Debug direct mode.")
                             .font(AppTypography.caption)
                             .foregroundStyle(AppTheme.textSecondary)
                         TextField("Supabase URL", text: $supabaseURL)
@@ -185,7 +192,6 @@ struct ProfileAccountView: View {
                             .autocorrectionDisabled()
                         SecureField("Supabase anon key", text: $supabaseAnonKey)
                             .textFieldStyle(.roundedBorder)
-                        Toggle("Offline demo mode (mock scans)", isOn: $offlineDemo)
                         Toggle("Use direct OpenAI in Debug", isOn: Binding(
                             get: { BackendConfig.useDirectOpenAIInDebug },
                             set: { BackendConfig.useDirectOpenAIInDebug = $0 }
@@ -200,7 +206,7 @@ struct ProfileAccountView: View {
                             Text("Meal scans: \(predictedScanMode)")
                                 .font(.caption)
                                 .foregroundStyle(AppTheme.textPrimary)
-                            Text("Coach / Today tip: \(apiKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ? "needs OpenAI key" : "ready")")
+                            Text("Coach / tips: \(predictedCoachMode)")
                                 .font(.caption)
                                 .foregroundStyle(AppTheme.textPrimary)
                         }
@@ -244,19 +250,19 @@ struct ProfileAccountView: View {
                 #endif
             }
             .padding(AppTheme.marginMain)
-        
+
+            }
         }
-        .background(AppBackground())
         .navigationTitle("Account")
         .navigationBarTitleDisplayMode(.inline)
-        .confirmationDialog("Delete your account?", isPresented: $showDeleteAccountConfirm) {
-            Button("Delete account", role: .destructive) {
-                Task { await performAccountDeletion() }
-            }
-            Button("Cancel", role: .cancel) {}
-        } message: {
-            Text("This permanently deletes your Nutriscope account from our servers, removes cloud profile data, wipes meals and settings on this device, and returns you to Welcome. This cannot be undone.")
-        }
+        .kineticConfirmationDialog(
+            isPresented: $showDeleteAccountConfirm,
+            icon: "person.crop.circle.badge.minus",
+            title: "Delete your account?",
+            message: "This permanently deletes your Nutriscope account from our servers, removes cloud profile data, wipes meals and settings on this device, and returns you to Welcome. This cannot be undone.",
+            confirmTitle: "Delete account",
+            onConfirm: { Task { await performAccountDeletion() } }
+        )
     }
 
     private func performAccountDeletion() async {
@@ -286,24 +292,26 @@ struct ProfileAccountView: View {
 
         UserDefaults.standard.set(supabaseURL, forKey: "supabaseURL")
         UserDefaults.standard.set(supabaseAnonKey, forKey: "supabaseAnonKey")
-        BackendConfig.offlineDemoMode = offlineDemo
         UserDefaults.standard.set(apiKey, forKey: "openAIAPIKey")
         UserDefaults.standard.set(usdaKey, forKey: "usdaAPIKey")
 
         var lines = ["Settings saved to this device."]
         var succeeded = true
 
-        if offlineDemo {
-            lines.append("Offline demo is ON — meal scans will use fake mock data, not your APIs.")
-            backendSaveSucceeded = true
-            backendSaveMessage = lines.joined(separator: "\n")
-            return
-        }
-
         if BackendConfig.isSupabaseConfigured {
             do {
                 try await BackendAuthBootstrap.ensureBackendSession()
                 lines.append("Supabase: connected (anonymous guest session created).")
+                if AuthSessionManager.isSignedIn {
+                    do {
+                        let settings = try? modelContext.fetch(FetchDescriptor<UserSettings>()).first
+                        try await IOSUserProfileSyncService.upsert(settings: settings)
+                        lines.append("Profile: synced to ios_user_profiles.")
+                    } catch {
+                        succeeded = false
+                        lines.append("Profile sync failed: \(error.localizedDescription)")
+                    }
+                }
             } catch {
                 succeeded = false
                 lines.append("Supabase auth failed: \(error.localizedDescription)")
@@ -318,9 +326,9 @@ struct ProfileAccountView: View {
         }
 
         if apiKey.isEmpty {
-            lines.append("OpenAI key missing — Coach tab and Today tips will not work.")
+            lines.append("OpenAI key missing — only needed for Debug direct-OpenAI mode (Coach bypass).")
         } else {
-            lines.append("OpenAI key saved — Coach and Today tips can use it.")
+            lines.append("OpenAI key saved — used only when Direct OpenAI in Debug is ON.")
         }
 
         backendSaveSucceeded = succeeded

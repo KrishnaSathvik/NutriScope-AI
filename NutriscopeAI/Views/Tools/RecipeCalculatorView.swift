@@ -18,74 +18,81 @@ struct RecipeCalculatorView: View {
     private var proteinTarget: Int { settings.first?.dailyProteinTarget ?? 135 }
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
 
+            BoundedScrollView {
             VStack(alignment: .leading, spacing: 24) {
-                HStack(alignment: .bottom) {
-                    TextField("Recipe name (e.g., Chicken Prep)", text: $recipeName)
-                        .font(AppTypography.title3)
-                        .padding(14)
-                        .background(AppTheme.surfaceMuted)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                    servingsStepper
-                }
+                KineticToolHeader(
+                    title: "Recipe Calculator",
+                    subtitle: "Batch prep macros and log one serving to your day."
+                )
 
-                VStack(alignment: .leading, spacing: 14) {
-                    HStack {
-                        Text("Ingredients")
-                            .font(AppTypography.title3.weight(.semibold))
-                        Spacer()
-                        if !ingredients.isEmpty {
-                            Text("\(ingredients.count) ITEMS")
-                                .font(AppTypography.labelCaps)
-                                .foregroundStyle(AppTheme.coachOrange)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 6)
-                                .background(AppTheme.coachOrange.opacity(0.12))
-                                .clipShape(Capsule())
-                        }
-                    }
-
-                    if ingredients.isEmpty {
-                        KineticEmptyState(
-                            systemImage: "frying.pan",
-                            title: "No ingredients yet",
-                            message: "Add items with calories and protein to see batch totals."
-                        )
-                    } else {
-                        ForEach(ingredients) { item in
-                            KineticIngredientRow(
-                                name: item.name,
-                                detail: "Per batch",
-                                macroHighlight: "\(item.protein)g P",
-                                calories: "\(item.calories) kcal",
-                                icon: ingredientIcon(for: item.name)
-                            ) {
-                                ingredients.removeAll { $0.id == item.id }
-                            }
-                        }
-                    }
-
-                    HStack(spacing: 10) {
-                        TextField("Ingredient + macros (e.g. chicken, cal 165 protein 31)", text: $quickAddLine)
+                SurfaceCard {
+                    VStack(alignment: .leading, spacing: 14) {
+                        TextField("Recipe name (e.g., Chicken Prep)", text: $recipeName)
+                            .font(AppTypography.title3)
                             .padding(14)
                             .background(AppTheme.surfaceMuted)
                             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        Button("Add") { addIngredient() }
-                            .buttonStyle(SecondaryButtonStyle())
+                        servingsStepper
                     }
-
-                    Button { addIngredient() } label: {
-                        Label("Add Ingredient", systemImage: "plus")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(OutlineButtonStyle())
-                    .disabled(quickAddLine.trimmingCharacters(in: .whitespaces).isEmpty)
                 }
-                .padding(16)
-                .background(AppTheme.surface)
-                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                .shadow(color: AppTheme.coachOrange.opacity(0.06), radius: 12, y: 4)
+
+                SurfaceCard {
+                    VStack(alignment: .leading, spacing: 14) {
+                        HStack {
+                            Text("Ingredients")
+                                .font(AppTypography.title3.weight(.semibold))
+                            Spacer()
+                            if !ingredients.isEmpty {
+                                Text("\(ingredients.count) ITEMS")
+                                    .font(AppTypography.labelCaps)
+                                    .foregroundStyle(AppTheme.coachOrange)
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 6)
+                                    .background(AppTheme.coachOrange.opacity(0.12))
+                                    .clipShape(Capsule())
+                            }
+                        }
+
+                        if ingredients.isEmpty {
+                            KineticEmptyState(
+                                systemImage: "frying.pan",
+                                title: "No ingredients yet",
+                                message: "Add items with calories and protein to see batch totals."
+                            )
+                        } else {
+                            ForEach(ingredients) { item in
+                                KineticIngredientRow(
+                                    name: item.name,
+                                    detail: "Per batch",
+                                    macroHighlight: "\(item.protein)g P",
+                                    calories: "\(item.calories) kcal",
+                                    icon: ingredientIcon(for: item.name)
+                                ) {
+                                    ingredients.removeAll { $0.id == item.id }
+                                }
+                            }
+                        }
+
+                        HStack(spacing: 10) {
+                            TextField("Ingredient + macros (e.g. chicken, cal 165 protein 31)", text: $quickAddLine)
+                                .padding(14)
+                                .background(AppTheme.surfaceMuted)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                            Button("Add") { addIngredient() }
+                                .buttonStyle(SecondaryButtonStyle())
+                        }
+
+                        Button { addIngredient() } label: {
+                            Label("Add Ingredient", systemImage: "plus")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(OutlineButtonStyle())
+                        .disabled(quickAddLine.trimmingCharacters(in: .whitespaces).isEmpty)
+                    }
+                }
 
                 if !ingredients.isEmpty, let per = totals.perServing {
                     perServingDashboard(per: per)
@@ -104,10 +111,9 @@ struct RecipeCalculatorView: View {
                 }
             }
             .padding(AppTheme.marginMain)
-            .padding(.bottom, 32)
-        
+
+            }
         }
-        .background(AppBackground())
         .navigationTitle("Recipe calculator")
         .navigationBarTitleDisplayMode(.inline)
     }

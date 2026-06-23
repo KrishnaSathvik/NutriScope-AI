@@ -16,11 +16,17 @@ enum AppTypography {
     }
 
     static let largeTitle = custom(size: 34, weight: .heavy)
+    static let displayLG = custom(size: 40, weight: .heavy)
+    static let displayLGMobile = custom(size: 36, weight: .heavy)
+    static let headlineLG = custom(size: 32, weight: .bold)
     static let title = custom(size: 28, weight: .bold)
     static let title2 = custom(size: 22, weight: .bold)
     static let title3 = custom(size: 20, weight: .semibold)
     static let headline = custom(size: 17, weight: .semibold)
     static let body = custom(size: 17)
+    static let bodyLG = custom(size: 17)
+    static let bodySM = custom(size: 15)
+    static let headlineXL = custom(size: 34, weight: .heavy)
     static let callout = custom(size: 16)
     static let subheadline = custom(size: 15)
     static let footnote = custom(size: 13)

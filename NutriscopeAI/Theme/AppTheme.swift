@@ -1,18 +1,26 @@
 import SwiftUI
 
-// Kinetic Harvest design system — Nutriscope AI
+// Kinetic Harvest design system — Nutriscope AI (new stitch designs source of truth)
 enum AppTheme {
     static let background = Color(hex: 0xFBF9F4)
     static let surface = Color.white
+    static let surfaceBright = Color(hex: 0xFDF8F8)
     static let surfaceMuted = Color(hex: 0xF0EEE9)
+    static let surfaceContainer = Color(hex: 0xF1EDEC)
+    static let surfaceContainerLow = Color(hex: 0xF7F2F2)
     static let surfaceContainerHighest = Color(hex: 0xE4E2DD)
+    static let secondaryContainer = Color(hex: 0xF7F2F2)
+    static let gaugeTrack = Color(hex: 0xEAE7E7)
 
     static let coachOrange = Color(hex: 0xF26B38)
     static let primary = Color(hex: 0xA93702)
     static let primaryContainer = Color(hex: 0xF26B38)
+    static let primaryFixed = Color(hex: 0xFFDBCF)
     static let proteinTeal = Color(hex: 0x2D6A4F)
     static let warmSun = Color(hex: 0xFFD54F)
     static let inkBlack = Color(hex: 0x1C1C1E)
+    static let inverseSurface = Color(hex: 0x313030)
+    static let inverseOnSurface = Color(hex: 0xF4F0EF)
 
     static let textPrimary = Color(hex: 0x1B1C19)
     static let textSecondary = Color(hex: 0x58423A)
@@ -20,6 +28,9 @@ enum AppTheme {
     static let mutedText = textSecondary
     static let outline = Color(hex: 0x8C7168)
     static let outlineVariant = Color(hex: 0xE0C0B5)
+
+    static let glassBg = Color.white.opacity(0.78)
+    static let glassBorder = Color.white.opacity(0.9)
 
     // Legacy aliases — existing views keep compiling during redesign
     static let emerald = coachOrange
@@ -43,7 +54,11 @@ enum AppTheme {
 
     static let cornerRadius: CGFloat = 16
     static let cornerRadiusLarge: CGFloat = 20
+    static let cornerRadiusXL: CGFloat = 24
     static let marginMain: CGFloat = 20
+    static let stackLG: CGFloat = 32
+    static let stackMD: CGFloat = 16
+    static let stackSM: CGFloat = 12
 
     static func greeting(for date: Date = .now) -> String {
         let hour = Calendar.current.component(.hour, from: date)
@@ -69,8 +84,35 @@ extension Color {
 }
 
 struct AppBackground: View {
+    var showsAmbientGlow: Bool = false
+
     var body: some View {
-        AppTheme.background.ignoresSafeArea()
+        ZStack {
+            AppTheme.background
+            if showsAmbientGlow {
+                KineticAmbientBackground()
+            }
+        }
+        .ignoresSafeArea()
+    }
+}
+
+/// Soft radial gradients behind dashboard and welcome screens.
+struct KineticAmbientBackground: View {
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(AppTheme.primaryFixed.opacity(0.28))
+                .frame(width: 280, height: 280)
+                .blur(radius: 80)
+                .offset(x: -120, y: -180)
+            Circle()
+                .fill(AppTheme.coachOrange.opacity(0.12))
+                .frame(width: 320, height: 320)
+                .blur(radius: 100)
+                .offset(x: 140, y: 280)
+        }
+        .allowsHitTesting(false)
     }
 }
 
@@ -92,8 +134,24 @@ struct SurfaceCard<Content: View>: View {
 }
 
 struct GlassCard<Content: View>: View {
+    var padding: CGFloat = 16
     @ViewBuilder var content: Content
-    var body: some View { SurfaceCard { content } }
+
+    var body: some View {
+        content
+            .padding(padding)
+            .background {
+                RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous)
+                    .fill(.ultraThinMaterial)
+                    .background(AppTheme.glassBg)
+            }
+            .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous)
+                    .strokeBorder(AppTheme.glassBorder, lineWidth: 1)
+            )
+            .shadow(color: AppTheme.coachOrange.opacity(0.08), radius: 20, y: 4)
+    }
 }
 
 struct CardStyle: ViewModifier {
@@ -126,16 +184,18 @@ struct PrimaryButtonStyle: ButtonStyle {
 }
 
 struct SecondaryButtonStyle: ButtonStyle {
+    var pill: Bool = false
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.subheadline.weight(.bold))
             .foregroundStyle(AppTheme.primary)
             .frame(maxWidth: .infinity)
-            .padding(.vertical, 16)
+            .padding(.vertical, pill ? 16 : 16)
             .background(AppTheme.surface)
-            .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
+            .clipShape(RoundedRectangle(cornerRadius: pill ? 999 : AppTheme.cornerRadius, style: .continuous))
             .overlay(
-                RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous)
+                RoundedRectangle(cornerRadius: pill ? 999 : AppTheme.cornerRadius, style: .continuous)
                     .strokeBorder(AppTheme.coachOrange, lineWidth: 2)
             )
             .scaleEffect(configuration.isPressed ? 0.98 : 1)
@@ -172,16 +232,25 @@ struct SectionHeader: View {
 /// Use instead of `ScrollView` inside `VStack` / onboarding chrome layouts.
 struct BoundedScrollView<Content: View>: View {
     var showsIndicators: Bool = false
+    /// Extra space after scroll content so the last rows aren't clipped by tab bars or home indicator.
+    var bottomPadding: CGFloat = 48
     @ViewBuilder var content: () -> Content
 
     var body: some View {
         GeometryReader { geometry in
             ScrollView(showsIndicators: showsIndicators) {
                 content()
+                    .padding(.bottom, bottomPadding)
             }
+            .scrollBounceBehavior(.basedOnSize)
             .frame(width: geometry.size.width, height: geometry.size.height)
         }
     }
+}
+
+extension Animation {
+    static let nsStandardSpring = Animation.spring(response: 0.35, dampingFraction: 0.7)
+    static let nsBouncySpring = Animation.spring(response: 0.45, dampingFraction: 0.5)
 }
 
 extension View {
@@ -190,5 +259,23 @@ extension View {
     /// Prefer `BoundedScrollView` for new code. Kept for legacy call sites.
     func boundedScrollFrame() -> some View {
         frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+    }
+}
+
+// MARK: - Macro pill (protein-first data unit)
+
+struct MacroPill: View {
+    let label: String
+    var isHighlighted: Bool = false
+
+    var body: some View {
+        Text(label.uppercased())
+            .font(.system(size: 10, weight: .bold))
+            .tracking(0.8)
+            .padding(.horizontal, 12)
+            .frame(height: 32)
+            .foregroundStyle(isHighlighted ? AppTheme.primary : AppTheme.textPrimary)
+            .background(isHighlighted ? AppTheme.primary.opacity(0.1) : AppTheme.secondaryContainer)
+            .clipShape(Capsule())
     }
 }

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weekly Progress - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#0e144d",
+                      "gauge-track": "#2a2929",
+                      "secondary-fixed": "#dfe0ff",
+                      "primary-fixed-dim": "#ffb59c",
+                      "tertiary-container": "#006e1d",
+                      "tertiary-fixed-dim": "#7edb7c",
+                      "glass-border": "rgba(255, 255, 255, 0.1)",
+                      "tertiary-fixed": "#99f895",
+                      "primary": "#ffb59c",
+                      "error": "#ffb4ab",
+                      "on-surface-variant": "#d8c2bb",
+                      "on-tertiary-fixed-variant": "#005314",
+                      "outline-variant": "#53433e",
+                      "surface-dim": "#1a110f",
+                      "on-secondary-container": "#e0e0ff",
+                      "error-container": "#93000a",
+                      "surface-container-lowest": "#0f0806",
+                      "surface-variant": "#53433e",
+                      "secondary": "#bdc2ff",
+                      "on-secondary-fixed-variant": "#3c427a",
+                      "on-primary-fixed": "#380c00",
+                      "primary-fixed": "#ffdbcf",
+                      "inverse-on-surface": "#382e2b",
+                      "surface-tint": "#ffb59c",
+                      "tertiary": "#7edb7c",
+                      "on-primary-container": "#ffdbcf",
+                      "on-tertiary-container": "#99f895",
+                      "on-secondary": "#252b61",
+                      "surface-container-highest": "#3f3330",
+                      "surface": "#1a110f",
+                      "on-error": "#690005",
+                      "inverse-surface": "#f1dfdb",
+                      "surface-bright": "#423734",
+                      "surface-container": "#271d1b",
+                      "on-tertiary": "#00390a",
+                      "on-background": "#f1dfdb",
+                      "surface-container-high": "#322825",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#bdc2ff",
+                      "surface-container-low": "#231917",
+                      "on-primary": "#451200",
+                      "background": "#1a110f",
+                      "outline": "#a08c87",
+                      "on-surface": "#f1dfdb",
+                      "primary-container": "#631c00",
+                      "glass-bg": "rgba(30, 20, 18, 0.6)",
+                      "inverse-primary": "#a93702",
+                      "secondary-container": "#3c427a",
+                      "on-tertiary-fixed": "#002204",
+                      "on-primary-fixed-variant": "#822800"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "gutter": "24px",
+                      "md": "24px",
+                      "lg": "48px",
+                      "xs": "4px",
+                      "xl": "80px",
+                      "margin-desktop": "40px",
+                      "base": "8px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "sans": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "San Francisco",
+                              "Helvetica Neue",
+                              "sans-serif"
+                      ],
+                      "caption": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "San Francisco",
+                              "Helvetica Neue",
+                              "sans-serif"
+                      ],
+                      "body-lg": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "San Francisco",
+                              "Helvetica Neue",
+                              "sans-serif"
+                      ],
+                      "display-lg": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "San Francisco",
+                              "Helvetica Neue",
+                              "sans-serif"
+                      ],
+                      "display-lg-mobile": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "San Francisco",
+                              "Helvetica Neue",
+                              "sans-serif"
+                      ],
+                      "body-md": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "San Francisco",
+                              "Helvetica Neue",
+                              "sans-serif"
+                      ],
+                      "label-caps": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "San Francisco",
+                              "Helvetica Neue",
+                              "sans-serif"
+                      ],
+                      "label-bold": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "San Francisco",
+                              "Helvetica Neue",
+                              "sans-serif"
+                      ],
+                      "headline-md": [
+                              "-apple-system",
+                              "BlinkMacSystemFont",
+                              "San Francisco",
+                              "Helvetica Neue",
+                              "sans-serif"
+                      ]
+              },
+              "fontSize": {
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.surface');
+            background-image: 
+                radial-gradient(circle at 80% 20%, rgba(255, 138, 76, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 20% 80%, rgba(255, 181, 156, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(169, 55, 2, 0.05) 0%, transparent 60%);
+            background-attachment: fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", sans-serif;
+        }
+        
+        /* Custom glow animation for data points */
+        @keyframes subtlePulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 181, 156, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 181, 156, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 181, 156, 0); }
+        }
+        .data-point-glow {
+            animation: subtlePulse 2s infinite;
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 181, 156, 0.5);
+        }
+        
+        /* SVG Gauge animation setup */
+        .gauge-circle {
+            transition: stroke-dasharray 1s ease-out;
+            filter: drop-shadow(0 0 12px rgba(255, 181, 156, 0.6));
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 20, 18, 0.8) 0%, rgba(20, 13, 11, 0.6) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopAppBar (Desktop) -->
+<header class="hidden md:flex justify-between items-center px-margin-desktop h-16 w-full z-50 bg-glass-bg dark:bg-surface-container-low font-headline-md text-headline-md docked full-width top-0 sticky backdrop-blur-md border-b border-glass-border dark:border-outline-variant shadow-sm transition-colors">
+<div class="flex items-center gap-base hover:bg-surface-container-highest transition-colors rounded-full px-2 py-1 cursor-pointer">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim tracking-tight">
+            Nutriscope AI
+        </div>
+<div class="flex items-center gap-base hover:bg-surface-container-highest transition-colors rounded-full p-2 cursor-pointer">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">notifications</span>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-lg pb-32 md:pb-lg">
+<!-- Header Section -->
+<div class="mb-md">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-xs tracking-tight">Weekly Insights</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Here is how you're tracking against your wellness goals.</p>
+</div>
+<!-- Hybrid Bento-Box Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Avg Daily Protein Summary Card (Bento span 8) -->
+<div class="md:col-span-8 glass-card rounded-[32px] p-md flex flex-col justify-between hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary rounded-full blur-[100px] opacity-20 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-lg relative z-10">
+<div>
+<div class="flex items-center gap-base mb-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Avg. Daily Protein</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Consistent intake is building lean mass.</p>
+</div>
+<div class="bg-[rgba(126,219,124,0.15)] border border-[rgba(126,219,124,0.3)] text-tertiary-fixed-dim px-sm py-xs rounded-full font-label-bold text-label-bold flex items-center gap-xs backdrop-blur-md">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                        +12g vs Last Week
+                    </div>
+</div>
+<div class="flex items-end gap-base relative z-10">
+<span class="font-display-lg-mobile text-[64px] font-bold text-primary leading-none text-glow tracking-tighter">148g</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant mb-2">/ day</span>
+</div>
+</div>
+<!-- Consistency Score Ring (Bento span 4) -->
+<div class="md:col-span-4 glass-card rounded-[32px] p-md flex flex-col items-center justify-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-[rgba(255,181,156,0.05)] to-transparent pointer-events-none"></div>
+<h3 class="font-headline-md text-headline-md text-on-surface w-full text-left mb-sm relative z-10">Consistency</h3>
+<div class="relative w-48 h-48 flex items-center justify-center my-auto z-10">
+<!-- SVG Gauge -->
+<svg class="w-full h-full transform -rotate-90 drop-shadow-2xl" viewbox="0 0 100 100">
+<!-- Track -->
+<circle class="stroke-[rgba(255,255,255,0.05)]" cx="50" cy="50" fill="none" r="42" stroke-linecap="round" stroke-width="6"></circle>
+<!-- Progress (approx 85%) -->
+<!-- Circumference = 2 * pi * 42 = 263.89 -->
+<!-- 85% of 263.89 = 224.3 -->
+<circle class="gauge-circle" cx="50" cy="50" fill="none" r="42" stroke="url(#gradient-primary)" stroke-dasharray="224.3 263.89" stroke-linecap="round" stroke-width="6"></circle>
+<defs>
+<lineargradient id="gradient-primary" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#ffb59c"></stop> <!-- inverse-primary -->
+<stop offset="100%" stop-color="#ff6b35"></stop> <!-- primary-container / surface-tint -->
+</lineargradient>
+</defs>
+</svg>
+<!-- Center Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg-mobile text-[40px] font-bold text-primary leading-none text-glow tracking-tighter">85<span class="text-headline-md">%</span></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1 tracking-widest">SCORE</span>
+</div>
+</div>
+</div>
+<!-- Protein Trend Chart (Bento span 8) -->
+<div class="md:col-span-8 glass-card rounded-[32px] p-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden">
+<div class="flex justify-between items-center mb-md relative z-10">
+<h3 class="font-headline-md text-headline-md text-on-surface">Protein Trend</h3>
+<div class="flex gap-sm">
+<span class="font-label-bold text-label-bold text-on-surface-variant bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] rounded-full px-4 py-1.5 backdrop-blur-md">This Week</span>
+</div>
+</div>
+<!-- Minimalist Line Chart Visualization -->
+<div class="h-48 flex items-end justify-between mt-lg relative z-10">
+<!-- Y-Axis Lines (Decorative) -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none pb-8">
+<div class="w-full h-px bg-[rgba(255,255,255,0.05)]"></div>
+<div class="w-full h-px bg-[rgba(255,255,255,0.05)]"></div>
+<div class="w-full h-px bg-[rgba(255,255,255,0.05)]"></div>
+</div>
+<!-- SVG Line connecting points -->
+<svg class="absolute inset-0 h-[calc(100%-2rem)] w-full pointer-events-none" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M 7,60 L 21,40 L 35,45 L 49,20 L 63,70 L 77,90 L 91,90" fill="none" stroke="url(#line-gradient)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<defs>
+<lineargradient id="line-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#ffb59c"></stop>
+<stop offset="50%" stop-color="#ff6b35"></stop>
+<stop offset="100%" stop-color="#a93702"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Day 1 -->
+<div class="flex flex-col items-center justify-end h-full flex-1 z-10 group relative">
+<div class="absolute bottom-8 w-2 h-2 rounded-full bg-primary ring-4 ring-surface-container-low transition-transform group-hover:scale-150" style="bottom: 40%"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-auto">MON</span>
+</div>
+<!-- Day 2 -->
+<div class="flex flex-col items-center justify-end h-full flex-1 z-10 group relative">
+<div class="absolute bottom-8 w-2 h-2 rounded-full bg-primary ring-4 ring-surface-container-low transition-transform group-hover:scale-150" style="bottom: 60%"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-auto">TUE</span>
+</div>
+<!-- Day 3 -->
+<div class="flex flex-col items-center justify-end h-full flex-1 z-10 group relative">
+<div class="absolute bottom-8 w-2 h-2 rounded-full bg-primary ring-4 ring-surface-container-low transition-transform group-hover:scale-150" style="bottom: 55%"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-auto">WED</span>
+</div>
+<!-- Day 4 (Today/Peak) -->
+<div class="flex flex-col items-center justify-end h-full flex-1 z-10 group relative">
+<div class="absolute bottom-8 w-3 h-3 rounded-full bg-white ring-4 ring-primary data-point-glow transition-transform group-hover:scale-125" style="bottom: 80%"></div>
+<span class="font-label-bold text-[12px] text-primary mt-auto">THU</span>
+</div>
+<!-- Day 5 -->
+<div class="flex flex-col items-center justify-end h-full flex-1 z-10 group relative">
+<div class="absolute bottom-8 w-2 h-2 rounded-full bg-[rgba(255,181,156,0.3)] ring-4 ring-surface-container-low" style="bottom: 30%"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-auto">FRI</span>
+</div>
+<!-- Day 6 -->
+<div class="flex flex-col items-center justify-end h-full flex-1 z-10 group relative">
+<div class="absolute bottom-8 w-2 h-2 rounded-full bg-[rgba(255,181,156,0.3)] ring-4 ring-surface-container-low" style="bottom: 10%"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-auto">SAT</span>
+</div>
+<!-- Day 7 -->
+<div class="flex flex-col items-center justify-end h-full flex-1 z-10 group relative">
+<div class="absolute bottom-8 w-2 h-2 rounded-full bg-[rgba(255,181,156,0.3)] ring-4 ring-surface-container-low" style="bottom: 10%"></div>
+<span class="font-label-caps text-[10px] text-on-surface-variant mt-auto">SUN</span>
+</div>
+</div>
+</div>
+<!-- Win of the Week (Bento span 4) -->
+<div class="md:col-span-4 glass-card rounded-[32px] p-md flex flex-col hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 relative overflow-hidden border-t border-[rgba(255,255,255,0.15)]">
+<div class="absolute inset-0 bg-gradient-to-br from-[rgba(255,181,156,0.08)] to-transparent pointer-events-none"></div>
+<div class="relative z-10 flex-1 flex flex-col">
+<div class="flex items-center gap-3 mb-4">
+<div class="bg-[rgba(255,181,156,0.1)] border border-[rgba(255,181,156,0.2)] rounded-full w-10 h-10 flex items-center justify-center shadow-[0_0_15px_rgba(255,181,156,0.2)]">
+<span class="material-symbols-outlined text-primary text-[20px]">emoji_events</span>
+</div>
+<h3 class="font-headline-md text-[20px] font-semibold text-on-surface tracking-tight">Win of the Week</h3>
+</div>
+<div class="bg-[rgba(0,0,0,0.2)] rounded-2xl p-4 flex-1 border border-[rgba(255,255,255,0.03)] backdrop-blur-sm relative">
+<div class="absolute -left-2 top-6 w-0 h-0 border-t-[8px] border-t-transparent border-r-[12px] border-r-[rgba(0,0,0,0.2)] border-b-[8px] border-b-transparent"></div>
+<p class="font-body-md text-[15px] leading-relaxed text-on-surface-variant italic">
+        "Incredible work hitting your protein targets 4 days in a row! That grilled chicken and quinoa meal plan is really paying off. Keep this momentum for the weekend!"
+    </p>
+</div>
+<div class="mt-4 flex items-center gap-3 pl-2">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-primary-container p-[2px]">
+<div class="w-full h-full bg-surface rounded-full flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-[16px] text-primary">smart_toy</span>
+</div>
+</div>
+<span class="font-label-bold text-label-bold text-primary tracking-wide">AI Coach Nova</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<!-- Active Tab Logic: Intents match "Insights" for a progress report page -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-6 pt-3 px-2 bg-[rgba(20,13,11,0.85)] backdrop-blur-xl border-t border-[rgba(255,255,255,0.05)] shadow-[0_-10px_40px_rgba(0,0,0,0.5)] font-label-bold text-label-bold text-primary dark:text-primary-fixed-dim">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="text-[10px]">Home</span>
+</a>
+<!-- Insights (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary relative p-2" href="#">
+<div class="absolute -inset-2 bg-[rgba(255,181,156,0.1)] rounded-2xl blur-md"></div>
+<span class="material-symbols-outlined mb-1 relative z-10 drop-shadow-[0_0_8px_rgba(255,181,156,0.5)]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-[10px] relative z-10">Insights</span>
+</a>
+<!-- Scan (Inactive - FAB style integration) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-150 p-2 relative -top-4" href="#">
+<div class="bg-gradient-to-br from-primary to-[#ff6b35] text-[#451200] rounded-full p-3 shadow-[0_8px_20px_rgba(255,181,156,0.3)] flex items-center justify-center border border-[rgba(255,255,255,0.2)]">
+<span class="material-symbols-outlined text-[28px]">center_focus_strong</span>
+</div>
+<span class="mt-2 text-[10px]">Scan</span>
+</a>
+<!-- Library (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1">menu_book</span>
+<span class="text-[10px]">Library</span>
+</a>
+<!-- Profile (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="text-[10px]">Profile</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e6e1e1",
+                        "surface-container": "#f1edec",
+                        "secondary-container": "#b7bcfd",
+                        "outline-variant": "#e0c0b5",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#ffcdbd",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#8fee8c",
+                        "background": "#fdf8f8",
+                        "on-secondary-fixed": "#0e144d",
+                        "surface-container-low": "#f7f2f2",
+                        "surface-tint": "#a93702",
+                        "outline": "#8c7168",
+                        "surface-container-high": "#ece7e7",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-surface": "#313030",
+                        "inverse-on-surface": "#f4f0ef",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary": "#005314",
+                        "primary-fixed-dim": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "on-background": "#1c1b1b",
+                        "surface": "#fcf9f8",
+                        "secondary": "#545a94",
+                        "on-primary": "#ffffff",
+                        "primary": "#812700",
+                        "surface-dim": "#ddd9d8",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#a93702",
+                        "surface-variant": "#e5e2e1",
+                        "tertiary-container": "#006e1d",
+                        "surface-bright": "#fdf8f8",
+                        "inverse-primary": "#ffb59c",
+                        "gauge-track": "#eae7e7",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "on-secondary-container": "#444a83",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#58423a",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "on-primary-fixed": "#380c00",
+                        "tertiary-fixed": "#99f895"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "md": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background: radial-gradient(circle at top left, #fcf9f8 0%, #fdf8f8 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .glass-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+
+        .pulse-node {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(169, 55, 2, 0.4); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(169, 55, 2, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(169, 55, 2, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-md bg-glass-bg border-b border-glass-border shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 md:h-20">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, high-end profile portrait of a confident person in a light, modern wellness setting. Premium lighting, soft white and warm orange tones reflecting a healthy lifestyle. Shot on 85mm lens, shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiw0WZ-l3qGQy6J5EfCM4wXFjAk-rIgR8FmIopEnM1aCi0lzeYb_Uei_ggYwe7rpiVdxzzjNdCvLOJ5Mb3JOLkZHWv1umE7_s6v3JAyEyxjR2goHKpaDPUf353cZSd5kb7jf3wachiqPHirDlUz1_EVBiY9srL9PUgaMqqDdBO_HbF4UO69tQHTKcbxDwJDvdXWQu1Raq8T_cDEbdA6_yHyvUDsgDCyewTWvO8pIaprsbGu3d4T0Uf1EOZdV0K6-tpIk0-zttda4kx"/>
+</div>
+</div>
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary tracking-tight">Nutriscope AI</h1>
+<button class="p-2 text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<!-- Desktop Nav Items -->
+<nav class="hidden md:flex gap-md absolute left-1/2 -translate-x-1/2">
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary font-bold font-label-bold text-label-bold flex flex-col items-center" href="#">
+                Insights
+                <div class="w-1 h-1 bg-primary rounded-full mt-1"></div>
+</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="#">Scan</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="#">Log</a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors" href="#">Plan</a>
+</nav>
+</header>
+<!-- Main Content -->
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto pb-12">
+<header class="mb-md md:mb-lg text-center md:text-left">
+<h2 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-background mb-xs">Insights &amp; Trends</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Your protein consistency mapped over time.</p>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Protein Pulse Heatmap (Main Viz) -->
+<div class="md:col-span-8 glass-card rounded-xl p-md flex flex-col justify-between min-h-[400px] relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/5 to-transparent z-0"></div>
+<div class="relative z-10 flex justify-between items-start mb-lg">
+<div>
+<h3 class="font-headline-md text-headline-md-mobile text-on-surface">Consistency Pulse</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Last 30 Days Target Hit Rate</p>
+</div>
+<div class="bg-primary-container text-on-primary-container rounded-full px-sm py-xs font-label-bold text-label-bold flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                        85% Consistency
+                    </div>
+</div>
+<!-- Abstract Visualization Area -->
+<div class="relative z-10 flex-grow flex items-center justify-center py-lg">
+<div class="w-full flex justify-between items-end gap-xs md:gap-sm h-48 px-sm">
+<!-- Simulated Chart Bars/Nodes -->
+<div class="w-full bg-surface-container rounded-t-sm h-[40%] relative group">
+<div class="absolute bottom-full mb-xs left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-inverse-surface text-inverse-on-surface text-caption font-caption px-2 py-1 rounded">Day 1</div>
+</div>
+<div class="w-full bg-surface-container rounded-t-sm h-[50%] relative group"></div>
+<div class="w-full bg-surface-container rounded-t-sm h-[30%] relative group"></div>
+<div class="w-full bg-primary-container/40 rounded-t-sm h-[80%] relative group border border-primary/20"></div>
+<div class="w-full bg-surface-container rounded-t-sm h-[60%] relative group"></div>
+<div class="w-full bg-primary-container/60 rounded-t-sm h-[95%] relative group border border-primary/30 pulse-node"></div>
+<div class="w-full bg-surface-container rounded-t-sm h-[45%] relative group"></div>
+<div class="w-full bg-primary-container/80 rounded-t-sm h-[100%] relative group border border-primary/50 pulse-node"></div>
+<div class="w-full bg-surface-container rounded-t-sm h-[70%] relative group"></div>
+<div class="w-full bg-primary-container rounded-t-sm h-[90%] relative group border border-primary pulse-node" style="box-shadow: 0 0 15px rgba(169, 55, 2, 0.3);">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 w-2 h-2 bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="relative z-10 flex justify-between text-caption font-caption text-on-surface-variant border-t border-glass-border pt-sm mt-sm">
+<span>Oct 1</span>
+<span>Oct 15</span>
+<span>Today</span>
+</div>
+</div>
+<!-- AI Coach Insights -->
+<div class="md:col-span-4 flex flex-col gap-md">
+<!-- Primary Insight Card -->
+<div class="glass-card rounded-xl p-md relative overflow-hidden bg-gradient-to-br from-surface to-surface-container">
+<div class="flex items-center gap-sm mb-sm text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<h4 class="font-label-bold text-label-bold uppercase tracking-wider text-label-caps">AI Coach Insight</h4>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-md">You're consistently hitting your protein target on workout days, but missing by ~20g on rest days.</p>
+<button class="w-full bg-primary text-on-primary font-label-bold text-label-bold py-sm rounded-lg flex items-center justify-center gap-xs hover:bg-primary/90 transition-colors shadow-sm relative">
+                        Adjust Rest Day Plan
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+<!-- Secondary Trend -->
+<div class="glass-card rounded-xl p-md flex items-start gap-md">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined">restaurant_menu</span>
+</div>
+<div>
+<h4 class="font-label-bold text-label-bold text-on-surface mb-xs">Top Protein Source</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Grilled Chicken Breast accounts for 45% of your total intake.</p>
+</div>
+</div>
+<!-- Mini Metric -->
+<div class="glass-card rounded-xl p-md flex items-center justify-between">
+<div>
+<p class="font-caption text-caption text-on-surface-variant uppercase tracking-wider">Avg Daily Intake</p>
+<p class="font-headline-md text-headline-md text-on-surface">142<span class="text-body-md text-on-surface-variant">g</span></p>
+</div>
+<div class="w-12 h-12 rounded-full border-4 border-primary-container border-t-transparent flex items-center justify-center rotate-45">
+<span class="material-symbols-outlined text-primary -rotate-45">check</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 backdrop-blur-lg rounded-t-lg bg-glass-bg border-t border-glass-border shadow-lg h-20 flex justify-around items-center pb-safe px-2">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200 w-16">
+<span class="material-symbols-outlined mb-1">home</span>
+<span class="font-label-bold text-label-caps">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200 w-16">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-bold text-label-caps font-bold">Insights</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200 w-16">
+<span class="material-symbols-outlined mb-1">center_focus_strong</span>
+<span class="font-label-bold text-label-caps">Scan</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200 w-16">
+<span class="material-symbols-outlined mb-1">restaurant</span>
+<span class="font-label-bold text-label-caps">Log</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform duration-200 w-16">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-label-bold text-label-caps">Plan</span>
+</button>
+</nav>
+</body></html>

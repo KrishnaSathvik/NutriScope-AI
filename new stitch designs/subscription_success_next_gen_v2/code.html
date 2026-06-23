@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Subscription Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#0e144d",
+                        "gauge-track": "#eae7e7",
+                        "secondary-fixed": "#dfe0ff",
+                        "primary-fixed-dim": "#ffb59c",
+                        "tertiary-container": "#006e1d",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "tertiary-fixed": "#99f895",
+                        "primary": "#812700",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#58423a",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "outline-variant": "#e0c0b5",
+                        "surface-dim": "#ddd9d8",
+                        "on-secondary-container": "#444a83",
+                        "error-container": "#ffdad6",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e6e1e1",
+                        "secondary": "#545a94",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "on-primary-fixed": "#380c00",
+                        "primary-fixed": "#ffdbcf",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-tint": "#a93702",
+                        "tertiary": "#005314",
+                        "on-primary-container": "#ffcdbd",
+                        "on-tertiary-container": "#8fee8c",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e6e1e1",
+                        "surface": "#fcf9f8",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "surface-bright": "#fdf8f8",
+                        "surface-container": "#f1edec",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1c1b1b",
+                        "surface-container-high": "#ece7e7",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "surface-container-low": "#f7f2f2",
+                        "on-primary": "#ffffff",
+                        "background": "#fdf8f8",
+                        "outline": "#8c7168",
+                        "on-surface": "#1c1b1b",
+                        "primary-container": "#a93702",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "inverse-primary": "#ffb59c",
+                        "secondary-container": "#b7bcfd",
+                        "on-tertiary-fixed": "#002204",
+                        "on-primary-fixed-variant": "#822800"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "md": "24px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "margin-desktop": "40px",
+                        "base": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "caption": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .confetti-piece {
+            position: absolute;
+            background: #ffd300;
+            top: -20px;
+            opacity: 0;
+            transform: translateY(-100%);
+            animation: fall 4s ease-in-out infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center justify-center relative overflow-hidden font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Soft Ambient Background Gradient & Blobs -->
+<div class="absolute inset-0 bg-gradient-to-br from-surface-bright via-primary-fixed to-secondary-fixed opacity-60 z-0"></div>
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-container rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob z-0 pointer-events-none"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary-container rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000 z-0 pointer-events-none"></div>
+<!-- Confetti Animation Container -->
+<div class="absolute inset-0 z-10 pointer-events-none overflow-hidden" id="confetti-container">
+<!-- JS will populate confetti here -->
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-20 w-full min-h-screen px-margin-mobile pt-lg pb-32 flex flex-col items-center justify-center text-center">
+<!-- Full-screen Glassmorphic Card -->
+<div class="bg-glass-bg backdrop-blur-xl border border-glass-border rounded-[2.5rem] p-lg flex flex-col items-center shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] w-full max-w-lg">
+<!-- Glowing 3D-Style Icon Wrapper -->
+<div class="relative w-32 h-32 mb-md">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary to-surface-tint rounded-full blur-xl opacity-40"></div>
+<div class="relative w-full h-full rounded-full bg-gradient-to-tr from-primary to-surface-tint flex items-center justify-center border border-white/30 shadow-inner">
+<span class="material-symbols-outlined text-[64px] text-white drop-shadow-lg" style="font-variation-settings: 'FILL' 1;">
+                social_leaderboard
+            </span>
+</div>
+</div>
+<!-- Typography Hierarchy -->
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary mb-sm tracking-tight drop-shadow-sm">
+        You're Pro!
+    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xs mx-auto mb-lg">
+        Your premium journey to peak performance starts now. Unlock advanced insights and personalized guidance.
+    </p>
+<!-- Benefit Cards -->
+<div class="w-full flex flex-col gap-sm">
+<div class="bg-white/50 backdrop-blur-md border border-white/60 rounded-2xl p-sm flex items-center gap-md shadow-sm transition-transform hover:scale-[1.02]">
+<div class="w-12 h-12 shrink-0 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">document_scanner</span>
+</div>
+<div class="text-left">
+<h3 class="font-label-bold text-label-bold text-on-surface">Unlimited Scans</h3>
+<p class="font-caption text-caption text-on-surface-variant">Log everything instantly</p>
+</div>
+</div>
+<div class="bg-white/50 backdrop-blur-md border border-white/60 rounded-2xl p-sm flex items-center gap-md shadow-sm transition-transform hover:scale-[1.02]">
+<div class="w-12 h-12 shrink-0 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<div class="text-left">
+<h3 class="font-label-bold text-label-bold text-on-surface">Pro Coach</h3>
+<p class="font-caption text-caption text-on-surface-variant">AI-powered guidance</p>
+</div>
+</div>
+<div class="bg-white/50 backdrop-blur-md border border-white/60 rounded-2xl p-sm flex items-center gap-md shadow-sm transition-transform hover:scale-[1.02]">
+<div class="w-12 h-12 shrink-0 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div class="text-left">
+<h3 class="font-label-bold text-label-bold text-on-surface">Deep Insights</h3>
+<p class="font-caption text-caption text-on-surface-variant">Advanced macro tracking</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full px-margin-mobile pb-lg pt-md bg-gradient-to-t from-surface via-surface/90 to-transparent z-30 flex justify-center">
+<button class="w-full max-w-lg bg-primary text-on-primary rounded-full py-4 flex items-center justify-center gap-2 font-label-bold text-label-bold shadow-[0_0_24px_rgba(129,39,0,0.3)] hover:shadow-[0_0_32px_rgba(129,39,0,0.5)] border border-white/10 hover:bg-surface-tint transition-all active:scale-95 group">
+            Get Started
+            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">
+                arrow_forward
+            </span>
+</button>
+</div>
+<!-- Interactive Scripts -->
+<script>
+        // Refined Layered Confetti Generator
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#812700', '#a93702', '#ffcdbd', '#545a94', '#99f895', '#ffffff'];
+            const confettiCount = 60;
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti-piece');
+                
+                // Randomize position and animation
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = `${Math.random() * 4}s`;
+                confetti.style.animationDuration = `${3 + Math.random() * 3}s`;
+                
+                // Layering & Depth
+                const depth = Math.random();
+                if (depth < 0.3) {
+                    // Background layer (smaller, blurry, slower)
+                    confetti.style.width = '6px';
+                    confetti.style.height = '12px';
+                    confetti.style.filter = 'blur(2px)';
+                    confetti.style.opacity = '0.5';
+                    confetti.style.zIndex = '1';
+                } else if (depth > 0.7) {
+                    // Foreground layer (larger, sharp, faster)
+                    confetti.style.width = '12px';
+                    confetti.style.height = '24px';
+                    confetti.style.filter = 'blur(0px)';
+                    confetti.style.opacity = '1';
+                    confetti.style.zIndex = '15'; // Above card
+                } else {
+                    // Mid layer
+                    confetti.style.width = '8px';
+                    confetti.style.height = '16px';
+                    confetti.style.filter = 'blur(1px)';
+                    confetti.style.opacity = '0.8';
+                    confetti.style.zIndex = '5';
+                }
+
+                // Randomize shape slightly
+                if(Math.random() > 0.5) {
+                    confetti.style.borderRadius = '50%';
+                    const size = depth < 0.3 ? '8px' : depth > 0.7 ? '16px' : '10px';
+                    confetti.style.width = size;
+                    confetti.style.height = size;
+                }
+
+                container.appendChild(confetti);
+            }
+        });
+    </script>
+</body></html>

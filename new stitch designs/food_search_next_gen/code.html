@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Next-Gen Food Database Search</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e6e1e1",
+                      "surface-container": "#f1edec",
+                      "secondary-container": "#b7bcfd",
+                      "outline-variant": "#e0c0b5",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary-container": "#ffcdbd",
+                      "on-surface": "#1c1b1b",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#8fee8c",
+                      "background": "#fdf8f8",
+                      "on-secondary-fixed": "#0e144d",
+                      "surface-container-low": "#f7f2f2",
+                      "surface-tint": "#a93702",
+                      "outline": "#8c7168",
+                      "surface-container-high": "#ece7e7",
+                      "on-primary-fixed-variant": "#822800",
+                      "inverse-surface": "#313030",
+                      "inverse-on-surface": "#f4f0ef",
+                      "glass-border": "rgba(255, 255, 255, 0.9)",
+                      "on-tertiary-fixed": "#002204",
+                      "tertiary": "#005314",
+                      "primary-fixed-dim": "#ffb59c",
+                      "primary-fixed": "#ffdbcf",
+                      "on-background": "#1c1b1b",
+                      "surface": "#fcf9f8",
+                      "secondary": "#545a94",
+                      "on-primary": "#ffffff",
+                      "primary": "#812700",
+                      "surface-dim": "#ddd9d8",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#a93702",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-container": "#006e1d",
+                      "surface-bright": "#fdf8f8",
+                      "inverse-primary": "#ffb59c",
+                      "gauge-track": "#eae7e7",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005314",
+                      "tertiary-fixed-dim": "#7edb7c",
+                      "on-secondary-container": "#444a83",
+                      "secondary-fixed": "#dfe0ff",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#58423a",
+                      "glass-bg": "rgba(255, 255, 255, 0.7)",
+                      "secondary-fixed-dim": "#bdc2ff",
+                      "on-secondary-fixed-variant": "#3c427a",
+                      "on-primary-fixed": "#380c00",
+                      "tertiary-fixed": "#99f895"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "margin-mobile": "16px",
+                      "xl": "80px",
+                      "margin-desktop": "40px",
+                      "base": "8px",
+                      "lg": "48px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": ["Hanken Grotesk"],
+                      "label-caps": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "body-md": ["Hanken Grotesk"],
+                      "headline-md": ["Hanken Grotesk"],
+                      "body-lg": ["Hanken Grotesk"],
+                      "label-bold": ["Hanken Grotesk"],
+                      "caption": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                      "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                      "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                      "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                      "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                      "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                      "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                      "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        /* Ambient Radial Gradient Background */
+        body {
+            background-color: #fdf8f8;
+            background-image: radial-gradient(circle at 10% 20%, rgba(255, 219, 207, 0.4) 0%, transparent 40%),
+                              radial-gradient(circle at 90% 80%, rgba(183, 188, 253, 0.3) 0%, transparent 40%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Material Symbols Fill Configuration */
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* Glassmorphism Input Field Custom Glow */
+        .glass-input:focus-within {
+            box-shadow: 0 0 0 2px rgba(169, 55, 2, 0.3), 0 10px 30px -5px rgba(169, 55, 2, 0.1);
+        }
+
+        /* Card Entrance Animations */
+        @keyframes slideUpFade {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-card-1 { animation: slideUpFade 0.4s ease-out 0.1s forwards; opacity: 0; }
+        .animate-card-2 { animation: slideUpFade 0.4s ease-out 0.2s forwards; opacity: 0; }
+        .animate-card-3 { animation: slideUpFade 0.4s ease-out 0.3s forwards; opacity: 0; }
+        .animate-card-4 { animation: slideUpFade 0.4s ease-out 0.4s forwards; opacity: 0; }
+        .animate-card-5 { animation: slideUpFade 0.4s ease-out 0.5s forwards; opacity: 0; }
+        .animate-card-6 { animation: slideUpFade 0.4s ease-out 0.6s forwards; opacity: 0; }
+
+        /* Hide scrollbar for clean horizontal scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background font-body-md antialiased pb-24 md:pb-0 pt-16 md:pt-20">
+<!-- TopAppBar (From JSON) -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-md bg-glass-bg border-b border-glass-border shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 md:h-20 transition-all">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant relative">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up profile portrait of an active, healthy young adult with a glowing complexion, styled with a premium wellness aesthetic. They are wearing modern athleisure wear against a clean, soft white background. Natural, optimistic lighting highlights their features, conveying a sense of vitality and health." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4chU6IQ5QVXJUHHCmikxRgStmpZo4EVjHGw6FpxFdRkMFIRt07VctLtsTcOaf_J__3VBgKzfICWy5Cthb1LidXES2VxzzhVbSY3wf--81BVPHsqrUY6wYT474N0CqPMiZCD78lqyQDk9Z5khM-sVOWEzcOIC48AFrtS49Jv3DDhzszJF9QgnzAS6RMHdtQz6ZJK3kEMsC2_CCtImMQV-yY7efX4qga-9cYYiOzMq2DTJVFPvqIy0zeFf2WAMlkwtQVkx0WI2cNGT-"/>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary tracking-tight">Nutriscope AI</h1>
+</div>
+<div class="flex items-center gap-sm md:gap-md">
+<!-- Desktop Nav (Suppressed on Mobile, active on Search/Explore conceptually, but 'Insights' is closest to search context in JSON) -->
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="home">home</span> Home
+                </a>
+<a class="text-primary font-bold font-label-bold text-label-bold hover:opacity-80 transition-opacity flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="analytics" data-weight="fill">analytics</span> Insights
+                </a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="center_focus_strong">center_focus_strong</span> Scan
+                </a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="restaurant">restaurant</span> Log
+                </a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:text-primary transition-colors flex items-center gap-xs" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="calendar_today">calendar_today</span> Plan
+                </a>
+</nav>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-primary active:scale-95">
+<span class="material-symbols-outlined text-[24px]" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-md md:py-lg flex flex-col gap-lg md:gap-xl">
+<!-- Search Immersive Section -->
+<section class="flex flex-col items-center justify-center pt-md md:pt-lg w-full max-w-3xl mx-auto text-center space-y-md">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background tracking-tight">What are you eating?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Search our next-gen database for precision macros and micronutrient insights.</p>
+<!-- Glassmorphic Input Field -->
+<div class="relative w-full mt-sm group">
+<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[28px] text-primary/70 transition-colors group-focus-within:text-primary" data-icon="search">search</span>
+</div>
+<input autocomplete="off" class="glass-input w-full bg-surface-container-lowest/70 backdrop-blur-md border border-glass-border rounded-xl py-4 pl-16 pr-16 font-body-lg text-body-lg text-on-surface placeholder:text-on-surface-variant/50 shadow-sm focus:outline-none transition-all duration-300" id="mainSearchInput" placeholder="e.g. Grilled Atlantic Salmon..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-sm flex items-center">
+<button class="bg-primary/10 hover:bg-primary/20 text-primary w-10 h-10 rounded-lg flex items-center justify-center transition-colors active:scale-95 hidden" id="clearSearchBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+<button class="bg-primary hover:bg-primary-container text-on-primary w-12 h-12 rounded-lg flex items-center justify-center transition-colors shadow-sm ml-2 active:scale-95" id="barcodeBtn">
+<span class="material-symbols-outlined text-[24px]" data-icon="barcode_scanner">barcode_scanner</span>
+</button>
+</div>
+</div>
+<!-- Quick Filters (Chips) -->
+<div class="flex flex-wrap justify-center gap-base mt-sm">
+<button class="px-4 py-2 rounded-full border border-glass-border bg-surface-container-lowest/50 backdrop-blur-sm font-label-bold text-label-bold text-on-surface-variant hover:bg-primary-container/10 hover:text-primary hover:border-primary/30 transition-all flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="local_fire_department">local_fire_department</span> High Protein
+                </button>
+<button class="px-4 py-2 rounded-full border border-glass-border bg-surface-container-lowest/50 backdrop-blur-sm font-label-bold text-label-bold text-on-surface-variant hover:bg-primary-container/10 hover:text-primary hover:border-primary/30 transition-all flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="eco">eco</span> Plant-Based
+                </button>
+<button class="px-4 py-2 rounded-full border border-glass-border bg-surface-container-lowest/50 backdrop-blur-sm font-label-bold text-label-bold text-on-surface-variant hover:bg-primary-container/10 hover:text-primary hover:border-primary/30 transition-all flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="bolt">bolt</span> Keto Friendly
+                </button>
+<button class="px-4 py-2 rounded-full border border-glass-border bg-surface-container-lowest/50 backdrop-blur-sm font-label-bold text-label-bold text-on-surface-variant hover:bg-primary-container/10 hover:text-primary hover:border-primary/30 transition-all flex items-center gap-xs shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span> Recent
+                </button>
+</div>
+</section>
+<!-- Search Results (Initially hidden, revealed via simple script to simulate typing) -->
+<section class="hidden flex flex-col gap-md" id="searchResultsContainer">
+<div class="flex justify-between items-end mb-sm">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface">Top Matches</h3>
+<span class="font-caption text-caption text-on-surface-variant">Found 1,240 items in 12ms</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Result Card 1 -->
+<div class="bg-surface-container-lowest/70 backdrop-blur-md border border-glass-border rounded-xl p-md flex flex-col gap-sm shadow-sm hover:shadow-md hover:scale-[1.01] transition-all cursor-pointer animate-card-1">
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-label-bold text-body-md font-bold text-on-surface">Grilled Atlantic Salmon</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-xs">6 oz fillet • Whole Foods</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm">
+<div class="flex flex-col">
+<span class="font-display-lg-mobile text-[24px] text-on-surface font-bold leading-none">350</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">kCal</span>
+</div>
+<div class="h-8 w-px bg-outline-variant/50 mx-2"></div>
+<div class="flex gap-2 w-full justify-between">
+<div class="flex flex-col items-center bg-primary/10 border border-primary/20 rounded-lg px-2 py-1 min-w-[50px]">
+<span class="font-label-bold text-caption text-primary">34g</span>
+<span class="font-label-caps text-[8px] text-primary/70">PRO</span>
+</div>
+<div class="flex flex-col items-center bg-surface-container border border-outline-variant/30 rounded-lg px-2 py-1 min-w-[50px]">
+<span class="font-label-bold text-caption text-on-surface-variant">0g</span>
+<span class="font-label-caps text-[8px] text-on-surface-variant/70">CARB</span>
+</div>
+<div class="flex flex-col items-center bg-surface-container border border-outline-variant/30 rounded-lg px-2 py-1 min-w-[50px]">
+<span class="font-label-bold text-caption text-on-surface-variant">22g</span>
+<span class="font-label-caps text-[8px] text-on-surface-variant/70">FAT</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Result Card 2 -->
+<div class="bg-surface-container-lowest/70 backdrop-blur-md border border-glass-border rounded-xl p-md flex flex-col gap-sm shadow-sm hover:shadow-md hover:scale-[1.01] transition-all cursor-pointer animate-card-2">
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-label-bold text-body-md font-bold text-on-surface">Salmon Sushi Roll</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-xs">6 pieces • Generic</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm">
+<div class="flex flex-col">
+<span class="font-display-lg-mobile text-[24px] text-on-surface font-bold leading-none">304</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">kCal</span>
+</div>
+<div class="h-8 w-px bg-outline-variant/50 mx-2"></div>
+<div class="flex gap-2 w-full justify-between">
+<div class="flex flex-col items-center bg-surface-container border border-outline-variant/30 rounded-lg px-2 py-1 min-w-[50px]">
+<span class="font-label-bold text-caption text-on-surface-variant">13g</span>
+<span class="font-label-caps text-[8px] text-on-surface-variant/70">PRO</span>
+</div>
+<div class="flex flex-col items-center bg-surface-container border border-outline-variant/30 rounded-lg px-2 py-1 min-w-[50px]">
+<span class="font-label-bold text-caption text-on-surface-variant">38g</span>
+<span class="font-label-caps text-[8px] text-on-surface-variant/70">CARB</span>
+</div>
+<div class="flex flex-col items-center bg-surface-container border border-outline-variant/30 rounded-lg px-2 py-1 min-w-[50px]">
+<span class="font-label-bold text-caption text-on-surface-variant">11g</span>
+<span class="font-label-caps text-[8px] text-on-surface-variant/70">FAT</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Result Card 3 -->
+<div class="bg-surface-container-lowest/70 backdrop-blur-md border border-glass-border rounded-xl p-md flex flex-col gap-sm shadow-sm hover:shadow-md hover:scale-[1.01] transition-all cursor-pointer animate-card-3">
+<div class="flex items-start justify-between">
+<div>
+<h4 class="font-label-bold text-body-md font-bold text-on-surface">Smoked Salmon Slices</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-xs">2 oz • Trader Joe's</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm">
+<div class="flex flex-col">
+<span class="font-display-lg-mobile text-[24px] text-on-surface font-bold leading-none">100</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">kCal</span>
+</div>
+<div class="h-8 w-px bg-outline-variant/50 mx-2"></div>
+<div class="flex gap-2 w-full justify-between">
+<div class="flex flex-col items-center bg-primary/10 border border-primary/20 rounded-lg px-2 py-1 min-w-[50px]">
+<span class="font-label-bold text-caption text-primary">12g</span>
+<span class="font-label-caps text-[8px] text-primary/70">PRO</span>
+</div>
+<div class="flex flex-col items-center bg-surface-container border border-outline-variant/30 rounded-lg px-2 py-1 min-w-[50px]">
+<span class="font-label-bold text-caption text-on-surface-variant">1g</span>
+<span class="font-label-caps text-[8px] text-on-surface-variant/70">CARB</span>
+</div>
+<div class="flex flex-col items-center bg-surface-container border border-outline-variant/30 rounded-lg px-2 py-1 min-w-[50px]">
+<span class="font-label-bold text-caption text-on-surface-variant">5g</span>
+<span class="font-label-caps text-[8px] text-on-surface-variant/70">FAT</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Default Trending Section (Visible when no search) -->
+<section class="flex flex-col gap-md transition-opacity duration-300" id="trendingSection">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md-mobile md:text-headline-md text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="local_fire_department" data-weight="fill">local_fire_department</span>
+                    Trending High-Protein
+                </h3>
+<button class="font-label-bold text-label-bold text-primary hover:text-primary-container transition-colors">View All</button>
+</div>
+<!-- Bento-style Grid for Trending Items -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Large Feature Card (Span 8) -->
+<div class="md:col-span-8 bg-surface-container-lowest/70 backdrop-blur-md border border-glass-border rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row group hover:shadow-md transition-all cursor-pointer">
+<div class="w-full md:w-1/2 h-48 md:h-auto relative overflow-hidden">
+<img alt="Steak and Veggies" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A beautifully styled, high-end culinary photo of a perfectly grilled steak resting on a rustic wooden cutting board, accompanied by vibrant, roasted asparagus and cherry tomatoes. The lighting is moody and directional, highlighting the textures of the meat and the fresh colors of the vegetables. Shot in a premium, modern wellness aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4cpzM3UiroA1I5rs--h_rVkrD2_9vd-MJmlJbKHlm7dPtWEv1E7FbPTZLfDFLfny_XkSr0AoqSwTn31wTggUmpRt5d-UsDUkR8MFdDnUTuaYbtNdu8NoZ2JWJuq-EYHeyTnOnu28QNmN-TnwPo8dUsd0Ci3W5GAS8jvx08al6JAzUDNpnN9wpIbyTOG9s7wIV-4suOofbRLV6Arf_X5Se_loGF03u9SltOtKxZj2bu0oRXycOPDoVBvhGgwPmA1qptedgGYkORXIA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex gap-2">
+<span class="bg-primary text-on-primary font-label-caps text-label-caps px-2 py-1 rounded shadow-sm flex items-center gap-1 uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span> Premium Macro
+                             </span>
+</div>
+</div>
+<div class="p-md flex flex-col justify-center flex-1">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h4 class="font-headline-md text-headline-md-mobile text-on-surface">Lean Flank Steak Bowl</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">With quinoa and roasted greens.</p>
+</div>
+</div>
+<div class="flex items-center gap-sm mt-auto pt-sm border-t border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-display-lg-mobile text-[28px] text-on-surface font-bold leading-none">420</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant tracking-wider uppercase">kCal</span>
+</div>
+<div class="h-10 w-px bg-outline-variant/50 mx-2"></div>
+<div class="flex gap-3 w-full">
+<div class="flex flex-col">
+<span class="font-label-bold text-body-md text-primary font-bold">45g</span>
+<span class="font-label-caps text-[10px] text-primary/70">PROTEIN</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-bold text-body-md text-on-surface-variant font-bold">32g</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/70">CARBS</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-bold text-body-md text-on-surface-variant font-bold">14g</span>
+<span class="font-label-caps text-[10px] text-on-surface-variant/70">FAT</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Cards (Span 4) -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="bg-surface-container-lowest/70 backdrop-blur-md border border-glass-border rounded-xl p-md flex gap-sm shadow-sm hover:shadow-md transition-all cursor-pointer items-center">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 relative">
+<img alt="Greek Yogurt" class="w-full h-full object-cover" data-alt="A bright, overhead shot of a creamy Greek yogurt bowl topped with fresh blueberries, a drizzle of golden honey, and a sprinkle of chia seeds. Clean, white marble background. Fresh, morning wellness aesthetic with soft, natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC_YlY06qvlvLQBDt-wi_yS9JpVyvuVr-aHUttMlmEOJJboT4oYO0uukI3rRJikcAxeXff_VPNwYeV13Gvvehpkp7jlHA1aGrH-p2AJ3EhTI5GMsQw2g1z8VaOqr7z-7MBdjcwyCNcEmHwMFMj3gM4Y9miB9lx2YkQY-zUYp8BwICqg5gCWO4q6gaxuSS97xfY-Rcv4cj0e9qYyTqSdZkAbhw6zADAj2ucyjtiM7KWdRdtjjUJnscenJ83FWDvDOvRIKgN4elNOJRx"/>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h4 class="font-label-bold text-body-md font-bold text-on-surface leading-tight">0% Greek Yogurt Bowl</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-1">With mixed berries</p>
+<div class="flex gap-2 mt-2 items-center">
+<span class="font-label-bold text-caption text-on-surface">150 kCal</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-bold text-caption text-primary">18g Pro</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full border border-outline-variant text-on-surface-variant flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest/70 backdrop-blur-md border border-glass-border rounded-xl p-md flex gap-sm shadow-sm hover:shadow-md transition-all cursor-pointer items-center">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 relative">
+<img alt="Protein Powder" class="w-full h-full object-cover" data-alt="A clean, minimalist macro shot of a scoop of vanilla whey protein powder resting on a matte gray surface. A sleek, modern stainless steel shaker bottle is slightly blurred in the background. High-key lighting, fitness lifestyle aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_ZtlTu_AwyaxOLGHpMH8Ntln9WyuM2UA7G3OrDWxjO_RuILB2ybB3sE5r40oYm7zFAAgk5kD1EkTZKebulAYCo8ieRZ_HGlRQDM0lbbQnzlg4JhHocJBVNPhKV35Hf6OtJfxr_jSZCqUPZk5FGy3_HR7sOq9yInUQBpO83HbnFs1-DvnVe1Oy7Y0Ee-jwQ_9XzfEAgDcHVHSs8IekD6GaYRDdfiU7kyux_hgtYl0Ux4H0lOhvOe6m22zi7uWEF6_dhSWIA_N1mQrt"/>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<h4 class="font-label-bold text-body-md font-bold text-on-surface leading-tight">Whey Isolate Shake</h4>
+<p class="font-caption text-caption text-on-surface-variant mt-1">Optimum Nutrition</p>
+<div class="flex gap-2 mt-2 items-center">
+<span class="font-label-bold text-caption text-on-surface">120 kCal</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="font-label-bold text-caption text-primary">24g Pro</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-full border border-outline-variant text-on-surface-variant flex items-center justify-center hover:bg-primary/10 hover:text-primary transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only, From JSON) -->
+<!-- Note: 'Insights' active semantically as it's the closest to search/explore in the JSON -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 backdrop-blur-lg rounded-t-lg bg-glass-bg border-t border-glass-border shadow-lg flex justify-around items-center pb-safe px-2 h-20">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200 w-16 h-full pt-2" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="home">home</span>
+<span class="font-label-bold text-[10px]">Home</span>
+</a>
+<!-- Active Item: Insights (Search context) -->
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200 mt-1" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="analytics" data-weight="fill">analytics</span>
+<span class="font-label-bold text-[10px]">Insights</span>
+</a>
+<!-- FAB concept for Scan/Log prioritized -->
+<div class="relative -top-6">
+<button class="w-14 h-14 rounded-full bg-primary text-on-primary flex flex-col items-center justify-center shadow-[0_8px_16px_rgba(169,55,2,0.3)] active:scale-95 transition-transform border-4 border-surface border-opacity-50 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[28px]" data-icon="center_focus_strong">center_focus_strong</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200 w-16 h-full pt-2" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="restaurant">restaurant</span>
+<span class="font-label-bold text-[10px]">Log</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200 w-16 h-full pt-2" href="#">
+<span class="material-symbols-outlined text-[24px] mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-bold text-[10px]">Plan</span>
+</a>
+</nav>
+<!-- Lightweight JS for Search Interaction Simulation -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('mainSearchInput');
+            const clearBtn = document.getElementById('clearSearchBtn');
+            const searchResults = document.getElementById('searchResultsContainer');
+            const trendingSection = document.getElementById('trendingSection');
+
+            // Simulate search as typing
+            searchInput.addEventListener('input', (e) => {
+                const val = e.target.value.trim();
+                
+                if (val.length > 0) {
+                    clearBtn.classList.remove('hidden');
+                    
+                    // Show results, hide trending
+                    if(val.length > 2) {
+                        searchResults.classList.remove('hidden');
+                        trendingSection.style.opacity = '0.3'; // Dim instead of completely hide for smoother feel, or could display none
+                        trendingSection.classList.add('hidden'); // Actually hide for layout in this bento design
+                    }
+                } else {
+                    clearBtn.classList.add('hidden');
+                    searchResults.classList.add('hidden');
+                    trendingSection.classList.remove('hidden');
+                    setTimeout(() => { trendingSection.style.opacity = '1'; }, 50);
+                }
+            });
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                searchInput.focus();
+                clearBtn.classList.add('hidden');
+                searchResults.classList.add('hidden');
+                trendingSection.classList.remove('hidden');
+                setTimeout(() => { trendingSection.style.opacity = '1'; }, 50);
+            });
+        });
+    </script>
+</body></html>

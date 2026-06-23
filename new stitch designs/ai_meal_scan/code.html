@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ProteinPlate AI - Scan</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#a93702",
+                    "surface": "#fbf9f4",
+                    "tertiary": "#5d5e63",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#ffb59c",
+                    "tertiary-fixed-dim": "#c6c6cb",
+                    "surface-variant": "#e4e2dd",
+                    "paper-white": "#FFFFFF",
+                    "ink-black": "#1C1C1E",
+                    "surface-tint": "#a93702",
+                    "outline": "#8c7168",
+                    "tertiary-fixed": "#e3e2e7",
+                    "protein-teal": "#2D6A4F",
+                    "surface-container-highest": "#e4e2dd",
+                    "secondary-fixed-dim": "#ebc23e",
+                    "surface-container": "#f0eee9",
+                    "on-secondary-container": "#725b00",
+                    "primary-fixed": "#ffdbcf",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-high": "#eae8e3",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#e0c0b5",
+                    "primary-container": "#f26b38",
+                    "surface-dim": "#dbdad5",
+                    "primary-fixed-dim": "#ffb59c",
+                    "on-tertiary-fixed-variant": "#46464b",
+                    "on-primary-fixed": "#380c00",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-primary-fixed-variant": "#822800",
+                    "on-tertiary-container": "#2c2d31",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#ffe087",
+                    "on-surface": "#1b1c19",
+                    "on-secondary": "#ffffff",
+                    "background": "#fbf9f4",
+                    "coach-orange": "#F26B38",
+                    "surface-bright": "#fbf9f4",
+                    "tertiary-container": "#949499",
+                    "on-primary-container": "#561700",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#30312e",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed": "#1a1b1f",
+                    "warm-sun": "#FFD54F",
+                    "secondary-container": "#fdd34d",
+                    "on-background": "#1b1c19",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#241a00",
+                    "inverse-on-surface": "#f2f1ec",
+                    "secondary": "#735c00",
+                    "surface-container-low": "#f5f3ee",
+                    "on-surface-variant": "#58423a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "1rem",
+                    "stack-sm": "0.5rem",
+                    "stack-lg": "1.5rem",
+                    "gutter-card": "1rem",
+                    "margin-main": "1.25rem"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-xl": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-caps": [
+                            "Inter"
+                    ],
+                    "body-sm": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "title-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "numeric-display": [
+                            "Hanken Grotesk"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "30px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-xl": [
+                            "34px",
+                            {
+                                    "lineHeight": "41px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "body-lg": [
+                            "17px",
+                            {
+                                    "lineHeight": "22px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-caps": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-sm": [
+                            "15px",
+                            {
+                                    "lineHeight": "20px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg": [
+                            "28px",
+                            {
+                                    "lineHeight": "34px",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "title-md": [
+                            "20px",
+                            {
+                                    "lineHeight": "25px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "numeric-display": [
+                            "48px",
+                            {
+                                    "lineHeight": "48px",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "800"
+                            }
+                    ]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+          font-variation-settings: 'FILL' 1;
+        }
+        
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            50% { transform: translateY(100%); }
+            100% { transform: translateY(-100%); }
+        }
+        .animate-scan {
+            animation: scanline 3s ease-in-out infinite;
+        }
+        
+        .ambient-shadow {
+            box-shadow: 0 12px 32px rgba(242, 107, 56, 0.12);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col font-body-lg">
+<!-- TopAppBar (Shared Component JSON) -->
+<header class="bg-surface flex justify-between items-center px-margin-main pt-stack-lg pb-stack-md w-full sticky top-0 z-40">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-variant flex-shrink-0 cursor-pointer hover:opacity-80 transition-opacity">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional, modern headshot of a smiling user in a bright, light-filled environment. The portrait is warmly lit, conveying a sense of health and positivity, fitting perfectly into a supportive, modern health-tracking application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiKEY3ryRzW77P-b9WaK4Tq2z6u8dfzV4SuEDLVeo4X7gcGkTm4P4xfUW-jQysIAg_3JVoNyuPu_GzDCRYmPmGXXlB9LFMqTiKQAr7AjvAnYxggOHBjGypGpy7d2-VKBI5hC8EzmIfgaJkbhMas_yPQqLU4JENX-Vob-UYgsb8GuXKIljvUD-0vVxdVbIJlfQR0TAqPO5PqiA97QSDGXKxbCCxGwsdNhWNQ0iKuTBk8SzgkCHY3-fC67V3LUJIaLlhEADbeeWwDUfX">
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">ProteinPlate AI</h1>
+<button aria-label="Monitoring" class="w-10 h-10 flex items-center justify-center text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 duration-100">
+<span class="material-symbols-outlined">monitoring</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow px-margin-main flex flex-col pb-32 pt-2 relative z-10">
+<!-- Camera Viewport / Scan Area -->
+<div class="relative w-full aspect-[4/5] md:aspect-video rounded-[24px] overflow-hidden bg-surface-variant shadow-sm isolation-auto z-10">
+<!-- Simulated Camera Feed -->
+<div class="absolute inset-0 bg-cover bg-center w-full h-full" data-alt="A top-down, high-resolution view of a healthy grilled chicken bowl featuring quinoa, roasted sweet potatoes, and vibrant fresh spinach in a modern matte ceramic bowl. The lighting is high-key and soft, simulating natural daylight, creating a clean, appetizing, light-mode modern aesthetic. The image is crisp, focusing on the texture of the ingredients to imply advanced AI scanning capability." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCnCc-vNp7vWeazCBuxrmSKop1P1vVwlQbnDPQQ5SZZmMcJeERsE6J5wxFZMm2rCp-urXpztN2kK-4s84OO0F9WjS5NnD-FM77hO3CKKl6BwCivXSwGTxpYxI2vo_GeBrjDOL0dc8RXp3gW0JnCsmgrf7a4yMJP4H5AAC5PheAn_NLc0Ljm9yX0Hk7sqrkfjbzPpajCRTPsqFrurnhCck_I0BExtT1hhXaBpTcFMRSA2LRgkahMNmppt5ZqOomILd0KxMF7hqWi-3T4')"></div>
+<!-- Camera UI Overlays -->
+<div class="absolute inset-0 bg-gradient-to-b from-ink-black/20 via-transparent to-ink-black/40 pointer-events-none"></div>
+<!-- Scanning Reticle -->
+<div class="absolute inset-8 border-2 border-white/30 rounded-xl pointer-events-none flex flex-col justify-between">
+<!-- Corner Accents -->
+<div class="flex justify-between -mt-[2px] -mx-[2px]">
+<div class="w-6 h-6 border-t-4 border-l-4 border-coach-orange rounded-tl-xl"></div>
+<div class="w-6 h-6 border-t-4 border-r-4 border-coach-orange rounded-tr-xl"></div>
+</div>
+<!-- Animated Scan Line -->
+<div class="w-full h-[2px] bg-coach-orange shadow-[0_0_8px_rgba(242,107,56,0.8)] animate-scan relative z-20">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-16 bg-gradient-to-b from-coach-orange/0 via-coach-orange/20 to-coach-orange/0 blur-md rounded-full"></div>
+</div>
+<div class="flex justify-between -mb-[2px] -mx-[2px]">
+<div class="w-6 h-6 border-b-4 border-l-4 border-coach-orange rounded-bl-xl"></div>
+<div class="w-6 h-6 border-b-4 border-r-4 border-coach-orange rounded-br-xl"></div>
+</div>
+</div>
+<!-- Analyzing Status -->
+<div class="absolute top-4 left-1/2 -translate-x-1/2 bg-ink-black/50 backdrop-blur-md px-4 py-1.5 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-coach-orange animate-pulse"></span>
+<span class="text-paper-white font-label-caps text-label-caps tracking-wider uppercase">Analyzing Meal...</span>
+</div>
+</div>
+<!-- Confidence Range Card (Overlapping) -->
+<div class="bg-paper-white rounded-2xl p-5 ambient-shadow -mt-12 relative z-20 flex flex-col gap-1 mx-4">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Est. Protein</span>
+<div class="bg-protein-teal/10 text-protein-teal px-2.5 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] filled">check_circle</span>
+<span class="font-label-caps text-label-caps font-bold">High Confidence</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<h2 class="font-numeric-display text-numeric-display text-primary">35g</h2>
+<span class="font-headline-lg text-headline-lg text-tertiary-container">- 42g</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">restaurant</span>
+                Grilled Chicken Bowl with Quinoa
+            </p>
+</div>
+<!-- Smart Follow-up Section -->
+<div class="mt-stack-lg flex flex-col gap-stack-sm">
+<h3 class="font-title-md text-title-md text-on-surface">Smart Follow-up</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-2">Help the AI refine the exact macro count.</p>
+<div class="flex flex-wrap gap-2">
+<!-- Chips (Macros style from guide) -->
+<button class="bg-coach-orange/10 text-coach-orange hover:bg-coach-orange/20 transition-colors px-4 py-2 rounded-full font-body-sm text-body-sm font-semibold flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">scale</span>
+                    Portion Size?
+                </button>
+<button class="bg-coach-orange/10 text-coach-orange hover:bg-coach-orange/20 transition-colors px-4 py-2 rounded-full font-body-sm text-body-sm font-semibold flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+                    Added Oil?
+                </button>
+<button class="bg-coach-orange/10 text-coach-orange hover:bg-coach-orange/20 transition-colors px-4 py-2 rounded-full font-body-sm text-body-sm font-semibold flex items-center gap-1 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">skillet</span>
+                    Cooking Method?
+                </button>
+</div>
+</div>
+<!-- Spacer to push button down if needed -->
+<div class="flex-grow min-h-[2rem]"></div>
+<!-- Primary Action Button -->
+<button class="w-full bg-coach-orange text-paper-white rounded-xl py-4 flex items-center justify-center gap-2 ambient-shadow hover:opacity-95 active:scale-[1.02] transition-all duration-200 mt-stack-md">
+<span class="font-title-md text-title-md">Confirm &amp; Log</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</main>
+<!-- BottomNavBar (Shared Component JSON) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pt-2 pb-safe bg-surface-container/80 backdrop-blur-md rounded-t-xl z-50 shadow-[0_-4px_16px_rgba(0,0,0,0.02)] border-t-0">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-colors w-16 h-14 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-label-caps text-label-caps">Today</span>
+</a>
+<!-- Active Tab: Scan -->
+<a class="flex flex-col items-center justify-center text-primary font-bold scale-[1.02] transition-transform duration-200 w-16 h-14 rounded-lg" href="#">
+<span class="material-symbols-outlined filled mb-1">document_scanner</span>
+<span class="font-label-caps text-label-caps">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-colors w-16 h-14 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">history</span>
+<span class="font-label-caps text-label-caps">History</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-colors w-16 h-14 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<style>
+        /* Safe area padding for mobile devices */
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 24px); }
+    </style>
+</body></html>

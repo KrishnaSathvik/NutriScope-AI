@@ -1,0 +1,260 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>ProteinPlate AI - First Scan Tutorial</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "tertiary-container": "#949499",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#e0c0b5",
+                      "primary-fixed-dim": "#ffb59c",
+                      "inverse-primary": "#ffb59c",
+                      "surface-container": "#f0eee9",
+                      "on-surface": "#1b1c19",
+                      "inverse-on-surface": "#f2f1ec",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#30312e",
+                      "primary-container": "#f26b38",
+                      "on-tertiary-fixed": "#1a1b1f",
+                      "tertiary": "#5d5e63",
+                      "tertiary-fixed": "#e3e2e7",
+                      "protein-teal": "#2D6A4F",
+                      "on-primary-container": "#561700",
+                      "surface-bright": "#fbf9f4",
+                      "coach-orange": "#F26B38",
+                      "surface-container-high": "#eae8e3",
+                      "surface-dim": "#dbdad5",
+                      "surface-tint": "#a93702",
+                      "surface": "#fbf9f4",
+                      "secondary-fixed": "#ffe087",
+                      "on-tertiary": "#ffffff",
+                      "paper-white": "#FFFFFF",
+                      "on-secondary-fixed": "#241a00",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f5f3ee",
+                      "secondary": "#735c00",
+                      "on-primary-fixed-variant": "#822800",
+                      "outline": "#8c7168",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-primary-fixed": "#380c00",
+                      "primary-fixed": "#ffdbcf",
+                      "warm-sun": "#FFD54F",
+                      "on-tertiary-container": "#2c2d31",
+                      "secondary-fixed-dim": "#ebc23e",
+                      "secondary-container": "#fdd34d",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "surface-variant": "#e4e2dd",
+                      "ink-black": "#1C1C1E",
+                      "on-background": "#1b1c19",
+                      "background": "#fbf9f4",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "primary": "#a93702",
+                      "on-secondary-container": "#725b00",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#e4e2dd",
+                      "on-surface-variant": "#58423a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "1rem",
+                      "stack-lg": "1.5rem",
+                      "margin-main": "1.25rem",
+                      "stack-sm": "0.5rem",
+                      "gutter-card": "1rem"
+              },
+              "fontFamily": {
+                      "numeric-display": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "title-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "numeric-display": [
+                              "48px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "title-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "25px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "15px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "17px",
+                              {
+                                      "lineHeight": "22px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-xl": [
+                              "34px",
+                              {
+                                      "lineHeight": "41px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-lg">
+<!-- Top Navigation (Suppressed for Tutorial Overlay Intent, keeping back action) -->
+<header class="w-full top-0 sticky bg-background flex justify-between items-center px-margin-main h-16 z-50">
+<div class="flex items-center gap-2">
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+</button>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-coach-orange">ProteinPlate AI</span>
+</div>
+</header>
+<main class="flex-grow flex flex-col px-margin-main pb-24 max-w-md mx-auto w-full md:max-w-2xl md:pt-8">
+<!-- Header Section -->
+<section class="mt-4 mb-stack-lg md:text-center">
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-stack-sm">How it works</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Scanning your meals is the fastest way to track protein. Here is how our AI coach helps you level up.</p>
+</section>
+<!-- Visual Mockup -->
+<section class="mb-stack-lg relative rounded-xl overflow-hidden shadow-lg bg-surface-container border-4 border-paper-white aspect-square md:aspect-video flex items-center justify-center">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full opacity-80" data-alt="A modern, high-quality photograph of a healthy grilled chicken salad in a white bowl, viewed from above. The image features a bright, clean lighting setup consistent with a light-mode modern app aesthetic. Soft, natural light highlights the textures of the fresh greens and perfectly cooked chicken. The scene is styled to look like an interface viewfinder." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAiWmvRbfohuBRl5QsMWV5zgf-_v1rLe-GGlMHxAt5wlceX1ztOVDE0-GDuIwTqYHbpnbXliGl4QT6hzgeVNfSaCw9N7xGOj_c3LWpl_317qA3o3_5kevUlJyx4Hbg5tsX6ah4xL2XZ-YkisoMNsuC3tfL55bJgH_mxc2ZqC42OJ_BtnnmP9oNLfcSU8c9n_897jU-9tp6vUK72_GwL5BfwEwy-z0WfeIxMO0oK8sV5MYdrA1zXub1q0UZK7-tZLgOw_QoskcbPWk4N')"></div>
+<!-- Overlay UI Elements mimicking viewfinder -->
+<div class="absolute inset-0 border-4 border-coach-orange/30 rounded-xl pointer-events-none"></div>
+<div class="absolute top-1/4 right-1/4 pointer-events-none">
+<div class="bg-paper-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-[0_4px_15px_0_rgba(242,107,56,0.2)] animate-pulse">
+<span class="w-2 h-2 rounded-full bg-coach-orange"></span>
+<span class="font-label-caps text-label-caps text-coach-orange">Grilled Chicken Detected</span>
+</div>
+</div>
+<div class="absolute bottom-1/4 left-1/4 pointer-events-none">
+<div class="bg-paper-white/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-[0_4px_15px_0_rgba(45,106,79,0.2)]">
+<span class="w-2 h-2 rounded-full bg-protein-teal"></span>
+<span class="font-label-caps text-label-caps text-protein-teal">Avocado</span>
+</div>
+</div>
+<!-- Center Focus Ring -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-16 h-16 border-2 border-dashed border-paper-white rounded-full opacity-60"></div>
+</div>
+</section>
+<!-- Steps -->
+<section class="flex flex-col gap-stack-md mb-stack-lg md:grid md:grid-cols-3">
+<!-- Step 1 -->
+<div class="flex items-start gap-3 bg-surface-container-low p-4 rounded-xl md:flex-col md:items-center md:text-center">
+<div class="bg-coach-orange/10 text-coach-orange p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Point &amp; Snap</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Take a photo of your plate.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex items-start gap-3 bg-surface-container-low p-4 rounded-xl md:flex-col md:items-center md:text-center">
+<div class="bg-coach-orange/10 text-coach-orange p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">AI Analysis</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Our coach identifies ingredients and protein content.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex items-start gap-3 bg-surface-container-low p-4 rounded-xl md:flex-col md:items-center md:text-center">
+<div class="bg-coach-orange/10 text-coach-orange p-3 rounded-full flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-on-surface">Log &amp; Level Up</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Confirm and add to your daily tracker.</p>
+</div>
+</div>
+</section>
+<!-- Actions -->
+<section class="mt-auto flex flex-col gap-3">
+<button class="w-full bg-coach-orange text-paper-white font-title-md text-title-md py-4 rounded-xl hover:opacity-90 active:scale-[0.98] transition-all shadow-[0_4px_20px_0_rgba(242,107,56,0.2)]">
+                Got it, let's scan!
+            </button>
+<button class="w-full text-warm-sun font-title-md text-title-md py-3 rounded-xl hover:bg-surface-container-low transition-colors">
+                Skip tutorial
+            </button>
+</section>
+</main>
+</body></html>

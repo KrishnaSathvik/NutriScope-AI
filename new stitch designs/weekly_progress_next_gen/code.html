@@ -1,0 +1,579 @@
+<!DOCTYPE html><html class="light" lang="en"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Weekly Progress - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#0e144d",
+                      "gauge-track": "#eae7e7",
+                      "secondary-fixed": "#dfe0ff",
+                      "primary-fixed-dim": "#ffb59c",
+                      "tertiary-container": "#006e1d",
+                      "tertiary-fixed-dim": "#7edb7c",
+                      "glass-border": "rgba(255, 255, 255, 0.9)",
+                      "tertiary-fixed": "#99f895",
+                      "primary": "#812700",
+                      "error": "#ba1a1a",
+                      "on-surface-variant": "#58423a",
+                      "on-tertiary-fixed-variant": "#005314",
+                      "outline-variant": "#e0c0b5",
+                      "surface-dim": "#ddd9d8",
+                      "on-secondary-container": "#444a83",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e6e1e1",
+                      "secondary": "#545a94",
+                      "on-secondary-fixed-variant": "#3c427a",
+                      "on-primary-fixed": "#380c00",
+                      "primary-fixed": "#ffdbcf",
+                      "inverse-on-surface": "#f4f0ef",
+                      "surface-tint": "#a93702",
+                      "tertiary": "#005314",
+                      "on-primary-container": "#ffcdbd",
+                      "on-tertiary-container": "#8fee8c",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e6e1e1",
+                      "surface": "#fcf9f8",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#313030",
+                      "surface-bright": "#fdf8f8",
+                      "surface-container": "#f1edec",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#1c1b1b",
+                      "surface-container-high": "#ece7e7",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#bdc2ff",
+                      "surface-container-low": "#f7f2f2",
+                      "on-primary": "#ffffff",
+                      "background": "#fdf8f8",
+                      "outline": "#8c7168",
+                      "on-surface": "#1c1b1b",
+                      "primary-container": "#a93702",
+                      "glass-bg": "rgba(255, 255, 255, 0.7)",
+                      "inverse-primary": "#ffb59c",
+                      "secondary-container": "#b7bcfd",
+                      "on-tertiary-fixed": "#002204",
+                      "on-primary-fixed-variant": "#822800"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "gutter": "24px",
+                      "md": "24px",
+                      "lg": "48px",
+                      "xs": "4px",
+                      "xl": "80px",
+                      "margin-desktop": "40px",
+                      "base": "8px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "caption": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-bold": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.surface');
+            background-image: radial-gradient(circle at 50% 0%, rgba(255, 219, 207, 0.4) 0%, transparent 70%);
+            background-attachment: fixed;
+        }
+        
+        /* Custom glow animation for data points */
+        @keyframes subtlePulse {
+            0% { box-shadow: 0 0 0 0 rgba(169, 55, 2, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(169, 55, 2, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(169, 55, 2, 0); }
+        }
+        .data-point-glow {
+            animation: subtlePulse 2s infinite;
+        }
+        
+        /* SVG Gauge animation setup */
+        .gauge-circle {
+            transition: stroke-dasharray 1s ease-out;
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased min-h-screen flex flex-col"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Weekly Progress - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#0e144d",
+                      "gauge-track": "#eae7e7",
+                      "secondary-fixed": "#dfe0ff",
+                      "primary-fixed-dim": "#ffb59c",
+                      "tertiary-container": "#006e1d",
+                      "tertiary-fixed-dim": "#7edb7c",
+                      "glass-border": "rgba(255, 255, 255, 0.9)",
+                      "tertiary-fixed": "#99f895",
+                      "primary": "#812700",
+                      "error": "#ba1a1a",
+                      "on-surface-variant": "#58423a",
+                      "on-tertiary-fixed-variant": "#005314",
+                      "outline-variant": "#e0c0b5",
+                      "surface-dim": "#ddd9d8",
+                      "on-secondary-container": "#444a83",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e6e1e1",
+                      "secondary": "#545a94",
+                      "on-secondary-fixed-variant": "#3c427a",
+                      "on-primary-fixed": "#380c00",
+                      "primary-fixed": "#ffdbcf",
+                      "inverse-on-surface": "#f4f0ef",
+                      "surface-tint": "#a93702",
+                      "tertiary": "#005314",
+                      "on-primary-container": "#ffcdbd",
+                      "on-tertiary-container": "#8fee8c",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#e6e1e1",
+                      "surface": "#fcf9f8",
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#313030",
+                      "surface-bright": "#fdf8f8",
+                      "surface-container": "#f1edec",
+                      "on-tertiary": "#ffffff",
+                      "on-background": "#1c1b1b",
+                      "surface-container-high": "#ece7e7",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#bdc2ff",
+                      "surface-container-low": "#f7f2f2",
+                      "on-primary": "#ffffff",
+                      "background": "#fdf8f8",
+                      "outline": "#8c7168",
+                      "on-surface": "#1c1b1b",
+                      "primary-container": "#a93702",
+                      "glass-bg": "rgba(255, 255, 255, 0.7)",
+                      "inverse-primary": "#ffb59c",
+                      "secondary-container": "#b7bcfd",
+                      "on-tertiary-fixed": "#002204",
+                      "on-primary-fixed-variant": "#822800"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "gutter": "24px",
+                      "md": "24px",
+                      "lg": "48px",
+                      "xs": "4px",
+                      "xl": "80px",
+                      "margin-desktop": "40px",
+                      "base": "8px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "caption": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-bold": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.surface');
+            background-image: radial-gradient(circle at 50% 0%, rgba(255, 219, 207, 0.4) 0%, transparent 70%);
+            background-attachment: fixed;
+        }
+        
+        /* Custom glow animation for data points */
+        @keyframes subtlePulse {
+            0% { box-shadow: 0 0 0 0 rgba(169, 55, 2, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(169, 55, 2, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(169, 55, 2, 0); }
+        }
+        .data-point-glow {
+            animation: subtlePulse 2s infinite;
+        }
+        
+        /* SVG Gauge animation setup */
+        .gauge-circle {
+            transition: stroke-dasharray 1s ease-out;
+        }
+    </style>
+
+
+<!-- TopAppBar (Desktop) -->
+<header class="hidden md:flex justify-between items-center px-margin-desktop h-16 w-full z-50 bg-glass-bg dark:bg-surface-container-low font-headline-md text-headline-md docked full-width top-0 sticky backdrop-blur-md border-b border-glass-border dark:border-outline-variant shadow-sm transition-colors">
+<div class="flex items-center gap-base hover:bg-surface-container-highest transition-colors rounded-full px-2 py-1 cursor-pointer">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+<div class="font-display-lg-mobile text-display-lg-mobile font-extrabold text-primary dark:text-primary-fixed-dim">
+            Nutriscope AI
+        </div>
+<div class="flex items-center gap-base hover:bg-surface-container-highest transition-colors rounded-full p-2 cursor-pointer">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">notifications</span>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop py-lg pb-32 md:pb-lg">
+<!-- Header Section -->
+<div class="mb-md">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-xs">Weekly Insights</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Here is how you're tracking against your wellness goals.</p>
+</div>
+<!-- Hybrid Bento-Box Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Avg Daily Protein Summary Card (Bento span 8) -->
+<div class="md:col-span-8 bg-glass-bg backdrop-blur-md border border-glass-border rounded-lg shadow-sm p-md flex flex-col justify-between hover:shadow-md transition-all duration-300 transform hover:scale-[1.01]">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<div class="flex items-center gap-base mb-xs">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Avg. Daily Protein</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Consistent intake is building lean mass.</p>
+</div>
+<div class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-sm py-xs rounded-full font-label-bold text-label-bold flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                        +12g vs Last Week
+                    </div>
+</div>
+<div class="flex items-end gap-base">
+<span class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary-container leading-none">148</span>
+<span class="font-body-lg text-body-lg text-on-surface-variant mb-1">grams / day</span>
+</div>
+</div>
+<!-- Consistency Score Ring (Bento span 4) -->
+<div class="md:col-span-4 bg-glass-bg backdrop-blur-md border border-glass-border rounded-lg shadow-sm p-md flex flex-col items-center justify-center hover:shadow-md transition-all duration-300 transform hover:scale-[1.01]">
+<h3 class="font-headline-md text-headline-md text-on-surface w-full text-left mb-sm">Consistency</h3>
+<div class="relative w-40 h-40 flex items-center justify-center my-auto">
+<!-- SVG Gauge -->
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+<!-- Track -->
+<circle class="stroke-gauge-track" cx="50" cy="50" fill="none" r="40" stroke-linecap="round" stroke-width="8"></circle>
+<!-- Progress (approx 85%) -->
+<!-- Circumference = 2 * pi * 40 = 251.2 -->
+<!-- 85% of 251.2 = 213.52 -->
+<circle class="gauge-circle drop-shadow-[0_4px_8px_rgba(169,55,2,0.3)]" cx="50" cy="50" fill="none" r="40" stroke="url(#gradient-primary)" stroke-dasharray="213.52 251.2" stroke-linecap="round" stroke-width="8"></circle>
+<defs>
+<linearGradient id="gradient-primary" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#ffb59c"></stop> <!-- inverse-primary -->
+<stop offset="100%" stop-color="#a93702"></stop> <!-- primary-container / surface-tint -->
+</linearGradient>
+</defs>
+</svg>
+<!-- Center Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary leading-none">85<span class="text-headline-md">%</span></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">SCORE</span>
+</div>
+</div>
+</div>
+<!-- Protein Trend Chart (Bento span 8) -->
+<div class="md:col-span-8 bg-glass-bg backdrop-blur-md border border-glass-border rounded-lg shadow-sm p-md hover:shadow-md transition-all duration-300 transform hover:scale-[1.01]">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Protein Trend</h3>
+<div class="flex gap-sm">
+<span class="font-label-bold text-label-bold text-on-surface-variant bg-surface-container rounded-full px-3 py-1">This Week</span>
+</div>
+</div>
+<!-- Elegant Bar Chart Visualization using Flexbox -->
+<div class="h-48 flex items-end justify-between gap-2 mt-lg relative">
+<!-- Y-Axis Lines (Decorative) -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="w-full h-px bg-glass-border"></div>
+<div class="w-full h-px bg-glass-border"></div>
+<div class="w-full h-px bg-glass-border"></div>
+</div>
+<!-- Day 1 -->
+<div class="flex flex-col items-center gap-sm flex-1 z-10 group">
+<div class="w-full max-w-[32px] h-[60%] bg-primary-fixed rounded-t-full relative flex justify-center group-hover:bg-primary-fixed-dim transition-colors">
+<div class="absolute -top-1 w-2 h-2 rounded-full bg-surface-tint data-point-glow"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">MON</span>
+</div>
+<!-- Day 2 -->
+<div class="flex flex-col items-center gap-sm flex-1 z-10 group">
+<div class="w-full max-w-[32px] h-[80%] bg-primary-fixed rounded-t-full relative flex justify-center group-hover:bg-primary-fixed-dim transition-colors">
+<div class="absolute -top-1 w-2 h-2 rounded-full bg-surface-tint data-point-glow"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">TUE</span>
+</div>
+<!-- Day 3 -->
+<div class="flex flex-col items-center gap-sm flex-1 z-10 group">
+<div class="w-full max-w-[32px] h-[75%] bg-primary-fixed rounded-t-full relative flex justify-center group-hover:bg-primary-fixed-dim transition-colors">
+<div class="absolute -top-1 w-2 h-2 rounded-full bg-surface-tint data-point-glow"></div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">WED</span>
+</div>
+<!-- Day 4 (Today/Peak) -->
+<div class="flex flex-col items-center gap-sm flex-1 z-10 group">
+<div class="w-full max-w-[32px] h-[95%] bg-primary-container rounded-t-full relative flex justify-center shadow-[0_4px_12px_rgba(169,55,2,0.3)]">
+<div class="absolute -top-1.5 w-3 h-3 rounded-full bg-primary data-point-glow ring-2 ring-white"></div>
+</div>
+<span class="font-label-bold text-label-bold text-primary">THU</span>
+</div>
+<!-- Day 5 -->
+<div class="flex flex-col items-center gap-sm flex-1 z-10 group">
+<div class="w-full max-w-[32px] h-[40%] bg-primary-fixed rounded-t-full relative flex justify-center opacity-50">
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">FRI</span>
+</div>
+<!-- Day 6 -->
+<div class="flex flex-col items-center gap-sm flex-1 z-10 group">
+<div class="w-full max-w-[32px] h-[10%] bg-primary-fixed rounded-t-full relative flex justify-center opacity-50">
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">SAT</span>
+</div>
+<!-- Day 7 -->
+<div class="flex flex-col items-center gap-sm flex-1 z-10 group">
+<div class="w-full max-w-[32px] h-[10%] bg-primary-fixed rounded-t-full relative flex justify-center opacity-50">
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">SUN</span>
+</div>
+</div>
+</div>
+<!-- Win of the Week (Bento span 4) -->
+<div class="md:col-span-4 bg-surface-container-low border border-glass-border rounded-lg shadow-sm overflow-hidden flex flex-col hover:shadow-md transition-all duration-300 transform hover:scale-[1.01]">
+<div class="h-32 w-full relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A bright, motivating lifestyle photograph of a sleek kitchen counter bathed in morning sunlight. A person is preparing a fresh, protein-rich smoothie. The aesthetic is clean, premium wellness with natural textures and a vibrant, optimistic energy." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCyL8LgBqOvv5n6CehquFSZ5wB-9Ac1bUAnVsj7P4rK-X011ykx04BjFDWgOtwvYqrgvQkj5jmnDwypF5_5TX0i7AV7fOqKLd5Ddsmvs_qkCS05lWqiBqHxAEz0F-HejIm-Qkdb2T7oz5ljn4a8VsaQ1NR_XW1RnjzZqgMTN_GgtXk2b9qCYR1dMU7re4xyl3l1Tw06cWDSi0E8JERviBel52kvdAMTgSbbxlCQz2VffNIk7cq3g1YZgIACNE_BmT3vWpvtj6MRtZtC')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-low to-transparent"></div>
+</div>
+<div class="p-md pt-0 relative flex-1 flex flex-col">
+<div class="absolute -top-6 left-md bg-surface border-4 border-surface-container-low rounded-full w-12 h-12 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary">emoji_events</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-8 mb-xs">Win of the Week</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1">
+                        "Incredible work hitting your protein targets 4 days in a row! That grilled chicken and quinoa meal plan is really paying off. Keep this momentum for the weekend!"
+                    </p>
+<div class="mt-sm flex items-center gap-xs">
+<span class="font-label-bold text-label-bold text-primary">- AI Coach Nova</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<!-- Active Tab Logic: Intents match "Insights" for a progress report page -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-4 pt-2 px-2 bg-glass-bg dark:bg-surface-container-low backdrop-blur-md border-t border-glass-border dark:border-outline-variant shadow-lg font-label-bold text-label-bold text-primary dark:text-primary-fixed-dim">
+<!-- Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1">home</span>
+<span>Home</span>
+</a>
+<!-- Insights (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1.5 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span>Insights</span>
+</a>
+<!-- Scan (Inactive - FAB style integration) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-150 p-2 relative -top-2" href="#">
+<div class="bg-primary text-on-primary rounded-full p-3 shadow-md flex items-center justify-center">
+<span class="material-symbols-outlined">center_focus_strong</span>
+</div>
+<span class="mt-1">Scan</span>
+</a>
+<!-- Library (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1">menu_book</span>
+<span>Library</span>
+</a>
+<!-- Profile (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-all active:scale-90 duration-150 p-2" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span>Profile</span>
+</a>
+</nav>
+</body></html>

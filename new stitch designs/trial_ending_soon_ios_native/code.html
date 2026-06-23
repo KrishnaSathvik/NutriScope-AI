@@ -1,0 +1,212 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Trial Ending Soon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "warm-sun": "#FFD54F",
+                        "inverse-on-surface": "#f2f1ec",
+                        "on-secondary-container": "#725b00",
+                        "inverse-primary": "#ffb59c",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container-high": "#eae8e3",
+                        "surface-bright": "#fbf9f4",
+                        "tertiary-fixed": "#e3e2e7",
+                        "primary": "#a93702",
+                        "paper-white": "#FFFFFF",
+                        "primary-container": "#f26b38",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#949499",
+                        "on-tertiary-fixed": "#1a1b1f",
+                        "on-primary-fixed": "#380c00",
+                        "secondary": "#735c00",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-variant": "#e4e2dd",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-tertiary-container": "#2c2d31",
+                        "background": "#fbf9f4",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "on-surface": "#1b1c19",
+                        "surface-dim": "#dbdad5",
+                        "tertiary": "#5d5e63",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1b1c19",
+                        "secondary-fixed": "#ffe087",
+                        "on-primary": "#ffffff",
+                        "protein-teal": "#2D6A4F",
+                        "on-error": "#ffffff",
+                        "surface": "#fbf9f4",
+                        "surface-tint": "#a93702",
+                        "secondary-container": "#fdd34d",
+                        "primary-fixed-dim": "#ffb59c",
+                        "ink-black": "#1C1C1E",
+                        "outline-variant": "#e0c0b5",
+                        "on-secondary-fixed": "#241a00",
+                        "outline": "#8c7168",
+                        "on-primary-fixed-variant": "#822800",
+                        "inverse-surface": "#30312e",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "on-primary-container": "#561700",
+                        "on-surface-variant": "#58423a",
+                        "coach-orange": "#F26B38",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#f0eee9",
+                        "surface-container-low": "#f5f3ee"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "gutter-card": "1rem",
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "stack-sm": "0.5rem"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-sm": ["Hanken Grotesk"],
+                        "numeric-display": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "title-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }],
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Ambient glows for cards */
+        .ambient-glow {
+            box-shadow: 0 10px 30px -5px rgba(242, 107, 56, 0.15);
+        }
+        .progress-bar-gradient {
+            background: linear-gradient(90deg, #F26B38 0%, #FFD54F 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-lg antialiased selection:bg-warm-sun/30">
+<!-- Header (Suppressed Bottom Nav/Side Nav as this is a transactional/focus screen) -->
+<header class="flex justify-between items-center px-margin-main h-16 w-full shrink-0">
+<button aria-label="Close" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 0;">close</span>
+</button>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-ink-black tracking-tight">
+            Coach Pro
+        </div>
+<div class="w-10"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Canvas -->
+<main class="flex-1 px-margin-main pb-8 flex flex-col pt-4 overflow-y-auto">
+<!-- Hero Graphic Area -->
+<div class="w-full flex justify-center mb-stack-lg relative h-48 rounded-xl overflow-hidden bg-surface-container-low border border-outline-variant/30 ambient-glow">
+<div class="absolute inset-0 bg-gradient-to-br from-warm-sun/20 to-coach-orange/10 z-0"></div>
+<!-- Illustrative Graphic Placeholder -->
+<div class="relative z-10 w-full h-full flex items-center justify-center">
+<span class="material-symbols-outlined text-coach-orange text-7xl opacity-90" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+</div>
+<!-- Headline & Subcopy -->
+<div class="text-center mb-stack-lg px-4">
+<h1 class="font-headline-xl text-headline-xl text-ink-black mb-stack-sm">Your trial is ending.</h1>
+<p class="font-body-lg text-body-lg text-tertiary">Keep your momentum going. Don't lose access to personalized meal plans and macro coaching.</p>
+</div>
+<!-- Countdown / Progress -->
+<div class="bg-paper-white rounded-xl p-gutter-card mb-stack-lg ambient-glow relative overflow-hidden group">
+<div class="flex justify-between items-end mb-2">
+<div>
+<span class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider block mb-1">Time Remaining</span>
+<span class="font-numeric-display text-numeric-display text-coach-orange leading-none">2</span>
+<span class="font-title-md text-title-md text-on-surface-variant ml-1">Days</span>
+</div>
+</div>
+<!-- Progress Track -->
+<div class="h-3 w-full bg-warm-sun/20 rounded-full overflow-hidden mt-3 relative">
+<!-- Progress Fill (Animated) -->
+<div class="h-full rounded-full progress-bar-gradient w-4/5" style="transition: width 1s ease-out;"></div>
+</div>
+</div>
+<!-- Pro Benefits List -->
+<div class="mb-stack-lg">
+<h2 class="font-label-caps text-label-caps text-tertiary uppercase tracking-wider mb-stack-md px-2">What you'll keep</h2>
+<div class="bg-paper-white rounded-xl p-2 ambient-glow space-y-1">
+<!-- Benefit 1 -->
+<div class="flex items-start p-3 rounded-lg hover:bg-surface-container-low transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-coach-orange/10 flex items-center justify-center shrink-0 mr-4">
+<span class="material-symbols-outlined text-coach-orange" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-ink-black mb-1">Custom Meal Plans</h3>
+<p class="font-body-sm text-body-sm text-tertiary">Weekly recipes tailored exactly to your macro targets.</p>
+</div>
+</div>
+<!-- Benefit 2 -->
+<div class="flex items-start p-3 rounded-lg hover:bg-surface-container-low transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-protein-teal/10 flex items-center justify-center shrink-0 mr-4">
+<span class="material-symbols-outlined text-protein-teal" style="font-variation-settings: 'FILL' 1;">auto_graph</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-ink-black mb-1">Deep Analytics</h3>
+<p class="font-body-sm text-body-sm text-tertiary">Understand your trends and optimize your nutrition.</p>
+</div>
+</div>
+<!-- Benefit 3 -->
+<div class="flex items-start p-3 rounded-lg hover:bg-surface-container-low transition-colors cursor-default">
+<div class="w-10 h-10 rounded-full bg-warm-sun/20 flex items-center justify-center shrink-0 mr-4">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md text-ink-black mb-1">1-on-1 AI Coach</h3>
+<p class="font-body-sm text-body-sm text-tertiary">24/7 access to your personal nutrition mentor.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1"></div> <!-- Spacer to push buttons to bottom on taller screens -->
+<!-- Action Area (Sticky-ish at bottom) -->
+<div class="pt-4 pb-2 space-y-4">
+<button class="w-full bg-coach-orange text-paper-white h-16 rounded-xl font-title-md text-title-md font-bold hover:opacity-90 active:scale-[0.98] transition-all ambient-glow flex items-center justify-center shadow-lg shadow-coach-orange/20">
+                Keep Pro Access
+                <span class="material-symbols-outlined ml-2 text-xl" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+<button class="w-full text-center h-12 rounded-xl font-body-lg text-body-lg text-tertiary hover:bg-surface-variant/50 transition-colors">
+                Maybe later
+            </button>
+<p class="text-center font-body-sm text-body-sm text-tertiary/70 px-4">
+                $9.99/month after trial ends. Cancel anytime in Settings.
+            </p>
+</div>
+</main>
+</body></html>

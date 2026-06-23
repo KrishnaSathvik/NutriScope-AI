@@ -1,0 +1,155 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Grocery List - Empty State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "secondary-fixed": "#dfe0ff",
+                            "secondary": "#545a94",
+                            "tertiary-fixed-dim": "#7edb7c",
+                            "surface-container": "#f1edec",
+                            "inverse-on-surface": "#f4f0ef",
+                            "secondary-container": "#b7bcfd",
+                            "on-primary-fixed": "#380c00",
+                            "tertiary": "#005314",
+                            "on-primary": "#ffffff",
+                            "on-error-container": "#93000a",
+                            "error-container": "#ffdad6",
+                            "on-background": "#1c1b1b",
+                            "on-tertiary-container": "#8fee8c",
+                            "on-secondary-container": "#444a83",
+                            "surface-container-highest": "#e6e1e1",
+                            "on-surface-variant": "#58423a",
+                            "primary-fixed-dim": "#ffb59c",
+                            "secondary-fixed-dim": "#bdc2ff",
+                            "primary": "#812700",
+                            "inverse-primary": "#ffb59c",
+                            "on-secondary-fixed": "#0e144d",
+                            "surface": "#fcf9f8",
+                            "tertiary-container": "#006e1d",
+                            "outline-variant": "#e0c0b5",
+                            "primary-container": "#a93702",
+                            "gauge-track": "#eae7e7",
+                            "surface-variant": "#e6e1e1",
+                            "surface-dim": "#ddd9d8",
+                            "primary-fixed": "#ffdbcf",
+                            "on-tertiary-fixed": "#002204",
+                            "surface-container-low": "#f7f2f2",
+                            "on-tertiary-fixed-variant": "#005314",
+                            "on-secondary": "#ffffff",
+                            "glass-border": "rgba(255, 255, 255, 0.9)",
+                            "surface-container-high": "#ece7e7",
+                            "surface-tint": "#a93702",
+                            "on-secondary-fixed-variant": "#3c427a",
+                            "outline": "#8c7168",
+                            "surface-container-lowest": "#ffffff",
+                            "on-surface": "#1c1b1b",
+                            "on-primary-fixed-variant": "#822800",
+                            "on-error": "#ffffff",
+                            "background": "#fdf8f8",
+                            "on-primary-container": "#ffcdbd",
+                            "glass-bg": "rgba(255, 255, 255, 0.7)",
+                            "on-tertiary": "#ffffff",
+                            "inverse-surface": "#313030",
+                            "tertiary-fixed": "#99f895",
+                            "error": "#ba1a1a",
+                            "surface-bright": "#fdf8f8"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "1rem",
+                            "lg": "2rem",
+                            "xl": "3rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "margin-mobile": "16px",
+                            "xl": "80px",
+                            "sm": "12px",
+                            "md": "24px",
+                            "lg": "48px",
+                            "gutter": "24px",
+                            "xs": "4px",
+                            "margin-desktop": "40px",
+                            "base": "8px"
+                    },
+                    "fontFamily": {
+                            "headline-md": ["Hanken Grotesk"],
+                            "body-md": ["Hanken Grotesk"],
+                            "caption": ["Hanken Grotesk"],
+                            "display-lg-mobile": ["Hanken Grotesk"],
+                            "label-caps": ["Hanken Grotesk"],
+                            "display-lg": ["Hanken Grotesk"],
+                            "label-bold": ["Hanken Grotesk"],
+                            "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                            "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                            "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                            "label-caps": ["10px", {"lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                            "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                            "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+        .radial-gradient-bg {
+            background: radial-gradient(circle at 50% -20%, var(--tw-colors-primary-container) 0%, transparent 40%),
+                        radial-gradient(circle at 100% 100%, var(--tw-colors-primary-fixed) 0%, transparent 50%),
+                        var(--tw-colors-background);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen relative overflow-hidden">
+<!-- Ambient Background -->
+<div class="absolute inset-0 radial-gradient-bg z-[-1]"></div>
+<!-- Navigation Bar (Task focused, so standard shell is suppressed, using iOS style nav) -->
+<header class="w-full top-0 sticky bg-surface/80 backdrop-blur-md z-50 px-margin-mobile h-16 flex items-center justify-between border-b border-surface-variant">
+<button class="flex items-center text-primary hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined mr-1" style="font-variation-settings: 'FILL' 0;">arrow_back_ios</span>
+<span class="font-body-md text-body-md">Profile</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-on-surface absolute left-1/2 transform -translate-x-1/2">Grocery List</h1>
+<div class="w-16"></div> <!-- Spacer for centering -->
+</header>
+<!-- Main Content Canvas - Empty State -->
+<main class="flex flex-col items-center justify-center min-h-[calc(100vh-64px)] px-margin-mobile py-lg text-center">
+<!-- Illustration Area -->
+<div class="relative w-48 h-48 mb-lg flex items-center justify-center">
+<!-- Glassmorphism decorative circle behind illustration -->
+<div class="absolute inset-0 rounded-full bg-primary-fixed/30 blur-2xl"></div>
+<div class="w-32 h-32 rounded-full glass-panel flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary-container text-[64px]" style="font-variation-settings: 'FILL' 0;">shopping_basket</span>
+</div>
+</div>
+<!-- Typography -->
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm">Your grocery list is empty</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[280px] mx-auto mb-lg">
+            Add recommended meals from Tomorrow's Plan to get started.
+        </p>
+<!-- Primary Action -->
+<button class="bg-primary text-on-primary font-label-bold text-label-bold px-md py-sm rounded-full flex items-center gap-2 shadow-[0_8px_20px_rgba(169,55,2,0.2)] hover:bg-primary-container hover:scale-[1.02] transition-all active:scale-95 w-full max-w-[300px] justify-center">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+            View Tomorrow's Plan
+        </button>
+</main>
+</body></html>

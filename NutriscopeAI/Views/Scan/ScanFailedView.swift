@@ -89,7 +89,7 @@ struct ScanFailedView: View {
             .padding(.horizontal, AppTheme.marginMain)
             .padding(.bottom, 32)
         }
-        .background(AppBackground())
+        .background(AppBackground(showsAmbientGlow: true))
     }
 }
 

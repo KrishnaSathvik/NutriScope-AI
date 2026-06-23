@@ -30,8 +30,23 @@ final class SubscriptionManager {
     var isLoading = false
     var products: [Product] = []
     var errorMessage: String?
+    var trialExpirationDate: Date?
+    var isInIntroductoryOffer = false
 
     private var transactionUpdatesTask: Task<Void, Never>?
+
+    var daysUntilTrialEnds: Int? {
+        guard let trialExpirationDate else { return nil }
+        let start = Calendar.current.startOfDay(for: .now)
+        let end = Calendar.current.startOfDay(for: trialExpirationDate)
+        return Calendar.current.dateComponents([.day], from: start, to: end).day
+    }
+
+    var shouldPromptTrialEnding: Bool {
+        guard isSubscribed, isInIntroductoryOffer else { return false }
+        guard let days = daysUntilTrialEnds else { return false }
+        return days >= 0 && days <= 3
+    }
 
     func product(for plan: SubscriptionPlan) -> Product? {
         products.first { $0.id == plan.productID }
@@ -145,13 +160,37 @@ final class SubscriptionManager {
 
     func refreshEntitlements() async {
         isSubscribed = false
+        trialExpirationDate = nil
+        isInIntroductoryOffer = false
+
+        if products.isEmpty {
+            await loadProducts()
+        }
+
         let activeIDs = Set(SubscriptionPlan.allCases.map(\.productID))
         for await result in Transaction.currentEntitlements {
             if case .verified(let transaction) = result {
                 if activeIDs.contains(transaction.productID) {
                     isSubscribed = true
-                    return
                 }
+            }
+        }
+
+        await refreshTrialStatus()
+    }
+
+    private func refreshTrialStatus() async {
+        for product in products {
+            guard let subscription = product.subscription else { continue }
+            guard let statuses = try? await subscription.status else { continue }
+            for status in statuses {
+                guard status.state == .subscribed || status.state == .inGracePeriod else { continue }
+                guard case .verified(let transaction) = status.transaction,
+                      transaction.offerType == .introductory,
+                      let expiration = transaction.expirationDate else { continue }
+                trialExpirationDate = expiration
+                isInIntroductoryOffer = true
+                return
             }
         }
     }

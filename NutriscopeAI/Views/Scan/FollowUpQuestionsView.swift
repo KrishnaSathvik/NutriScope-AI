@@ -17,20 +17,23 @@ struct FollowUpQuestionsView: View {
 
     var body: some View {
         NavigationStack {
-            BoundedScrollView {
+            ZStack {
+                AppBackground(showsAmbientGlow: true)
 
+                BoundedScrollView {
                 VStack(alignment: .leading, spacing: 20) {
-                    Text("Quick check")
-                        .font(.title3.weight(.bold))
+                    Text("Stumped by this one?")
+                        .font(AppTypography.headlineLG)
                     Text("Help us tighten the range — hidden oil and portions matter most.")
-                        .font(.subheadline)
+                        .font(AppTypography.body)
                         .foregroundStyle(AppTheme.textSecondary)
 
                     ForEach($questions) { $question in
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text(question.prompt)
-                                .font(.subheadline.weight(.semibold))
-                            ForEach(question.options, id: \.self) { option in
+                        GlassCard {
+                            VStack(alignment: .leading, spacing: 12) {
+                                Text(question.prompt)
+                                    .font(AppTypography.subheadline.weight(.semibold))
+                                ForEach(question.options, id: \.self) { option in
                                 Button {
                                     question.selectedOption = option
                                 } label: {
@@ -46,16 +49,13 @@ struct FollowUpQuestionsView: View {
                                 }
                                 .buttonStyle(.plain)
                             }
+                            }
                         }
-                        .padding(16)
-                        .background(AppTheme.surface)
-                        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     }
                 }
                 .padding(20)
-            
-        }
-        .background(AppTheme.background)
+                }
+            }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Skip") { dismiss() }

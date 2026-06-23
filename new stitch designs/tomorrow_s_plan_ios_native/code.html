@@ -1,0 +1,315 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Tomorrow's Plan - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "surface-container-high": "#ece7e7",
+                        "surface": "#fcf9f8",
+                        "primary-container": "#a93702",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#b7bcfd",
+                        "tertiary-fixed": "#99f895",
+                        "primary-fixed": "#ffdbcf",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#006e1d",
+                        "outline-variant": "#e0c0b5",
+                        "on-surface": "#1c1b1b",
+                        "surface-variant": "#e5e2e1",
+                        "on-background": "#1c1b1b",
+                        "surface-container": "#f1edec",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "on-tertiary-container": "#8fee8c",
+                        "on-primary-fixed": "#380c00",
+                        "surface-tint": "#a93702",
+                        "tertiary": "#005314",
+                        "secondary-fixed": "#dfe0ff",
+                        "secondary": "#545a94",
+                        "surface-container-highest": "#e6e1e1",
+                        "error-container": "#ffdad6",
+                        "outline": "#8c7168",
+                        "on-primary-container": "#ffcdbd",
+                        "surface-container-low": "#f7f2f2",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "background": "#fdf8f8",
+                        "primary": "#812700",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "error": "#ba1a1a",
+                        "gauge-track": "#eae7e7",
+                        "on-secondary": "#ffffff",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "on-secondary-fixed": "#0e144d",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-bright": "#fdf8f8",
+                        "on-tertiary-fixed": "#002204",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#444a83",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "inverse-primary": "#ffb59c",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-dim": "#ddd9d8",
+                        "on-surface-variant": "#58423a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background: radial-gradient(circle at top right, rgba(255, 219, 207, 0.4) 0%, rgba(253, 248, 248, 1) 50%);
+            background-attachment: fixed;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .glass-card {
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #a93702, #812700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Custom scrollbar hiding for horizontal scrollers */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-[100px] md:pb-0">
+<!-- Top App Bar (Mobile hidden, Desktop visible) -->
+<header class="hidden md:flex sticky top-0 w-full justify-between items-center px-margin-desktop h-16 z-50 bg-surface dark:bg-surface-dim border-b border-surface-container-highest dark:border-outline-variant transition-colors duration-200">
+<div class="flex items-center gap-xs">
+<button class="p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:opacity-70 text-primary dark:text-primary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight">Nutriscope AI</h1>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors active:opacity-70 text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</header>
+<main class="w-full max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop pt-lg pb-xl">
+<!-- Mobile Header -->
+<div class="md:hidden flex justify-between items-center mb-md mt-sm">
+<button class="p-2 -ml-2 rounded-full hover:bg-surface-container-low transition-colors active:opacity-70 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<button class="p-2 -mr-2 rounded-full hover:bg-surface-container-low transition-colors active:opacity-70 text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">more_horiz</span>
+</button>
+</div>
+<section class="mb-lg">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-xs">Tomorrow</h1>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px] text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                Based on today, here is your path to success.
+            </p>
+</section>
+<!-- Main Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Target Summary Card (Spans full mobile, 4 cols desktop) -->
+<div class="glass-card rounded-lg p-md md:col-span-4 flex flex-col justify-between relative overflow-hidden group hover:scale-[1.01] transition-transform duration-300">
+<!-- Decorative background blur -->
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-fixed rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+<div class="z-10">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest mb-sm">Macro Target</h3>
+<div class="flex items-end gap-xs mb-sm">
+<span class="font-display-lg-mobile text-display-lg-mobile gradient-text">160g</span>
+<span class="font-body-md text-body-md text-on-surface-variant mb-2">Protein</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-container-highest rounded-full h-2 mb-2 overflow-hidden">
+<div class="bg-gradient-to-r from-primary-container to-primary h-full rounded-full relative" style="width: 85%;">
+<div class="absolute right-0 top-0 bottom-0 w-4 bg-white/30 blur-[2px]"></div>
+</div>
+</div>
+<p class="font-caption text-caption text-on-surface-variant text-right">85% of recommended daily value planned</p>
+</div>
+</div>
+<!-- Curated Meals List (Spans full mobile, 8 cols desktop) -->
+<div class="md:col-span-8 flex flex-col gap-sm">
+<!-- Breakfast Card -->
+<div class="glass-card rounded-lg p-3 flex gap-md items-center group hover:scale-[1.01] transition-all duration-300 relative overflow-hidden">
+<!-- Image -->
+<div class="w-[96px] h-[96px] rounded flex-shrink-0 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A beautifully styled, top-down shot of a protein-packed breakfast bowl. The bowl contains creamy greek yogurt topped with vibrant fresh berries, chia seeds, and a sprinkle of chopped almonds. The lighting is bright, natural, and airy, emphasizing a clean, light-mode wellness aesthetic. The surface is a soft, warm white marble, creating a premium, modern feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQImqN6mJ1Ezg4wf3CTYMlfugWYPMwfS3-tTBE6Tm5NJDEfGfV-dWjPEOhAk-tHXCRtC8m6qAyzdBai_zBQZ92Mq7z8sV1qvWjDhIMC_MfFCOaaaPnf4ZyKxA64-zBTPlm4H__vuX050QyIzA_W2X8IKUGS7ZLjkpvTnd0UNAlCqylLOCrMU0cjMcKLGWU40TyZJYugQLTUM6aMkViSPFfBSkj5GpOqFRsnRvXvXgkT0qIEEWpo10KvVC0CTYsdlukZza4C3VBjr1M">
+<div class="absolute top-1 left-1 bg-white/90 backdrop-blur-sm rounded px-2 py-0.5 shadow-sm">
+<span class="font-label-caps text-[8px] text-on-surface">BREAKFAST</span>
+</div>
+</div>
+<!-- Content -->
+<div class="flex-grow flex flex-col justify-center py-1">
+<h4 class="font-headline-md text-[18px] leading-tight text-on-background mb-1">Berry Protein Bowl</h4>
+<!-- Nutritional Chips -->
+<div class="flex gap-2 mb-2 flex-wrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed/30 border border-primary-fixed/50 font-label-bold text-[12px] text-primary">
+                                32g Protein
+                            </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container border border-outline-variant/30 font-caption text-caption text-on-surface-variant">
+                                350 kcal
+                            </span>
+</div>
+<p class="font-body-md text-[14px] text-on-surface-variant line-clamp-1">Greek yogurt, mixed berries, chia seeds.</p>
+</div>
+<!-- Action -->
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-[0_4px_12px_rgba(169,55,2,0.2)] hover:bg-primary-container transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add</span>
+</button>
+</div>
+<!-- Lunch Card -->
+<div class="glass-card rounded-lg p-3 flex gap-md items-center group hover:scale-[1.01] transition-all duration-300 relative overflow-hidden">
+<div class="w-[96px] h-[96px] rounded flex-shrink-0 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A high-end, bright food photography shot of a grilled chicken salad. The salad features perfectly seared chicken breast strips laid over a bed of crisp, vibrant green kale and quinoa, dotted with cherry tomatoes and a light vinaigrette dressing. The composition is clean and minimalist, set against a pristine, soft-focus light background that perfectly matches a modern, optimistic wellness app aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPon5vqLfcoVgGe1eN5nU77hJMlCoy73kHX7sMuB-xt_SBciOiU8r-h457thY3reqDz7DWyZ-R86yjW2xhzM4MqW6gTJVlfU-XCozXHxzAlLiMjvMBvUX5dd8UpLioczUCUfDPGylZXUo0XSUMH--ybp2gYfdi2-mDZ9pyMt8LbF5bJPxQ6y3ZeX_UXKQqRLQWIDwiXev0HBX99fuYVB7LMJOZxJAcLLRSy5YAYHlRkU0hRJzqIGHwxp5C9UGKV3KIPhV_iQSBdQGL">
+<div class="absolute top-1 left-1 bg-white/90 backdrop-blur-sm rounded px-2 py-0.5 shadow-sm">
+<span class="font-label-caps text-[8px] text-on-surface">LUNCH</span>
+</div>
+</div>
+<div class="flex-grow flex flex-col justify-center py-1">
+<h4 class="font-headline-md text-[18px] leading-tight text-on-background mb-1">Grilled Chicken Quinoa</h4>
+<div class="flex gap-2 mb-2 flex-wrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed/30 border border-primary-fixed/50 font-label-bold text-[12px] text-primary">
+                                45g Protein
+                            </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container border border-outline-variant/30 font-caption text-caption text-on-surface-variant">
+                                520 kcal
+                            </span>
+</div>
+<p class="font-body-md text-[14px] text-on-surface-variant line-clamp-1">Lean breast, tricolor quinoa, kale mix.</p>
+</div>
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-[0_4px_12px_rgba(169,55,2,0.2)] hover:bg-primary-container transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add</span>
+</button>
+</div>
+<!-- Dinner Card -->
+<div class="glass-card rounded-lg p-3 flex gap-md items-center group hover:scale-[1.01] transition-all duration-300 relative overflow-hidden">
+<div class="w-[96px] h-[96px] rounded flex-shrink-0 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An appetizing, modern culinary photo of a seared salmon fillet resting on a bed of bright green asparagus spears. The salmon has a perfect golden-brown crust. The lighting is soft but directional, highlighting the textures of the fish and vegetables. The setting is minimalist, using a clean white ceramic plate on a light-toned wooden table, fitting a premium, healthy lifestyle app design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIq1rRq7eA4nR5HoN1dj6sDpAEOwFhvwg_dSVJu_Bp9hctg7Xnu6BiWv3iUTNpHp3PvWu7ZXAK_Py-OZi20W9pjkjKFLNcEm7sVnUy8ultiy5ZJFKKbDTfTNCZWxgo6BJ3Mc4H_0O9c_Pbrv3pG3q9WF7_yq4y7gog_23Qa8j7Aa8A1MEFr6tcmw6G4RkFZ6EtqZqXZ8kK1F5LGKy0SG1TehiXgh_j8SFUgv0U6dNz-ZMZBbAftgx8ph7ylDl0BIzveuZ7HzMwprMY">
+<div class="absolute top-1 left-1 bg-white/90 backdrop-blur-sm rounded px-2 py-0.5 shadow-sm">
+<span class="font-label-caps text-[8px] text-on-surface">DINNER</span>
+</div>
+</div>
+<div class="flex-grow flex flex-col justify-center py-1">
+<h4 class="font-headline-md text-[18px] leading-tight text-on-background mb-1">Seared Salmon Asparagus</h4>
+<div class="flex gap-2 mb-2 flex-wrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-primary-fixed/30 border border-primary-fixed/50 font-label-bold text-[12px] text-primary">
+                                40g Protein
+                            </span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-surface-container border border-outline-variant/30 font-caption text-caption text-on-surface-variant">
+                                480 kcal
+                            </span>
+</div>
+<p class="font-body-md text-[14px] text-on-surface-variant line-clamp-1">Wild caught salmon, roasted asparagus.</p>
+</div>
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center flex-shrink-0 shadow-[0_4px_12px_rgba(169,55,2,0.2)] hover:bg-primary-container transition-colors active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">add</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-surface dark:bg-surface-dim rounded-t-xl transition-all duration-200 shadow-[0_-4px_24px_rgba(0,0,0,0.05)] border-t-0">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-lowest transition-all duration-200 active:scale-95 rounded-lg group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span class="font-label-bold text-label-bold">Today</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-lowest transition-all duration-200 active:scale-95 shadow-sm">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-bold text-label-bold">Meals</span>
+</button>
+<!-- Centered FAB style for primary action (Scan/Log) -->
+<button class="relative -top-6 w-16 h-16 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(169,55,2,0.3)] border-4 border-surface active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[32px]" style="font-variation-settings: 'FILL' 0;">qr_code_scanner</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-lowest transition-all duration-200 active:scale-95 rounded-lg group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;">smart_toy</span>
+<span class="font-label-bold text-label-bold">Coach</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-container-lowest transition-all duration-200 active:scale-95 rounded-lg group">
+<span class="material-symbols-outlined mb-1 group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-bold text-label-bold">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for adding meals to list
+        document.querySelectorAll('.glass-card button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const iconSpan = this.querySelector('span');
+                if(iconSpan.textContent === 'add') {
+                    // Change to checkmark
+                    iconSpan.textContent = 'check';
+                    this.classList.replace('bg-primary', 'bg-tertiary-container');
+                    this.classList.replace('text-on-primary', 'text-on-tertiary-container');
+                    this.style.boxShadow = '0 4px 12px rgba(0, 110, 29, 0.2)';
+                    
+                    // Simple pop animation
+                    this.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                }
+            });
+        });
+    </script>
+</body></html>

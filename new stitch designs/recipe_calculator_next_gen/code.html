@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Next-Gen Recipe Macro Calculator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-highest": "#e6e1e1",
+                      "surface-container": "#f1edec",
+                      "secondary-container": "#b7bcfd",
+                      "outline-variant": "#e0c0b5",
+                      "on-tertiary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-primary-container": "#ffcdbd",
+                      "on-surface": "#1c1b1b",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-container": "#8fee8c",
+                      "background": "#fdf8f8",
+                      "on-secondary-fixed": "#0e144d",
+                      "surface-container-low": "#f7f2f2",
+                      "surface-tint": "#a93702",
+                      "outline": "#8c7168",
+                      "surface-container-high": "#ece7e7",
+                      "on-primary-fixed-variant": "#822800",
+                      "inverse-surface": "#313030",
+                      "inverse-on-surface": "#f4f0ef",
+                      "glass-border": "rgba(255, 255, 255, 0.9)",
+                      "on-tertiary-fixed": "#002204",
+                      "tertiary": "#005314",
+                      "primary-fixed-dim": "#ffb59c",
+                      "primary-fixed": "#ffdbcf",
+                      "on-background": "#1c1b1b",
+                      "surface": "#fcf9f8",
+                      "secondary": "#545a94",
+                      "on-primary": "#ffffff",
+                      "primary": "#812700",
+                      "surface-dim": "#ddd9d8",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#a93702",
+                      "surface-variant": "#e5e2e1",
+                      "tertiary-container": "#006e1d",
+                      "surface-bright": "#fdf8f8",
+                      "inverse-primary": "#ffb59c",
+                      "gauge-track": "#eae7e7",
+                      "on-error": "#ffffff",
+                      "on-tertiary-fixed-variant": "#005314",
+                      "tertiary-fixed-dim": "#7edb7c",
+                      "on-secondary-container": "#444a83",
+                      "secondary-fixed": "#dfe0ff",
+                      "on-error-container": "#93000a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#58423a",
+                      "glass-bg": "rgba(255, 255, 255, 0.7)",
+                      "secondary-fixed-dim": "#bdc2ff",
+                      "on-secondary-fixed-variant": "#3c427a",
+                      "on-primary-fixed": "#380c00",
+                      "tertiary-fixed": "#99f895"
+              },
+              "borderRadius": {
+                      "DEFAULT": "1rem",
+                      "lg": "2rem",
+                      "xl": "3rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "sm": "12px",
+                      "md": "24px",
+                      "margin-mobile": "16px",
+                      "xl": "80px",
+                      "margin-desktop": "40px",
+                      "base": "8px",
+                      "lg": "48px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-bold": [
+                              "Hanken Grotesk"
+                      ],
+                      "caption": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "label-caps": [
+                              "10px",
+                              {
+                                      "lineHeight": "12px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-bold": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background: radial-gradient(circle at 50% 0%, rgba(169, 55, 2, 0.15) 0%, transparent 60%), #fdf8f8;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .glass-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .macro-ring {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .macro-circle-bg {
+            fill: none;
+            stroke: #eae7e7;
+            stroke-width: 8;
+        }
+        .macro-circle-progress {
+            fill: none;
+            stroke: url(#macro-gradient);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 283; /* 2 * pi * r (r=45) */
+            stroke-dashoffset: 70; /* Example progress */
+            filter: drop-shadow(0 0 4px rgba(169, 55, 2, 0.4));
+        }
+        
+        .luminous-btn {
+            background: linear-gradient(135deg, #a93702 0%, #812700 100%);
+            box-shadow: 0 8px 16px -4px rgba(169, 55, 2, 0.4), inset 0 2px 0 rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        .luminous-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -4px rgba(169, 55, 2, 0.5), inset 0 2px 0 rgba(255,255,255,0.3);
+        }
+        .luminous-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 8px -2px rgba(169, 55, 2, 0.4);
+        }
+
+        /* Ambient glowing background elements */
+        .ambient-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface antialiased relative">
+<!-- Ambient Background Glows -->
+<div class="ambient-glow w-96 h-96 bg-primary-fixed/30 top-10 left-10"></div>
+<div class="ambient-glow w-80 h-80 bg-secondary-container/20 bottom-20 right-10"></div>
+<!-- Top Navigation (Mobile & Desktop) -->
+<header class="fixed top-0 w-full z-50 backdrop-blur-md bg-glass-bg border-b border-glass-border shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile h-16 max-w-[1280px] mx-auto">
+<div class="flex items-center gap-sm">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="A small, stylized circular profile avatar of a confident user in a bright, modern setting. The aesthetic is clean and premium, matching a sleek health application UI. Lighting is soft and flattering." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdM5JWllrEY1ss3rtiQfpeYGk0mzc00Up9PeBO0fZsD1F6Bob-VnNDYRbXrplebioqPu8yJz2_kIMuRpf5AzXlIWKZNKY2J89f8WpWmAchU1dIzpOHcPQREBeveP5iHqwBYXLElFqVcnhhH_cCMGGxB1OHSTksO0JEDPJhQw2EhFWmtxrc-34L_A6YS38IvDecDeMbKccLohGsQuO2N99wRK_mAiCkf6ujU0jenpBloXOxIxp6wrNeCMRCh72PPAICQ_oAoiqzDKOx"/>
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary tracking-tight md:hidden">Nutriscope AI</span>
+<span class="font-display-lg text-display-lg text-primary tracking-tight hidden md:block">Nutriscope AI</span>
+</div>
+<!-- Desktop Nav Items (Hidden on Mobile) -->
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-primary font-bold font-label-bold text-label-bold hover:opacity-80 transition-opacity flex items-center gap-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+                    Recipe Lab
+                </a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:opacity-80 transition-opacity flex items-center gap-2" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                    Insights
+                </a>
+<a class="text-on-surface-variant font-label-bold text-label-bold hover:opacity-80 transition-opacity flex items-center gap-2" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+                    Plan
+                </a>
+</nav>
+<button class="text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 md:pb-24 px-margin-mobile md:px-margin-desktop max-w-[1280px] mx-auto relative z-10">
+<!-- Header Section -->
+<div class="mb-lg text-center md:text-left">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-xs">Ingredient Lab</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Build your recipe and analyze macros in real-time.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Left Column: Ingredients List (Spans 8 cols on desktop) -->
+<div class="md:col-span-8 space-y-md">
+<!-- Add New Ingredient Input Area -->
+<div class="glass-card rounded-xl p-md flex items-center gap-md relative overflow-hidden">
+<!-- Subtle background texture inside input card -->
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/5 to-transparent z-0"></div>
+<div class="relative z-10 flex-1">
+<label class="sr-only" for="ingredient-search">Search Ingredient</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-highest/50 border-none rounded-lg py-sm pl-xl pr-sm font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-primary-container/50 backdrop-blur-sm" id="ingredient-search" placeholder="Type an ingredient (e.g., Avocado, 100g)" type="text"/>
+</div>
+</div>
+<button class="relative z-10 luminous-btn text-on-primary rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+<!-- Active Ingredients List -->
+<div class="space-y-sm">
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface mb-sm px-xs">Current Mix</h2>
+<!-- Ingredient Card 1 -->
+<div class="glass-card rounded-lg p-sm flex items-center justify-between group">
+<div class="flex items-center gap-md">
+<img class="w-16 h-16 rounded-lg object-cover shadow-sm" data-alt="A close-up, high-quality photograph of fresh, vibrant green avocado slices arranged neatly. The lighting is bright and airy, typical of modern health food photography. Minimalist white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5lqlBbMt7IGxYKAtbcbuT0YsOLFGNTmk_KXHG6308MPKDYwnjbKQSH3_BpGbH00nvpu6cNX_z1EPi5RVYGCFJ39OH58utmnj6AQbnP8wIoOgjbdXdsYUTJGKohOKbd6ETfbCeTBL5HCYKhwJyo7Jf4QS5R6mhtKodYPxbo7sRV9qxffpkg6GtkSNHQD2CEvXn4AQfTDeFrghZccoKXd8UHtJkDHu_CCl7FV48c0YSw72eZmHdiTCWnF2V2C6LA8WKAY_nR5XhJAUr"/>
+<div>
+<h3 class="font-label-bold text-label-bold text-on-surface">Avocado, Raw</h3>
+<p class="font-caption text-caption text-on-surface-variant">100g • 160 kcal</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="hidden md:flex gap-xs">
+<span class="bg-primary-container/10 border border-primary-container/20 text-primary-container font-label-caps text-label-caps px-2 py-1 rounded">P: 2g</span>
+<span class="bg-surface-variant text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded">C: 9g</span>
+<span class="bg-primary-container/10 border border-primary-container/20 text-primary-container font-label-caps text-label-caps px-2 py-1 rounded">F: 15g</span>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-2 rounded-full hover:bg-error-container/50">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Ingredient Card 2 -->
+<div class="glass-card rounded-lg p-sm flex items-center justify-between group">
+<div class="flex items-center gap-md">
+<img class="w-16 h-16 rounded-lg object-cover shadow-sm" data-alt="A premium, studio-lit shot of a grilled chicken breast, perfectly golden brown. Shot from a slight top-down angle on a pristine white ceramic plate. The aesthetic is clean, appetizing, and highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrBFSorHH3n42icS06fflD3olCdefy4CiQjyHDHdarh01lC8QlUoON8fv515pXnl0NaYVHNH5yIfDIFqB4nms6olmjRRFD2yAUhT0kIf3mqSljjWfpz77eptfYxCYxZPVPGIIEHKUd8UdXOz7g3TC4qmVXqNeAnHiBsNp5gsJXUvajQ_2kbGXIjtFVmPmTWhdhgNDQ9T92HPwMw2S2795PayCh6t3Y1b3yB0Zuvyy93MoqqLuZETDrIl3UOfaA9b-UuIjIb9c8VjFy"/>
+<div>
+<h3 class="font-label-bold text-label-bold text-on-surface">Chicken Breast, Grilled</h3>
+<p class="font-caption text-caption text-on-surface-variant">150g • 248 kcal</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="hidden md:flex gap-xs">
+<span class="bg-primary-container/10 border border-primary-container/20 text-primary-container font-label-caps text-label-caps px-2 py-1 rounded">P: 46g</span>
+<span class="bg-surface-variant text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded">C: 0g</span>
+<span class="bg-primary-container/10 border border-primary-container/20 text-primary-container font-label-caps text-label-caps px-2 py-1 rounded">F: 5g</span>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-2 rounded-full hover:bg-error-container/50">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Ingredient Card 3 -->
+<div class="glass-card rounded-lg p-sm flex items-center justify-between group">
+<div class="flex items-center gap-md">
+<img class="w-16 h-16 rounded-lg object-cover shadow-sm" data-alt="A handful of raw almonds scattered delicately on a clean, light-colored wooden surface. The lighting is soft and natural, casting subtle shadows to emphasize texture. A modern wellness lifestyle look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyXQHlKVCs3plJjGwrH62YOdr4iVDNg-9RzTppy3fX5YCULqSQ6SAck9lMZmojLDRdeeVb1ITDa6HfnMw6Z8ePYQtjy6_reI5MLCG8sU7FnIKpG6gFeJN5nz8sEWAiq-7PJsEdTFqQqGdSw0HzAqkQQjmAEJekGU0d65PsQWaXh6HAoUHor9sddWAXgoH15d-c90Oi2d403vLGRaN1hHt70Q395jVvKw8emAhBpKr87etbuYWywW_UzbuZ0pkk23IE_Ti63tAgpRre"/>
+<div>
+<h3 class="font-label-bold text-label-bold text-on-surface">Almonds</h3>
+<p class="font-caption text-caption text-on-surface-variant">30g • 173 kcal</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="hidden md:flex gap-xs">
+<span class="bg-primary-container/10 border border-primary-container/20 text-primary-container font-label-caps text-label-caps px-2 py-1 rounded">P: 6g</span>
+<span class="bg-surface-variant text-on-surface-variant font-label-caps text-label-caps px-2 py-1 rounded">C: 6g</span>
+<span class="bg-primary-container/10 border border-primary-container/20 text-primary-container font-label-caps text-label-caps px-2 py-1 rounded">F: 15g</span>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors p-2 rounded-full hover:bg-error-container/50">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Macro Visualization (Spans 4 cols on desktop) -->
+<div class="md:col-span-4 sticky top-24 self-start">
+<div class="glass-card rounded-xl p-md flex flex-col items-center">
+<h2 class="font-headline-md text-headline-md-mobile text-on-surface mb-lg w-full text-left">Total Profile</h2>
+<!-- SVG Gauge Chart -->
+<div class="relative w-48 h-48 mb-lg flex justify-center items-center">
+<svg class="w-full h-full macro-ring" viewbox="0 0 100 100">
+<defs>
+<lineargradient id="macro-gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#f26b38"></stop>
+<stop offset="100%" stop-color="#a93702"></stop>
+</lineargradient>
+</defs>
+<circle class="macro-circle-bg" cx="50" cy="50" r="45"></circle>
+<circle class="macro-circle-progress" cx="50" cy="50" r="45"></circle>
+</svg>
+<!-- Center Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="font-display-lg-mobile text-display-lg-mobile text-primary-container leading-none">581</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">KCAL TOTAL</span>
+</div>
+</div>
+<!-- Macro Breakdown List -->
+<div class="w-full space-y-sm">
+<!-- Protein -->
+<div class="flex justify-between items-center p-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="font-label-bold text-label-bold text-on-surface">Protein</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">54g</span>
+</div>
+<!-- Carbs -->
+<div class="flex justify-between items-center p-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+<span class="font-label-bold text-label-bold text-on-surface">Carbs</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">15g</span>
+</div>
+<!-- Fats -->
+<div class="flex justify-between items-center p-sm bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+<span class="font-label-bold text-label-bold text-on-surface">Fats</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface font-semibold">35g</span>
+</div>
+</div>
+<button class="w-full mt-md bg-surface border border-outline-variant text-on-surface font-label-bold text-label-bold py-sm rounded-lg hover:bg-surface-container transition-colors flex justify-center items-center gap-2">
+<span class="material-symbols-outlined">save</span>
+                        Save Recipe
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 backdrop-blur-lg rounded-t-lg border-t border-glass-border bg-glass-bg shadow-lg flex justify-around items-center h-20 pb-safe px-2">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-bold text-label-bold text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-bold text-label-bold text-[10px]">Insights</span>
+</a>
+<!-- Active FAB-like state for Lab/Add -->
+<a class="flex flex-col items-center justify-center text-primary bg-primary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200 relative -top-4 shadow-sm border border-primary-container/20" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label-bold text-label-bold text-[10px] mt-1">Lab</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">center_focus_strong</span>
+<span class="font-label-bold text-label-bold text-[10px]">Scan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-bold text-label-bold text-[10px]">Plan</span>
+</a>
+</nav>
+</body></html>

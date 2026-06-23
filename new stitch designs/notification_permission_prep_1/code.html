@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Enable Notifications - Nutriscope AI</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Design System Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#735c00",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "tertiary": "#5d5e63",
+                        "secondary-container": "#fdd34d",
+                        "on-surface": "#1b1c19",
+                        "warm-sun": "#FFD54F",
+                        "on-primary-fixed": "#380c00",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf9f4",
+                        "surface": "#fbf9f4",
+                        "inverse-primary": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-tint": "#a93702",
+                        "surface-bright": "#fbf9f4",
+                        "surface-container-high": "#eae8e3",
+                        "outline-variant": "#e0c0b5",
+                        "surface-container": "#f0eee9",
+                        "inverse-on-surface": "#f2f1ec",
+                        "primary-container": "#f26b38",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-background": "#1b1c19",
+                        "on-primary-container": "#561700",
+                        "on-tertiary-container": "#2c2d31",
+                        "primary": "#a93702",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-surface-variant": "#58423a",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#725b00",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dbdad5",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-container": "#949499",
+                        "ink-black": "#1C1C1E",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "surface-container-low": "#f5f3ee",
+                        "paper-white": "#FFFFFF",
+                        "error-container": "#ffdad6",
+                        "protein-teal": "#2D6A4F",
+                        "tertiary-fixed": "#e3e2e7",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error-container": "#93000a",
+                        "outline": "#8c7168",
+                        "inverse-surface": "#30312e",
+                        "surface-variant": "#e4e2dd",
+                        "secondary-fixed": "#ffe087",
+                        "on-error": "#ffffff",
+                        "coach-orange": "#F26B38",
+                        "on-tertiary-fixed": "#1a1b1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "gutter-card": "1rem"
+                    },
+                    "fontFamily": {
+                        "title-md": ["Hanken Grotesk", "sans-serif"],
+                        "headline-lg": ["Hanken Grotesk", "sans-serif"],
+                        "label-caps": ["Inter", "sans-serif"],
+                        "headline-xl": ["Hanken Grotesk", "sans-serif"],
+                        "body-sm": ["Hanken Grotesk", "sans-serif"],
+                        "headline-lg-mobile": ["Hanken Grotesk", "sans-serif"],
+                        "numeric-display": ["Hanken Grotesk", "sans-serif"],
+                        "body-lg": ["Hanken Grotesk", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "title-md": ["20px", { "lineHeight": "25px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.04em", "fontWeight": "800" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&family=Inter:wght@600&display=swap');
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center justify-center p-margin-main relative overflow-hidden font-body-lg">
+<!-- Ambient Background Glows for Depth -->
+<div class="absolute top-[-15%] right-[-10%] w-96 h-96 bg-coach-orange/5 rounded-full blur-[80px] pointer-events-none"></div>
+<div class="absolute bottom-[-10%] left-[-15%] w-80 h-80 bg-warm-sun/10 rounded-full blur-[60px] pointer-events-none"></div>
+<!-- Main Content Area -->
+<main class="flex-1 w-full max-w-md flex flex-col justify-center items-center gap-stack-lg z-10 py-12">
+<!-- Hero Illustration / Icon -->
+<div class="w-32 h-32 bg-paper-white rounded-full flex items-center justify-center mb-stack-sm relative animate-float shadow-[0_12px_40px_rgba(242,107,56,0.12)] border border-surface-container-highest">
+<span class="material-symbols-outlined text-6xl text-coach-orange" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<!-- Notification Badge Dot -->
+<div class="absolute top-2 right-4 w-5 h-5 bg-coach-orange rounded-full border-4 border-paper-white shadow-sm"></div>
+</div>
+<!-- Typography Header -->
+<div class="text-center space-y-stack-sm w-full px-4">
+<h1 class="font-headline-xl text-headline-xl text-on-surface">Stay on Target</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant opacity-90">
+                Allow Nutriscope AI to act as your supportive coach, keeping your nutrition journey consistent.
+            </p>
+</div>
+<!-- Glassmorphism-inspired Bento List -->
+<div class="w-full bg-paper-white/80 backdrop-blur-md rounded-2xl p-5 shadow-[0_4px_24px_rgba(0,0,0,0.02)] border border-surface-container-high flex flex-col gap-5 mt-stack-sm">
+<!-- List Item 1 -->
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-coach-orange">schedule</span>
+</div>
+<div class="pt-1">
+<h3 class="font-title-md text-title-md text-on-surface">Timely Reminders</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">Never forget a meal log. We'll gently remind you when it's time to track your progress.</p>
+</div>
+</div>
+<!-- Subtle Divider -->
+<div class="h-px w-full bg-surface-container-highest opacity-50"></div>
+<!-- List Item 2 -->
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-coach-orange">psychology</span>
+</div>
+<div class="pt-1">
+<h3 class="font-title-md text-title-md text-on-surface">Coaching Insights</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">Gentle nudges and personalized insights exactly when you need them to stay motivated.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Pinned Action Area -->
+<div class="w-full max-w-md mt-auto pt-stack-md pb-stack-md flex flex-col gap-stack-sm z-10">
+<!-- Primary Button -->
+<button class="w-full h-14 rounded-xl bg-coach-orange text-paper-white font-title-md text-title-md shadow-[0_8px_20px_rgba(242,107,56,0.25)] hover:bg-surface-tint active:scale-[0.98] transition-all duration-200 flex items-center justify-center">
+            Enable Notifications
+        </button>
+<!-- Secondary / Ghost Button -->
+<button class="w-full h-14 rounded-xl bg-transparent text-warm-sun font-title-md text-title-md hover:bg-surface-container-low active:scale-[0.98] transition-all duration-200 flex items-center justify-center">
+            Maybe Later
+        </button>
+</div>
+</body></html>

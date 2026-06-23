@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reset Password - NutriScope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#f0eee9",
+                      "secondary-fixed-dim": "#ebc23e",
+                      "primary-fixed": "#ffdbcf",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "primary-container": "#f26b38",
+                      "outline-variant": "#e0c0b5",
+                      "warm-sun": "#FFD54F",
+                      "on-secondary-fixed": "#241a00",
+                      "on-error": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#1a1b1f",
+                      "surface-variant": "#e4e2dd",
+                      "inverse-primary": "#ffb59c",
+                      "on-background": "#1b1c19",
+                      "paper-white": "#FFFFFF",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e4e2dd",
+                      "inverse-surface": "#30312e",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#dbdad5",
+                      "tertiary": "#5d5e63",
+                      "on-tertiary-container": "#2c2d31",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-surface": "#1b1c19",
+                      "secondary": "#735c00",
+                      "secondary-container": "#fdd34d",
+                      "surface-bright": "#fbf9f4",
+                      "protein-teal": "#2D6A4F",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#f2f1ec",
+                      "on-primary-fixed-variant": "#822800",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "primary-fixed-dim": "#ffb59c",
+                      "surface": "#fbf9f4",
+                      "tertiary-fixed": "#e3e2e7",
+                      "on-primary-container": "#561700",
+                      "ink-black": "#1C1C1E",
+                      "coach-orange": "#F26B38",
+                      "surface-container-low": "#f5f3ee",
+                      "on-primary-fixed": "#380c00",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "surface-tint": "#a93702",
+                      "tertiary-container": "#949499",
+                      "on-surface-variant": "#58423a",
+                      "outline": "#8c7168",
+                      "primary": "#a93702",
+                      "background": "#fbf9f4",
+                      "secondary-fixed": "#ffe087",
+                      "on-secondary-container": "#725b00",
+                      "surface-container-high": "#eae8e3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-lg": "1.5rem",
+                      "stack-md": "1rem",
+                      "margin-main": "1.25rem",
+                      "gutter-card": "1rem",
+                      "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "numeric-display": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-xl": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "title-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "15px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "numeric-display": [
+                              "48px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "17px",
+                              {
+                                      "lineHeight": "22px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-xl": [
+                              "34px",
+                              {
+                                      "lineHeight": "41px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "title-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "25px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px 0 rgba(242, 107, 56, 0.05);
+        }
+        
+        /* Smooth input focus transition */
+        input:focus + .icon-container .material-symbols-outlined {
+            color: #F26B38;
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-container-lowest min-h-screen font-body-lg text-on-surface flex flex-col antialiased selection:bg-coach-orange selection:text-white relative overflow-hidden">
+<!-- Decorative Background Elements -->
+<div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-warm-sun/10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-coach-orange/5 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Note: TopAppBar and BottomNavBar are suppressed as this is a linear/transactional screen -->
+<main class="flex-grow flex items-center justify-center p-margin-main z-10 w-full max-w-md mx-auto">
+<div class="w-full">
+<!-- Header Section -->
+<div class="text-center mb-stack-lg animate-[fadeInDown_0.5s_ease-out]">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-surface-container-low mb-stack-md text-coach-orange shadow-[0_4px_16px_0_rgba(242,107,56,0.15)]">
+<span class="material-symbols-outlined text-headline-xl" style="font-variation-settings: 'FILL' 1;">lock_reset</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface mb-stack-sm">Reset Password</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Enter your email address to receive a secure link to reset your password.
+                </p>
+</div>
+<!-- Form Card -->
+<div class="glass-card rounded-[24px] p-6 mb-stack-lg border border-surface-container animate-[fadeInUp_0.5s_ease-out_0.1s_both]">
+<form class="space-y-stack-md" onsubmit="event.preventDefault(); document.getElementById('success-state').classList.remove('hidden'); document.getElementById('form-state').classList.add('hidden');">
+<div class="space-y-stack-md" id="form-state">
+<!-- Email Input Group -->
+<div class="relative group">
+<label class="sr-only" for="email">Email Address</label>
+<div class="relative flex items-center">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none icon-container transition-colors duration-200">
+<span class="material-symbols-outlined text-on-surface-variant transition-colors duration-200">mail</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-surface-container hover:bg-surface-container-high focus:bg-surface-container-lowest border-0 rounded-xl font-body-lg text-body-lg text-on-surface placeholder:text-on-surface-variant focus:ring-2 focus:ring-coach-orange transition-all duration-200 ease-in-out shadow-sm" id="email" name="email" placeholder="your@email.com" required="" type="email"/>
+</div>
+</div>
+<!-- Action Button -->
+<button class="w-full flex items-center justify-center py-4 px-6 rounded-xl bg-coach-orange text-white font-title-md text-title-md shadow-[0_4px_14px_0_rgba(242,107,56,0.39)] hover:shadow-[0_6px_20px_rgba(242,107,56,0.23)] hover:bg-primary active:scale-[0.98] transition-all duration-200 group" type="submit">
+<span>Send Reset Link</span>
+<span class="material-symbols-outlined ml-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">arrow_forward</span>
+</button>
+</div>
+<!-- Success State (Hidden by default) -->
+<div class="hidden flex-col items-center justify-center text-center py-4 space-y-stack-md animate-[fadeIn_0.3s_ease-out]" id="success-state">
+<div class="w-12 h-12 rounded-full bg-protein-teal/10 flex items-center justify-center text-protein-teal mb-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface">Check your inbox</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            We've sent recovery instructions to your email.
+                        </p>
+</div>
+</form>
+</div>
+<!-- Footer Links -->
+<div class="text-center animate-[fadeIn_0.5s_ease-out_0.3s_both]">
+<a class="inline-flex items-center text-coach-orange hover:text-primary font-body-lg text-body-lg transition-colors group" href="#">
+<span class="material-symbols-outlined mr-2 text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Back to Sign In
+                </a>
+</div>
+</div>
+</main>
+<script>
+        // Optional: Add simple subtle interaction for the input field to make it feel more "Coach-like" and responsive
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('email');
+            
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.classList.add('scale-[1.02]');
+            });
+            
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.classList.remove('scale-[1.02]');
+            });
+        });
+    </script>
+</body></html>

@@ -17,7 +17,10 @@ struct SignInView: View {
     @State private var passwordVisible = false
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            BoundedScrollView {
 
             VStack(spacing: 32) {
                 Button(action: onBack) {
@@ -122,12 +125,12 @@ struct SignInView: View {
                 }
                 .padding(20)
                 .background(AppTheme.surface)
-                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
                 .overlay(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .strokeBorder(AppTheme.outlineVariant, lineWidth: 1)
+                    RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous)
+                        .strokeBorder(AppTheme.glassBorder, lineWidth: 1)
                 )
-                .shadow(color: AppTheme.coachOrange.opacity(0.08), radius: 12, y: 4)
+                .shadow(color: AppTheme.coachOrange.opacity(0.08), radius: 20, y: 4)
 
                 HStack(spacing: 4) {
                     Text("Don't have an account?")
@@ -151,7 +154,8 @@ struct SignInView: View {
                     .padding(.bottom, 24)
             }
             .padding(.horizontal, AppTheme.marginMain)
-        
+
+            }
         }
     }
 }

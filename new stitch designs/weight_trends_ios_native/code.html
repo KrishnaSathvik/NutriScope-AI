@@ -1,0 +1,297 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Weight Tracking</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "surface-container-high": "#ece7e7",
+                        "surface": "#fcf9f8",
+                        "primary-container": "#a93702",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#b7bcfd",
+                        "tertiary-fixed": "#99f895",
+                        "primary-fixed": "#ffdbcf",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#006e1d",
+                        "outline-variant": "#e0c0b5",
+                        "on-surface": "#1c1b1b",
+                        "surface-variant": "#e5e2e1",
+                        "on-background": "#1c1b1b",
+                        "surface-container": "#f1edec",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "on-tertiary-container": "#8fee8c",
+                        "on-primary-fixed": "#380c00",
+                        "surface-tint": "#a93702",
+                        "tertiary": "#005314",
+                        "secondary-fixed": "#dfe0ff",
+                        "secondary": "#545a94",
+                        "surface-container-highest": "#e6e1e1",
+                        "error-container": "#ffdad6",
+                        "outline": "#8c7168",
+                        "on-primary-container": "#ffcdbd",
+                        "surface-container-low": "#f7f2f2",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "background": "#fdf8f8",
+                        "primary": "#812700",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "error": "#ba1a1a",
+                        "gauge-track": "#eae7e7",
+                        "on-secondary": "#ffffff",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "on-secondary-fixed": "#0e144d",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-bright": "#fdf8f8",
+                        "on-tertiary-fixed": "#002204",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#444a83",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "inverse-primary": "#ffb59c",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-dim": "#ddd9d8",
+                        "on-surface-variant": "#58423a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .glass-card {
+            background-color: theme('colors.glass-bg');
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid theme('colors.glass-border');
+            box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+        }
+        
+        .gradient-radial {
+            background: radial-gradient(circle at top right, rgba(255, 219, 207, 0.4), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(223, 224, 255, 0.4), transparent 50%);
+        }
+        
+        /* Chart specific styles */
+        .chart-line {
+            fill: none;
+            stroke: theme('colors.primary-container');
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .chart-area {
+            fill: url(#chartGradient);
+        }
+        .chart-point {
+            fill: theme('colors.surface');
+            stroke: theme('colors.primary-container');
+            stroke-width: 2;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative flex flex-col font-body-md">
+<!-- Ambient Background -->
+<div class="fixed inset-0 gradient-radial z-0 pointer-events-none"></div>
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full flex justify-between items-center px-margin-mobile h-16 z-50 bg-surface text-primary border-b border-surface-container-highest transition-colors duration-200 active:opacity-70 font-headline-md text-headline-md">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-bold text-primary">Weight</h1>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="flex-1 relative z-10 px-margin-mobile pb-xl pt-md flex flex-col gap-md max-w-2xl mx-auto w-full">
+<!-- Summary Cards Row -->
+<div class="grid grid-cols-2 gap-sm">
+<!-- Current Weight -->
+<div class="glass-card rounded-xl p-md flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-sm">CURRENT</span>
+<div class="flex items-baseline gap-xs">
+<span class="font-display-lg-mobile text-display-lg-mobile text-on-surface">164.5</span>
+<span class="font-body-md text-body-md text-on-surface-variant">lbs</span>
+</div>
+<div class="flex items-center gap-xs mt-sm text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_down" data-weight="fill">trending_down</span>
+<span class="font-caption text-caption">-1.2 lbs this week</span>
+</div>
+</div>
+<!-- Goal Progress -->
+<div class="glass-card rounded-xl p-md flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant mb-sm">GOAL: 155 LBS</span>
+<div class="w-full bg-gauge-track h-2 rounded-full overflow-hidden mb-sm mt-auto">
+<div class="bg-primary-container h-full rounded-full" style="width: 65%;"></div>
+</div>
+<div class="flex justify-between items-center mt-sm">
+<span class="font-caption text-caption text-on-surface-variant">9.5 lbs to go</span>
+<span class="font-label-bold text-label-bold text-primary-container">65%</span>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="glass-card rounded-xl p-md mt-sm">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface">Trends</h2>
+<div class="flex gap-xs bg-surface-container rounded-full p-1">
+<button class="px-3 py-1 rounded-full font-label-caps text-label-caps text-on-surface-variant">1W</button>
+<button class="px-3 py-1 rounded-full font-label-caps text-label-caps bg-surface text-on-surface shadow-sm">1M</button>
+<button class="px-3 py-1 rounded-full font-label-caps text-label-caps text-on-surface-variant">3M</button>
+<button class="px-3 py-1 rounded-full font-label-caps text-label-caps text-on-surface-variant">1Y</button>
+</div>
+</div>
+<div class="relative w-full h-48 mt-md">
+<svg class="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 400 200">
+<defs>
+<linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="theme('colors.primary-container')" stop-opacity="0.2"></stop>
+<stop offset="100%" stop-color="theme('colors.primary-container')" stop-opacity="0"></stop>
+</linearGradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="theme('colors.surface-variant')" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="400" y1="50" y2="50"></line>
+<line stroke="theme('colors.surface-variant')" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="400" y1="100" y2="100"></line>
+<line stroke="theme('colors.surface-variant')" stroke-dasharray="4 4" stroke-width="1" x1="0" x2="400" y1="150" y2="150"></line>
+<!-- Data Area -->
+<path class="chart-area" d="M0,120 L50,100 L100,110 L150,80 L200,90 L250,60 L300,70 L350,40 L400,50 L400,200 L0,200 Z"></path>
+<!-- Data Line -->
+<path class="chart-line" d="M0,120 L50,100 L100,110 L150,80 L200,90 L250,60 L300,70 L350,40 L400,50"></path>
+<!-- Data Points -->
+<circle class="chart-point" cx="50" cy="100" r="4"></circle>
+<circle class="chart-point" cx="150" cy="80" r="4"></circle>
+<circle class="chart-point" cx="250" cy="60" r="4"></circle>
+<circle class="chart-point" cx="350" cy="40" r="4"></circle>
+<circle class="chart-point" cx="400" cy="50" r="6" stroke-width="3"></circle>
+</svg>
+<!-- Y-Axis Labels -->
+<div class="absolute right-0 top-0 h-full flex flex-col justify-between py-2 pointer-events-none">
+<span class="font-caption text-caption text-on-surface-variant bg-surface px-1">170</span>
+<span class="font-caption text-caption text-on-surface-variant bg-surface px-1">165</span>
+<span class="font-caption text-caption text-on-surface-variant bg-surface px-1">160</span>
+</div>
+</div>
+<!-- X-Axis Labels -->
+<div class="flex justify-between mt-sm px-2 text-on-surface-variant font-caption text-caption">
+<span>Oct 1</span>
+<span>Oct 8</span>
+<span>Oct 15</span>
+<span>Oct 22</span>
+<span>Today</span>
+</div>
+</div>
+<!-- Recent Logs List -->
+<div class="mt-md">
+<h3 class="font-label-bold text-label-bold text-on-surface-variant mb-sm px-sm">RECENT LOGS</h3>
+<div class="flex flex-col gap-xs">
+<!-- Log Item 1 -->
+<div class="glass-card rounded-lg p-sm flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined" data-icon="monitor_weight">monitor_weight</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">164.5 lbs</p>
+<p class="font-caption text-caption text-on-surface-variant">Today, 8:00 AM</p>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<!-- Log Item 2 -->
+<div class="glass-card rounded-lg p-sm flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="monitor_weight">monitor_weight</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">165.2 lbs</p>
+<p class="font-caption text-caption text-on-surface-variant">Yesterday, 7:45 AM</p>
+</div>
+</div>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-surface text-primary border-t border-surface-container-highest rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-bold text-label-bold">Today</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="restaurant">restaurant</span>
+<span class="font-label-bold text-label-bold">Meals</span>
+</a>
+<div class="relative -top-6">
+<button class="w-16 h-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center shadow-lg active:scale-95 transition-transform border-4 border-surface">
+<span class="material-symbols-outlined text-3xl" data-icon="qr_code_scanner">qr_code_scanner</span>
+</button>
+</div>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="smart_toy">smart_toy</span>
+<span class="font-label-bold text-label-bold">Coach</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all duration-200 active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-bold text-label-bold">Profile</span>
+</a>
+</nav>
+</body></html>

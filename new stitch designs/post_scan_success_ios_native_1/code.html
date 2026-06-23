@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Post-Scan Success</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "warm-sun": "#FFD54F",
+                      "inverse-on-surface": "#f2f1ec",
+                      "on-secondary-container": "#725b00",
+                      "inverse-primary": "#ffb59c",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#574500",
+                      "surface-container-high": "#eae8e3",
+                      "surface-bright": "#fbf9f4",
+                      "tertiary-fixed": "#e3e2e7",
+                      "primary": "#a93702",
+                      "paper-white": "#FFFFFF",
+                      "primary-container": "#f26b38",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#949499",
+                      "on-tertiary-fixed": "#1a1b1f",
+                      "on-primary-fixed": "#380c00",
+                      "secondary": "#735c00",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed": "#ffdbcf",
+                      "surface-variant": "#e4e2dd",
+                      "surface-container-highest": "#e4e2dd",
+                      "on-tertiary-container": "#2c2d31",
+                      "background": "#fbf9f4",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "secondary-fixed-dim": "#ebc23e",
+                      "on-surface": "#1b1c19",
+                      "surface-dim": "#dbdad5",
+                      "tertiary": "#5d5e63",
+                      "on-error-container": "#93000a",
+                      "error-container": "#ffdad6",
+                      "on-background": "#1b1c19",
+                      "secondary-fixed": "#ffe087",
+                      "on-primary": "#ffffff",
+                      "protein-teal": "#2D6A4F",
+                      "on-error": "#ffffff",
+                      "surface": "#fbf9f4",
+                      "surface-tint": "#a93702",
+                      "secondary-container": "#fdd34d",
+                      "primary-fixed-dim": "#ffb59c",
+                      "ink-black": "#1C1C1E",
+                      "outline-variant": "#e0c0b5",
+                      "on-secondary-fixed": "#241a00",
+                      "outline": "#8c7168",
+                      "on-primary-fixed-variant": "#822800",
+                      "inverse-surface": "#30312e",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "on-primary-container": "#561700",
+                      "on-surface-variant": "#58423a",
+                      "coach-orange": "#F26B38",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#f0eee9",
+                      "surface-container-low": "#f5f3ee"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "1rem",
+                      "gutter-card": "1rem",
+                      "stack-lg": "1.5rem",
+                      "margin-main": "1.25rem",
+                      "stack-sm": "0.5rem"
+              },
+              "fontFamily": {
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "headline-xl": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "numeric-display": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "title-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-xl": [
+                              "34px",
+                              {
+                                      "lineHeight": "41px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-sm": [
+                              "15px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "numeric-display": [
+                              "48px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "30px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "17px",
+                              {
+                                      "lineHeight": "22px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "25px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        @keyframes float-up {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes scale-in {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .animate-float-up { animation: float-up 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .animate-scale-in { animation: scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        
+        /* Subtle particle animation */
+        @keyframes particle-drift {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.8; }
+            100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
+        }
+        .particle {
+            position: absolute;
+            animation: particle-drift 2s ease-out forwards;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Confetti Container -->
+<div class="absolute inset-0 pointer-events-none z-0" id="confetti-container"></div>
+<main class="w-full max-w-md px-margin-main flex flex-col items-center z-10 space-y-stack-lg">
+<!-- Header / Success Icon -->
+<div class="flex flex-col items-center text-center space-y-stack-sm animate-scale-in">
+<div class="w-24 h-24 rounded-full bg-surface-container-highest/30 flex items-center justify-center mb-4 relative shadow-[0_0_30px_rgba(242,107,56,0.15)]">
+<span class="material-symbols-outlined text-coach-orange font-headline-xl text-6xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-ink-black">Log Saved!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Great job fueling up.</p>
+</div>
+<!-- Macro Summary Card -->
+<div class="w-full bg-paper-white rounded-xl p-4 shadow-[0_8px_20px_-4px_rgba(242,107,56,0.05)] border border-surface-container-high animate-float-up" style="animation-delay: 0.1s; opacity: 0;">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center space-x-2">
+<div class="w-10 h-10 rounded-lg bg-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container">lunch_dining</span>
+</div>
+<div>
+<h2 class="font-title-md text-title-md text-ink-black">Grilled Chicken Salad</h2>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Lunch</span>
+</div>
+</div>
+</div>
+<!-- Macros Grid -->
+<div class="grid grid-cols-3 gap-2 mt-4 pt-4 border-t border-surface-container">
+<!-- Protein -->
+<div class="flex flex-col items-center bg-surface rounded-lg p-2">
+<span class="font-numeric-display text-2xl text-protein-teal">42<span class="text-sm font-body-sm">g</span></span>
+<span class="font-label-caps text-[10px] text-tertiary-container uppercase mt-1">Protein</span>
+</div>
+<!-- Carbs -->
+<div class="flex flex-col items-center bg-surface rounded-lg p-2">
+<span class="font-numeric-display text-2xl text-ink-black">15<span class="text-sm font-body-sm">g</span></span>
+<span class="font-label-caps text-[10px] text-tertiary-container uppercase mt-1">Carbs</span>
+</div>
+<!-- Fat -->
+<div class="flex flex-col items-center bg-surface rounded-lg p-2">
+<span class="font-numeric-display text-2xl text-ink-black">12<span class="text-sm font-body-sm">g</span></span>
+<span class="font-label-caps text-[10px] text-tertiary-container uppercase mt-1">Fat</span>
+</div>
+</div>
+<div class="mt-4 flex justify-between items-center text-sm font-body-sm text-on-surface-variant">
+<span>Total Calories</span>
+<span class="font-title-md text-ink-black">340 kcal</span>
+</div>
+</div>
+<!-- Tags / Chips -->
+<div class="flex flex-wrap justify-center gap-2 animate-float-up" style="animation-delay: 0.2s; opacity: 0;">
+<span class="px-3 py-1 bg-protein-teal/10 text-protein-teal rounded-full font-label-caps text-[10px] uppercase tracking-wider">High Protein</span>
+<span class="px-3 py-1 bg-tertiary-container/10 text-tertiary-container rounded-full font-label-caps text-[10px] uppercase tracking-wider">Low Carb</span>
+</div>
+<!-- Actions -->
+<div class="w-full flex flex-col space-y-3 mt-8 animate-float-up" style="animation-delay: 0.3s; opacity: 0;">
+<button class="w-full bg-coach-orange text-paper-white font-title-md text-title-md h-14 rounded-xl shadow-[0_4px_12px_rgba(242,107,56,0.2)] active:scale-[0.98] transition-transform">
+                View Today's Tracker
+            </button>
+<button class="w-full bg-transparent text-coach-orange border-2 border-coach-orange font-title-md text-title-md h-14 rounded-xl active:scale-[0.98] transition-transform">
+                Log Another
+            </button>
+</div>
+<button class="font-body-sm text-warm-sun mt-2 active:opacity-70 transition-opacity animate-float-up" style="animation-delay: 0.4s; opacity: 0;">
+            Dismiss
+        </button>
+</main>
+<script>
+        // Simple Particle System for subtle reward effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#F26B38', '#FFD54F', '#2D6A4F', '#ffb59c'];
+            const numParticles = 20;
+
+            for (let i = 0; i < numParticles; i++) {
+                createParticle();
+            }
+
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.classList.add('particle', 'rounded-full');
+                
+                // Randomize properties
+                const size = Math.random() * 6 + 4;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Center origin slightly above middle
+                const startX = window.innerWidth / 2;
+                const startY = window.innerHeight / 2 - 100;
+                
+                // Destination spread
+                const tx = (Math.random() - 0.5) * 200 + 'px';
+                const ty = (Math.random() - 0.5) * 200 - 50 + 'px';
+                const rot = Math.random() * 360 + 'deg';
+                
+                // Styling
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.backgroundColor = color;
+                particle.style.left = `${startX}px`;
+                particle.style.top = `${startY}px`;
+                
+                // CSS Variables for animation
+                particle.style.setProperty('--tx', tx);
+                particle.style.setProperty('--ty', ty);
+                particle.style.setProperty('--rot', rot);
+                
+                // Delay for organic feel
+                particle.style.animationDelay = `${Math.random() * 0.3}s`;
+                
+                container.appendChild(particle);
+                
+                // Cleanup
+                setTimeout(() => {
+                    particle.remove();
+                }, 2500);
+            }
+        });
+    </script>
+</body></html>

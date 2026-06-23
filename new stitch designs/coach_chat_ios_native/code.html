@@ -1,0 +1,236 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Nutriscope AI - Coach Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "surface-container-high": "#ece7e7",
+                        "surface": "#fcf9f8",
+                        "primary-container": "#a93702",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#b7bcfd",
+                        "tertiary-fixed": "#99f895",
+                        "primary-fixed": "#ffdbcf",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#006e1d",
+                        "outline-variant": "#e0c0b5",
+                        "on-surface": "#1c1b1b",
+                        "surface-variant": "#e5e2e1",
+                        "on-background": "#1c1b1b",
+                        "surface-container": "#f1edec",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "on-tertiary-container": "#8fee8c",
+                        "on-primary-fixed": "#380c00",
+                        "surface-tint": "#a93702",
+                        "tertiary": "#005314",
+                        "secondary-fixed": "#dfe0ff",
+                        "secondary": "#545a94",
+                        "surface-container-highest": "#e6e1e1",
+                        "error-container": "#ffdad6",
+                        "outline": "#8c7168",
+                        "on-primary-container": "#ffcdbd",
+                        "surface-container-low": "#f7f2f2",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "background": "#fdf8f8",
+                        "primary": "#812700",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "error": "#ba1a1a",
+                        "gauge-track": "#eae7e7",
+                        "on-secondary": "#ffffff",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "on-secondary-fixed": "#0e144d",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-bright": "#fdf8f8",
+                        "on-tertiary-fixed": "#002204",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#444a83",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "inverse-primary": "#ffb59c",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-dim": "#ddd9d8",
+                        "on-surface-variant": "#58423a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            background-image: radial-gradient(circle at top right, rgba(169, 55, 2, 0.05), transparent 400px),
+                              radial-gradient(circle at bottom left, rgba(84, 90, 148, 0.05), transparent 400px);
+            background-attachment: fixed;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background-color: theme('colors.glass-bg');
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid theme('colors.glass-border');
+        }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 20px); }
+        .pt-safe { padding-top: env(safe-area-inset-top, 44px); }
+        
+        /* Hide scrollbar for clean chat view */
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="font-body-md text-on-surface h-screen flex flex-col overflow-hidden antialiased md:hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full flex justify-between items-center px-margin-mobile h-16 z-50 bg-surface border-b border-surface-container-highest transition-colors duration-200 active:opacity-70 pt-safe">
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Coach</h1>
+<button class="text-on-surface-variant hover:bg-surface-container-low p-2 rounded-full transition-colors flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</header>
+<!-- Chat Canvas -->
+<main class="flex-1 overflow-y-auto px-margin-mobile py-md flex flex-col gap-6 w-full max-w-2xl mx-auto">
+<!-- Date Marker -->
+<div class="flex justify-center w-full">
+<span class="font-caption text-caption text-on-surface-variant bg-surface-container-low px-4 py-1 rounded-full">Today, 2:30 PM</span>
+</div>
+<!-- AI Message Bubble -->
+<div class="flex items-end gap-3 self-start max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="glass-card px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm relative">
+<p class="font-body-md text-on-surface">Hello! How are you feeling today? I noticed you haven't logged lunch yet.</p>
+</div>
+</div>
+<!-- User Message Bubble -->
+<div class="flex items-end gap-3 self-end max-w-[85%] flex-row-reverse">
+<div class="bg-primary text-on-primary px-4 py-3 rounded-2xl rounded-br-sm shadow-[0_4px_12px_rgba(169,55,2,0.2)]">
+<p class="font-body-md text-on-primary">I'm good! I just had a chicken salad for lunch.</p>
+</div>
+</div>
+<!-- AI Message Bubble (Proactive Advice) -->
+<div class="flex items-end gap-3 self-start max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-container text-[20px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="glass-card px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm">
+<p class="font-body-md text-on-surface mb-2">Great choice! I've logged a standard chicken salad for you.</p>
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant mb-2">
+<p class="font-label-bold text-label-bold text-primary mb-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">insights</span>
+                        Proactive Advice
+                    </p>
+<p class="font-body-md text-on-surface-variant">You're currently <strong class="text-on-surface">20g short</strong> of your protein goal for today. Try adding a Greek yogurt snack this afternoon to close the gap.</p>
+</div>
+</div>
+</div>
+<!-- Typing Indicator (Simulated) -->
+<div class="flex items-end gap-3 self-start max-w-[85%] opacity-50">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+</div>
+<div class="glass-card px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm flex gap-1 items-center h-[48px]">
+<div class="w-2 h-2 bg-on-surface-variant rounded-full animate-pulse"></div>
+<div class="w-2 h-2 bg-on-surface-variant rounded-full animate-pulse delay-75"></div>
+<div class="w-2 h-2 bg-on-surface-variant rounded-full animate-pulse delay-150"></div>
+</div>
+</div>
+<!-- Spacer to ensure input doesn't cover content -->
+<div class="h-32"></div>
+</main>
+<!-- Input Area (Fixed above Bottom Nav) -->
+<div class="fixed bottom-20 left-0 w-full px-margin-mobile pb-sm z-40 bg-gradient-to-t from-surface via-surface to-transparent pt-8">
+<div class="max-w-2xl mx-auto flex items-center gap-2">
+<!-- Camera Button -->
+<button class="w-12 h-12 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center shrink-0 shadow-sm transition-transform active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">photo_camera</span>
+</button>
+<!-- Text Input -->
+<div class="flex-1 glass-card rounded-full flex items-center px-4 h-12 shadow-sm">
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface font-body-md placeholder-on-surface-variant p-0 m-0" placeholder="Ask your coach anything..." type="text">
+</div>
+<!-- Mic/Send Button -->
+<button class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-[0_4px_12px_rgba(169,55,2,0.25)] transition-transform active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-safe h-20 bg-surface border-t border-surface-container-highest rounded-t-xl transition-all duration-200 md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high px-4 py-1 transition-all duration-200 active:scale-95 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+<span class="font-label-caps text-label-caps mt-1">Today</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high px-4 py-1 transition-all duration-200 active:scale-95 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">restaurant</span>
+<span class="font-label-caps text-label-caps mt-1">Meals</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high px-4 py-1 transition-all duration-200 active:scale-95 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">qr_code_scanner</span>
+<span class="font-label-caps text-label-caps mt-1">Scan</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all duration-200 active:scale-95 shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<span class="font-label-caps text-label-caps mt-1">Coach</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high px-4 py-1 transition-all duration-200 active:scale-95 rounded-lg">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</button>
+</nav>
+<!-- Desktop Fallback Message (Since this is requested as native iOS) -->
+<div class="hidden md:flex flex-col items-center justify-center h-full w-full bg-surface text-center px-4">
+<span class="material-symbols-outlined text-6xl text-primary-container mb-4" style="font-variation-settings: 'FILL' 1;">smartphone</span>
+<h2 class="font-display-lg text-display-lg text-primary mb-2">Mobile Experience</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md">The Coach Chat interface is optimized for mobile devices. Please resize your browser or view on a mobile device.</p>
+</div>
+</body></html>

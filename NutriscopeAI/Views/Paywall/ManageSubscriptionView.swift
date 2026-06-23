@@ -18,7 +18,10 @@ struct ManageSubscriptionView: View {
     ]
 
     var body: some View {
-        BoundedScrollView {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            BoundedScrollView {
 
             Group {
                 if let cancelStep {
@@ -38,9 +41,8 @@ struct ManageSubscriptionView: View {
             .animation(.spring(response: 0.45, dampingFraction: 0.86), value: cancelStep)
             .padding(AppTheme.marginMain)
             .padding(.bottom, 32)
-        
+            }
         }
-        .background(AppBackground())
         .navigationTitle(cancelStep == nil ? "Manage subscription" : "Cancel Pro")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -129,7 +131,7 @@ struct ManageSubscriptionView: View {
                 .clipShape(Circle())
 
             Text("Cancel Pro Plan?")
-                .font(AppTypography.title2.weight(.bold))
+                .font(AppTypography.headlineLG)
 
             Text("You'll lose unlimited scans, advanced insights, and personalized coaching when your current period ends.")
                 .font(AppTypography.body)
@@ -141,7 +143,7 @@ struct ManageSubscriptionView: View {
     }
 
     private var feedbackSection: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 12) {
                 Text("Why are you leaving?")
                     .font(AppTypography.headline)
@@ -168,7 +170,7 @@ struct ManageSubscriptionView: View {
 
     private var retentionSection: some View {
         VStack(spacing: 20) {
-            SurfaceCard {
+            GlassCard {
                 VStack(spacing: 12) {
                     Image(systemName: "gift.fill")
                         .font(.title)

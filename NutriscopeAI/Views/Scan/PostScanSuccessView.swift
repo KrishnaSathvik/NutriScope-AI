@@ -13,7 +13,7 @@ struct PostScanSuccessView: View {
 
     var body: some View {
         ZStack {
-            AppTheme.background.ignoresSafeArea()
+            AppBackground(showsAmbientGlow: true)
             KineticConfettiView()
                 .allowsHitTesting(false)
 
@@ -58,7 +58,7 @@ struct PostScanSuccessView: View {
             .padding(.top, 24)
 
             Text("Log Saved!")
-                .font(AppTypography.largeTitle.weight(.bold))
+                .font(AppTypography.displayLGMobile)
                 .foregroundStyle(AppTheme.textPrimary)
             Text("Your meal has been added to today's tracker. Keep up the momentum!")
                 .font(AppTypography.body)
@@ -69,7 +69,7 @@ struct PostScanSuccessView: View {
     }
 
     private var summaryCard: some View {
-        SurfaceCard {
+        GlassCard {
             VStack(alignment: .leading, spacing: 14) {
                 HStack(spacing: 12) {
                     RoundedRectangle(cornerRadius: 10, style: .continuous)

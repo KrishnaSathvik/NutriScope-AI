@@ -13,7 +13,10 @@ struct SignUpView: View {
     var onAppleError: (String) -> Void
 
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack {
+            AppBackground(showsAmbientGlow: true)
+
+            VStack(spacing: 0) {
             StitchAuthTopBar(onBack: onBack)
 
             BoundedScrollView {
@@ -21,7 +24,7 @@ struct SignUpView: View {
                 VStack(alignment: .leading, spacing: 24) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Join the Movement")
-                            .font(.system(size: 34, weight: .heavy))
+                            .font(AppTypography.headlineLG)
                             .foregroundStyle(AppTheme.textPrimary)
                         Text("Start tracking your protein-first progress today.")
                             .font(AppTypography.body)
@@ -86,8 +89,9 @@ struct SignUpView: View {
                     .padding(.bottom, 32)
                 }
                 .padding(.horizontal, AppTheme.marginMain)
-            
-        }
+
+            }
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }

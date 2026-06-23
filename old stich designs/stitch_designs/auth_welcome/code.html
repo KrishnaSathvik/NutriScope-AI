@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a93702",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3c427b",
+                        "surface-variant": "#e5e2e1",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#005313",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eae7e7",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#561700",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-secondary-container": "#444a83",
+                        "on-error": "#ffffff",
+                        "background": "#fcf9f8",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-surface": "#313030",
+                        "inverse-primary": "#ffb59c",
+                        "outline": "#8c7168",
+                        "tertiary": "#006e1d",
+                        "surface-tint": "#a93702",
+                        "surface-container": "#f0eded",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "secondary-fixed": "#dfe0ff",
+                        "on-surface-variant": "#58423a",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface": "#fcf9f8",
+                        "on-primary-fixed": "#380c00",
+                        "tertiary-fixed-dim": "#7ddb7b",
+                        "on-background": "#1c1b1b",
+                        "tertiary-fixed": "#98f994",
+                        "tertiary-container": "#4aa74e",
+                        "secondary": "#545a94",
+                        "outline-variant": "#e0c0b5",
+                        "on-surface": "#1c1b1b",
+                        "surface-dim": "#dcd9d9",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#f26b38",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-tertiary-container": "#003509",
+                        "secondary-container": "#b7bcfe",
+                        "on-tertiary-fixed": "#002204",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-secondary-fixed": "#0e144d",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "margin-mobile": "16px",
+                        "md": "24px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "xl": "80px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background-color: #fcf9f8;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .gradient-overlay {
+            background: linear-gradient(180deg, rgba(252, 249, 248, 0.1) 0%, rgba(252, 249, 248, 0.95) 60%, rgba(252, 249, 248, 1) 100%);
+        }
+
+        .btn-hover:hover {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="relative overflow-hidden antialiased">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 h-[60vh] w-full">
+<img class="w-full h-full object-cover object-top" data-alt="A vibrant, high-resolution top-down shot of a beautifully plated, healthy meal featuring a grilled chicken breast, roasted vegetables, and quinoa on a pristine white background. The lighting is bright and modern, evoking a high-energy, premium culinary aesthetic." src="https://lh3.googleusercontent.com/aida/AP1WRLsHTTS8qBx9h9R0sYUFjDAVS_5zuYbxSWSAbFyEXhJnpNRTm6eoo6z4iKyunYk7sCEzloNFeAvcAykKg93JSk0RGqp9OOTe-cDE5WdkOtZEPhkoIDCzaUcLmW81BpbmuNoWOsMxWVUqu3ccfKrmlUnTmKjyScX6EkJ-h0IJG4CLuu5iS9zNtRXTuWLpFCE3_LIE8Mfq77Em7zwWd4Mrp2YhGCX4gopcr2lGWY6FT6ap1FjRN-u2"/>
+<div class="absolute inset-0 gradient-overlay"></div>
+</div>
+<!-- Content Area -->
+<main class="relative z-10 flex flex-col justify-end h-full px-margin-mobile md:px-margin-desktop pb-lg md:pb-xl w-full max-w-lg mx-auto md:max-w-xl">
+<!-- Header Text -->
+<div class="text-center mb-lg">
+<h1 class="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-on-surface mb-sm">
+                Track meals without obsessing.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm mx-auto">
+                Scan your food. See calories, protein, and what to eat next.
+            </p>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-md w-full mb-md">
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary font-label-bold text-label-bold py-[18px] rounded-full shadow-md hover:bg-primary-container hover:text-on-primary-container transition-all duration-200 btn-hover flex items-center justify-center gap-2">
+                Get Started
+                <span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Secondary Action -->
+<button class="w-full bg-transparent border-2 border-secondary text-secondary font-label-bold text-label-bold py-[16px] rounded-full hover:bg-surface-container transition-colors duration-200 btn-hover">
+                Sign In
+            </button>
+</div>
+<!-- Guest Link -->
+<div class="text-center mb-lg">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors inline-block pb-1 border-b border-transparent hover:border-primary" href="#">
+                Continue as Guest
+            </a>
+</div>
+<!-- Footnote -->
+<div class="text-center mt-auto">
+<p class="font-caption text-caption text-outline">
+                No shame. No perfect logging. Just better choices.
+            </p>
+</div>
+</main>
+</body></html>

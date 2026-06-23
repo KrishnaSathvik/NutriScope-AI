@@ -1,0 +1,152 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Kinetic Harvest - Camera Permission</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#313030",
+                        "on-primary-fixed": "#380c00",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e6e1e1",
+                        "gauge-track": "#eae7e7",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dfe0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#822800",
+                        "secondary": "#545a94",
+                        "background": "#fdf8f8",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "primary-container": "#a93702",
+                        "on-error": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "outline-variant": "#e0c0b5",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#a93702",
+                        "on-surface": "#1c1b1b",
+                        "secondary-container": "#b7bcfd",
+                        "on-surface-variant": "#58423a",
+                        "inverse-on-surface": "#f4f0ef",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-bright": "#fdf8f8",
+                        "on-secondary-fixed": "#0e144d",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "inverse-primary": "#ffb59c",
+                        "surface-dim": "#ddd9d8",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "tertiary": "#005314",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#ffcdbd",
+                        "surface-container-highest": "#e6e1e1",
+                        "tertiary-container": "#006e1d",
+                        "surface-container-low": "#f7f2f2",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#ffdbcf",
+                        "on-background": "#1c1b1b",
+                        "surface-container-high": "#ece7e7",
+                        "tertiary-fixed": "#99f895",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "primary": "#812700",
+                        "on-tertiary-container": "#8fee8c",
+                        "surface-container": "#f1edec",
+                        "on-secondary-container": "#444a83",
+                        "outline": "#8c7168"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "48px",
+                        "md": "24px",
+                        "margin-desktop": "40px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            /* Hybrid Bento-Box Grid / iOS App styling baseline */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low h-screen w-screen flex flex-col justify-center items-center overflow-hidden font-body-md text-on-surface">
+<!-- Permission Modal Container -->
+<main class="w-full max-w-[400px] px-margin-mobile flex flex-col items-center justify-center h-full relative z-10 text-center animate-[fadeIn_0.3s_ease-out]">
+<!-- Icon Graphic -->
+<div class="w-32 h-32 mb-8 rounded-full bg-primary-container/10 flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full bg-primary-container/20 animate-ping opacity-20"></div>
+<span class="material-symbols-outlined text-primary text-5xl z-10" style="font-size: 64px;">
+                photo_camera
+            </span>
+</div>
+<!-- Typography -->
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-4 w-full">
+            Enable Camera
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-sm px-4">
+            Kinetic Harvest uses your camera to scan meals instantly, providing precise nutritional data and AI-powered wellness insights without manual logging.
+        </p>
+<!-- Actions -->
+<div class="w-full flex flex-col gap-4 mt-auto mb-12 md:mb-0 md:mt-8">
+<button class="w-full py-4 px-6 rounded-full bg-primary text-on-primary font-label-bold text-label-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+                Allow Access
+            </button>
+<button class="w-full py-4 px-6 rounded-full bg-surface-variant/50 text-on-surface-variant font-label-bold text-label-bold hover:bg-surface-variant transition-colors duration-200">
+                Maybe Later
+            </button>
+</div>
+</main>
+<!-- Subtle Background Elements for 'Premium Wellness' aesthetic -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary-fixed blur-[100px] opacity-40 mix-blend-multiply"></div>
+<div class="absolute -bottom-[10%] -right-[10%] w-[60%] h-[60%] rounded-full bg-secondary-fixed blur-[120px] opacity-30 mix-blend-multiply"></div>
+</div>
+</body></html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Nutriscope AI - Grocery List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "surface-container-high": "#ece7e7",
+                        "surface": "#fcf9f8",
+                        "primary-container": "#a93702",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#b7bcfd",
+                        "tertiary-fixed": "#99f895",
+                        "primary-fixed": "#ffdbcf",
+                        "on-primary": "#ffffff",
+                        "tertiary-container": "#006e1d",
+                        "outline-variant": "#e0c0b5",
+                        "on-surface": "#1c1b1b",
+                        "surface-variant": "#e5e2e1",
+                        "on-background": "#1c1b1b",
+                        "surface-container": "#f1edec",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "on-tertiary-container": "#8fee8c",
+                        "on-primary-fixed": "#380c00",
+                        "surface-tint": "#a93702",
+                        "tertiary": "#005314",
+                        "secondary-fixed": "#dfe0ff",
+                        "secondary": "#545a94",
+                        "surface-container-highest": "#e6e1e1",
+                        "error-container": "#ffdad6",
+                        "outline": "#8c7168",
+                        "on-primary-container": "#ffcdbd",
+                        "surface-container-low": "#f7f2f2",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#313030",
+                        "background": "#fdf8f8",
+                        "primary": "#812700",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "error": "#ba1a1a",
+                        "gauge-track": "#eae7e7",
+                        "on-secondary": "#ffffff",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "on-secondary-fixed": "#0e144d",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-bright": "#fdf8f8",
+                        "on-tertiary-fixed": "#002204",
+                        "on-primary-fixed-variant": "#822800",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#444a83",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "inverse-primary": "#ffb59c",
+                        "inverse-on-surface": "#f4f0ef",
+                        "surface-dim": "#ddd9d8",
+                        "on-surface-variant": "#58423a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "24px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "margin-desktop": "40px",
+                        "sm": "12px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "lg": "48px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["10px", { "lineHeight": "12px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            background: radial-gradient(circle at 50% 0%, rgba(169, 55, 2, 0.05) 0%, rgba(253, 248, 248, 1) 40%);
+            background-color: #fdf8f8;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        .checkbox-custom:checked + div {
+            background-color: #a93702;
+            border-color: #a93702;
+        }
+        
+        .checkbox-custom:checked + div span {
+            opacity: 1;
+        }
+        
+        .item-checked .item-text {
+            color: #58423a;
+            text-decoration: line-through;
+        }
+        
+        .item-checked .protein-tag {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="sticky top-0 w-full flex justify-between items-center px-margin-mobile h-16 z-50 bg-surface dark:bg-surface-dim font-headline-md text-headline-md text-primary dark:text-primary-fixed border-b border-surface-container-highest dark:border-outline-variant">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:opacity-70 text-on-surface-variant dark:text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Nutriscope AI</span>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low dark:hover:bg-surface-container-high transition-colors duration-200 active:opacity-70 text-on-surface-variant dark:text-on-surface-variant">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">account_circle</span>
+</button>
+</header>
+<main class="px-margin-mobile pt-md max-w-3xl mx-auto">
+<!-- Page Header -->
+<div class="mb-lg">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-on-background mb-xs">Grocery List</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Your protein-first shopping guide.</p>
+</div>
+<!-- Protein Category -->
+<section class="mb-lg">
+<div class="flex items-center gap-sm mb-md px-xs">
+<div class="w-8 h-8 rounded-full bg-primary-container/10 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">set_meal</span>
+</div>
+<h2 class="font-headline-md text-headline-md">High Protein</h2>
+</div>
+<div class="glass-card rounded-[24px] p-2 space-y-1 shadow-sm">
+<label class="flex items-center gap-sm p-3 rounded-[16px] active:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="relative flex items-center">
+<input class="checkbox-custom absolute opacity-0 w-full h-full cursor-pointer z-10" onchange="toggleItem(this)" type="checkbox">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200 group-hover:border-primary-container">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity duration-200" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1 flex justify-between items-center item-content transition-all duration-200">
+<span class="font-body-lg text-body-lg item-text">Chicken Breast</span>
+<div class="protein-tag bg-primary-container/10 border border-primary-container/20 text-primary-container px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+                            31g P / 100g
+                        </div>
+</div>
+</label>
+<div class="h-[1px] bg-surface-container-highest mx-4"></div>
+<label class="flex items-center gap-sm p-3 rounded-[16px] active:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="relative flex items-center">
+<input class="checkbox-custom absolute opacity-0 w-full h-full cursor-pointer z-10" onchange="toggleItem(this)" type="checkbox">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200 group-hover:border-primary-container">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity duration-200" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1 flex justify-between items-center item-content transition-all duration-200">
+<span class="font-body-lg text-body-lg item-text">Greek Yogurt (0%)</span>
+<div class="protein-tag bg-primary-container/10 border border-primary-container/20 text-primary-container px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+                            10g P / 100g
+                        </div>
+</div>
+</label>
+<div class="h-[1px] bg-surface-container-highest mx-4"></div>
+<label class="flex items-center gap-sm p-3 rounded-[16px] active:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="relative flex items-center">
+<input class="checkbox-custom absolute opacity-0 w-full h-full cursor-pointer z-10" onchange="toggleItem(this)" type="checkbox">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200 group-hover:border-primary-container">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity duration-200" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1 flex justify-between items-center item-content transition-all duration-200">
+<span class="font-body-lg text-body-lg item-text">Eggs (Large)</span>
+<div class="protein-tag bg-primary-container/10 border border-primary-container/20 text-primary-container px-3 py-1 rounded-full font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bolt</span>
+                            6g P / ea
+                        </div>
+</div>
+</label>
+</div>
+</section>
+<!-- Produce Category -->
+<section class="mb-lg">
+<div class="flex items-center gap-sm mb-md px-xs">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/10 flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">nutrition</span>
+</div>
+<h2 class="font-headline-md text-headline-md">Produce</h2>
+</div>
+<div class="glass-card rounded-[24px] p-2 space-y-1 shadow-sm">
+<label class="flex items-center gap-sm p-3 rounded-[16px] active:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="relative flex items-center">
+<input class="checkbox-custom absolute opacity-0 w-full h-full cursor-pointer z-10" onchange="toggleItem(this)" type="checkbox">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200 group-hover:border-primary-container">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity duration-200" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1 flex justify-between items-center item-content transition-all duration-200">
+<span class="font-body-lg text-body-lg item-text">Broccoli Crowns</span>
+<div class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-caps text-label-caps">
+                            2 Bunches
+                        </div>
+</div>
+</label>
+<div class="h-[1px] bg-surface-container-highest mx-4"></div>
+<label class="flex items-center gap-sm p-3 rounded-[16px] active:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="relative flex items-center">
+<input class="checkbox-custom absolute opacity-0 w-full h-full cursor-pointer z-10" onchange="toggleItem(this)" type="checkbox">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant flex items-center justify-center transition-all duration-200 group-hover:border-primary-container">
+<span class="material-symbols-outlined text-[16px] text-white opacity-0 transition-opacity duration-200" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+</div>
+<div class="flex-1 flex justify-between items-center item-content transition-all duration-200">
+<span class="font-body-lg text-body-lg item-text">Sweet Potatoes</span>
+<div class="bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-caps text-label-caps">
+                            3 Medium
+                        </div>
+</div>
+</label>
+</div>
+</section>
+</main>
+<!-- Floating Action Button Area -->
+<div class="fixed bottom-0 left-0 w-full p-margin-mobile pb-[calc(16px+env(safe-area-inset-bottom))] bg-gradient-to-t from-surface via-surface/90 to-transparent z-40 pointer-events-none">
+<div class="max-w-3xl mx-auto flex justify-end pointer-events-auto">
+<button class="bg-primary-container text-on-primary-container px-6 py-4 rounded-full shadow-[0_8px_16px_rgba(169,55,2,0.2)] flex items-center gap-2 font-label-bold text-label-bold active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+                Add from Plan
+            </button>
+</div>
+</div>
+<!-- BottomNavBar (Suppressed as per rules for task-focused/utility screen, using FAB instead for primary action) -->
+<!-- Removed Bottom Nav to focus on the Grocery List canvas -->
+<script>
+        function toggleItem(checkbox) {
+            const container = checkbox.closest('label');
+            if (checkbox.checked) {
+                container.classList.add('item-checked');
+            } else {
+                container.classList.remove('item-checked');
+            }
+        }
+    </script>
+</body></html>

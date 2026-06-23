@@ -1,0 +1,270 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Welcome to Nutriscope</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e6e1e1",
+                    "background": "#fdf8f8",
+                    "surface-dim": "#ddd9d8",
+                    "primary-container": "#f26b38",
+                    "on-tertiary-container": "#8fee8c",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#002204",
+                    "inverse-on-surface": "#f4f0ef",
+                    "tertiary-container": "#006e1d",
+                    "surface-container-high": "#ece7e7",
+                    "gauge-track": "#eae7e7",
+                    "secondary-container": "#b7bcfd",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e6e1e1",
+                    "on-primary-fixed-variant": "#822800",
+                    "tertiary-fixed-dim": "#7edb7c",
+                    "on-primary-container": "#ffcdbd",
+                    "on-tertiary-fixed-variant": "#005314",
+                    "on-secondary-fixed": "#0e144d",
+                    "surface-container": "#f1edec",
+                    "primary": "#812700",
+                    "on-secondary-fixed-variant": "#3c427a",
+                    "surface-container-low": "#f7f2f2",
+                    "secondary-fixed-dim": "#bdc2ff",
+                    "on-error": "#ffffff",
+                    "glass-border": "rgba(255, 255, 255, 0.9)",
+                    "inverse-primary": "#ffb59c",
+                    "on-secondary-container": "#444a83",
+                    "on-primary-fixed": "#380c00",
+                    "error-container": "#ffdad6",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#fdf8f8",
+                    "secondary-fixed": "#dfe0ff",
+                    "outline-variant": "#e0c0b5",
+                    "primary-fixed": "#ffdbcf",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#58423a",
+                    "primary-fixed-dim": "#ffb59c",
+                    "tertiary": "#005314",
+                    "outline": "#8c7168",
+                    "on-background": "#1c1b1b",
+                    "tertiary-fixed": "#99f895",
+                    "glass-bg": "rgba(255, 255, 255, 0.7)",
+                    "secondary": "#545a94",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#a93702",
+                    "on-surface": "#1c1b1b",
+                    "surface": "#fcf9f8",
+                    "inverse-surface": "#313030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "md": "24px",
+                    "lg": "48px",
+                    "xs": "4px",
+                    "margin-mobile": "16px",
+                    "xl": "80px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-bold": [
+                            "Hanken Grotesk", "sans-serif"
+                    ],
+                    "headline-md": [
+                            "Hanken Grotesk", "sans-serif"
+                    ],
+                    "display-lg-mobile": [
+                            "Hanken Grotesk", "sans-serif"
+                    ],
+                    "display-lg": [
+                            "Hanken Grotesk", "sans-serif"
+                    ],
+                    "caption": [
+                            "Hanken Grotesk", "sans-serif"
+                    ],
+                    "label-caps": [
+                            "Hanken Grotesk", "sans-serif"
+                    ],
+                    "body-lg": [
+                            "Hanken Grotesk", "sans-serif"
+                    ],
+                    "body-md": [
+                            "Hanken Grotesk", "sans-serif"
+                    ]
+            },
+            "fontSize": {
+                    "label-bold": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "display-lg-mobile": [
+                            "36px",
+                            {
+                                    "lineHeight": "44px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "800"
+                            }
+                    ],
+                    "caption": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "label-caps": [
+                            "10px",
+                            {
+                                    "lineHeight": "12px",
+                                    "letterSpacing": "0.1em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Hanken Grotesk', sans-serif;
+            overscroll-behavior-y: none;
+        }
+        
+        .pulse-shadow {
+            box-shadow: 0 0 0 0 rgba(242, 107, 56, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.98);
+                box-shadow: 0 0 0 0 rgba(242, 107, 56, 0.4);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(242, 107, 56, 0);
+            }
+            100% {
+                transform: scale(0.98);
+                box-shadow: 0 0 0 0 rgba(242, 107, 56, 0);
+            }
+        }
+        
+        .glass-gradient-overlay {
+            background: linear-gradient(
+                to top,
+                rgba(253, 248, 248, 1) 0%,
+                rgba(253, 248, 248, 0.95) 20%,
+                rgba(253, 248, 248, 0.8) 40%,
+                rgba(253, 248, 248, 0) 100%
+            );
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface h-screen w-full overflow-hidden relative selection:bg-primary-container selection:text-on-primary-container">
+<!-- Full Bleed Background Image -->
+<div class="absolute inset-0 z-0 h-[65%] w-full">
+<div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLsHTTS8qBx9h9R0sYUFjDAVS_5zuYbxSWSAbFyEXhJnpNRTm6eoo6z4iKyunYk7sCEzloNFeAvcAykKg93JSk0RGqp9OOTe-cDE5WdkOtZEPhkoIDCzaUcLmW81BpbmuNoWOsMxWVUqu3ccfKrmlUnTmKjyScX6EkJ-h0IJG4CLuu5iS9zNtRXTuWLpFCE3_LIE8Mfq77Em7zwWd4Mrp2YhGCX4gopcr2lGWY6FT6ap1FjRN-u2')"></div>
+<!-- Subtle Top Dark Gradient for Brand Readability if needed -->
+<div class="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/30 to-transparent"></div>
+</div>
+<!-- Main Content Container -->
+<main class="relative z-10 h-full w-full flex flex-col justify-between max-w-[1280px] mx-auto">
+<!-- Top Section: Brand Name -->
+<header class="pt-16 px-margin-mobile md:px-margin-desktop text-center">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-white drop-shadow-md tracking-tight">
+                Nutriscope
+            </h1>
+</header>
+<!-- Bottom Section: Glassmorphic UI Controls -->
+<section class="mt-auto w-full rounded-t-[3rem] glass-gradient-overlay pt-24 pb-12 px-margin-mobile md:px-margin-desktop flex flex-col items-center backdrop-blur-sm">
+<div class="text-center mb-10 max-w-md mx-auto">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-2">Precision Nutrition,</h2>
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Effortlessly.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant px-4">
+                    Scan your meals, track your macros, and unlock your ultimate wellness journey with AI.
+                </p>
+</div>
+<!-- Action Buttons -->
+<div class="w-full max-w-sm mx-auto flex flex-col gap-6">
+<!-- Primary Action -->
+<button class="w-full bg-primary-container text-white py-4 rounded-full font-label-bold text-label-bold flex items-center justify-center gap-2 pulse-shadow hover:bg-surface-tint transition-colors duration-300 active:scale-95 shadow-[0_8px_16px_rgba(242,107,56,0.3)]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    Get Started
+                </button>
+<!-- Secondary Link -->
+<a class="w-full text-center font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">
+                    Already have an account? Log in
+                </a>
+</div>
+<!-- Safe Area Spacer for iOS -->
+<div class="h-6 w-full"></div>
+</section>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const getStartedBtn = document.querySelector('button');
+            
+            // Add a subtle tactile feel on touch devices
+            getStartedBtn.addEventListener('touchstart', () => {
+                getStartedBtn.style.transform = 'scale(0.96)';
+            });
+            
+            getStartedBtn.addEventListener('touchend', () => {
+                getStartedBtn.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

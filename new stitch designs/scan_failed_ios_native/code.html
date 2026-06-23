@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Scan Failed - Nutriscope AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#735c00",
+                        "secondary-fixed-dim": "#ebc23e",
+                        "tertiary": "#5d5e63",
+                        "secondary-container": "#fdd34d",
+                        "on-surface": "#1b1c19",
+                        "warm-sun": "#FFD54F",
+                        "on-primary-fixed": "#380c00",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf9f4",
+                        "surface": "#fbf9f4",
+                        "inverse-primary": "#ffb59c",
+                        "primary-fixed": "#ffdbcf",
+                        "surface-tint": "#a93702",
+                        "surface-bright": "#fbf9f4",
+                        "surface-container-high": "#eae8e3",
+                        "outline-variant": "#e0c0b5",
+                        "surface-container": "#f0eee9",
+                        "inverse-on-surface": "#f2f1ec",
+                        "primary-container": "#f26b38",
+                        "on-primary-fixed-variant": "#822800",
+                        "on-background": "#1b1c19",
+                        "on-primary-container": "#561700",
+                        "on-tertiary-container": "#2c2d31",
+                        "primary": "#a93702",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-surface-variant": "#58423a",
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#725b00",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#dbdad5",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "on-secondary-fixed": "#241a00",
+                        "tertiary-container": "#949499",
+                        "ink-black": "#1C1C1E",
+                        "on-tertiary-fixed-variant": "#46464b",
+                        "surface-container-low": "#f5f3ee",
+                        "paper-white": "#FFFFFF",
+                        "error-container": "#ffdad6",
+                        "protein-teal": "#2D6A4F",
+                        "tertiary-fixed": "#e3e2e7",
+                        "primary-fixed-dim": "#ffb59c",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-error-container": "#93000a",
+                        "outline": "#8c7168",
+                        "inverse-surface": "#30312e",
+                        "surface-variant": "#e4e2dd",
+                        "secondary-fixed": "#ffe087",
+                        "on-error": "#ffffff",
+                        "coach-orange": "#F26B38",
+                        "on-tertiary-fixed": "#1a1b1f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "1rem",
+                        "stack-sm": "0.5rem",
+                        "stack-lg": "1.5rem",
+                        "margin-main": "1.25rem",
+                        "gutter-card": "1rem"
+                    },
+                    "fontFamily": {
+                        "sans": ["-apple-system", "BlinkMacSystemFont", "SF Pro Text", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                        "title-md": ["-apple-system", "BlinkMacSystemFont", "SF Pro Text", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                        "headline-lg": ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                        "label-caps": ["-apple-system", "BlinkMacSystemFont", "SF Pro Text", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                        "headline-xl": ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-sm": ["-apple-system", "BlinkMacSystemFont", "SF Pro Text", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                        "headline-lg-mobile": ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                        "numeric-display": ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+                        "body-lg": ["-apple-system", "BlinkMacSystemFont", "SF Pro Text", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "title-md": ["17px", { "lineHeight": "22px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "0.01em", "fontWeight": "700" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-xl": ["34px", { "lineHeight": "41px", "letterSpacing": "0.01em", "fontWeight": "700" }],
+                        "body-sm": ["15px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "30px", "fontWeight": "700" }],
+                        "numeric-display": ["48px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["17px", { "lineHeight": "22px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-sans overflow-hidden selection:bg-coach-orange selection:text-paper-white relative">
+<div class="absolute top-0 right-0 p-4 z-50">
+<button class="w-8 h-8 flex items-center justify-center rounded-full bg-surface-container-high text-on-surface-variant hover:bg-surface-dim transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center p-margin-main">
+<div class="w-full max-w-sm flex flex-col items-center text-center animate-[fadeIn_0.5s_ease-out]">
+<div class="relative w-48 h-48 mb-stack-lg flex items-center justify-center group">
+<img class="w-full h-full object-contain relative z-10 transform hover:-translate-y-1 transition-transform duration-500 ease-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL18MIkopMUOvov2JOTFnW_RisWW833Vs30l9C_P661fAh4NwkoShNbUJyb7aEuSraoX26GqLgqN--c9WDrEa6f8wC60OaugOfFNZbyQQ5TNEiogXwJe3Cnpa3bFWeMffYLHDWJ2QQyksS4GMu0aIpJxMgUCsavT--O0nWcblLu8RVIpq45PPh3JesuVCTG9JD0LFHxYLnGp89dFodQZEc7w31Y-Nmymll33CC53GZgimqHDsTbFmip0_R4JTrnWmWeeCcrKVLF97t" style="border-radius: 20px; filter: grayscale(20%) sepia(10%) hue-rotate(-10deg); opacity: 0.9; mix-blend-mode: multiply;"/>
+</div>
+<div class="flex flex-col gap-stack-sm mb-stack-lg px-2">
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">Analysis Failed</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant opacity-90 leading-relaxed mt-2">
+                We couldn't quite make out the ingredients. Try adjusting the lighting or getting a little closer for a clearer shot.
+            </p>
+</div>
+</div>
+</div>
+<div class="w-full px-margin-main pb-8 pt-4 bg-surface/80 backdrop-blur-md">
+<div class="w-full max-w-sm mx-auto flex flex-col gap-3">
+<button class="w-full h-[50px] bg-coach-orange text-paper-white rounded-[14px] font-title-md text-[17px] font-semibold flex items-center justify-center gap-2 active:scale-[0.98] active:opacity-90 transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">add_a_photo</span>
+            Retry Photo
+        </button>
+<button class="w-full h-[50px] bg-transparent border border-coach-orange/30 text-coach-orange rounded-[14px] font-title-md text-[17px] font-semibold flex items-center justify-center gap-2 hover:bg-coach-orange/5 active:scale-[0.98] active:bg-coach-orange/10 transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+            Describe Manually
+        </button>
+<button class="w-full h-[44px] mt-1 bg-transparent text-coach-orange font-title-md text-[17px] flex items-center justify-center active:opacity-70 transition-opacity duration-200">
+            Add from Database
+        </button>
+</div>
+</div>
+</body></html>

@@ -166,6 +166,19 @@ enum SupabaseAuthClient {
         currentSession = nil
     }
 
+    /// Sends a password recovery email via Supabase Auth (no in-app password change).
+    static func requestPasswordReset(email: String, redirectTo: String? = nil) async throws {
+        let normalized = email.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        guard !normalized.isEmpty else { throw SupabaseAuthError.invalidResponse }
+
+        var body: [String: Any] = ["email": normalized]
+        if let redirectTo, !redirectTo.isEmpty {
+            body["redirect_to"] = redirectTo
+        }
+
+        _ = try await authRequest(path: "recover", body: body)
+    }
+
     /// Self-service account deletion (GoTrue). Cascades to `ios_user_profiles` via FK.
     static func deleteCurrentUser() async throws {
         let session = try await validSession()

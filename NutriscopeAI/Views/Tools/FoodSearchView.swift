@@ -68,11 +68,13 @@ struct FoodSearchView: View {
 
     var body: some View {
         NavigationStack {
-            BoundedScrollView {
+            ZStack {
+                AppBackground(showsAmbientGlow: true)
 
+                BoundedScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     Text("Find Food")
-                        .font(AppTypography.largeTitle)
+                        .font(AppTypography.headlineLG)
                         .foregroundStyle(AppTheme.textPrimary)
 
                     HStack(spacing: 0) {
@@ -135,9 +137,9 @@ struct FoodSearchView: View {
                 }
                 .padding(AppTheme.marginMain)
                 .padding(.bottom, 32)
-            
-        }
-        .background(AppBackground())
+
+            }
+            }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {

@@ -6,12 +6,12 @@ struct CameraPermissionPromptView: View {
     var onSkip: () -> Void
 
     var body: some View {
-        KineticPermissionPromptView(
-            icon: "camera.fill",
-            title: "Enable Camera Access",
-            message: "Nutriscope uses your camera to scan meals. Photos stay on your device unless you choose to export them.",
-            primaryTitle: "Allow Camera",
-            secondaryTitle: "Not now",
+        IOSNativePermissionScreen(
+            icon: "camera.viewfinder",
+            title: "Enable Camera for\nAI Scanning",
+            message: "Scan your meals in seconds to track protein and get instant coaching. We never store photos without your permission.",
+            primaryTitle: "Allow Camera Access",
+            secondaryTitle: "Maybe Later",
             onPrimary: onAllow,
             onSecondary: onSkip
         )

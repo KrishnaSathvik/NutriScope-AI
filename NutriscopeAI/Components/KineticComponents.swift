@@ -41,14 +41,53 @@ struct NutriscopeTopBar: View {
     }
 }
 
+// MARK: - Scan FAB (center tab bar action)
+
+struct ScanFABButton: View {
+    var action: () -> Void
+    @State private var glowOpacity: Double = 0.1
+
+    var body: some View {
+        Button(action: action) {
+            ZStack {
+                Circle()
+                    .fill(AppTheme.coachOrange.opacity(glowOpacity))
+                    .frame(width: 72, height: 72)
+                    .blur(radius: 8)
+
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [AppTheme.coachOrange, AppTheme.primary],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: 56, height: 56)
+                    .shadow(color: AppTheme.coachOrange.opacity(0.35), radius: 12, y: 6)
+                    .overlay {
+                        Image(systemName: "camera.viewfinder")
+                            .font(.system(size: 24, weight: .semibold))
+                            .foregroundStyle(.white)
+                    }
+            }
+            .offset(y: -12)
+        }
+        .buttonStyle(.plain)
+        .accessibilityLabel("Scan meal")
+        .onAppear {
+            withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
+                glowOpacity = 0.22
+            }
+        }
+    }
+}
+
 // MARK: - Protein arc ring
 
 struct ProteinArcRing: View {
     let current: Int
     let target: Int
-    let carbs: Int
-    let fat: Int
-    let calories: Int
 
     private var progress: Double {
         guard target > 0 else { return 0 }
@@ -56,73 +95,130 @@ struct ProteinArcRing: View {
     }
 
     var body: some View {
-        ZStack(alignment: .topLeading) {
-            LinearGradient(
-                colors: [AppTheme.coachOrange.opacity(0.06), .clear],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
+        GlassCard {
+            ZStack(alignment: .topLeading) {
+                Circle()
+                    .fill(AppTheme.coachOrange.opacity(0.08))
+                    .frame(width: 160, height: 160)
+                    .blur(radius: 40)
+                    .frame(maxWidth: .infinity)
 
-            VStack(spacing: 16) {
-                LabelCapsText(text: "Daily Protein")
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                VStack(spacing: 16) {
+                    LabelCapsText(text: "Protein Goal")
+                        .frame(maxWidth: .infinity, alignment: .center)
 
-                ZStack {
-                    Circle()
-                        .stroke(AppTheme.surfaceContainerHighest.opacity(0.5), lineWidth: 10)
-                    Circle()
-                        .trim(from: 0, to: progress)
-                        .stroke(AppTheme.coachOrange, style: StrokeStyle(lineWidth: 10, lineCap: .round))
-                        .rotationEffect(.degrees(-90))
-                    VStack(spacing: 2) {
-                        HStack(alignment: .firstTextBaseline, spacing: 2) {
-                            Text("\(current)")
-                                .font(.system(size: 44, weight: .heavy, design: .rounded))
-                            Text("g")
-                                .font(.title3.weight(.semibold))
+                    ZStack {
+                        Circle()
+                            .stroke(AppTheme.gaugeTrack, lineWidth: 8)
+                        Circle()
+                            .trim(from: 0, to: progress)
+                            .stroke(
+                                AppTheme.primary,
+                                style: StrokeStyle(lineWidth: 8, lineCap: .round)
+                            )
+                            .rotationEffect(.degrees(-90))
+                            .shadow(color: AppTheme.coachOrange.opacity(0.25), radius: 6)
+                        VStack(spacing: 2) {
+                            HStack(alignment: .firstTextBaseline, spacing: 2) {
+                                Text("\(current)")
+                                    .font(AppTypography.displayLGMobile)
+                                Text("g")
+                                    .font(.body.weight(.medium))
+                                    .foregroundStyle(AppTheme.textSecondary)
+                            }
+                            .foregroundStyle(AppTheme.textPrimary)
+                            .monospacedDigit()
+                            Text("of \(target)g")
+                                .font(AppTypography.caption)
+                                .foregroundStyle(AppTheme.textSecondary)
                         }
-                        .foregroundStyle(AppTheme.textPrimary)
-                        .monospacedDigit()
-                        Text("of \(target)g goal")
-                            .font(.subheadline)
+                    }
+                    .frame(width: 192, height: 192)
+                    .padding(.vertical, 4)
+
+                    if progress >= 0.85 {
+                        Label("On track to hit goal", systemImage: "chart.line.uptrend.xyaxis")
+                            .font(AppTypography.caption.weight(.semibold))
+                            .foregroundStyle(AppTheme.primary)
+                    } else if target > current {
+                        Text("\(target - current)g remaining today")
+                            .font(AppTypography.caption)
                             .foregroundStyle(AppTheme.textSecondary)
                     }
                 }
-                .frame(width: 180, height: 180)
-                .padding(.vertical, 8)
-
-                HStack {
-                    macroStat(value: "\(carbs)g", label: "Carbs")
-                    divider
-                    macroStat(value: "\(fat)g", label: "Fat")
-                    divider
-                    macroStat(value: calories.formatted(), label: "Kcal")
-                }
             }
-            .padding(16)
         }
-        .background(AppTheme.surface)
-        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
-        .shadow(color: AppTheme.cardShadow, radius: 16, y: 6)
+    }
+}
+
+// MARK: - Dashboard secondary macros (dashboard_today_ios_native_final)
+
+struct DashboardSecondaryMacroGrid: View {
+    let carbs: Int
+    let fat: Int
+
+    var body: some View {
+        HStack(spacing: 12) {
+            macroTile(
+                title: "Carbs",
+                value: carbs,
+                icon: "leaf.fill",
+                tint: AppTheme.proteinTeal,
+                progress: min(Double(carbs) / 250, 1)
+            )
+            macroTile(
+                title: "Fats",
+                value: fat,
+                icon: "drop.fill",
+                tint: Color(hex: 0xD37F37),
+                progress: min(Double(fat) / 70, 1)
+            )
+        }
     }
 
-    private var divider: some View {
-        Rectangle()
-            .fill(AppTheme.surfaceContainerHighest)
-            .frame(width: 1, height: 36)
-    }
+    private func macroTile(title: String, value: Int, icon: String, tint: Color, progress: Double) -> some View {
+        VStack(alignment: .leading, spacing: 10) {
+            Image(systemName: icon)
+                .font(.body)
+                .foregroundStyle(tint)
+                .frame(width: 40, height: 40)
+                .background(tint.opacity(0.12))
+                .clipShape(Circle())
 
-    private func macroStat(value: String, label: String) -> some View {
-        VStack(spacing: 4) {
-            Text(value)
-                .font(.subheadline.weight(.semibold))
-                .foregroundStyle(AppTheme.textPrimary)
-            Text(label.uppercased())
-                .font(.caption2.weight(.semibold))
+            Text(title.uppercased())
+                .font(AppTypography.labelCaps)
                 .foregroundStyle(AppTheme.textSecondary)
-                .tracking(0.5)
+
+            HStack(alignment: .firstTextBaseline, spacing: 2) {
+                Text("\(value)")
+                    .font(AppTypography.headline)
+                Text("g")
+                    .font(.subheadline)
+                    .foregroundStyle(AppTheme.textSecondary)
+            }
+            .foregroundStyle(AppTheme.textPrimary)
+            .monospacedDigit()
+
+            GeometryReader { geo in
+                Capsule()
+                    .fill(AppTheme.gaugeTrack)
+                    .overlay(alignment: .leading) {
+                        Capsule()
+                            .fill(tint)
+                            .frame(width: geo.size.width * progress)
+                    }
+            }
+            .frame(height: 4)
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+        .background(AppTheme.surface)
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous)
+                .strokeBorder(AppTheme.surfaceContainerHighest.opacity(0.6), lineWidth: 1)
+        )
+        .shadow(color: AppTheme.coachOrange.opacity(0.06), radius: 12, y: 4)
     }
 }
 
@@ -148,10 +244,10 @@ struct CoachInsightCard: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("Coach Insight")
                     .font(.subheadline.weight(.bold))
-                    .foregroundStyle(AppTheme.textPrimary)
+                    .foregroundStyle(AppTheme.inverseOnSurface)
                 Text(message)
                     .font(.subheadline)
-                    .foregroundStyle(AppTheme.textSecondary)
+                    .foregroundStyle(AppTheme.inverseOnSurface.opacity(0.9))
                     .fixedSize(horizontal: false, vertical: true)
                 if let actionTitle, let onAction {
                     Button(actionTitle, action: onAction)
@@ -161,26 +257,19 @@ struct CoachInsightCard: View {
                         .padding(.vertical, 10)
                         .background(AppTheme.surface)
                         .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                .strokeBorder(AppTheme.coachOrange, lineWidth: 1)
-                        )
                 }
             }
         }
         .padding(16)
-        .background(
-            LinearGradient(
-                colors: [AppTheme.surfaceMuted, AppTheme.background],
-                startPoint: .leading,
-                endPoint: .trailing
-            )
-        )
-        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous)
-                .strokeBorder(AppTheme.outlineVariant, lineWidth: 1)
-        )
+        .background(AppTheme.inverseSurface)
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+        .overlay(alignment: .topTrailing) {
+            Circle()
+                .fill(AppTheme.coachOrange.opacity(0.2))
+                .frame(width: 100, height: 100)
+                .blur(radius: 30)
+                .offset(x: 30, y: -30)
+        }
     }
 }
 
@@ -436,41 +525,53 @@ struct KineticMealRow: View {
     var body: some View {
         HStack(spacing: 16) {
             mealThumb
-            VStack(alignment: .leading, spacing: 4) {
-                Text(meal.mealName)
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(AppTheme.textPrimary)
-                    .lineLimit(1)
-                if !meal.mealNote.isEmpty {
-                    Text(meal.mealNote)
-                        .font(.caption)
-                        .foregroundStyle(AppTheme.textSecondary)
+
+            VStack(alignment: .leading, spacing: 6) {
+                HStack(alignment: .top) {
+                    Text(meal.mealName)
+                        .font(.subheadline.weight(.bold))
+                        .foregroundStyle(AppTheme.textPrimary)
                         .lineLimit(1)
+                    Spacer(minLength: 8)
+                    Text(meal.scannedAt.formatted(date: .omitted, time: .shortened))
+                        .font(AppTypography.caption)
+                        .foregroundStyle(AppTheme.textSecondary)
                 }
-                if meal.proteinMidpoint >= 30 {
-                    LabelCapsText(text: "High Protein", color: AppTheme.proteinTeal)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 3)
-                        .background(AppTheme.proteinTeal.opacity(0.1))
-                        .clipShape(Capsule())
+
+                Text(meal.mealType.label)
+                    .font(.subheadline)
+                    .foregroundStyle(AppTheme.textSecondary)
+
+                HStack(spacing: 8) {
+                    macroChip("\(meal.proteinMidpoint)g P", highlighted: true)
+                    macroChip("\(meal.carbsMidpoint)g C", highlighted: false)
                 }
-            }
-            Spacer()
-            VStack(alignment: .trailing, spacing: 2) {
-                Text("\(meal.proteinMidpoint)g")
-                    .font(.title2.weight(.black))
-                    .foregroundStyle(AppTheme.proteinTeal)
-                    .monospacedDigit()
-                LabelCapsText(text: "Protein", color: AppTheme.textSecondary)
             }
         }
-        .padding(16)
+        .padding(12)
         .background(AppTheme.surface)
         .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
         .overlay(
             RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous)
                 .strokeBorder(AppTheme.surfaceContainerHighest, lineWidth: 1)
         )
+        .shadow(color: AppTheme.coachOrange.opacity(0.05), radius: 8, y: 3)
+    }
+
+    private func macroChip(_ text: String, highlighted: Bool) -> some View {
+        Text(text)
+            .font(AppTypography.caption.weight(.semibold))
+            .foregroundStyle(highlighted ? AppTheme.primary : AppTheme.textSecondary)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(highlighted ? AppTheme.primary.opacity(0.1) : AppTheme.surfaceMuted)
+            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+            .overlay {
+                if highlighted {
+                    RoundedRectangle(cornerRadius: 6, style: .continuous)
+                        .strokeBorder(AppTheme.primary.opacity(0.2), lineWidth: 1)
+                }
+            }
     }
 
     @ViewBuilder
@@ -480,13 +581,13 @@ struct KineticMealRow: View {
                 Image(uiImage: img).resizable().scaledToFill()
             } else {
                 AppTheme.surfaceMuted.overlay {
-                    Image(systemName: "fork.knife")
+                    Image(systemName: meal.mealType.icon)
                         .foregroundStyle(AppTheme.coachOrange)
                 }
             }
         }
-        .frame(width: 48, height: 48)
-        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+        .frame(width: 80, height: 80)
+        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
     }
 }
 
@@ -538,7 +639,14 @@ struct OnboardingChrome: View {
                 }
                 .padding(.horizontal, AppTheme.marginMain)
             } else {
-                LabelCapsText(text: "Step \(step) of \(totalSteps)", color: AppTheme.outline)
+                HStack {
+                    LabelCapsText(text: "Step \(step) of \(totalSteps)", color: AppTheme.outline)
+                    Spacer()
+                    Text("\(step)/\(totalSteps)")
+                        .font(AppTypography.labelCaps)
+                        .foregroundStyle(AppTheme.textSecondary)
+                }
+                .padding(.horizontal, AppTheme.marginMain)
             }
 
             HStack(spacing: 8) {
@@ -702,6 +810,194 @@ struct KineticActivityCard: View {
     }
 }
 
+// MARK: - Onboarding profile (onboarding_profile_ios_native)
+
+struct OnboardingGenderSegment: View {
+    @Binding var gender: String
+
+    private let primaryOptions = ["Female", "Male"]
+
+    private var showsExtendedGender: Bool {
+        !primaryOptions.contains(gender)
+    }
+
+    private var segmentIndex: Int? {
+        if gender == "Female" { return 0 }
+        if gender == "Male" { return 1 }
+        return nil
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            GeometryReader { geo in
+                let inset: CGFloat = 4
+                let segmentWidth = (geo.size.width - inset * 2) / 2
+
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 12, style: .continuous)
+                        .fill(AppTheme.surfaceContainerHighest)
+                        .padding(4)
+
+                    if let segmentIndex {
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(Color.white)
+                            .shadow(color: .black.opacity(0.06), radius: 4, y: 2)
+                            .frame(width: segmentWidth)
+                            .offset(x: inset + segmentWidth * CGFloat(segmentIndex))
+                            .animation(.nsStandardSpring, value: segmentIndex)
+                    }
+
+                    HStack(spacing: 0) {
+                        ForEach(primaryOptions, id: \.self) { option in
+                            Button {
+                                gender = option
+                            } label: {
+                                Text(option)
+                                    .font(AppTypography.subheadline.weight(.bold))
+                                    .foregroundStyle(gender == option ? AppTheme.textPrimary : AppTheme.textSecondary)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 12)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+                }
+            }
+            .frame(height: 52)
+
+            if showsExtendedGender {
+                Menu {
+                    Button("Non-binary") { gender = "Non-binary" }
+                    Button("Prefer not to say") { gender = "Prefer not to say" }
+                } label: {
+                    HStack {
+                        Text(gender)
+                            .font(AppTypography.subheadline.weight(.semibold))
+                        Spacer()
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.caption)
+                    }
+                    .foregroundStyle(AppTheme.primary)
+                    .padding(.horizontal, 4)
+                }
+            } else {
+                Button("More gender options") {
+                    gender = "Prefer not to say"
+                }
+                .font(AppTypography.caption.weight(.semibold))
+                .foregroundStyle(AppTheme.primary)
+            }
+        }
+    }
+}
+
+struct OnboardingProfileMetricField: View {
+    let label: String
+    @Binding var text: String
+    var suffix: String
+    var placeholder = "0"
+    var keyboardType: UIKeyboardType = .numberPad
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(label)
+                .font(AppTypography.caption)
+                .foregroundStyle(AppTheme.textSecondary)
+
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                TextField(placeholder, text: $text)
+                    .keyboardType(keyboardType)
+                    .font(AppTypography.title2.weight(.bold))
+                    .foregroundStyle(AppTheme.textPrimary)
+                Text(suffix)
+                    .font(AppTypography.body)
+                    .foregroundStyle(AppTheme.textSecondary)
+            }
+        }
+        .padding(16)
+        .background(Color.white)
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .strokeBorder(AppTheme.outlineVariant.opacity(0.35), lineWidth: 1)
+        )
+        .shadow(color: .black.opacity(0.03), radius: 8, y: 2)
+    }
+}
+
+struct OnboardingActivityRadioRow: View {
+    let level: ActivityLevel
+    let isSelected: Bool
+    let action: () -> Void
+
+    private var title: String {
+        switch level {
+        case .sedentary: "Mostly Sitting"
+        case .light: "Lightly Active"
+        case .moderate: "Moderately Active"
+        case .active: "Very Active"
+        }
+    }
+
+    private var subtitle: String {
+        switch level {
+        case .sedentary: "Desk job, minimal movement"
+        case .light: "Office job, light walks"
+        case .moderate: "Exercise 3–5 days/week"
+        case .active: "Heavy exercise or physical job"
+        }
+    }
+
+    var body: some View {
+        Button(action: action) {
+            HStack(spacing: 14) {
+                Circle()
+                    .fill(AppTheme.surfaceMuted)
+                    .frame(width: 40, height: 40)
+                    .overlay {
+                        Image(systemName: level.icon)
+                            .foregroundStyle(isSelected ? AppTheme.primary : AppTheme.textSecondary)
+                    }
+
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(AppTypography.subheadline.weight(.bold))
+                        .foregroundStyle(AppTheme.textPrimary)
+                    Text(subtitle)
+                        .font(AppTypography.caption)
+                        .foregroundStyle(AppTheme.textSecondary)
+                }
+
+                Spacer(minLength: 0)
+
+                ZStack {
+                    Circle()
+                        .strokeBorder(isSelected ? AppTheme.primary : AppTheme.outlineVariant, lineWidth: 2)
+                        .frame(width: 20, height: 20)
+                    if isSelected {
+                        Circle()
+                            .fill(AppTheme.primary)
+                            .frame(width: 20, height: 20)
+                            .overlay {
+                                Image(systemName: "checkmark")
+                                    .font(.system(size: 10, weight: .bold))
+                                    .foregroundStyle(.white)
+                            }
+                    }
+                }
+            }
+            .padding(16)
+            .background(isSelected ? AppTheme.primary.opacity(0.05) : AppTheme.glassBg)
+            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                    .strokeBorder(isSelected ? AppTheme.primary : AppTheme.glassBorder, lineWidth: isSelected ? 2 : 1)
+            )
+        }
+        .buttonStyle(.plain)
+    }
+}
+
 struct OnboardingTargetHero: View {
     let proteinTarget: Int
     let goal: FitnessGoal
@@ -760,26 +1056,35 @@ struct ManualLogPaperCard<Content: View>: View {
 }
 
 struct QuickAddTile: View {
-    let emoji: String
+    let icon: String
     let label: String
     let action: () -> Void
 
     var body: some View {
         Button(action: action) {
-            VStack(spacing: 8) {
-                Text(emoji)
-                    .font(.system(size: 28))
+            VStack(spacing: 10) {
+                Image(systemName: icon)
+                    .font(.system(size: 22, weight: .semibold))
+                    .foregroundStyle(AppTheme.coachOrange)
+                    .frame(width: 44, height: 44)
+                    .background(AppTheme.coachOrange.opacity(0.1))
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+
                 Text(label)
-                    .font(.subheadline)
+                    .font(.subheadline.weight(.medium))
                     .foregroundStyle(AppTheme.textPrimary)
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 14)
+            .padding(.horizontal, 8)
             .background(Color.white)
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: 12, style: .continuous)
-                    .strokeBorder(AppTheme.outlineVariant.opacity(0.4), lineWidth: 1)
+                    .strokeBorder(AppTheme.outlineVariant.opacity(0.35), lineWidth: 1)
             )
         }
         .buttonStyle(.plain)
@@ -1182,14 +1487,15 @@ struct KineticToolHeader: View {
     var subtitle: String?
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 8) {
             Text(title)
-                .font(.title2.weight(.black))
-                .foregroundStyle(AppTheme.coachOrange)
+                .font(AppTypography.displayLGMobile)
+                .foregroundStyle(AppTheme.inkBlack)
             if let subtitle {
                 Text(subtitle)
-                    .font(.subheadline)
+                    .font(AppTypography.bodyLG)
                     .foregroundStyle(AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -1345,25 +1651,27 @@ struct ProfileHeroHeader: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Circle()
-                .fill(
-                    LinearGradient(
-                        colors: [AppTheme.coachOrange.opacity(0.25), AppTheme.warmSun.opacity(0.35)],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
+            ZStack(alignment: .bottomTrailing) {
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [AppTheme.primaryFixed, AppTheme.warmSun.opacity(0.45)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
                     )
-                )
-                .frame(width: 96, height: 96)
-                .overlay {
-                    Text(initials.isEmpty ? "?" : initials)
-                        .font(.system(size: 34, weight: .heavy, design: .rounded))
-                        .foregroundStyle(AppTheme.primary)
-                }
-                .overlay(Circle().strokeBorder(AppTheme.surface, lineWidth: 4))
-                .shadow(color: AppTheme.coachOrange.opacity(0.15), radius: 12, y: 6)
+                    .frame(width: 96, height: 96)
+                    .overlay {
+                        Text(initials.isEmpty ? "?" : initials)
+                            .font(.system(size: 32, weight: .heavy, design: .rounded))
+                            .foregroundStyle(AppTheme.primary)
+                    }
+                    .overlay(Circle().strokeBorder(Color.white, lineWidth: 4))
+                    .shadow(color: .black.opacity(0.06), radius: 8, y: 2)
+            }
 
             Text(displayName.isEmpty ? "Your Profile" : displayName)
-                .font(AppTypography.largeTitle)
+                .font(AppTypography.title3.weight(.semibold))
                 .foregroundStyle(AppTheme.textPrimary)
 
             if !email.isEmpty {
@@ -1373,7 +1681,7 @@ struct ProfileHeroHeader: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.top, 8)
+        .padding(.vertical, 8)
     }
 }
 
@@ -1384,64 +1692,45 @@ struct ProfileProCard: View {
     var onUpgrade: (() -> Void)?
 
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            Circle()
-                .fill(AppTheme.coachOrange.opacity(0.12))
-                .frame(width: 120, height: 120)
-                .blur(radius: 24)
-                .offset(x: 36, y: -36)
+        HStack(spacing: 14) {
+            Image(systemName: isPro ? "crown.fill" : "sparkles")
+                .font(.system(size: 20))
+                .foregroundStyle(AppTheme.coachOrange)
+                .frame(width: 28, alignment: .center)
 
-            HStack(spacing: 14) {
-                Image(systemName: "crown.fill")
-                    .font(.title3)
-                    .foregroundStyle(AppTheme.coachOrange)
-                    .frame(width: 48, height: 48)
-                    .background(AppTheme.coachOrange.opacity(0.12))
-                    .clipShape(Circle())
+            VStack(alignment: .leading, spacing: 2) {
+                Text(isPro ? "Nutriscope Pro" : "Upgrade to Pro")
+                    .font(AppTypography.body.weight(.semibold))
+                    .foregroundStyle(AppTheme.textPrimary)
+                Text(subtitle)
+                    .font(AppTypography.caption)
+                    .foregroundStyle(AppTheme.textSecondary)
+            }
 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(isPro ? "Nutriscope Pro" : "Subscription required")
-                        .font(AppTypography.title3.weight(.bold))
-                    Text(subtitle)
-                        .font(AppTypography.subheadline)
-                        .foregroundStyle(AppTheme.textSecondary)
-                }
+            Spacer(minLength: 0)
 
-                Spacer(minLength: 0)
-
-                if isPro {
-                    Text(manageLabel)
-                        .font(AppTypography.labelCaps)
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 10)
-                        .background(AppTheme.coachOrange)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                } else if let onUpgrade {
-                    Button("Upgrade", action: onUpgrade)
-                        .font(AppTypography.labelCaps)
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 10)
-                        .background(AppTheme.coachOrange)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                }
+            if isPro {
+                Text(manageLabel)
+                    .font(AppTypography.caption.weight(.semibold))
+                    .foregroundStyle(AppTheme.textSecondary)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 13, weight: .semibold))
+                    .foregroundStyle(AppTheme.textTertiary)
+            } else if let onUpgrade {
+                Button("Upgrade", action: onUpgrade)
+                    .font(AppTypography.caption.weight(.bold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(AppTheme.coachOrange)
+                    .clipShape(Capsule())
             }
         }
-        .padding(16)
-        .background(
-            LinearGradient(
-                colors: [AppTheme.surface, AppTheme.surfaceMuted.opacity(0.5)],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-        .overlay(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .strokeBorder(AppTheme.outlineVariant.opacity(0.35), lineWidth: 1)
-        )
-        .shadow(color: AppTheme.coachOrange.opacity(0.08), radius: 16, y: 8)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 16)
+        .background(AppTheme.surface)
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
+        .shadow(color: .black.opacity(0.04), radius: 8, y: 2)
     }
 }
 
@@ -1450,66 +1739,84 @@ struct ProfileMenuSection<Content: View>: View {
     @ViewBuilder let content: () -> Content
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            LabelCapsText(text: title, color: AppTheme.textSecondary)
-                .padding(.leading, 8)
+        VStack(alignment: .leading, spacing: 8) {
+            if !title.isEmpty {
+                Text(title.uppercased())
+                    .font(AppTypography.labelCaps)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .padding(.leading, 4)
+            }
 
             VStack(spacing: 0) {
                 content()
             }
-            .padding(8)
             .background(AppTheme.surface)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .shadow(color: .black.opacity(0.03), radius: 12, y: 4)
+            .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
+            .shadow(color: .black.opacity(0.04), radius: 8, y: 2)
         }
     }
 }
 
 struct ProfileMenuRow: View {
     let icon: String
-    var iconColor: Color = AppTheme.textSecondary
+    var iconColor: Color = AppTheme.primary
     let title: String
+    var trailingValue: String?
     var subtitle: String?
     var isDestructive = false
+    var showsChevron = true
+    var iconFilled = true
 
     var body: some View {
-        HStack(spacing: 14) {
+        HStack(spacing: 16) {
             Image(systemName: icon)
-                .font(.body.weight(.semibold))
-                .foregroundStyle(isDestructive ? AppTheme.primary : iconColor)
-                .frame(width: 40, height: 40)
-                .background((isDestructive ? AppTheme.coachOrange : iconColor).opacity(0.12))
-                .clipShape(Circle())
+                .font(.system(size: 22, weight: .medium))
+                .foregroundStyle(isDestructive ? Color.red : iconColor)
+                .frame(width: 28, height: 28, alignment: .center)
+                .symbolVariant(iconFilled ? .fill : .none)
 
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                    .font(AppTypography.headline)
-                    .foregroundStyle(isDestructive ? AppTheme.primary : AppTheme.textPrimary)
-                if let subtitle {
+            if let subtitle, !subtitle.isEmpty {
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .font(AppTypography.bodyLG)
+                        .foregroundStyle(isDestructive ? Color.red : AppTheme.textPrimary)
                     Text(subtitle)
-                        .font(AppTypography.subheadline)
+                        .font(AppTypography.caption)
                         .foregroundStyle(AppTheme.textSecondary)
                 }
+            } else {
+                Text(title)
+                    .font(AppTypography.bodyLG)
+                    .foregroundStyle(isDestructive ? Color.red : AppTheme.textPrimary)
             }
 
-            Spacer(minLength: 0)
+            Spacer(minLength: 8)
 
-            if !isDestructive {
+            if let trailingValue {
+                Text(trailingValue)
+                    .font(AppTypography.bodySM)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .lineLimit(2)
+                    .multilineTextAlignment(.trailing)
+            }
+
+            if showsChevron && !isDestructive {
                 Image(systemName: "chevron.right")
-                    .font(.caption.weight(.semibold))
-                    .foregroundStyle(AppTheme.textTertiary)
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundStyle(AppTheme.textTertiary.opacity(0.7))
             }
         }
-        .padding(10)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 16)
         .contentShape(Rectangle())
     }
 }
 
 struct ProfileMenuDivider: View {
     var body: some View {
-        Divider()
-            .padding(.leading, 64)
-            .padding(.trailing, 8)
+        Rectangle()
+            .fill(AppTheme.outlineVariant.opacity(0.45))
+            .frame(height: 1)
     }
 }
 
@@ -2195,5 +2502,508 @@ struct KineticCoachChatInputBar: View {
                 .fill(AppTheme.outlineVariant.opacity(0.35))
                 .frame(height: 1)
         }
+    }
+}
+
+// MARK: - Scan viewport (ai_meal_scan)
+
+struct ScanMealViewport: View {
+    var image: UIImage?
+    var showsAnalyzingBadge = false
+    var animateScanLine = false
+    var placeholderAction: (() -> Void)?
+
+    @State private var scanLineOffset: CGFloat = -1
+
+    var body: some View {
+        ZStack {
+            Group {
+                if let image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                } else {
+                    AppTheme.surfaceMuted
+                        .overlay {
+                            VStack(spacing: 12) {
+                                Image(systemName: "camera.viewfinder")
+                                    .font(.system(size: 44))
+                                    .foregroundStyle(AppTheme.coachOrange.opacity(0.8))
+                                Text("Point at your meal")
+                                    .font(AppTypography.subheadline.weight(.semibold))
+                                    .foregroundStyle(AppTheme.textSecondary)
+                            }
+                        }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .clipped()
+
+            LinearGradient(
+                colors: [Color.black.opacity(0.2), .clear, Color.black.opacity(0.4)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+
+            ScanReticleOverlay(showScanLine: animateScanLine, scanLineOffset: scanLineOffset)
+
+            if showsAnalyzingBadge {
+                VStack {
+                    HStack(spacing: 8) {
+                        Circle()
+                            .fill(AppTheme.coachOrange)
+                            .frame(width: 8, height: 8)
+                        Text("ANALYZING MEAL...")
+                            .font(AppTypography.labelCaps)
+                            .foregroundStyle(.white)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 8)
+                    .background(Color.black.opacity(0.5))
+                    .background(.ultraThinMaterial)
+                    .clipShape(Capsule())
+                    .padding(.top, 16)
+                    Spacer()
+                }
+            }
+        }
+        .aspectRatio(4 / 5, contentMode: .fit)
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous)
+                .strokeBorder(AppTheme.outlineVariant.opacity(0.35), lineWidth: 1)
+        )
+        .shadow(color: AppTheme.coachOrange.opacity(0.12), radius: 24, y: 8)
+        .contentShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+        .onTapGesture {
+            if image == nil { placeholderAction?() }
+        }
+        .onAppear {
+            guard animateScanLine else { return }
+            withAnimation(.easeInOut(duration: 3).repeatForever(autoreverses: true)) {
+                scanLineOffset = 1
+            }
+        }
+    }
+}
+
+private struct ScanReticleOverlay: View {
+    var showScanLine: Bool
+    var scanLineOffset: CGFloat
+
+    var body: some View {
+        GeometryReader { geo in
+            let inset: CGFloat = 32
+            ZStack {
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .strokeBorder(Color.white.opacity(0.3), lineWidth: 2)
+                    .padding(inset)
+
+                VStack {
+                    HStack {
+                        cornerAccent(.topLeading)
+                        Spacer()
+                        cornerAccent(.topTrailing)
+                    }
+                    Spacer()
+                    if showScanLine {
+                        Rectangle()
+                            .fill(AppTheme.coachOrange)
+                            .frame(height: 2)
+                            .shadow(color: AppTheme.coachOrange.opacity(0.8), radius: 8)
+                            .offset(y: scanLineOffset * (geo.size.height * 0.35))
+                    }
+                    Spacer()
+                    HStack {
+                        cornerAccent(.bottomLeading)
+                        Spacer()
+                        cornerAccent(.bottomTrailing)
+                    }
+                }
+                .padding(inset)
+            }
+        }
+    }
+
+    private func cornerAccent(_ corner: Corner) -> some View {
+        let size: CGFloat = 24
+        return Group {
+            switch corner {
+            case .topLeading:
+                Path { path in
+                    path.move(to: CGPoint(x: 0, y: size))
+                    path.addLine(to: .zero)
+                    path.addLine(to: CGPoint(x: size, y: 0))
+                }
+                .stroke(AppTheme.coachOrange, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+            case .topTrailing:
+                Path { path in
+                    path.move(to: CGPoint(x: size, y: 0))
+                    path.addLine(to: CGPoint(x: size, y: size))
+                    path.addLine(to: CGPoint(x: 0, y: 0))
+                }
+                .stroke(AppTheme.coachOrange, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+            case .bottomLeading:
+                Path { path in
+                    path.move(to: CGPoint(x: 0, y: 0))
+                    path.addLine(to: .zero)
+                    path.addLine(to: CGPoint(x: size, y: size))
+                }
+                .stroke(AppTheme.coachOrange, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+            case .bottomTrailing:
+                Path { path in
+                    path.move(to: CGPoint(x: 0, y: size))
+                    path.addLine(to: CGPoint(x: size, y: size))
+                    path.addLine(to: CGPoint(x: size, y: 0))
+                }
+                .stroke(AppTheme.coachOrange, style: StrokeStyle(lineWidth: 4, lineCap: .round))
+            }
+        }
+        .frame(width: size, height: size)
+    }
+
+    private enum Corner {
+        case topLeading, topTrailing, bottomLeading, bottomTrailing
+    }
+}
+
+// MARK: - Account choice (account_choice)
+
+struct StitchAccountChoiceCard: View {
+    let icon: String
+    let iconColor: Color
+    let iconBackground: Color
+    let title: String
+    let subtitle: String
+    var isRecommended = false
+    var recommendedBorder = false
+    let action: () -> Void
+
+    var body: some View {
+        Button(action: action) {
+            ZStack(alignment: .topTrailing) {
+                HStack(alignment: .top, spacing: 14) {
+                    Circle()
+                        .fill(iconBackground)
+                        .frame(width: 40, height: 40)
+                        .overlay {
+                            Image(systemName: icon)
+                                .foregroundStyle(iconColor)
+                        }
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(title)
+                            .font(AppTypography.title3.weight(.semibold))
+                            .foregroundStyle(recommendedBorder ? AppTheme.primary : AppTheme.textPrimary)
+                            .multilineTextAlignment(.leading)
+                        Text(subtitle)
+                            .font(AppTypography.subheadline)
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .multilineTextAlignment(.leading)
+                    }
+                    Spacer(minLength: 0)
+                }
+                .padding(18)
+
+                if isRecommended {
+                    Text("RECOMMENDED")
+                        .font(AppTypography.caption2.weight(.bold))
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 6)
+                        .background(AppTheme.primary)
+                        .clipShape(
+                            UnevenRoundedRectangle(
+                                topLeadingRadius: 0,
+                                bottomLeadingRadius: 8,
+                                bottomTrailingRadius: 0,
+                                topTrailingRadius: AppTheme.cornerRadiusXL
+                            )
+                        )
+                }
+            }
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous)
+                    .strokeBorder(
+                        recommendedBorder ? AppTheme.primary : AppTheme.outlineVariant.opacity(0.6),
+                        lineWidth: recommendedBorder ? 2 : 1
+                    )
+            )
+            .shadow(color: recommendedBorder ? AppTheme.primary.opacity(0.1) : AppTheme.cardShadow, radius: 12, y: 4)
+        }
+        .buttonStyle(.plain)
+    }
+}
+
+// MARK: - Toast notifications (toast_notifications)
+
+enum KineticToastStyle {
+    case success
+    case highlight
+    case error
+
+    var icon: String {
+        switch self {
+        case .success: "checkmark.circle.fill"
+        case .highlight: "bolt.fill"
+        case .error: "exclamationmark.triangle.fill"
+        }
+    }
+
+    var iconColor: Color {
+        switch self {
+        case .success: AppTheme.proteinTeal
+        case .highlight: AppTheme.coachOrange
+        case .error: Color(red: 0.73, green: 0.09, blue: 0.04)
+        }
+    }
+
+    var background: Color {
+        switch self {
+        case .success, .highlight: Color.white
+        case .error: Color(red: 1, green: 0.85, blue: 0.84)
+        }
+    }
+
+    var borderColor: Color {
+        switch self {
+        case .success, .highlight: AppTheme.outlineVariant.opacity(0.5)
+        case .error: Color.red.opacity(0.2)
+        }
+    }
+
+    var titleColor: Color {
+        switch self {
+        case .success, .highlight: AppTheme.textPrimary
+        case .error: Color(red: 0.58, green: 0.04, blue: 0.04)
+        }
+    }
+
+    var subtitleColor: Color {
+        switch self {
+        case .success, .highlight: AppTheme.textSecondary
+        case .error: Color(red: 0.58, green: 0.04, blue: 0.04).opacity(0.8)
+        }
+    }
+}
+
+struct KineticToastPayload: Identifiable, Equatable {
+    let id = UUID()
+    let title: String
+    var subtitle: String?
+    let style: KineticToastStyle
+}
+
+@Observable
+@MainActor
+final class ToastCenter {
+    static let shared = ToastCenter()
+
+    var current: KineticToastPayload?
+    private var dismissTask: Task<Void, Never>?
+
+    func show(
+        _ title: String,
+        subtitle: String? = nil,
+        style: KineticToastStyle = .success,
+        duration: TimeInterval = 3
+    ) {
+        dismissTask?.cancel()
+        let payload = KineticToastPayload(title: title, subtitle: subtitle, style: style)
+        current = payload
+        dismissTask = Task {
+            try? await Task.sleep(for: .seconds(duration))
+            guard !Task.isCancelled, current?.id == payload.id else { return }
+            current = nil
+        }
+    }
+
+    func dismiss() {
+        dismissTask?.cancel()
+        current = nil
+    }
+}
+
+struct KineticToastView: View {
+    let payload: KineticToastPayload
+    var onDismiss: () -> Void
+
+    var body: some View {
+        HStack(spacing: 14) {
+            Circle()
+                .fill(AppTheme.surfaceBright)
+                .frame(width: 48, height: 48)
+                .overlay {
+                    Image(systemName: payload.style.icon)
+                        .font(.title2)
+                        .foregroundStyle(payload.style.iconColor)
+                }
+                .overlay(
+                    Circle()
+                        .strokeBorder(AppTheme.surfaceContainerHighest, lineWidth: 1)
+                )
+
+            VStack(alignment: .leading, spacing: 2) {
+                Text(payload.title)
+                    .font(AppTypography.title3.weight(.semibold))
+                    .foregroundStyle(payload.style.titleColor)
+                if let subtitle = payload.subtitle {
+                    Text(subtitle)
+                        .font(AppTypography.subheadline)
+                        .foregroundStyle(payload.style.subtitleColor)
+                }
+            }
+
+            Spacer(minLength: 0)
+
+            Button(action: onDismiss) {
+                Image(systemName: "xmark")
+                    .font(.caption.weight(.semibold))
+                    .foregroundStyle(AppTheme.textTertiary)
+                    .padding(8)
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(16)
+        .background(payload.style.background)
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous)
+                .strokeBorder(payload.style.borderColor, lineWidth: 1)
+        )
+        .shadow(color: AppTheme.coachOrange.opacity(0.08), radius: 16, y: 8)
+    }
+}
+
+struct KineticToastHost: View {
+    @State private var toastCenter = ToastCenter.shared
+
+    var body: some View {
+        VStack {
+            if let toast = toastCenter.current {
+                KineticToastView(payload: toast) {
+                    toastCenter.dismiss()
+                }
+                .padding(.horizontal, AppTheme.marginMain)
+                .padding(.top, 8)
+                .transition(.move(edge: .top).combined(with: .opacity))
+            }
+            Spacer()
+        }
+        .animation(.nsStandardSpring, value: toastCenter.current?.id)
+        .allowsHitTesting(toastCenter.current != nil)
+    }
+}
+
+// MARK: - Confirmation dialogs (confirmation_dialogs)
+
+struct KineticConfirmationDialog: View {
+    let icon: String
+    var iconBackground: Color = Color(red: 1, green: 0.85, blue: 0.84)
+    var iconColor: Color = Color(red: 0.73, green: 0.09, blue: 0.04)
+    let title: String
+    let message: String
+    let cancelTitle: String
+    let confirmTitle: String
+    var isDestructive = true
+    let onCancel: () -> Void
+    let onConfirm: () -> Void
+
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.4)
+                .ignoresSafeArea()
+                .onTapGesture(perform: onCancel)
+
+            VStack(alignment: .leading, spacing: 16) {
+                HStack(spacing: 12) {
+                    Circle()
+                        .fill(iconBackground)
+                        .frame(width: 40, height: 40)
+                        .overlay {
+                            Image(systemName: icon)
+                                .foregroundStyle(iconColor)
+                        }
+                    Text(title)
+                        .font(AppTypography.title3.weight(.semibold))
+                        .foregroundStyle(AppTheme.textPrimary)
+                }
+
+                Text(message)
+                    .font(AppTypography.body)
+                    .foregroundStyle(AppTheme.textSecondary)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                HStack(spacing: 12) {
+                    Button(action: onCancel) {
+                        Text(cancelTitle)
+                            .font(AppTypography.title3.weight(.semibold))
+                            .foregroundStyle(AppTheme.textSecondary)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 14)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous)
+                                    .strokeBorder(AppTheme.outlineVariant, lineWidth: 2)
+                            )
+                    }
+                    .buttonStyle(.plain)
+
+                    Button(action: onConfirm) {
+                        Text(confirmTitle)
+                            .font(AppTypography.title3.weight(.semibold))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 14)
+                            .background(isDestructive ? Color(red: 0.73, green: 0.09, blue: 0.04) : AppTheme.coachOrange)
+                            .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.top, 4)
+            }
+            .padding(24)
+            .background(Color.white)
+            .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+            .shadow(color: .black.opacity(0.12), radius: 24, y: 12)
+            .padding(.horizontal, AppTheme.marginMain)
+        }
+    }
+}
+
+extension View {
+    func kineticConfirmationDialog(
+        isPresented: Binding<Bool>,
+        icon: String = "trash.fill",
+        iconBackground: Color = Color(red: 1, green: 0.85, blue: 0.84),
+        iconColor: Color = Color(red: 0.73, green: 0.09, blue: 0.04),
+        title: String,
+        message: String,
+        cancelTitle: String = "Cancel",
+        confirmTitle: String,
+        isDestructive: Bool = true,
+        onConfirm: @escaping () -> Void
+    ) -> some View {
+        overlay {
+            if isPresented.wrappedValue {
+                KineticConfirmationDialog(
+                    icon: icon,
+                    iconBackground: iconBackground,
+                    iconColor: iconColor,
+                    title: title,
+                    message: message,
+                    cancelTitle: cancelTitle,
+                    confirmTitle: confirmTitle,
+                    isDestructive: isDestructive,
+                    onCancel: { isPresented.wrappedValue = false },
+                    onConfirm: {
+                        isPresented.wrappedValue = false
+                        onConfirm()
+                    }
+                )
+            }
+        }
+        .animation(.easeOut(duration: 0.2), value: isPresented.wrappedValue)
     }
 }

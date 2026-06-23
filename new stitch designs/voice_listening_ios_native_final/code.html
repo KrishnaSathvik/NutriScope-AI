@@ -1,0 +1,173 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Voice Listening - Kinetic Harvest</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..800;1,400..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#313030",
+                        "on-primary-fixed": "#380c00",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e6e1e1",
+                        "gauge-track": "#eae7e7",
+                        "on-tertiary-fixed-variant": "#005314",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#dfe0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#822800",
+                        "secondary": "#545a94",
+                        "background": "#fdf8f8",
+                        "secondary-fixed-dim": "#bdc2ff",
+                        "primary-container": "#a93702",
+                        "on-error": "#ffffff",
+                        "surface": "#fcf9f8",
+                        "outline-variant": "#e0c0b5",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#a93702",
+                        "on-surface": "#1c1b1b",
+                        "secondary-container": "#b7bcfd",
+                        "on-surface-variant": "#58423a",
+                        "inverse-on-surface": "#f4f0ef",
+                        "primary-fixed-dim": "#ffb59c",
+                        "surface-bright": "#fdf8f8",
+                        "on-secondary-fixed": "#0e144d",
+                        "on-secondary-fixed-variant": "#3c427a",
+                        "inverse-primary": "#ffb59c",
+                        "surface-dim": "#ddd9d8",
+                        "on-tertiary-fixed": "#002204",
+                        "tertiary-fixed-dim": "#7edb7c",
+                        "tertiary": "#005314",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#ffcdbd",
+                        "surface-container-highest": "#e6e1e1",
+                        "tertiary-container": "#006e1d",
+                        "surface-container-low": "#f7f2f2",
+                        "glass-border": "rgba(255, 255, 255, 0.9)",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#ffdbcf",
+                        "on-background": "#1c1b1b",
+                        "surface-container-high": "#ece7e7",
+                        "tertiary-fixed": "#99f895",
+                        "glass-bg": "rgba(255, 255, 255, 0.7)",
+                        "primary": "#812700",
+                        "on-tertiary-container": "#8fee8c",
+                        "surface-container": "#f1edec",
+                        "on-secondary-container": "#444a83",
+                        "outline": "#8c7168"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "lg": "48px",
+                        "md": "24px",
+                        "margin-desktop": "40px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    fontFamily: {
+                        "headline-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Hanken Grotesk"],
+                        "label-caps": ["Hanken Grotesk"],
+                        "label-bold": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "caption": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"]
+                    },
+                    fontSize: {
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+                        "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "label-caps": ["10px", { lineHeight: "12px", letterSpacing: "0.1em", fontWeight: "700" }],
+                        "label-bold": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "caption": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }]
+                    },
+                    animation: {
+                        'pulse-ripple': 'pulse-ripple 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'blink': 'blink 1s step-end infinite'
+                    },
+                    keyframes: {
+                        'pulse-ripple': {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '0.8' },
+                            '50%': { transform: 'scale(1.2)', opacity: '0.2' },
+                        },
+                        'blink': {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-between overflow-hidden relative">
+<!-- Soft Ambient Background Gradient -->
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary-container/5 via-background to-background pointer-events-none -z-10"></div>
+<!-- Header Area -->
+<header class="w-full px-margin-mobile pt-16 flex flex-col items-center z-10">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-2 text-center">Listening...</h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-center opacity-80">Speak your meal clearly.</p>
+</header>
+<!-- Main Listening Visualization Area -->
+<main class="flex-1 w-full flex flex-col items-center justify-center relative px-margin-mobile z-10">
+<!-- Pulsing Microphone Container -->
+<div class="relative flex items-center justify-center w-48 h-48 mb-lg">
+<!-- Ripple Effect Rings -->
+<div class="absolute inset-0 bg-primary/20 rounded-full animate-pulse-ripple"></div>
+<div class="absolute inset-4 bg-primary/30 rounded-full animate-pulse-ripple" style="animation-delay: 0.5s;"></div>
+<!-- Core Mic Button -->
+<button class="relative z-10 w-24 h-24 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/30 active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-on-primary text-4xl" style="font-variation-settings: 'FILL' 1;">
+                    mic
+                </span>
+</button>
+</div>
+<!-- Transcript Area -->
+<div class="w-full max-w-md bg-surface-container/50 backdrop-blur-md rounded-xl p-md border border-glass-border shadow-sm min-h-[120px] flex items-center justify-center text-center">
+<p class="font-body-lg text-body-lg text-on-surface italic">
+                "Grilled chicken breast with half a cup of quinoa<span class="inline-block w-1 h-5 bg-primary ml-1 align-middle animate-blink"></span>"
+            </p>
+</div>
+</main>
+<!-- Bottom Action Bar (Transactional Screen - Global Nav Suppressed) -->
+<footer class="w-full px-margin-mobile pb-lg pt-md flex justify-between items-center bg-gradient-to-t from-background to-transparent z-10">
+<button class="font-label-bold text-label-bold text-on-surface-variant px-md py-sm rounded-full bg-surface-container-high hover:bg-surface-variant transition-colors active:scale-95">
+            Cancel
+        </button>
+<button class="font-label-bold text-label-bold text-on-primary px-md py-sm rounded-full bg-primary shadow-md shadow-primary/20 hover:opacity-90 transition-opacity active:scale-95 flex items-center gap-2">
+            Done
+            <span class="material-symbols-outlined text-[18px]">check</span>
+</button>
+</footer>
+</body></html>

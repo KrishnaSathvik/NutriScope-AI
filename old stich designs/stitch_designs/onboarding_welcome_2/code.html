@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>NutriScope AI - Welcome</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400..800&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#a83900",
+                        "surface-container-highest": "#e4e2e4",
+                        "primary-container": "#f06a33",
+                        "inverse-surface": "#303032",
+                        "on-secondary-container": "#316e52",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb59a",
+                        "tertiary": "#7c5800",
+                        "surface-tint": "#a83900",
+                        "inverse-primary": "#ffb59a",
+                        "surface-container-low": "#f6f3f5",
+                        "on-background": "#1b1b1d",
+                        "outline": "#8c7168",
+                        "on-primary-fixed-variant": "#812900",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#95d4b3",
+                        "secondary-container": "#aeeecb",
+                        "on-secondary-fixed-variant": "#0e5138",
+                        "on-tertiary-fixed": "#271900",
+                        "tertiary-fixed": "#ffdea8",
+                        "surface-dim": "#dcd9dc",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#eae7ea",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#5e4200",
+                        "on-surface": "#1b1b1d",
+                        "on-primary-fixed": "#380d00",
+                        "surface": "#fcf8fb",
+                        "surface-bright": "#fcf8fb",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f3f0f2",
+                        "outline-variant": "#e0c0b5",
+                        "background": "#fcf8fb",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e4e2e4",
+                        "on-tertiary-container": "#3b2800",
+                        "on-surface-variant": "#584239",
+                        "secondary": "#2c694e",
+                        "tertiary-fixed-dim": "#ffba20",
+                        "secondary-fixed": "#b1f0ce",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#ffdbcf",
+                        "on-secondary-fixed": "#002114",
+                        "on-primary-container": "#531800",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#bf8900",
+                        "surface-container": "#f0edef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "container-margin": "20px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "stack-gap": "12px",
+                        "base": "4px",
+                        "safe-bottom": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Work Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-sm": ["Geist"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "title-md": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "mono-data": ["Geist"],
+                        "body-md": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "label-sm": ["13px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "mono-data": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Modern Utilities */
+        .glass-panel {
+            background: rgba(252, 248, 251, 0.85);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(224, 192, 181, 0.4);
+        }
+        
+        .hero-mask {
+            mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+        }
+
+        /* Fluid Typography scaling for desktop/mobile */
+        @media (max-width: 767px) {
+            .responsive-display {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 32px;
+                line-height: 38px;
+                letter-spacing: -0.01em;
+                font-weight: 800;
+            }
+        }
+        @media (min-width: 768px) {
+            .responsive-display {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 48px;
+                line-height: 56px;
+                letter-spacing: -0.02em;
+                font-weight: 800;
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-primary/20">
+<!-- Transactional Page - No App Bars per logic rules -->
+<main class="flex-1 flex flex-col relative w-full h-screen overflow-hidden">
+<!-- Hero Background Canvas -->
+<div class="absolute inset-0 z-0 h-[574px] w-full hero-mask">
+<div class="w-full h-full bg-cover bg-center object-cover" data-alt="A bright, modern kitchen counter flooded with natural morning light. Fresh ingredients like vibrant green spinach, bright orange salmon, and rustic whole grain bread are neatly arranged on a clean white marble surface. The mood is optimistic, energetic, and healthy, utilizing a light-mode aesthetic with crisp whites, warm sunlight, and pops of vivid natural food colors, styled like a premium lifestyle magazine." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDuI9qmkdAc4-VBYMdumCO6mMfnknJ_KJA9X4AVCZ1tK7tZJfnJgOJaWM6NKbCnme94m8KOwsU1iI5kNVE5vfXTv7YuLDHv2HjHAVqg8PUiKqVaSUosfloWD6pyU0Vv-mP_FtOEUFO7XbUTMULm063nQfWZqezFQt7HDB48sJEuBdpzewjJixvbR0WmTeZVCdZjmYoltSzvZAuu5z7bD6q3DcFzKIN26bms4F7WpUsVruKY-dr9IlPg1IsPxecLfFIQyuvYWekFkwKd')"></div>
+<!-- Subtle Overlay for text readability -->
+<div class="absolute inset-0 bg-gradient-to-b from-surface/10 via-surface/30 to-surface"></div>
+</div>
+<!-- Content Canvas (Floating above image) -->
+<div class="relative z-10 flex-1 flex flex-col justify-end px-container-margin pb-xl pt-[397px] max-w-lg mx-auto w-full md:max-w-2xl md:pt-[442px]">
+<!-- Branding / Welcome -->
+<div class="flex items-center gap-xs mb-md animate-[fadeIn_0.5s_ease-out]">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider">NutriScope AI</span>
+</div>
+<!-- Headlines -->
+<div class="flex flex-col gap-stack-gap mb-xl animate-[slideUp_0.6s_ease-out]">
+<h1 class="responsive-display text-on-surface">
+                    Track meals without obsessing.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[90%]">
+                    Scan your food. See calories, protein, and what to eat next.
+                </p>
+</div>
+<!-- Action Area (Glass Panel) -->
+<div class="glass-panel rounded-t-[32px] rounded-b-xl p-lg -mx-container-margin md:mx-0 shadow-[0_-8px_32px_rgba(0,0,0,0.04)] animate-[slideUp_0.7s_ease-out]">
+<div class="flex flex-col gap-md">
+<!-- Primary CTA -->
+<button class="w-full h-14 bg-primary text-on-primary font-title-md text-title-md rounded-xl shadow-lg shadow-primary/25 hover:bg-primary/90 active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-sm">
+                        Start Tracking
+                        <span class="material-symbols-outlined text-on-primary">arrow_forward</span>
+</button>
+<!-- Secondary CTA -->
+<button class="w-full h-14 bg-surface-container-high text-on-surface font-title-md text-title-md rounded-xl hover:bg-surface-container-highest active:scale-[0.98] transition-all duration-200">
+                        Quick start
+                    </button>
+</div>
+<!-- Footnote -->
+<div class="mt-lg text-center flex items-center justify-center gap-sm opacity-80">
+<span class="material-symbols-outlined text-secondary text-sm">verified</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                        No shame. No perfect logging. Just better choices.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple animations -->
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</body></html>

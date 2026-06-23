@@ -4,18 +4,22 @@ import SwiftUI
 
 enum AppSheet: Identifiable {
     case scan
+    case manualLog
     case paywall
     case scanQuota
     case subscriptionSuccess
     case saveProgress
+    case trialEnding
 
     var id: String {
         switch self {
         case .scan: "scan"
+        case .manualLog: "manualLog"
         case .paywall: "paywall"
         case .scanQuota: "scanQuota"
         case .subscriptionSuccess: "subscriptionSuccess"
         case .saveProgress: "saveProgress"
+        case .trialEnding: "trialEnding"
         }
     }
 }
@@ -48,7 +52,7 @@ final class AppState {
     }
 
     func mealAnalysisService() -> any MealAnalysisServiceProtocol {
-        MealAnalysisServiceFactory.make(hasProAccess: hasProAccess)
+        MealAnalysisServiceFactory.make()
     }
 
     var hasProAccess: Bool {
@@ -59,8 +63,18 @@ final class AppState {
         Task { @MainActor in
             try? await BackendAuthBootstrap.ensureBackendSession()
             if quotaManager.canScan(isSubscribed: hasProAccess) {
-                scanStartsInTextMode = false
                 activeSheet = .scan
+            } else {
+                activeSheet = .scanQuota
+            }
+        }
+    }
+
+    func presentManualLogIfAllowed() {
+        Task { @MainActor in
+            try? await BackendAuthBootstrap.ensureBackendSession()
+            if quotaManager.canScan(isSubscribed: hasProAccess) {
+                activeSheet = .manualLog
             } else {
                 activeSheet = .scanQuota
             }
@@ -96,5 +110,20 @@ final class AppState {
         await subscriptionManager.restore()
         await subscriptionManager.refreshEntitlements()
         return subscriptionManager.isSubscribed
+    }
+
+    private static let trialPromptKey = "trialEndingPromptExpiration"
+
+    func evaluateTrialEndingPromptIfNeeded() {
+        guard subscriptionManager.shouldPromptTrialEnding else { return }
+        guard activeSheet == nil else { return }
+        let marker = subscriptionManager.trialExpirationDate?.timeIntervalSince1970.description ?? ""
+        guard UserDefaults.standard.string(forKey: Self.trialPromptKey) != marker else { return }
+        activeSheet = .trialEnding
+    }
+
+    func markTrialEndingPromptSeen() {
+        let marker = subscriptionManager.trialExpirationDate?.timeIntervalSince1970.description ?? ""
+        UserDefaults.standard.set(marker, forKey: Self.trialPromptKey)
     }
 }

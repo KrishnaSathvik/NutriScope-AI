@@ -6,7 +6,6 @@ struct ScanMealView: View {
     @Environment(AppState.self) private var appState
     @Environment(\.dismiss) private var dismiss
     @Query private var settings: [UserSettings]
-
     @Query(sort: \MealRecord.scannedAt, order: .reverse) private var meals: [MealRecord]
 
     var skipsFlowTutorial = false
@@ -15,27 +14,16 @@ struct ScanMealView: View {
 
     @State private var selectedItem: PhotosPickerItem?
     @State private var imageData: Data?
-    @State private var mealNote = ""
     @State private var isAnalyzing = false
     @State private var loadingStep = 0
     @State private var analysis: MealAnalysis?
     @State private var showScanFailed = false
     @State private var lastScanError: String?
-    @State private var showVoiceOverlay = false
     @State private var showCamera = false
-    @State private var showFoodSearch = false
     @State private var showFirstScanTutorial = false
     @State private var showCameraPrompt = false
-    @State private var showMicPrompt = false
+    @State private var showManualLog = false
     @State private var selectedMealType = MealType.inferred()
-    @State private var speechService = SpeechTranscriptionService()
-
-    private let quickAddItems: [(emoji: String, label: String, snippet: String)] = [
-        ("🥚", "Boiled Egg", "1 boiled egg"),
-        ("🥤", "Whey Scoop", "1 scoop whey protein"),
-        ("🍗", "Chicken Breast", "grilled chicken breast"),
-        ("🍚", "White Rice", "1 cup white rice")
-    ]
 
     private let loadingMessages = [
         "Looking at portion size…",
@@ -47,9 +35,7 @@ struct ScanMealView: View {
     private var userSettings: UserSettings? { settings.first }
     private var proteinTarget: Int { userSettings?.dailyProteinTarget ?? 135 }
     private var dietPreferences: Set<DietPreference> { userSettings?.dietPreferences ?? [] }
-    private var canAnalyze: Bool {
-        imageData != nil || !mealNote.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-    }
+    private var canAnalyze: Bool { imageData != nil }
 
     private var todaysProtein: Int {
         meals
@@ -77,7 +63,7 @@ struct ScanMealView: View {
                     MealResultView(
                         analysis: analysis,
                         isNewScan: true,
-                        mealNote: mealNote,
+                        mealNote: "",
                         saveButtonTitle: onFirstMealSaved == nil ? "Looks right — Save meal" : "Add to Today",
                         onResetForAnother: resetForAnotherLog,
                         onMealSaved: onFirstMealSaved
@@ -94,11 +80,12 @@ struct ScanMealView: View {
                             showScanFailed = false
                             lastScanError = nil
                             imageData = nil
+                            showManualLog = true
                         },
                         onFoodDatabase: {
                             showScanFailed = false
                             lastScanError = nil
-                            openFoodSearch()
+                            showManualLog = true
                         },
                         onDismiss: {
                             showScanFailed = false
@@ -108,25 +95,30 @@ struct ScanMealView: View {
                 } else if isAnalyzing {
                     analyzingView
                 } else {
-                    scanContent
+                    cameraScanContent
                 }
             }
-        .background(AppTheme.background)
+            .background(AppBackground(showsAmbientGlow: true))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 if analysis == nil && !isAnalyzing && !showScanFailed {
                     ToolbarItem(placement: .cancellationAction) {
-                        Button {
-                            dismiss()
-                        } label: {
+                        Button { dismiss() } label: {
                             Image(systemName: "xmark")
                                 .foregroundStyle(AppTheme.textSecondary)
                         }
                     }
                     ToolbarItem(placement: .principal) {
-                        Text("Manual Log")
-                            .font(.title3.weight(.bold))
+                        Text("Scan Meal")
+                            .font(AppTypography.title2.weight(.bold))
                             .foregroundStyle(AppTheme.coachOrange)
+                    }
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button("Type instead") {
+                            showManualLog = true
+                        }
+                        .font(AppTypography.subheadline.weight(.semibold))
+                        .foregroundStyle(AppTheme.coachOrange)
                     }
                 } else {
                     ToolbarItem(placement: .cancellationAction) {
@@ -146,17 +138,18 @@ struct ScanMealView: View {
                 }
                 .ignoresSafeArea()
             }
-            .sheet(isPresented: $showFirstScanTutorial) {
+            .fullScreenCover(isPresented: $showFirstScanTutorial) {
                 FirstScanTutorialView {
                     ScanFlowFlags.hasSeenFirstScanTutorial = true
                     showFirstScanTutorial = false
                     if !ScanFlowFlags.hasSeenCameraPrompt {
                         showCameraPrompt = true
+                    } else if opensCameraOnAppear {
+                        showCamera = true
                     }
                 }
-                .presentationDetents([.large])
             }
-            .sheet(isPresented: $showCameraPrompt) {
+            .fullScreenCover(isPresented: $showCameraPrompt) {
                 CameraPermissionPromptView(
                     onAllow: {
                         ScanFlowFlags.hasSeenCameraPrompt = true
@@ -171,39 +164,17 @@ struct ScanMealView: View {
                         showCameraPrompt = false
                     }
                 )
-                .presentationDetents([.medium, .large])
             }
-            .sheet(isPresented: $showMicPrompt) {
-                MicrophonePermissionPromptView(
-                    onAllow: {
-                        ScanFlowFlags.hasSeenMicrophonePrompt = true
-                        showMicPrompt = false
-                        Task { await startVoiceAfterPrompt() }
-                    },
-                    onSkip: {
-                        ScanFlowFlags.hasSeenMicrophonePrompt = true
-                        showMicPrompt = false
+            .fullScreenCover(isPresented: $showManualLog) {
+                ManualMealLogView(
+                    onFirstMealSaved: onFirstMealSaved,
+                    onSwitchToScan: {
+                        showManualLog = false
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+                            openCamera()
+                        }
                     }
                 )
-                .presentationDetents([.medium, .large])
-            }
-            .sheet(isPresented: $showFoodSearch) {
-                FoodSearchView { selected in
-                    appState.consumeScanIfNeeded()
-                    analysis = selected
-                }
-            }
-            .overlay {
-                if showVoiceOverlay {
-                    VoiceListeningOverlay(
-                        partialText: speechService.partialText.isEmpty ? mealNote : speechService.partialText,
-                        onCancel: { stopVoice() },
-                        onDone: { stopVoice() }
-                    )
-                }
-            }
-            .onChange(of: speechService.partialText) { _, text in
-                if !text.isEmpty { mealNote = text }
             }
             .onAppear {
                 if skipsFlowTutorial {
@@ -233,77 +204,31 @@ struct ScanMealView: View {
 
     private func resetForAnotherLog() {
         analysis = nil
-        mealNote = ""
         imageData = nil
         selectedItem = nil
         selectedMealType = MealType.inferred()
     }
 
-    private var scanContent: some View {
+    private var cameraScanContent: some View {
         BoundedScrollView {
+            VStack(alignment: .leading, spacing: 20) {
+                ScanMealViewport(
+                    image: imageData.flatMap { UIImage(data: $0) },
+                    placeholderAction: { openCamera() }
+                )
 
-            VStack(alignment: .leading, spacing: 24) {
-                if imageData != nil || !recentMealNames.isEmpty {
+                if imageData != nil {
                     proteinContextCard
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("What did you have?")
-                        .font(.title3.weight(.semibold))
-                    Text("Describe your meal as naturally as you'd tell a friend. Our AI will handle the math.")
-                        .font(.body)
+                    Text(imageData == nil ? "Point at your meal" : "Ready to analyze")
+                        .font(AppTypography.title3.weight(.bold))
+                    Text(imageData == nil
+                         ? "Shoot from above with good lighting. We'll estimate protein and calories from the photo."
+                         : "Looks good — analyze when you're ready, or retake for a clearer shot.")
+                        .font(AppTypography.body)
                         .foregroundStyle(AppTheme.textSecondary)
-                }
-
-                ManualLogPaperCard {
-                    VStack(alignment: .leading, spacing: 12) {
-                        if let imageData, let uiImage = UIImage(data: imageData) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(height: 160)
-                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-                        }
-
-                        TextField("e.g., 2 rotis, a bowl of chicken curry, and some rice…", text: $mealNote, axis: .vertical)
-                            .lineLimit(3...6)
-                            .font(.body)
-                            .padding(12)
-                            .background(AppTheme.surfaceMuted)
-                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
-
-                        HStack {
-                            Button {
-                                Task { await toggleVoice() }
-                            } label: {
-                                Image(systemName: "mic.fill")
-                                    .foregroundStyle(AppTheme.coachOrange)
-                            }
-                            .buttonStyle(.plain)
-                            Spacer()
-                            Text("\(mealNote.count)/500")
-                                .font(AppTypography.labelCaps)
-                                .foregroundStyle(AppTheme.textTertiary)
-                        }
-                    }
-                }
-
-                VStack(alignment: .leading, spacing: 12) {
-                    Label {
-                        Text("Quick Add")
-                            .font(.title3.weight(.semibold))
-                    } icon: {
-                        Image(systemName: "bolt.fill")
-                            .foregroundStyle(AppTheme.coachOrange)
-                    }
-
-                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 10) {
-                        ForEach(quickAddItems, id: \.label) { item in
-                            QuickAddTile(emoji: item.emoji, label: item.label) {
-                                appendQuickAdd(item.snippet)
-                            }
-                        }
-                    }
                 }
 
                 VStack(alignment: .leading, spacing: 10) {
@@ -324,26 +249,31 @@ struct ScanMealView: View {
 
                 HStack(spacing: 10) {
                     PhotosPicker(selection: $selectedItem, matching: .images) {
-                        Label("Upload", systemImage: "photo")
-                            .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(SecondaryButtonStyle())
-
-                    Button { openCamera() } label: {
-                        Label("Camera", systemImage: "camera.fill")
+                        Label("Gallery", systemImage: "photo.on.rectangle")
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(OutlineButtonStyle())
 
-                    Button { openFoodSearch() } label: {
-                        Image(systemName: "magnifyingglass")
+                    if imageData != nil {
+                        Button {
+                            imageData = nil
+                            selectedItem = nil
+                        } label: {
+                            Label("Retake", systemImage: "arrow.triangle.2.circlepath.camera")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(SecondaryButtonStyle())
+                    } else {
+                        Button { openCamera() } label: {
+                            Label("Take Photo", systemImage: "camera.fill")
+                                .frame(maxWidth: .infinity)
+                        }
+                        .buttonStyle(SecondaryButtonStyle())
                     }
-                    .buttonStyle(OutlineButtonStyle())
                 }
             }
             .padding(AppTheme.marginMain)
             .padding(.bottom, 100)
-        
         }
         .safeAreaInset(edge: .bottom) {
             VStack(spacing: 0) {
@@ -353,11 +283,19 @@ struct ScanMealView: View {
                     endPoint: .bottom
                 )
                 .frame(height: 20)
-                Button { Task { await analyze() } } label: {
-                    Label("Analyze & Log", systemImage: "sparkles")
+                Button {
+                    if imageData == nil {
+                        openCamera()
+                    } else {
+                        Task { await analyze() }
+                    }
+                } label: {
+                    Label(
+                        imageData == nil ? "Open Camera" : "Analyze Photo",
+                        systemImage: imageData == nil ? "camera.viewfinder" : "sparkles"
+                    )
                 }
-                .buttonStyle(PrimaryButtonStyle(enabled: canAnalyze))
-                .disabled(!canAnalyze)
+                .buttonStyle(PrimaryButtonStyle())
                 .padding(.horizontal, AppTheme.marginMain)
                 .padding(.bottom, 16)
                 .background(AppTheme.background)
@@ -365,11 +303,6 @@ struct ScanMealView: View {
         }
         .onChange(of: selectedItem) { _, item in
             Task { await loadImage(from: item) }
-        }
-        .onChange(of: mealNote) { _, newValue in
-            if newValue.count > 500 {
-                mealNote = String(newValue.prefix(500))
-            }
         }
     }
 
@@ -394,40 +327,19 @@ struct ScanMealView: View {
             }
         }
         .padding(16)
-        .background(AppTheme.surfaceMuted)
-        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadius, style: .continuous))
-    }
-
-    private func appendQuickAdd(_ snippet: String) {
-        if mealNote.isEmpty {
-            mealNote = snippet
-        } else if !mealNote.localizedCaseInsensitiveContains(snippet) {
-            mealNote += ", \(snippet)"
-        }
+        .background(AppTheme.glassBg)
+        .clipShape(RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous))
+        .overlay(
+            RoundedRectangle(cornerRadius: AppTheme.cornerRadiusXL, style: .continuous)
+                .strokeBorder(AppTheme.glassBorder, lineWidth: 1)
+        )
     }
 
     private var analyzingView: some View {
-        VStack(spacing: 28) {
-            Spacer()
-            ZStack {
-                Circle()
-                    .stroke(AppTheme.coachOrange.opacity(0.2), lineWidth: 8)
-                    .frame(width: 88, height: 88)
-                ProgressView()
-                    .scaleEffect(1.4)
-                    .tint(AppTheme.coachOrange)
-            }
-            Text(loadingMessages[min(loadingStep, loadingMessages.count - 1)])
-                .font(.headline)
-                .foregroundStyle(AppTheme.textPrimary)
-                .multilineTextAlignment(.center)
-                .animation(.easeInOut, value: loadingStep)
-                .padding(.horizontal, 32)
-            Text("This usually takes a few seconds")
-                .font(.caption)
-                .foregroundStyle(AppTheme.textSecondary)
-            Spacer()
-        }
+        MealAnalyzingView(
+            image: imageData.flatMap { UIImage(data: $0) },
+            statusMessage: loadingMessages[loadingStep]
+        )
     }
 
     private func loadImage(from item: PhotosPickerItem?) async {
@@ -464,7 +376,7 @@ struct ScanMealView: View {
 
         let request = MealAnalysisRequest(
             imageData: compressedImage,
-            mealDescription: mealNote,
+            mealDescription: "",
             dailyProteinTarget: proteinTarget,
             dietPreferences: dietPreferences,
             userContext: AIContextBuilder.mealAnalysisContext(
@@ -488,40 +400,6 @@ struct ScanMealView: View {
             showScanFailed = true
         }
         isAnalyzing = false
-    }
-
-    private func openFoodSearch() {
-        if appState.quotaManager.canScan(isSubscribed: appState.hasProAccess) {
-            showFoodSearch = true
-        } else {
-            appState.activeSheet = .scanQuota
-        }
-    }
-
-    private func toggleVoice() async {
-        if speechService.isRecording {
-            stopVoice()
-            return
-        }
-        if !ScanFlowFlags.hasSeenMicrophonePrompt {
-            showMicPrompt = true
-            return
-        }
-        await startVoiceAfterPrompt()
-    }
-
-    private func startVoiceAfterPrompt() async {
-        do {
-            try await speechService.startRecording()
-            showVoiceOverlay = true
-        } catch {
-            showMicPrompt = true
-        }
-    }
-
-    private func stopVoice() {
-        speechService.stopRecording()
-        showVoiceOverlay = false
     }
 }
 

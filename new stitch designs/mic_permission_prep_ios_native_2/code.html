@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nutriscope AI - Enable Voice Logging</title>
+<!-- Google Fonts for standard body, but aiming for SF Pro aesthetic with system fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#735c00",
+                      "secondary-fixed-dim": "#ebc23e",
+                      "tertiary": "#5d5e63",
+                      "secondary-container": "#fdd34d",
+                      "on-surface": "#1b1c19",
+                      "warm-sun": "#FFD54F",
+                      "on-primary-fixed": "#380c00",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "background": "#fbf9f4",
+                      "surface": "#fbf9f4",
+                      "inverse-primary": "#ffb59c",
+                      "primary-fixed": "#ffdbcf",
+                      "surface-tint": "#a93702",
+                      "surface-bright": "#fbf9f4",
+                      "surface-container-high": "#eae8e3",
+                      "outline-variant": "#e0c0b5",
+                      "surface-container": "#f0eee9",
+                      "inverse-on-surface": "#f2f1ec",
+                      "primary-container": "#f26b38",
+                      "on-primary-fixed-variant": "#822800",
+                      "on-background": "#1b1c19",
+                      "on-primary-container": "#561700",
+                      "on-tertiary-container": "#2c2d31",
+                      "primary": "#a93702",
+                      "surface-container-highest": "#e4e2dd",
+                      "on-surface-variant": "#58423a",
+                      "error": "#ba1a1a",
+                      "on-secondary-container": "#725b00",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#dbdad5",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#c6c6cb",
+                      "on-secondary-fixed": "#241a00",
+                      "tertiary-container": "#949499",
+                      "ink-black": "#1C1C1E",
+                      "on-tertiary-fixed-variant": "#46464b",
+                      "surface-container-low": "#f5f3ee",
+                      "paper-white": "#FFFFFF",
+                      "error-container": "#ffdad6",
+                      "protein-teal": "#2D6A4F",
+                      "tertiary-fixed": "#e3e2e7",
+                      "primary-fixed-dim": "#ffb59c",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-error-container": "#93000a",
+                      "outline": "#8c7168",
+                      "inverse-surface": "#30312e",
+                      "surface-variant": "#e4e2dd",
+                      "secondary-fixed": "#ffe087",
+                      "on-error": "#ffffff",
+                      "coach-orange": "#F26B38",
+                      "on-tertiary-fixed": "#1a1b1f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "1rem",
+                      "stack-sm": "0.5rem",
+                      "stack-lg": "1.5rem",
+                      "margin-main": "1.25rem",
+                      "gutter-card": "1rem"
+              },
+              "fontFamily": {
+                      "sans": [
+                        "-apple-system",
+                        "BlinkMacSystemFont",
+                        "SF Pro Text",
+                        "Segoe UI",
+                        "Roboto",
+                        "Helvetica Neue",
+                        "Arial",
+                        "sans-serif"
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+      /* Use SF Pro rounded if possible, otherwise standard system font */
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col relative overflow-hidden antialiased selection:bg-primary-fixed-dim selection:text-primary">
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col justify-center items-center px-6 relative z-10 w-full max-w-md mx-auto pt-16 pb-12">
+<!-- Graphic / Icon Section -->
+<div class="relative flex justify-center items-center w-40 h-40 mb-10 mt-auto">
+<!-- Solid Icon Container -->
+<div class="relative z-10 w-32 h-32 rounded-full bg-primary-fixed flex justify-center items-center">
+<span class="material-symbols-outlined text-[64px] text-coach-orange" style="font-variation-settings: 'FILL' 1;">mic</span>
+</div>
+</div>
+<!-- Text Content Section -->
+<div class="flex flex-col items-center text-center px-2 mb-12">
+<h1 class="text-[34px] leading-[41px] font-bold text-ink-black mb-4 tracking-tight">Enable Voice Logging</h1>
+<p class="text-[17px] leading-[22px] font-normal text-on-surface-variant max-w-[320px]">
+        Log your meals hands-free with AI-powered voice recognition. Just describe what you're eating and we'll handle the macros.
+    </p>
+</div>
+<!-- Action Buttons Section -->
+<div class="w-full flex flex-col gap-4 mt-auto">
+<button class="w-full bg-coach-orange text-paper-white text-[17px] font-semibold py-4 px-6 rounded-[14px] transition-all duration-200 active:opacity-80 flex justify-center items-center">
+        Allow Microphone Access
+    </button>
+<button class="w-full text-coach-orange text-[17px] font-normal py-4 px-6 rounded-[14px] transition-colors duration-200 active:opacity-80">
+        Maybe Later
+    </button>
+</div>
+</main>
+</body></html>
